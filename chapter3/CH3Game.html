@@ -17,27 +17,44 @@
 	var button = document.querySelector("button");
 	//button.style.cursor = "pointer";
 	button.addEventListener("click", clickHandler, false);
+	
+	var rainToday = false;
+	
+	
 	function clickHandler()
 	{
-	playGame();
+		playGame();
 	}
 	function playGame()
 	{
 		playersGuess = parseInt(input.value);
 		counter++;
 		console.log(counter);
-	if(playersGuess > mysteryNumber)
+		if(playersGuess > mysteryNumber)
+		{
+			output.innerHTML = "That's too high.";
+		}
+		else if(playersGuess < mysteryNumber)
+		{
+			output.innerHTML = "That's too low.";
+		}
+		else if(playersGuess === mysteryNumber)
+		{
+			output.innerHTML = "You got it!";
+		}
+	}
+	
+	if(Math.round(Math.random()) === 1)
 	{
-	output.innerHTML = "That's too high.";
+		rainToday = true;
 	}
-	else if(playersGuess < mysteryNumber)
+	else
 	{
-	output.innerHTML = "That's too low.";
+		rainToday = false;
 	}
-	else if(playersGuess === mysteryNumber)
-	{
-	output.innerHTML = "You got it!";
-	}
-	}
+	
+	console.log(rainToday);
+	
+	
 	</script>
 </html>
