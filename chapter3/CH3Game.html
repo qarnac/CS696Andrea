@@ -3,8 +3,42 @@
 	<title>Number guessing game</title>
 	<p id="output">I am thinking of a number between 0 and 99.</p>
 	<input id="input" type="text" placeholder="Enter your guess..." autofocus>
-	<button>guess</button>
 <body>
+	<style>
+		button
+		{
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			color: #fff;
+			padding: 10px 20px;
+			border: 2px solid #000;
+			cursor: pointer;
+			-webkit-border-radius: 10px;
+			
+			border-radius: 10px;
+
+			
+			background:-moz-linear-gradient(top, #a3a3a3, #000);
+			
+			-webkit-box-shadow: 5px 5px 3px rgba(0,0,0,0.5);
+			
+			box-shadow: 5px 5px 3px rgba(0,0,0,0.5);
+			-webkit-user-select: none;
+			-moz-user-select: none;
+		
+		}
+		
+		button:hover
+		{
+			background: -moz-linear-gradient(top, #acc7a3, #506651);
+			
+		}
+		button:active
+		{
+			background: -moz-linear-gradient(top, #858565, #c5c9a9);
+		}
+	</style>
+	<button>guess</button>
 	<script>
 		//Game variables
 		var mysteryNumber = Math.floor(Math.random() * 100);
