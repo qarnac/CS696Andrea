@@ -1,14 +1,6 @@
 <!doctype html>
-<meta charset="utf-8">
-	Timer Activated <span id="timer"></span>
-	<title>Number guessing game</title>
-	<div id="stage">
-		<div id="scale"></div>
-		<div id="arrow"></div>
-	</div>
-	<p id="output">I am thinking of a number between 0 and 99.</p>
-	<input id="input" type="text" placeholder="Enter your guess..." autofocus>
-<body>
+<head>
+	<meta charset="utf-8">
 	<style>
 		#stage
 		{
@@ -69,9 +61,7 @@
 		{
 			background: -moz-linear-gradient(top, #858565, #c5c9a9);
 		}
-	</style>
-
-	<button>guess</button>
+	</style>	
 	<script>
 	
 		var count = 30;
@@ -218,4 +208,17 @@
 			input.disabled = true;
 		}
 	</script>
+</head>
+
+	Timer Activated <span id="timer"></span>
+	<title>Number guessing game</title>
+	<div id="stage">
+		<div id="scale"></div>
+		<div id="arrow"></div>
+	</div>
+	<p id="output">I am thinking of a number between 0 and 99.</p>
+	<input id="input" type="text" placeholder="Enter your guess..." autofocus>
+	
+<body>
+	<button>guess</button>
 </body>
