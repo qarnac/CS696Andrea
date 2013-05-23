@@ -1,5 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
+	Timer Activated <span id="timer"></span>
 	<title>Number guessing game</title>
 	<div id="stage">
 		<div id="scale"></div>
@@ -72,6 +73,10 @@
 
 	<button>guess</button>
 	<script>
+	
+		var count = 30;
+		var counter1 = setInterval(timer, 1000);
+ 
 		//Game variables
 		var mysteryNumber = Math.floor(Math.random() * 100);
 		console.log(mysteryNumber);
@@ -92,6 +97,20 @@
 		button.addEventListener("click", clickHandler, false);
 		//Listen for enter key presses
 		window.addEventListener("keydown", keydownHandler, false);
+		
+		function timer()
+		{
+		  count=count-1;
+		  if (count <= 0)
+		  {
+			 clearInterval(counter1);
+			 //counter ended, do something here
+			 endGame();
+			 return;
+		  }
+		  
+		   document.getElementById("timer").innerHTML = count + " secs"; // watch for spelling
+		}
 		
 		function render()
 		{
@@ -174,11 +193,22 @@
 			{
 				output.innerHTML = "Yes, it's " + mysteryNumber + "!" + "<br>" + "It only took you " + guessesMade + " guesses.";
 			}
+			else if ( count == 0)
+			{
+				output.innerHTML = "Time's up!" + "<br>" + "The number was: " + mysteryNumber + ".";
+			}
 			else
 			{
 				output.innerHTML = "No more guesses left!" + "<br>" + "The number was: " + mysteryNumber + ".";
 			}
 		
+			disableEverything();
+		}
+		
+		function disableEverything()
+		{
+			count = 0;
+			document.getElementById("timer").innerHTML = count + " secs";
 			//Disable the button
 			button.removeEventListener("click", clickHandler, false);
 			button.disabled = true;
