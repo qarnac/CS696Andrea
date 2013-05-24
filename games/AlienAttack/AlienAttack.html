@@ -176,8 +176,15 @@
 				endGame();
 			}
 			
+			console.log("guessX " + guessX);
+			console.log("alienX " + alienX);
+			console.log("guessY " + guessY);
+			console.log("alienY " + alienY);
+			//75 >= 80
+			//75 <= 80 + 20
 			if(guessX >= alienX && guessX <= alienX + 20)
 			{
+				
 				output.innerHTML = gameState;
 				//Yes, it's within the X range, so now let's
 				//check the Y range
@@ -204,11 +211,12 @@
 			
 		}
 		
-			function endGame()
+		function endGame()
 		{
+			console.log("gameWon = " + gameWon);
 			if (gameWon)
 			{
-				output.innerHTML = "The world is saved!";
+				output.innerHTML = "Alien Hit and Destroyed! You have save the day! <br>" + gameState;
 			}
 
 			else
