@@ -27,6 +27,7 @@
 			top: 270px;
 			left: 140px;
 			background-image: url(./images/cannon.png);
+
 		}
 		
 		#alien
@@ -47,9 +48,12 @@
 			top: 240px;
 			left: 145px;
 			background-image: url(./images/missile.png);
-		}
 
-				
+			-webkit-transition: top 0.5s ease-out 0s;
+			-moz-transition: top 0.5s ease-out 0s;
+			transition: top 0.5s ease-out 0s;
+		}
+	
 		#elementOne
 		{
 			z-index: 2;
@@ -58,10 +62,25 @@
 		{
 			z-index: 1;
 		}
+		
+		button:hover
+		{
+			background: -moz-linear-gradient(top, #acc7a3, #506651);
+			
+		}
+		button:active
+		{
+			background: -moz-linear-gradient(top, #858565, #c5c9a9);
+		}
 	</style>
 	
 	<script>
 	
+		function clickHandler()
+		{
+			validateInput();
+		}
+		
 		function keydownHandler(event)
 		{
 			if(event.keyCode === 13)
@@ -88,21 +107,69 @@
 				playGame();
 			}
 		}
+		
+		function render()
+		{
+			//Position the alien
+			alien.style.left = alienX + "px";
+			alien.style.top = alienY + "px";
+			//Position the cannon
+			cannon.style.left = guessX + "px";
+			//Position the missile
+			missile.style.left = guessX + "px";
+			missile.style.top = guessY + "px";
+		}
+		
+		function playGame()
+		{
+			shotsRemaining = shotsRemaining - 1;
+			shotsMade = shotsMade + 1;
+			gameState = " Shots: " + shotsMade + ", Remaining: " + shotsRemaining;
+			guessX = parseInt(inputX.value);
+			guessY = parseInt(inputY.value);
+			
+			if(guessX >= alienX && guessX <= alienX + 20)
+			{
+				output.innerHTML = gameState;
+				//Yes, it's within the X range, so now let's
+				//check the Y range
+				if(guessY >= alienY && guessY <= alienY + 20)
+				{
+					//It's in both the X and Y range, so it's a hit!
+					gameWon = true;
+					endGame();
+				}
+			}
+			
+			if(!gameWon)
+			{
+				//Update the alien's X position
+				alienX = Math.floor(Math.random() * 281);
+				//Add 30 to the new Y position so that
+				//the alien moves down toward earth
+				alienY += 30;
+			}
+		}
 	</script>
 </head>
 
+<title>Alien Attack game</title>
+
 <div id="stage">
-	<--<div id="background"></div>
+	<div id="background"></div>
 	<div id="cannon"></div>
 	<div id="missile"></div>
 	<div id="alien"></div>
 </div
+
 <p id="output">Enter the X and Y position (0-300), then click fire.</p>
+
 <input id="inputX" type="text" placeholder="X...">
 <input id="inputY" type="text" placeholder="Y...">
-<button>fire!</button>
 
 <body>
+	<button>fire!</button>
+	
 	<script>
 	
 	//Game variables
@@ -116,18 +183,22 @@
 	var shotsMade = 0;
 	var gameState = "";
 	var gameWon = false;
+	
 	//The game objects
 	var cannon = document.querySelector("#cannon");
 	var alien = document.querySelector("#alien");
 	var missile = document.querySelector("#missile");
+	
 	//The input and output fields
 	var inputX = document.querySelector("#inputX");
 	var inputY = document.querySelector("#inputY");
 	var output = document.querySelector("#output");
+	
 	//The button
 	var button = document.querySelector("button");
 	button.style.cursor = "pointer";
 	button.addEventListener("click", clickHandler, false);
+	
 	
 	</script>
 </body>
