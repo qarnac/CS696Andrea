@@ -59,6 +59,36 @@
 			z-index: 1;
 		}
 	</style>
+	
+	<script>
+	
+		function keydownHandler(event)
+		{
+			if(event.keyCode === 13)
+			{
+				validateInput();
+			}
+		}
+		
+		function validateInput()
+		{
+			guessX = parseInt(inputX.value);
+			guessY = parseInt(inputY.value);
+			
+			if(isNaN(guessX) || isNaN(guessY))
+			{
+				output.innerHTML = "Please enter a number.";
+			}
+			else if(guessX > 300 || guessY > 300)
+			{
+				output.innerHTML = "Please enter a number less than 300.";
+			}
+			else
+			{
+				playGame();
+			}
+		}
+	</script>
 </head>
 
 <div id="stage">
@@ -74,6 +104,7 @@
 
 <body>
 	<script>
+	
 	//Game variables
 	var alienX = 80;
 	var alienY = 20;
