@@ -128,6 +128,11 @@
 			guessX = parseInt(inputX.value);
 			guessY = parseInt(inputY.value);
 			
+			if (shotsRemaining === 0)
+			{
+				endGame();
+			}
+			
 			if(guessX >= alienX && guessX <= alienX + 20)
 			{
 				output.innerHTML = gameState;
@@ -149,6 +154,35 @@
 				//the alien moves down toward earth
 				alienY += 30;
 			}
+			
+			render();
+		}
+		
+			function endGame()
+		{
+			if (gameWon)
+			{
+				output.innerHTML = "The world is saved!";
+			}
+
+			else
+			{
+				output.innerHTML = "Uh oh Armageddon!";
+			}
+		
+			disableEverything();
+		}
+		
+		function disableEverything()
+		{
+			//Disable the button
+			button.removeEventListener("click", clickHandler, false);
+			button.disabled = true;
+			//Disable the enter key
+			window.removeEventListener("keydown", keydownHandler, false);
+			//Disable the input field
+			inputX.disabled = true;
+			inputY.disabled = true;
 		}
 	</script>
 </head>
@@ -160,9 +194,10 @@
 	<div id="cannon"></div>
 	<div id="missile"></div>
 	<div id="alien"></div>
-</div
+</div>
 
-<p id="output">Enter the X and Y position (0-300), then click fire.</p>
+
+<p id="output">Enter the X and Y position (0 and 300), then click fire.</p>
 
 <input id="inputX" type="text" placeholder="X...">
 <input id="inputY" type="text" placeholder="Y...">
@@ -192,6 +227,7 @@
 	//The input and output fields
 	var inputX = document.querySelector("#inputX");
 	var inputY = document.querySelector("#inputY");
+	
 	var output = document.querySelector("#output");
 	
 	//The button
