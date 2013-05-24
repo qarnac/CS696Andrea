@@ -27,6 +27,10 @@
 			top: 270px;
 			left: 140px;
 			background-image: url(./images/cannon.png);
+			
+			-webkit-transition: top 0.5s ease-out 0s;
+			-moz-transition: top 0.5s ease-out 0s;
+			transition: top 0.5s ease-out 0s;
 
 		}
 		
@@ -38,6 +42,11 @@
 			top: 20px;
 			left: 80px;
 			background-image: url(./images/alien.png);
+			
+			-webkit-transition: top 0.5s ease-out 0s;
+			-moz-transition: top 0.5s ease-out 0s;
+			transition: top 0.5s ease-out 0s;
+			
 		}
 
 		#missile
@@ -75,6 +84,20 @@
 	</style>
 	
 	<script>
+	
+		function timer()
+		{
+		  countDown = countDown-1;
+		  if (countDown <= 0)
+		  {
+			 clearInterval(counter1);
+			 //counter ended, do something here
+			 resetMissileAndUpdateAlienPosition();
+			 return;
+		  }
+		  
+		  
+		}
 	
 		function clickHandler()
 		{
@@ -120,6 +143,21 @@
 			missile.style.top = guessY + "px";
 		}
 		
+		function resetMissileAndUpdateAlienPosition()
+		{	
+			alien.style.left = alienX + "px";
+			alien.style.top = alienY + "px";
+
+			//Position the missile
+			missile.style.left = guessX + 5 + "px";
+			missile.style.top = 240 + "px";
+			
+			if(shotsRemaining != 0)
+			{
+				button.disabled = false;
+			}
+		}
+		
 		function playGame()
 		{
 			shotsRemaining = shotsRemaining - 1;
@@ -127,6 +165,11 @@
 			gameState = " Shots: " + shotsMade + ", Remaining: " + shotsRemaining;
 			guessX = parseInt(inputX.value);
 			guessY = parseInt(inputY.value);
+			
+			countDown = 2;
+			counter1 = setInterval(timer, 1000);
+			
+			button.disabled = true;
 			
 			if (shotsRemaining === 0)
 			{
@@ -146,6 +189,8 @@
 				}
 			}
 			
+			render();
+			
 			if(!gameWon)
 			{
 				//Update the alien's X position
@@ -153,9 +198,10 @@
 				//Add 30 to the new Y position so that
 				//the alien moves down toward earth
 				alienY += 30;
+				
 			}
 			
-			render();
+			
 		}
 		
 			function endGame()
@@ -167,7 +213,7 @@
 
 			else
 			{
-				output.innerHTML = "Uh oh Armageddon!";
+				output.innerHTML = "Uh oh Armageddon! " + gameState;
 			}
 		
 			disableEverything();
@@ -218,6 +264,9 @@
 	var shotsMade = 0;
 	var gameState = "";
 	var gameWon = false;
+	
+	var counter1 = 0;
+	var countDown = 0;
 	
 	//The game objects
 	var cannon = document.querySelector("#cannon");
