@@ -24,9 +24,15 @@
 	console.log("Element 2: " + closet[2]);
 	
 	//Pop the last element
-	var lastElement = closet.pop();
+	//var lastElement = closet.pop();
 	//View the value of lastElement
-	console.log("The popped element: " + lastElement);
+	//console.log("The popped element: " + lastElement);
+	//View the new closet array
+	//console.log("The closet array: " + closet);
+
+	var middleElement = closet.splice(1, 1);
+	//View the value of middleElement
+	console.log("The spliced element: " + middleElement);
 	//View the new closet array
 	console.log("The closet array: " + closet);
 	
