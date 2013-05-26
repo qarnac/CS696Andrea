@@ -1,14 +1,24 @@
 <!doctype html>
 <head>
 	<meta charset="utf-8">
+	<script>
+	function clickHandler()
+	{
+		var randomNumber = Math.floor(Math.random() * 5);
+		output.innerHTML = replies[randomNumber];
+	}
+	</script>
 </head>
 
 <title>Alien Attack game</title>
 
 
 <body>
-
+	<p id="output">Enter the X and Y position (0 and 300), then click fire.</p>
+	
 	<script>
+	
+	var output = document.querySelector("#output");
 	
 	//Create an empty array
 	var closet = [];
@@ -23,6 +33,13 @@
 	console.log("Element 1: " + closet[1]);
 	console.log("Element 2: " + closet[2]);
 	
+	var replies = [];
+	replies[0] = "Oh really??";
+	replies[1] = "That's interesting.";
+	replies[2] = "Now I'm not so sure. Can you explain?";
+	replies[3] = "And how do you feel about
+	
+	
 	//Pop the last element
 	//var lastElement = closet.pop();
 	//View the value of lastElement
@@ -30,11 +47,11 @@
 	//View the new closet array
 	//console.log("The closet array: " + closet);
 
-	var middleElement = closet.splice(1, 1);
+	//var middleElement = closet.splice(1, 1);
 	//View the value of middleElement
-	console.log("The spliced element: " + middleElement);
+	//console.log("The spliced element: " + middleElement);
 	//View the new closet array
-	console.log("The closet array: " + closet);
+	//console.log("The closet array: " + closet);
 	
 	</script>
 </body>
