@@ -15,7 +15,7 @@
 
 <body>
 	<p id="output">Enter the X and Y position (0 and 300), then click fire.</p>
-	
+	<button>Click Me!</button>
 	<script>
 	
 	var output = document.querySelector("#output");
@@ -37,9 +37,13 @@
 	replies[0] = "Oh really??";
 	replies[1] = "That's interesting.";
 	replies[2] = "Now I'm not so sure. Can you explain?";
-	replies[3] = "And how do you feel about
+	replies[3] = "And how do you feel about";
+	replies[4] = "Num4";
 	
-	
+	//The button
+	var button = document.querySelector("button");
+	button.style.cursor = "pointer";
+	button.addEventListener("click", clickHandler, false);
 	//Pop the last element
 	//var lastElement = closet.pop();
 	//View the value of lastElement
