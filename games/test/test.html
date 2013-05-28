@@ -15,67 +15,70 @@
 
 <body>
 	<p id="output">Enter the X and Y position (0 and 300), then click fire.</p>
-	<button>Click Me!</button>
+	<!--<button>Click Me!</button>-->
 	<script>
 	
 	var output = document.querySelector("#output");
 	
-	//Create an empty array
-	var closet = [];
-	//Add three things
-	closet[0] = "hat";
-	closet[1] = "umbrella";
-	closet[2] = "katana";
-	//View the entire array contents
-	console.log("Entire array: " + closet);
-	//View individual elements
-	console.log("Element 0: " + closet[0]);
-	console.log("Element 1: " + closet[1]);
-	console.log("Element 2: " + closet[2]);
 	
-	var replies = [];
-	replies[0] = "Oh really??";
-	replies[1] = "That's interesting.";
-	replies[2] = "Now I'm not so sure. Can you explain?";
-	replies[3] = "And how do you feel about";
-	replies[4] = "Num4";
+	
+	//Create an empty array
+	//var closet = [];
+	//Add three things
+	//closet[0] = "hat";
+	//closet[1] = "umbrella";
+	//closet[2] = "katana";
+	//View the entire array contents
+	//console.log("Entire array: " + closet);
+	//View individual elements
+	//console.log("Element 0: " + closet[0]);
+	//console.log("Element 1: " + closet[1]);
+	//console.log("Element 2: " + closet[2]);
+	
+	//var replies = [];
+	//replies[0] = "Oh really??";
+	//replies[1] = "That's interesting.";
+	//replies[2] = "Now I'm not so sure. Can you explain?";
+	//replies[3] = "And how do you feel about";
+	//replies[4] = "Num4";
 	
 	//The button
-	var button = document.querySelector("button");
-	button.style.cursor = "pointer";
-	button.addEventListener("click", clickHandler, false);
+	//var button = document.querySelector("button");
+	//button.style.cursor = "pointer";
+	//button.addEventListener("click", clickHandler, false);
 	
 	//search method
-	for(var i = 0; i < closet.length; i++)
-	{
-		if(closet[i] === "umbrella")
-		{
-			console.log("Search term found.");
-			break;
-		}
-	}
+	//for(var i = 0; i < closet.length; i++)
+	//{
+	//	if(closet[i] === "umbrella")
+	//	{
+	//		console.log("Search term found.");
+	///		break;
+	//	}
+	//}
 	
-	var planetNames = ["Jupiter", "Venus", "Saturn", "Mars"];
-	var distancesFromEarth = [5.2, 0.72, 9.5, 1.5];
-	var sunnyInAugust = [false, true, false, true];
+	//var planetNames = ["Jupiter", "Venus", "Saturn", "Mars"];
+	//var distancesFromEarth = [5.2, 0.72, 9.5, 1.5];
+	//var sunnyInAugust = [false, true, false, true];
 	
-	for(var i = 0; i < planetNames.length; i++)
-	{
-		console.log(planetNames[i]);
-		console.log(distancesFromEarth[i]);
-		console.log(sunnyInAugust[i]);
-		console.log("----------");
-	}
+	//for(var i = 0; i < planetNames.length; i++)
+	//{
+	//	console.log(planetNames[i]);
+	//	console.log(distancesFromEarth[i]);
+	//	console.log(sunnyInAugust[i]);
+	//	console.log("----------");
+	//}
 	
 	
-	console.log("These planets are sunny in August:");
-	for(var i = 0; i < planetNames.length; i++)
-	{
-		if(sunnyInAugust[i])
-		{
-			console.log(planetNames[i]);
-		}
-	}
+	//console.log("These planets are sunny in August:");
+	//for(var i = 0; i < planetNames.length; i++)
+	//{
+	//	if(sunnyInAugust[i])
+	//	{
+	//		console.log(planetNames[i]);
+	//	}
+	//}
+	
 	//Pop the last element
 	//var lastElement = closet.pop();
 	//View the value of lastElement
