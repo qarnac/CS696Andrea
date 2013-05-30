@@ -25,60 +25,9 @@ var gameDatas = [
 { "map":"A lonely wooden bench." , "images":"bench.png" , "blockedPathMessages":"The trees are too thick to pass." , "helpMessages":""}, 
 { "map":"An isolated cottage. Faint music comes from inside." , "images":"cottage.png" , "blockedPathMessages":"You're too scared to go that way." , "helpMessages":"This seems like a nice place for music."}, 
 ];
-//Create the map
-var map = [];
-
-map[0] = "An old stone keep.";
-map[1] = "A deep well.";
-map[2] = "A sunny glade.";
-map[3] = "A sleeping dragon.";
-map[4] = "A narrow pathway.";
-map[5] = "An ancient gate.";
-map[6] = "The edge of a river.";
-map[7] = "A lonely wooden bench.";
-map[8] = "An isolated cottage. Faint music comes from inside.";
 
 //Set the player's start location
 var mapLocation = 4;
-
-//Set the images
-var images = [];
-
-images[0] = "keep.png";
-images[1] = "well.png";
-images[2] = "glade.png";
-images[3] = "dragon.png";
-images[4] = "path.png";
-images[5] = "gate.png";
-images[6] = "river.png";
-images[7] = "bench.png";
-images[8] = "cottage.png";
-
-//Set the blocked path messages
-var blockedPathMessages = [];
-
-blockedPathMessages[0] = "It's too dangerous to move that way.";
-blockedPathMessages[1] = "A mysterious force holds you back.";
-blockedPathMessages[2] = "A tangle of thorns blocks your way.";
-blockedPathMessages[3] = "You can't step over the dragon.";
-blockedPathMessages[4] = "";
-blockedPathMessages[5] = "The gate locks shut.";
-blockedPathMessages[6] = "The river is too deep to cross.";
-blockedPathMessages[7] = "The trees are too thick to pass.";
-blockedPathMessages[8] = "You're too scared to go that way.";
-
-//Set the blocked path messages
-var helpMessages = [];
-
-helpMessages[0] = "";
-helpMessages[1] = "I wonder if you could 'use' something to find out how deep the well is?";
-helpMessages[2] = "";
-helpMessages[3] = "Maybe if you had a sword, you could slay the dragon?";
-helpMessages[4] = "";
-helpMessages[5] = "";
-helpMessages[6] = "";
-helpMessages[7] = "";
-helpMessages[8] = "This seems like a nice place for music.";
 
 //Create the objects and set their locations
 var items = ["stone"];
@@ -162,7 +111,6 @@ function clickHandler()
 
 function keydownHandler(event)
 {
-
   if(event.keyCode === 13)
   {
     playGame();
@@ -210,7 +158,7 @@ function playGame()
       }
       else
       {
-        gameMessage = blockedPathMessages[mapLocation];
+        gameMessage = gameDatas[mapLocation].blockedPathMessages;
       }
       break;
     
@@ -221,7 +169,7 @@ function playGame()
       }
       else
       {
-        gameMessage = blockedPathMessages[mapLocation];
+        gameMessage = gameDatas[mapLocation].blockedPathMessages;
       }
       break;
       
@@ -249,9 +197,9 @@ function playGame()
       
     case "help":
       //Display a hint if there is one for this location
-      if(helpMessages[mapLocation] !== "")
+      if(gameDatas[mapLocation].helpMessages !== "")
       {
-        gameMessage = helpMessages[mapLocation] + " ";
+        gameMessage = gameDatas[mapLocation].helpMessages] + " ";
       }
       gameMessage += "Try any of these words: " 
       gameMessage += "north, east, south, west, take, drop, ";
@@ -440,8 +388,8 @@ function useItem()
 function render()
 {
   //Render the location
-  output.innerHTML = map[mapLocation];
-  image.src = "../images/" + images[mapLocation];
+  output.innerHTML = gameDatas[mapLocation].map;
+  image.src = "../images/" + gameDatas[mapLocation].images;
   
   //Display an item if there's one in this location
   //1. Loop through all the game items
