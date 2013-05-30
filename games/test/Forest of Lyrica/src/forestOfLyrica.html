@@ -28,6 +28,7 @@ var gameDatas = [
 
 var player = new Object();
 player.backpack = [];
+player.action = "";
 
 //Set the player's start location
 var mapLocation = 4;
@@ -51,7 +52,6 @@ gameMessage += "use, stone, flute, sword, help.";
 var actionsIKnow 
   = ["north","east", "south", "west", 
      "help", "take", "use", "drop"];
-var action = "";
 
 //An array of items the game understands
 //and a variable to store the current item
@@ -126,15 +126,15 @@ function playGame()
   
   //Reset these variables from the previous turn
   gameMessage = "";
-  action = "";
+  player.action = "";
   
   //Figure out the player's action
   for(i = 0; i < actionsIKnow.length; i++)
   {
     if(playersInput.indexOf(actionsIKnow[i]) !== -1)
     {
-      action = actionsIKnow[i];
-      console.log("player's action: " + action);
+      player.action = actionsIKnow[i];
+      console.log("player's action: " + player.action);
       break;
     }
   }
@@ -150,7 +150,7 @@ function playGame()
   }
   
   //Choose the correct action
-  switch(action)
+  switch(player.action)
   {
     case "north":
       if(mapLocation >= 3)
