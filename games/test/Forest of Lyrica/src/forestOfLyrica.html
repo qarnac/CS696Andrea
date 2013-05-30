@@ -26,6 +26,9 @@ var gameDatas = [
 { "map":"An isolated cottage. Faint music comes from inside." , "images":"cottage.png" , "blockedPathMessages":"You're too scared to go that way." , "helpMessages":"This seems like a nice place for music."}, 
 ];
 
+var player = new Object();
+player.backpack = [];
+
 //Set the player's start location
 var mapLocation = 4;
 
@@ -33,8 +36,6 @@ var mapLocation = 4;
 var items = ["stone"];
 var itemLocations = [6];
 
-//An array to store what the player is carrying
-var backpack = [];
 
 //Initialize the player's input
 var playersInput = "";
@@ -199,7 +200,7 @@ function playGame()
       //Display a hint if there is one for this location
       if(gameDatas[mapLocation].helpMessages !== "")
       {
-        gameMessage = gameDatas[mapLocation].helpMessages] + " ";
+        gameMessage = gameDatas[mapLocation].helpMessages + " ";
       }
       gameMessage += "Try any of these words: " 
       gameMessage += "north, east, south, west, take, drop, ";
@@ -239,7 +240,7 @@ function takeItem()
     gameMessage = "You take the " + item + ".";
     
     //Add the item to the player's backpack 
-    backpack.push(item);
+    player.backpack.push(item);
    
     //Remove the item from the game world
     items.splice(itemIndexNumber, 1);
@@ -247,7 +248,7 @@ function takeItem()
           
     //Display in the console for testing
     console.log("World items: " + items);
-    console.log("backpack items: " + backpack);
+    console.log("backpack items: " + player.backpack);
   }
   else
   {
@@ -260,10 +261,10 @@ function takeItem()
 function dropItem()
 {
   //Try to drop the item only if the backpack isn't empty
-  if(backpack.length !== 0)
+  if(player.backpack.length !== 0)
   {
     //Find the item's array index number in the backpack
-    var backpackIndexNumber = backpack.indexOf(item);
+    var backpackIndexNumber = player.backpack.indexOf(item);
 	  
 	  //The item is in the backpack if backpackIndex number isn't -1
     if(backpackIndexNumber !== -1)
@@ -388,6 +389,7 @@ function useItem()
 function render()
 {
   //Render the location
+  
   output.innerHTML = gameDatas[mapLocation].map;
   image.src = "../images/" + gameDatas[mapLocation].images;
   
@@ -407,7 +409,7 @@ function render()
   }
   
   //Display the player's backpack contents
-  if(backpack.length !== 0)
+  if(player.backpack.length !== 0)
   {
     output.innerHTML += "<br>You are carrying: " + backpack.join(", ");  
   }
