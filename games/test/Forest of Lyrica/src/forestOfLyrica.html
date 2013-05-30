@@ -13,12 +13,18 @@
 
 <script>
 
-var JSONObject= {
-"name":"John Johnson",
-"street":"Oslo West 555", 
-"age":33,
-"phone":"555 1234567"};
-
+//arrays with multiple objects
+var info = [
+{ "map":"An old stone keep." , "images":"keep.png" , "blockedPathMessages":"It's too dangerous to move that way." , "helpMessages":""}, 
+{ "map":"A deep well." , "images":"well.png" , "A mysterious force holds you back." , "helpMessages":"I wonder if you could 'use' something to find out how deep the well is?"}, 
+{ "map":"A sunny glade." , "images":"glade.png" , "A tangle of thorns blocks your way." , "helpMessages":""}, 
+{ "map":"A sleeping dragon." , "images":"dragon.png" , "You can't step over the dragon." , "helpMessages":"Maybe if you had a sword, you could slay the dragon?"}, 
+{ "map":"A narrow pathway." , "images":"path.png" , "" , "helpMessages":""}, 
+{ "map":"An ancient gate." , "images":"gate.png" , "The gate locks shut." , "helpMessages":""}, 
+{ "map":"The edge of a river." , "images":"river.png" , "The river is too deep to cross." , "helpMessages":""}, 
+{ "map":"A lonely wooden bench." , "images":"bench.png" , "The trees are too thick to pass." , "helpMessages":""}, 
+{ "map":"An isolated cottage. Faint music comes from inside." , "images":"cottage.png" , "You're too scared to go that way." , "helpMessages":"This seems like a nice place for music."}, 
+];
 //Create the map
 var map = [];
 
