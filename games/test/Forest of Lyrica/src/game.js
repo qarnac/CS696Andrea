@@ -31,32 +31,28 @@ render();
 function playGame()
 {
   //Get the player's input and convert it to lowercase
-  player.playersInput = input.value;
-  player.playersInput = player.playersInput.toLowerCase();
+  playersInput = input.value;
+  playersInput = playersInput.toLowerCase();
   
   //Reset these variables from the previous turn
   game.gameMessage = "";
   player.action = "";
   
   //Figure out the player's action
-  for(i = 0; i < actionsIKnow.length; i++)
+  var tempActionIndex = actionsIKnow.indexOf(playersInput);
+  
+  if( tempActionIndex !== -1)
   {
-    if(player.playersInput.indexOf(actionsIKnow[i]) !== -1)
-    {
-      player.action = actionsIKnow[i];
-      console.log("player's action: " + player.action);
-      break;
-    }
+	player.action = actionsIKnow[tempActionIndex];
+    console.log("player's action: " + player.action);
   }
   
-  //Figure out the item the player wants
-  for(i = 0; i < itemsIKnow.length; i++)
+  var tempItemsIndex = itemsIKnow.indexOf(playersInput);
+  
+  if( itemsIKnow.indexOf(playersInput) !== -1)
   {
-    if(player.playersInput.indexOf(itemsIKnow[i]) !== -1)
-    {
-      item = itemsIKnow[i];
-      console.log("player's item: " + item);
-    }
+	//item = itemsIKnow[tempItemsIndex];
+	//console.log("player's item: " + item);
   }
   
   //Choose the correct action
