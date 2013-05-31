@@ -1,16 +1,8 @@
-var player = new Object();
-player.backpack = [];
-player.action = "";
-player.playersInput = "";	//Initialize the player's input
-player.mapLocation = 4;		//Set the player's start location
-player.item = "";
-
-
 function playGame()
 {
   //Get the player's input and convert it to lowercase
-  player.playersInput = input.value;
-  player.playersInput = player.playersInput.toLowerCase();
+  playersInput = input.value;
+  playersInput = playersInput.toLowerCase();
   
   //Reset these variables from the previous turn
   game.gameMessage = "";
@@ -19,7 +11,7 @@ function playGame()
   //Figure out the player's action
   for(i = 0; i < actionsIKnow.length; i++)
   {
-    if(player.playersInput.indexOf(actionsIKnow[i]) !== -1)
+    if(playersInput.indexOf(actionsIKnow[i]) !== -1)
     {
       player.action = actionsIKnow[i];
       console.log("player's action: " + player.action);
@@ -30,7 +22,7 @@ function playGame()
   //Figure out the item the player wants
   for(i = 0; i < itemsIKnow.length; i++)
   {
-    if(player.playersInput.indexOf(itemsIKnow[i]) !== -1)
+    if(playersInput.indexOf(itemsIKnow[i]) !== -1)
     {
       item = itemsIKnow[i];
       console.log("player's item: " + item);
