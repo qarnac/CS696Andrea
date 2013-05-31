@@ -9,6 +9,7 @@ function playGame()
   player.action = "";
   
   //Figure out the player's action
+  /*
   for(i = 0; i < actionsIKnow.length; i++)
   {
     if(playersInput.indexOf(actionsIKnow[i]) !== -1)
@@ -17,6 +18,13 @@ function playGame()
       console.log("player's action: " + player.action);
       break;
     }
+  }
+  */
+  
+  if( actionsIknow.indexOf(playersInput) != -1)
+  {
+      player.action = actionsIKnow[i];
+      console.log("player's action: " + player.action);
   }
   
   //Figure out the item the player wants
@@ -176,10 +184,17 @@ function dropItem()
 
 function useItem()
 {
+  //If there are no items in the backpack, then
+  //tell the player the backpack is empty
+  if(player.backpack.length === 0)
+  {
+    game.gameMessage += " Your backpack is empty";
+	return;
+  }
+
   //1. Find out if the item is in the backpack
-  
   //Find the item's array index number in the backpack
-  var backpackIndexNumber = backpack.indexOf(item);
+  var backpackIndexNumber = player.backpack.indexOf(item);
        
   //If the index number is -1, then it isn't in the backpack.
   //Tell the player that he or she isn't carrying it.
@@ -188,12 +203,6 @@ function useItem()
     game.gameMessage = "You're not carrying it.";
   }
   
-  //If there are no items in the backpack, then
-  //tell the player the backpack is empty
-  if(backpack.length === 0)
-  {
-    game.gameMessage += " Your backpack is empty";
-  }
    
   //2. If the item is found in the backpack
   //figure out what to do with it
@@ -291,7 +300,7 @@ function render()
   //Display the player's backpack contents
   if(player.backpack.length !== 0)
   {
-    output.innerHTML += "<br>You are carrying: " + backpack.join(", ");  
+		output.innerHTML += "<br>You are carrying: " + player.backpack.join(", ");  
   }
   
   //Display the game message
