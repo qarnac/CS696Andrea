@@ -26,10 +26,10 @@ window.addEventListener("keydown", keydownHandler, false);
 var map =
 [
   [0, 2, 0, 0, 0, 3],
-  [0, 0, 5, 1, 0, 0],
+  [0, 0, 0, 1, 0, 0],
   [0, 1, 0, 0, 0, 0],
   [0, 0, 0, 0, 2, 0],
-  [0, 2, 0, 1, 0, 0],
+  [5, 2, 0, 1, 0, 0],
   [4, 0, 0, 0, 0, 0]
 ];
 
@@ -122,7 +122,6 @@ function keydownHandler(event)
 	    {
 		  
 		  ValuefOfTargetMoveLocation = map[shipRow+1][shipColumn];
-		  
 	      shipRow++;
 	      map[shipRow][shipColumn] = SHIP;
 	    }
@@ -149,6 +148,7 @@ function keydownHandler(event)
 	    break; 
   }
   
+  
   //find out what kind of cell the ship is on
   switch(ValuefOfTargetMoveLocation)
   {
@@ -169,15 +169,18 @@ function keydownHandler(event)
       break;      
   }
   
+  //Find out if the ship is touching the monster
+  if(ValuefOfTargetMoveLocation === MONSTER)
+  {
+    endGame();
+	 map[shipRow][shipColumn] = MONSTER;
+	render();
+	return;
+  }  
+  
   //Move the monster
   moveMonster();
   
-  
-  //Find out if the ship is touching the monster
-  if(map[shipRow][shipColumn] === MONSTER)
-  {
-    endGame();
-  }
   
   //Subtract some food each turn
   food--;
