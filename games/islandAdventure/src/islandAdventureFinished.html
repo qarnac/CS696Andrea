@@ -26,23 +26,14 @@ window.addEventListener("keydown", keydownHandler, false);
 var map =
 [
   [0, 2, 0, 0, 0, 3],
-  [0, 0, 0, 1, 0, 0],
+  [0, 0, 5, 1, 0, 0],
   [0, 1, 0, 0, 0, 0],
   [0, 0, 0, 0, 2, 0],
   [0, 2, 0, 1, 0, 0],
-  [0, 0, 0, 0, 0, 0]
-];
-
-//The game objects map
-var gameObjects =
-[
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 5, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
   [4, 0, 0, 0, 0, 0]
 ];
+
+
 
 //Map code
 var WATER = 0;
@@ -69,12 +60,12 @@ for(var row = 0; row < ROWS; row++)
 {	
   for(var column = 0; column < COLUMNS; column++) 
   {
-    if(gameObjects[row][column] === SHIP)
+    if(map[row][column] === SHIP)
     { 
       shipRow = row;
       shipColumn = column;
     }
-    if(gameObjects[row][column] === MONSTER)
+    if(map[row][column] === MONSTER)
     { 
       monsterRow = row;
       monsterColumn = column;
@@ -98,49 +89,60 @@ render();
 
 function keydownHandler(event)
 { 
+  var tempTargetMoveLocation = -1; 
+  
+  console.log(map);
+  
   switch(event.keyCode)
   {
     case UP:
 	    if(shipRow > 0)
 	    {
+		  tempTargetMoveLocation = map[shipRow-1][shipColumn];
+		  //console.log(tempTargetMoveLocation);
 	      //Clear the ship's current cell
-	      gameObjects[shipRow][shipColumn] = 0;
+	      map[shipRow][shipColumn] = 0;
 	      
 	      //Subract 1 from the ship's row
 	      shipRow--;
 	      
 	      //Apply the ship's new updated position to the array
-	      gameObjects[shipRow][shipColumn] = SHIP;
+	      map[shipRow][shipColumn] = SHIP;
 	    }
 	    break;
 	  
 	  case DOWN:
 	    if(shipRow < ROWS - 1)
 	    {
-	      gameObjects[shipRow][shipColumn] = 0;
+		  tempTargetMoveLocation = map[shipRow+1][shipColumn];
+		  //console.log(tempTargetMoveLocation);
+	      map[shipRow][shipColumn] = 0;
 	      shipRow++;
-	      gameObjects[shipRow][shipColumn] = SHIP;
+	      map[shipRow][shipColumn] = SHIP;
 	    }
 	    break;
 	    
 	  case LEFT:
 	    if(shipColumn > 0)
 	    {
-	      gameObjects[shipRow][shipColumn] = 0;
+		  tempTargetMoveLocation = map[shipRow][shipColumn-1];
+	      map[shipRow][shipColumn] = 0;
 	      shipColumn--;
-	      gameObjects[shipRow][shipColumn] = SHIP;
+	      map[shipRow][shipColumn] = SHIP;
 	    }
 	    break;  
 	    
 	  case RIGHT:
 	    if(shipColumn < COLUMNS - 1)
 	    {
-	      gameObjects[shipRow][shipColumn] = 0;
+		  tempTargetMoveLocation = map[shipRow][shipColumn+1];
+	      map[shipRow][shipColumn] = 0;
 	      shipColumn++;
-	      gameObjects[shipRow][shipColumn] = SHIP;
+	      map[shipRow][shipColumn] = SHIP;
 	    }
 	    break; 
   }
+  
   
   //find out what kind of cell the ship is on
   switch(map[shipRow][shipColumn])
@@ -167,7 +169,7 @@ function keydownHandler(event)
   
   
   //Find out if the ship is touching the monster
-  if(gameObjects[shipRow][shipColumn] === MONSTER)
+  if(map[shipRow][shipColumn] === MONSTER)
   {
     endGame();
   }
@@ -253,29 +255,29 @@ function moveMonster()
   {
     case UP:
       //Clear the monster's current cell
-		  gameObjects[monsterRow][monsterColumn] = 0;
+		  map[monsterRow][monsterColumn] = 0;
 		  //Subtract 1 from the monster's row
 		  monsterRow--; 
 		  //Apply the monster's new updated position to the array
-		  gameObjects[monsterRow][monsterColumn] = MONSTER;
+		  map[monsterRow][monsterColumn] = MONSTER;
 		  break;
 	  
 	  case DOWN:
-	    gameObjects[monsterRow][monsterColumn] = 0;
+	    map[monsterRow][monsterColumn] = 0;
 		  monsterRow++;
-		  gameObjects[monsterRow][monsterColumn] = MONSTER;
+		  map[monsterRow][monsterColumn] = MONSTER;
 	    break;
 	  
 	  case LEFT:
-	    gameObjects[monsterRow][monsterColumn] = 0;
+	    map[monsterRow][monsterColumn] = 0;
 		  monsterColumn--;
-		  gameObjects[monsterRow][monsterColumn] = MONSTER;
+		  map[monsterRow][monsterColumn] = MONSTER;
 	    break;
 	 
 	 case RIGHT:
-	    gameObjects[monsterRow][monsterColumn] = 0;
+	    map[monsterRow][monsterColumn] = 0;
 		  monsterColumn++;
-		  gameObjects[monsterRow][monsterColumn] = MONSTER;
+		  map[monsterRow][monsterColumn] = MONSTER;
   }
 }
 
@@ -358,7 +360,7 @@ function endGame()
     gameMessage 
       = "You made it home ALIVE! " + "Final Score: " + score; 
   }
-  else if(gameObjects[shipRow][shipColumn] === MONSTER)
+  else if(map[shipRow][shipColumn] === MONSTER)
   {
     gameMessage 
       = "Your ship has been swallowed by a sea monster!";
@@ -430,8 +432,8 @@ function render()
           break;   
       }  
       
-      //Add the ship and monster from the gameObjects array
-	    switch(gameObjects[row][column])
+      //Add the ship and monster from the map array
+	    switch(map[row][column])
 	    {
 	      case SHIP:
 	        cell.src = "../images/ship.png";
