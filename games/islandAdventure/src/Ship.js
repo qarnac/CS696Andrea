@@ -9,6 +9,29 @@ function Ship(row, col)
 	this.ValuefOfTargetMoveLocation = 0; //means the location is empty
 }
 
+Ship.prototype.actions = function(lookUpAction)
+{
+  //find out what kind of cell the ship is on
+  switch(lookUpAction)
+  {
+    case WATER:
+      gameMessage = "You sail the open seas."
+      break;
+    
+    case PIRATE:
+      ship.fight();
+      break; 
+    
+    case ISLAND:
+      ship.trade();
+      break; 
+      
+    case HOME:
+      endGame();
+      break;      
+  }
+}
+
 Ship.prototype.fight = function()
 {
   //The ships strength
