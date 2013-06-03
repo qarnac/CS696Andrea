@@ -21,33 +21,33 @@ Monster.prototype.move = function() {
   //Find out what kinds of things are in the cells 
   //that surround the monster. If the cells contain water,
   //push the corresponding direction into the validDirections array
-  if(this.monsterRow > 0)
+  if(monsterRow > 0)
   {
-    var thingAbove = map[this.monsterRow - 1][this.monsterColumn];
+    var thingAbove = map[monsterRow - 1][monsterColumn];
     if(thingAbove === WATER)
 	  {
 	    validDirections.push(UP);
 	  }
   }
-  if(this.monsterRow < ROWS - 1)
+  if(monsterRow < ROWS - 1)
   { 
-    var thingBelow = map[this.monsterRow + 1][this.monsterColumn];
+    var thingBelow = map[monsterRow + 1][monsterColumn];
     if(thingBelow === WATER)
 	  {
 	    validDirections.push(DOWN);
 	  }
   }
-  if(this.monsterColumn > 0)
+  if(monsterColumn > 0)
   {
-    var thingToTheLeft = map[this.monsterRow][this.monsterColumn - 1];
+    var thingToTheLeft = map[monsterRow][monsterColumn - 1];
     if(thingToTheLeft === WATER)
 	  {
 	    validDirections.push(LEFT);
 	  }
   } 
-  if(this.monsterColumn < COLUMNS - 1)
+  if(monsterColumn < COLUMNS - 1)
   {
-    var thingToTheRight = map[this.monsterRow][this.monsterColumn + 1];
+    var thingToTheRight = map[monsterRow][monsterColumn + 1];
     if(thingToTheRight === WATER)
 	  {
 	    validDirections.push(RIGHT);
@@ -71,28 +71,28 @@ Monster.prototype.move = function() {
   {
     case UP:
       //Clear the monster's current cell
-		  gameObjects[this.monsterRow][this.monsterColumn] = 0;
+		  map[monsterRow][monsterColumn] = 0;
 		  //Subtract 1 from the monster's row
-		  this.monsterRow--; 
+		  monsterRow--; 
 		  //Apply the monster's new updated position to the array
-		  gameObjects[this.monsterRow][this.monsterColumn] = MONSTER;
+		  map[monsterRow][monsterColumn] = MONSTER;
 		  break;
 	  
 	  case DOWN:
-	    gameObjects[this.monsterRow][this.monsterColumn] = 0;
-		  this.monsterRow++;
-		  gameObjects[this.monsterRow][this.monsterColumn] = MONSTER;
+	    map[monsterRow][monsterColumn] = 0;
+		  monsterRow++;
+		  map[monsterRow][monsterColumn] = MONSTER;
 	    break;
 	  
 	  case LEFT:
-	    gameObjects[this.monsterRow][this.monsterColumn] = 0;
-		  this.monsterColumn--;
-		  gameObjects[this.monsterRow][this.monsterColumn] = MONSTER;
+	    map[monsterRow][monsterColumn] = 0;
+		  monsterColumn--;
+		  map[monsterRow][monsterColumn] = MONSTER;
 	    break;
 	 
 	 case RIGHT:
-	    gameObjects[this.monsterRow][this.monsterColumn] = 0;
-		  this.monsterColumn++;
-		  gameObjects[this.monsterRow][this.monsterColumn] = MONSTER;
+	    map[monsterRow][monsterColumn] = 0;
+		monsterColumn++;
+		map[monsterRow][monsterColumn] = MONSTER;
   }
 }
