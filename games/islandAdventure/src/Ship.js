@@ -21,35 +21,7 @@ Ship.prototype.move = function(navigate)
 	{
 	  map[shipRow][shipColumn] = 0;
 	}
-	switch(navigate)
-	{
-		case UP:
-			if(this.shipRow > 0)
-				this.shipRow--;
-			else
-				this.shipRow = ROWS - 1;
-			break;
-	  
-		case DOWN:
-			this.shipRow = (this.shipRow + 1) % ROWS;
-			break;
-		
-		case LEFT:
-			if(this.shipColumn > 0)
-				this.shipColumn--;
-			else
-				this.shipColumn = COLUMNS - 1;
-			break;  
-		
-		case RIGHT:
-			this.shipColumn = (this.shipColumn + 1) % COLUMNS;
-	}
-}
-
-/*
-  console.log(map);
-  console.log(ValuefOfTargetMoveLocation);
-  
+	
   if(ValuefOfTargetMoveLocation != SHIP || ValuefOfTargetMoveLocation != WATER )
   {
 	  //Clear the ship's current cell
@@ -60,7 +32,7 @@ Ship.prototype.move = function(navigate)
 	  map[shipRow][shipColumn] = 0;
   }
   
-  switch(event.keyCode)
+  switch(navigate)
   {
     case UP:
 	    if(shipRow > 0)
@@ -104,4 +76,4 @@ Ship.prototype.move = function(navigate)
 	      map[shipRow][shipColumn] = SHIP;
 	    }
 	    break; 
-*/
+}
