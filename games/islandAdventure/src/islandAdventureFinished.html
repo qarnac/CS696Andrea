@@ -4,12 +4,10 @@
 <title>Island Adventure</title>
 <link rel="stylesheet" href="Style.css">
 <script type="text/javascript" src="ship.js"></script>
-
 </head>
 
 
 <body>
-
 <section id="game">
   <h1>Island Adventure</h1>
   <div id="stage"></div>
@@ -17,17 +15,13 @@
 </section>
 
 <script>
+
 //Get a reference to the stage and output
 var stage = document.querySelector("#stage");
 var output = document.querySelector("#output");
 
 //Add a keyboard listener
 window.addEventListener("keydown", keydownHandler, false);
-
-
-//The number of rows and columns
-var ROWS = map.length;
-var COLUMNS = map[0].length;
 
 //The game map
 var map =
@@ -47,6 +41,7 @@ var PIRATE = 2;
 var HOME = 3;
 var SHIP = 4;
 var MONSTER = 5;
+
 
 //The size of each cell
 var SIZE = 64;
