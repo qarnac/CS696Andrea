@@ -89,7 +89,6 @@ render();
 
 function keydownHandler(event)
 { 
-  
   console.log(map);
   console.log(ValuefOfTargetMoveLocation);
   
@@ -100,17 +99,15 @@ function keydownHandler(event)
   }
   else
   {
-		  map[shipRow][shipColumn] = 0;
+	  map[shipRow][shipColumn] = 0;
   }
   
   switch(event.keyCode)
   {
     case UP:
 	    if(shipRow > 0)
-	    {
-		  
+	    { 
 		  ValuefOfTargetMoveLocation = map[shipRow-1][shipColumn];
-		  console.log(ValuefOfTargetMoveLocation);
 	      
 	      //Subract 1 from the ship's row
 	      shipRow--;
@@ -152,9 +149,8 @@ function keydownHandler(event)
 	    break; 
   }
   
-  
   //find out what kind of cell the ship is on
-  switch(map[shipRow][shipColumn])
+  switch(ValuefOfTargetMoveLocation)
   {
     case WATER:
       gameMessage = "You sail the open seas."
@@ -360,16 +356,21 @@ function fight()
 
 function endGame()
 {
-  if(map[shipRow][shipColumn] === HOME)
+  console.log("gold =" + gold);
+  console.log("food =" + food);
+
+  if(ValuefOfTargetMoveLocation === HOME)
   {
     //Calculate the score
     var score = food + gold + experience;
     
+	gameMessage = "";
+	
     //Display the game message
     gameMessage 
       = "You made it home ALIVE! " + "Final Score: " + score; 
   }
-  else if(map[shipRow][shipColumn] === MONSTER)
+  else if(ValuefOfTargetMoveLocation === MONSTER)
   {
     gameMessage 
       = "Your ship has been swallowed by a sea monster!";
