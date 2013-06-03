@@ -33,8 +33,6 @@ var map =
   [4, 0, 0, 0, 0, 0]
 ];
 
-
-
 //Map code
 var WATER = 0;
 var ISLAND = 1;
@@ -42,6 +40,7 @@ var PIRATE = 2;
 var HOME = 3;
 var SHIP = 4;
 var MONSTER = 5;
+
 
 //The size of each cell
 var SIZE = 64;
@@ -84,24 +83,34 @@ var food = 10;
 var gold = 10;
 var experience = 0;
 var gameMessage = "Use the arrow keys to find your way home.";
+var ValuefOfTargetMoveLocation = 0; //means the location is empty
 
 render();
 
 function keydownHandler(event)
 { 
-  var tempTargetMoveLocation = -1; 
   
   console.log(map);
+  console.log(ValuefOfTargetMoveLocation);
+  
+  if(ValuefOfTargetMoveLocation != SHIP || ValuefOfTargetMoveLocation != WATER )
+  {
+	  //Clear the ship's current cell
+	  map[shipRow][shipColumn] = ValuefOfTargetMoveLocation;
+  }
+  else
+  {
+		  map[shipRow][shipColumn] = 0;
+  }
   
   switch(event.keyCode)
   {
     case UP:
 	    if(shipRow > 0)
 	    {
-		  tempTargetMoveLocation = map[shipRow-1][shipColumn];
-		  //console.log(tempTargetMoveLocation);
-	      //Clear the ship's current cell
-	      map[shipRow][shipColumn] = 0;
+		  
+		  ValuefOfTargetMoveLocation = map[shipRow-1][shipColumn];
+		  console.log(ValuefOfTargetMoveLocation);
 	      
 	      //Subract 1 from the ship's row
 	      shipRow--;
@@ -114,9 +123,9 @@ function keydownHandler(event)
 	  case DOWN:
 	    if(shipRow < ROWS - 1)
 	    {
-		  tempTargetMoveLocation = map[shipRow+1][shipColumn];
-		  //console.log(tempTargetMoveLocation);
-	      map[shipRow][shipColumn] = 0;
+		  
+		  ValuefOfTargetMoveLocation = map[shipRow+1][shipColumn];
+		  
 	      shipRow++;
 	      map[shipRow][shipColumn] = SHIP;
 	    }
@@ -125,8 +134,9 @@ function keydownHandler(event)
 	  case LEFT:
 	    if(shipColumn > 0)
 	    {
-		  tempTargetMoveLocation = map[shipRow][shipColumn-1];
-	      map[shipRow][shipColumn] = 0;
+		  
+		  ValuefOfTargetMoveLocation = map[shipRow][shipColumn-1];
+		  
 	      shipColumn--;
 	      map[shipRow][shipColumn] = SHIP;
 	    }
@@ -134,9 +144,8 @@ function keydownHandler(event)
 	    
 	  case RIGHT:
 	    if(shipColumn < COLUMNS - 1)
-	    {
-		  tempTargetMoveLocation = map[shipRow][shipColumn+1];
-	      map[shipRow][shipColumn] = 0;
+	    { 
+		  ValuefOfTargetMoveLocation = map[shipRow][shipColumn+1]; 
 	      shipColumn++;
 	      map[shipRow][shipColumn] = SHIP;
 	    }
@@ -276,8 +285,8 @@ function moveMonster()
 	 
 	 case RIGHT:
 	    map[monsterRow][monsterColumn] = 0;
-		  monsterColumn++;
-		  map[monsterRow][monsterColumn] = MONSTER;
+		monsterColumn++;
+		map[monsterRow][monsterColumn] = MONSTER;
   }
 }
 
