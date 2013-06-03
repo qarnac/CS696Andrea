@@ -3,7 +3,8 @@
 <meta charset="utf-8">
 <title>Island Adventure</title>
 <link rel="stylesheet" href="Style.css">
-<script type="text/javascript" src="ship.js"></script>
+<script type="text/javascript" src="Ship.js"></script>
+<script type="text/javascript" src="Monster.js"></script>
 </head>
 
 
@@ -73,6 +74,10 @@ for(var row = 0; row < ROWS; row++)
   }
 }
 
+
+var ship = new Ship(shipRow, shipColumn);
+var monster = new Monster(monsterRow, monsterColumn);
+
 //Arrow key codes
 var UP = 38;
 var DOWN = 40;
@@ -80,89 +85,31 @@ var RIGHT = 39;
 var LEFT = 37;
 
 //The game variables
-var food = 10;
-var gold = 10;
-var experience = 0;
+
 var gameMessage = "Use the arrow keys to find your way home.";
-var ValuefOfTargetMoveLocation = 0; //means the location is empty
 
 render();
 
 function keydownHandler(event)
 { 
   console.log(map);
-  console.log(ValuefOfTargetMoveLocation);
+  console.log(ship.ValuefOfTargetMoveLocation);
   
-  if(ValuefOfTargetMoveLocation != SHIP || ValuefOfTargetMoveLocation != WATER )
-  {
-	  //Clear the ship's current cell
-	  map[shipRow][shipColumn] = ValuefOfTargetMoveLocation;
-  }
-  else
-  {
-	  map[shipRow][shipColumn] = 0;
-  }
-  
-  switch(event.keyCode)
-  {
-    case UP:
-	    if(shipRow > 0)
-	    { 
-		  ValuefOfTargetMoveLocation = map[shipRow-1][shipColumn];
-	      
-	      //Subract 1 from the ship's row
-	      shipRow--;
-	      
-	      //Apply the ship's new updated position to the array
-	      map[shipRow][shipColumn] = SHIP;
-	    }
-	    break;
-	  
-	  case DOWN:
-	    if(shipRow < ROWS - 1)
-	    {
-		  
-		  ValuefOfTargetMoveLocation = map[shipRow+1][shipColumn];
-	      shipRow++;
-	      map[shipRow][shipColumn] = SHIP;
-	    }
-	    break;
-	    
-	  case LEFT:
-	    if(shipColumn > 0)
-	    {
-		  
-		  ValuefOfTargetMoveLocation = map[shipRow][shipColumn-1];
-		  
-	      shipColumn--;
-	      map[shipRow][shipColumn] = SHIP;
-	    }
-	    break;  
-	    
-	  case RIGHT:
-	    if(shipColumn < COLUMNS - 1)
-	    { 
-		  ValuefOfTargetMoveLocation = map[shipRow][shipColumn+1]; 
-	      shipColumn++;
-	      map[shipRow][shipColumn] = SHIP;
-	    }
-	    break; 
-  }
-  
+  ship.move(event.keyCode);
   
   //find out what kind of cell the ship is on
-  switch(ValuefOfTargetMoveLocation)
+  switch(ship.ValuefOfTargetMoveLocation)
   {
     case WATER:
       gameMessage = "You sail the open seas."
       break;
     
     case PIRATE:
-      fight();
+      ship.fight();
       break; 
     
     case ISLAND:
-      trade();
+      ship.trade();
       break; 
       
     case HOME:
@@ -171,7 +118,7 @@ function keydownHandler(event)
   }
   
   //Find out if the ship is touching the monster
-  if(ValuefOfTargetMoveLocation === MONSTER)
+  if(ship.ValuefOfTargetMoveLocation === MONSTER)
   {
     endGame();
 	 map[shipRow][shipColumn] = MONSTER;
@@ -180,14 +127,14 @@ function keydownHandler(event)
   }  
   
   //Move the monster
-  moveMonster();
+  monster.move();
   
   
   //Subtract some food each turn
-  food--;
+  ship.food--;
   
   //Find out if the ship has run out of food or gold
-  if(food <= 0 || gold <= 0)
+  if(ship.food <= 0 || ship.gold <= 0)
   {
     endGame();
   }
@@ -196,177 +143,15 @@ function keydownHandler(event)
   render();
 }
 
-function moveMonster()
-{
-  //The 4 possible directions that the monster can move
-  var UP = 1;
-  var DOWN = 2;
-  var LEFT = 3;
-  var RIGHT = 4;
-  
-  //An array to store the valid direction that
-  //the monster is allowed to move in
-  var validDirections = [];
-  
-  //The final direction that the monster will move in
-  var direction = undefined;
-  
-  //Find out what kinds of things are in the cells 
-  //that surround the monster. If the cells contain water,
-  //push the corresponding direction into the validDirections array
-  if(monsterRow > 0)
-  {
-    var thingAbove = map[monsterRow - 1][monsterColumn];
-    if(thingAbove === WATER)
-	  {
-	    validDirections.push(UP);
-	  }
-  }
-  if(monsterRow < ROWS - 1)
-  { 
-    var thingBelow = map[monsterRow + 1][monsterColumn];
-    if(thingBelow === WATER)
-	  {
-	    validDirections.push(DOWN);
-	  }
-  }
-  if(monsterColumn > 0)
-  {
-    var thingToTheLeft = map[monsterRow][monsterColumn - 1];
-    if(thingToTheLeft === WATER)
-	  {
-	    validDirections.push(LEFT);
-	  }
-  } 
-  if(monsterColumn < COLUMNS - 1)
-  {
-    var thingToTheRight = map[monsterRow][monsterColumn + 1];
-    if(thingToTheRight === WATER)
-	  {
-	    validDirections.push(RIGHT);
-	  }
-  } 
-  
-  //The validDirections array now contains 0 to 4 directions that the 
-  //contain WATER cells. Which of those directions will the monster
-  //choose to move in?
-  
-  //If a valid direction was found, Randomly choose one of the 
-  //possible directions and assign it to the direction variable
-  if(validDirections.length !== 0)
-  {
-    var randomNumber = Math.floor(Math.random() * validDirections.length);
-    direction = validDirections[randomNumber];
-  }
-  
-  //Move the monster in the chosen direction
-  switch(direction)
-  {
-    case UP:
-      //Clear the monster's current cell
-		  map[monsterRow][monsterColumn] = 0;
-		  //Subtract 1 from the monster's row
-		  monsterRow--; 
-		  //Apply the monster's new updated position to the array
-		  map[monsterRow][monsterColumn] = MONSTER;
-		  break;
-	  
-	  case DOWN:
-	    map[monsterRow][monsterColumn] = 0;
-		  monsterRow++;
-		  map[monsterRow][monsterColumn] = MONSTER;
-	    break;
-	  
-	  case LEFT:
-	    map[monsterRow][monsterColumn] = 0;
-		  monsterColumn--;
-		  map[monsterRow][monsterColumn] = MONSTER;
-	    break;
-	 
-	 case RIGHT:
-	    map[monsterRow][monsterColumn] = 0;
-		monsterColumn++;
-		map[monsterRow][monsterColumn] = MONSTER;
-  }
-}
-
-function trade()
-{
-  //Figure out how much food the island has
-  //and how much it should cost
-  var islandsFood = experience + gold;
-  var cost = Math.ceil(Math.random() * islandsFood);
-  
-  //Let the player buy food if there's enough gold
-  //to afford it
-  if(gold > cost)
-  {
-    food += islandsFood;
-    gold -= cost;
-    experience += 2;
-    
-    gameMessage 
-      = "You buy " + islandsFood + " coconuts"
-      + " for " + cost + " gold pieces."
-  }
-  else
-  {
-    //Tell the player if they don't have enough gold
-    experience += 1;
-    gameMessage = "You don't have enough gold to buy food."
-  }
-}
-
-function fight()
-{
-  
-  //The ships strength
-  var shipStrength = Math.ceil((food + gold) / 2);
-  
-  //A random number between 1 and the ship's strength
-  var pirateStrength = Math.ceil(Math.random() * shipStrength * 2);
-  
-  if(pirateStrength > shipStrength)
-  {
-    //The pirates ransack the ship
-    var stolenGold = Math.round(pirateStrength / 2);
-    gold -= stolenGold;
-    
-    //Give the player some experience for trying  
-    experience += 1;
-    
-    //Update the game message
-    gameMessage 
-      = "You fight and LOSE " + stolenGold + " gold pieces."
-      + " Ship's strength: " + shipStrength 
-      + " Pirate's strength: " + pirateStrength;
-  }
-  else
-  {
-    //You win the pirates' gold
-    var pirateGold = Math.round(pirateStrength / 2);
-    gold += pirateGold;
-    
-    //Add some experience  
-    experience += 2;
-    
-    //Update the game message
-    gameMessage 
-      = "You fight and WIN " + pirateGold + " gold pieces."
-      + " Ship's strength: " + shipStrength 
-      + " Pirate's strength: " + pirateStrength;
-  } 
-}
-
 function endGame()
 {
-  console.log("gold =" + gold);
-  console.log("food =" + food);
+  console.log("gold =" + ship.gold);
+  console.log("food =" + ship.food);
 
-  if(ValuefOfTargetMoveLocation === HOME)
+  if(ship.ValuefOfTargetMoveLocation === HOME)
   {
     //Calculate the score
-    var score = food + gold + experience;
+    var score = ship.food + ship.gold + ship.experience;
     
 	gameMessage = "";
 	
@@ -374,7 +159,7 @@ function endGame()
     gameMessage 
       = "You made it home ALIVE! " + "Final Score: " + score; 
   }
-  else if(ValuefOfTargetMoveLocation === MONSTER)
+  else if(ship.ValuefOfTargetMoveLocation === MONSTER)
   {
     gameMessage 
       = "Your ship has been swallowed by a sea monster!";
@@ -382,7 +167,7 @@ function endGame()
   else
   {
     //Display the game message
-    if(gold <= 0)
+    if(ship.gold <= 0)
     {
       gameMessage += " You've run out of gold!"; 
     }
@@ -467,10 +252,10 @@ function render()
   //Display the game message
 	output.innerHTML = gameMessage;
 	
-	//Display the player's food, gold, and experience
+	//Display the player's food, gold, and ship.experience
 	output.innerHTML 
-	  += "<br>Gold: " + gold + ", Food: " 
-	  + food + ", Experience: " + experience;
+	  += "<br>Gold: " + ship.gold + ", Food: " 
+	  + ship.food + ", ship.experience: " + ship.experience;
 }
 
 </script>
