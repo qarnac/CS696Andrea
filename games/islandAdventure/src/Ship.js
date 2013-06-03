@@ -1,7 +1,8 @@
 //class constructor
-function Ship()
+function Ship(row, col)
 {
-	
+	this.shipRow = row;
+	this.shipColumn = col;
 }
 
 //class method
