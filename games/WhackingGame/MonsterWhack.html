@@ -13,4 +13,10 @@ var monsterImage = new Image();
 monsterImage.addEventListener("load", loadHandler, false);
 //5. Assign the image's src property to the image you want to load
 monsterImage.src = "monster.png";
+
+function imageLoadHandler()
+{
+//6. Draw the monsterImage onto the drawingSurface
+drawingSurface.drawImage(monsterImage, 0, 0);
+}
 </script>
