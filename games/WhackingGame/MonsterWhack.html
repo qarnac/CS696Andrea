@@ -15,11 +15,11 @@ var drawingSurface = canvas.getContext("2d");
 var monsterImage = new Image();
 //4. Add a listener to the image to call the
 //render function when the image has loaded
-monsterImage.addEventListener("load", imageLoadHandler, false);
+monsterImage.addEventListener("load", LoadHandler, false);
 //5. Assign the image's src property to the image you want to load
 monsterImage.src = "./images/monster.png";
 
-function imageLoadHandler()
+function LoadHandler()
 {
 //6. Draw the monsterImage onto the drawingSurface
 drawingSurface.drawImage(monsterImage, 0, 0);
