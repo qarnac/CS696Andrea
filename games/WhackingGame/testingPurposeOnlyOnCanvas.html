@@ -47,26 +47,12 @@
 		
 		function render()
 		{
-			//Render the correct state
-			switch(monster.state)
-			{
-				case monster.NORMAL:
-				drawingSurface.drawImage
-				(
-					monsterImage,
-					0, 0, 64, 64,
-					0, 0, 64, 64
-				);
-				break;
-				
-				case monster.SCARED:
-				drawingSurface.drawImage
-				(
-					monsterImage,
-					64, 0, 64, 64,
-					0, 0, 64, 64
-				);
-			}
+			drawingSurface.drawImage
+			(
+				monsterImage,
+				64 * monster.state, 0, 64, 64,
+				0, 0, 64, 64
+			);
 		}
 		
 	</script>
