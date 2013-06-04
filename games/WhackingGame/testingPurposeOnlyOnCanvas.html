@@ -55,7 +55,6 @@ console.log("robot happyness = " + robot.happy);
 robot["happy"] = false;
 console.log("robot happyness = " + robot.happy);
 
-
 console.log("using for loop");
 
 for(var i in robot)
@@ -67,5 +66,14 @@ if("material" in robot)
 {
 	console.log("The robot is made from: " + robot.material);
 }
+
+var monster =
+{
+	//Define the monster's states
+	NORMAL: 0,
+	SCARED: 1,
+	//Set its initial state
+	state: 0
+};
 	
 </script>
