@@ -15,13 +15,20 @@
 	var monsterImage = new Image();
 	//4. Add a listener to the image to call the
 	//render function when the image has loaded
-	monsterImage.addEventListener("load", LoadHandler, false);
+	//monsterImage.addEventListener("load", LoadHandler, false);
 	//5. Assign the image's src property to the image you want to load
 	monsterImage.src = "./images/monster.png";
 
-function LoadHandler()
-{
-	//6. Draw the monsterImage onto the drawingSurface
-	drawingSurface.drawImage(monsterImage, 20, 20);
-}
+	function LoadHandler()
+	{
+		//6. Draw the monsterImage onto the drawingSurface
+		drawingSurface.drawImage(monsterImage, 0, 0);
+	}
+	
+	drawingSurface.drawImage
+	(
+		monsterImage,
+		3, 12, 28, 28,
+		0, 0, 28, 28
+	);
 </script>
