@@ -1,0 +1,16 @@
+<!doctype html>
+<title>Displaying an image with canvas</title>
+<canvas width="64" height="64"></canvas>
+<script>
+//1. Get a reference to the canvas
+var canvas = document.querySelector("canvas");
+//2. Get a reference to the canvas's drawing surface
+var drawingSurface = canvas.getContext("2d");
+//3. Create a monsterImage variable to hold the new image
+var monsterImage = new Image();
+//4. Add a listener to the image to call the
+//render function when the image has loaded
+monsterImage.addEventListener("load", loadHandler, false);
+//5. Assign the image's src property to the image you want to load
+monsterImage.src = "monster.png";
+</script>
