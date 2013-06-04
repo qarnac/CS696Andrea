@@ -4,86 +4,70 @@
 <title>Displaying an image with canvas</title>
 </head>
 
-<canvas width="64" height="64"></canvas>
-
-<script>
-	//1. Get a reference to the canvas
-	var canvas = document.querySelector("canvas");
-	//2. Get a reference to the canvas's drawing surface
-	var drawingSurface = canvas.getContext("2d");
-	//3. Create a monsterImage variable to hold the new image
-	var monsterImage = new Image();
-	//4. Add a listener to the image to call the
-	//render function when the image has loaded
-	//monsterImage.addEventListener("load", LoadHandler, false);
-	//5. Assign the image's src property to the image you want to load
-	monsterImage.src = "./images/monster.png";
-
-	function LoadHandler()
-	{
-		//6. Draw the monsterImage onto the drawingSurface
-		drawingSurface.drawImage(monsterImage, 0, 0);
-	}
-	
-	drawingSurface.drawImage
-	(
-		monsterImage,
-		0, 0, 64, 64,
-		0, 0, 32, 32
-	);
-	
-	var robot =
-	{
-		material: "titanium",
-		happy: true,
-		
-		makeBreakfast: function()
+<body>
+	<canvas width="64" height="64"></canvas>
+	<script>
+		var monster =
 		{
-			console.log("Here are your waffles and milk, master.");
-		}
-	};
-
-	robot.makeBreakfast();
-
-	var newRobot = Object.create(robot);
-
-	console.log("newrobot");
-	newRobot.makeBreakfast();
-
-	console.log("robot happyness = " + robot.happy);
-
-	robot["happy"] = false;
-	console.log("robot happyness = " + robot.happy);
-
-	console.log("using for loop");
-
-	for(var i in robot)
-	{
-		console.log(i + ": " + robot[i]);
-	}
+			//The monster's image
+			image: "./images/monsterStates.png",
+			//The monster's states
+			NORMAL: 0,
+			SCARED: 1,
+			//Set its initial state
+			state: 0
+		};
 		
-	if("material" in robot)
-	{
-		console.log("The robot is made from: " + robot.material);
-	}
-
-	var monster =
-	{
-		//Define the monster's states
-		NORMAL: 0,
-		SCARED: 1,
-		//Set its initial state
-		state: 0
-	};
-
-	//Change the monster's state by pressing a key
-	window.addEventListener("keydown", keydownHandler, false);
-	function keydownHandler(event)
-	{
-		//Change the monster's state
-		monster.state = monster.SCARED;
-		//Display the new state
-		console.log("The monster's new state: " + monster.state);
-	}
-	
-</script>
+		//Set up the canvas and drawing surface
+		var canvas = document.querySelector("canvas");
+		var drawingSurface = canvas.getContext("2d");
+		
+		//Load the monster's image
+		var monsterImage = new Image();
+		monsterImage.addEventListener("load", render, false);
+		monsterImage.src = monster.image;
+		
+		//Change the monster's state by pressing and releasing a key
+		window.addEventListener("keydown", keydownHandler, false);
+		window.addEventListener("keyup", keyupHandler, false);
+		
+		function keydownHandler(event)
+		{
+			//When a key is pressed, change the monster's state to SCARED and render it
+			monster.state = monster.SCARED;
+			render();
+		}
+		
+		function keyupHandler(event)
+		{
+			//When a key is released, change the monster's state to NORMAL and render it
+			monster.state = monster.NORMAL;
+			render();
+		}
+		
+		function render()
+		{
+			//Render the correct state
+			switch(monster.state)
+			{
+				case monster.NORMAL:
+				drawingSurface.drawImage
+				(
+					monsterImage,
+					0, 0, 64, 64,
+					0, 0, 64, 64
+				);
+				break;
+				
+				case monster.SCARED:
+				drawingSurface.drawImage
+				(
+					monsterImage,
+					64, 0, 64, 64,
+					0, 0, 64, 64
+				);
+			}
+		}
+		
+	</script>
+</body>
