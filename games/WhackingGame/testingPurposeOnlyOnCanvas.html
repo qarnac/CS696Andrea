@@ -5,12 +5,13 @@
 </head>
 
 <body>
-	<canvas width="64" height="64"></canvas>
+	<canvas width="200" height="200"></canvas>
 	<script>
 		var monster =
 		{
 			//The monster's image
 			image: "./images/monsterStates.png",
+
 			//The monster's states
 			NORMAL: 0,
 			SCARED: 1,
@@ -27,9 +28,15 @@
 		monsterImage.addEventListener("load", render, false);
 		monsterImage.src = monster.image;
 		
+		var rock = new Image();
+		rock.src = "./images/explosion-sprite-sheet.png";
+		
 		//Change the monster's state by pressing and releasing a key
 		window.addEventListener("keydown", keydownHandler, false);
 		window.addEventListener("keyup", keyupHandler, false);
+		
+		var delayInSeconds = 1;
+		
 		
 		function keydownHandler(event)
 		{
@@ -47,13 +54,49 @@
 		
 		function render()
 		{
+		
 			drawingSurface.drawImage
 			(
 				monsterImage,
 				64 * monster.state, 0, 64, 64,
 				0, 0, 64, 64
 			);
+			
 		}
+		
+		window.setInterval(timer, 100);
+		var x = 0;
+		var y = 0;
+		
+		function timer()
+		{
+			
+
+			drawingSurface.drawImage
+			(
+				rock,
+				64 * x, 0 + y, 64, 64,
+				65, 0, 64, 64
+			);
+	
+			x++;
+			if( x === 6)
+			{
+				y = 64+y;
+				x = 0; //reset x
+			}
+			if( y === 384)
+			{
+			   y = 0;
+			   drawingSurface.clearRect(65, 0, 64, 64);
+			}
+			
+			console.log("x=" + x);
+			console.log("y=" + y);
+		
+		}
+		
+
 		
 	</script>
 </body>
