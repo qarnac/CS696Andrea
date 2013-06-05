@@ -64,11 +64,11 @@
 			
 		}
 		
-		window.setInterval(timer, 100);
+		window.setInterval(timer1, 100);
 		var x = 0;
 		var y = 0;
 		
-		function timer()
+		function timer1()
 		{
 			
 			
@@ -95,6 +95,22 @@
 			//console.log("y=" + y);
 		
 		}
+		
+	//creation of timer object
+	var timer =
+	{
+		start: function()
+		{
+		var self = this;
+		window.setInterval(function(){self.tick();}, 1000);
+		},
+		tick: function()
+		{
+		console.log("tick!");
+		}
+	};
+	
+	timer.start();
 		
 
 		
