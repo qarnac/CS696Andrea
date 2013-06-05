@@ -71,17 +71,17 @@
 		function timer()
 		{
 			
-
+			
 			drawingSurface.drawImage
 			(
 				rock,
 				64 * x, 0 + y, 64, 64,
 				65, 0, 64, 64
 			);
-	
 			x++;
 			if( x === 6)
 			{
+				
 				y = 64+y;
 				x = 0; //reset x
 			}
@@ -91,8 +91,8 @@
 			   drawingSurface.clearRect(65, 0, 64, 64);
 			}
 			
-			console.log("x=" + x);
-			console.log("y=" + y);
+			//console.log("x=" + x);
+			//console.log("y=" + y);
 		
 		}
 		
