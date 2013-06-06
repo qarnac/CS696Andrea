@@ -38,7 +38,8 @@
 			//A method to find a random animation time
 			findWaitTime: function()
 			{
-				this.waitTime = Math.ceil(Math.random() * 60);
+				this.waitTime = 5;
+				console.log(this.waitTime);
 			},
 		
 			//The monster's updateAnimation method
@@ -60,8 +61,10 @@
 					case this.HIDING:
 						this.currentFrame = 0;
 						this.waitTime--;
+						console.log(this.waitTime);
 						break;
 					case this.JUMPING:
+						console.log("in jumping state");
 						//If the last frame has been reached, set forward to false
 						if(this.currentFrame === this.numberOfFrames)
 						{
