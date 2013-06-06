@@ -100,7 +100,7 @@
 						
 					case this.HIT:
 						//Set the current frame to the last one on the tilesheet to display the explosion image
-						this.currentFrame = 6;
+						this.currentFrame = 7;
 						//Update the resetCounter by 1
 						this.resetCounter++;
 						//Reset the animation if the resetCounter equals the timeToReset
@@ -120,6 +120,8 @@
 		//Set up the canvas and drawing surface
 		var canvas = document.querySelector("canvas");
 		var drawingSurface = canvas.getContext("2d");
+		
+		canvas.addEventListener("mousedown", mousedownHandler, false);
 		//Load the animation tilesheet
 		var image = new Image();
 		image.addEventListener("load", loadHandler, false);
@@ -131,6 +133,22 @@
 			
 			//Find a random wait time
 			monster.findWaitTime();
+		}
+		
+		function mousedownHandler(event)
+		{
+			//Find out which canvas was clicked
+			var theCanvasThatWasClicked = event.target;
+			//Search the monsterCanvases array for a
+			//canvas that matches the one that's been clicked
+			console.log("IM IN HERE");
+			console.log(monster.state);
+			if(monster.state === monster.JUMPING)
+			{
+			    console.log("HIT!!!!!!!!!!!!!!!!!!");
+				monster.state = monster.HIT;
+			}
+			
 		}
 		
 		function updateAnimation()
