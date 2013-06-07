@@ -2,6 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<title> Basic sprite </title>
+	<script src="./requestAnimationFramePolyfill.js"></script>
 </head>
 <body>
 	<canvas width="550" height="400" style="border: 1px dashed black">
@@ -49,9 +50,7 @@
 		function update()
 		{
 			//Create the animation loop
-			//for mozilla only
-			window.mozRequestAnimationFrame(update, canvas);
-			//window.RequestAnimationFrame(update, canvas);
+			requestAnimationFrame(update, canvas);
 			//Change the sprite's X position to make it move to the right across the canvas
 			cat.x++;
 			//Render the animation
@@ -67,6 +66,7 @@
 			{
 				for(var i = 0; i < sprites.length; i++)
 				{
+				    console.log("sprites # == " + sprites.length);
 					var sprite = sprites[i];
 					drawingSurface.drawImage
 					(
