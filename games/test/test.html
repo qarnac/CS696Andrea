@@ -36,10 +36,18 @@
 		cat.y = 168;
 		sprites.push(cat);
 		
+		var kirby = Object.create(spriteObject);
+		kirby.sourceX = 64;
+		kirby.x = 200;
+		kirby.y = 300;
+		sprites.push(kirby);
+		
 		//Load the cat's image
 		var image = new Image();
 		image.addEventListener("load", loadHandler, false);
-		image.src = "./cat.png";
+		image.src = "./tileSheetWithBackground.png";
+		
+
 		
 		function loadHandler()
 		{
@@ -54,6 +62,7 @@
 			//Change the sprite's X position to make it move to the right across the canvas
 			cat.x++;
 			//Render the animation
+			kirby.y--;
 			render();
 		}
 		
