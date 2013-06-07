@@ -139,6 +139,26 @@
 			//Change the sprite's X position to make it move to the right across the canvas
 			//cat.x++;
 			//Render the animation
+			
+			//Stop the cat at the canvas edges
+			if (cat.x < 0)
+			{
+				cat.x = 0;
+			}
+			if (cat.y < 0)
+			{
+				cat.y = 0;
+			}
+			if (cat.x + cat.width > canvas.width)
+			{
+				cat.x = canvas.width - cat.width;
+			}
+			if (cat.y + cat.height > canvas.height)
+			{
+				cat.y = canvas.height - cat.height;
+			}
+			
+			
 			kirby.y--;
 			render();
 		}
