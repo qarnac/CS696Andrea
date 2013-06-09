@@ -32,22 +32,22 @@
 			width: 64,
 			height: 64,
 			
-			//Getters to define the left, right, top and bottom sides
-			left: function()
+			//Getters
+			centerX: function()
 			{
-				return this.x;
+				return this.x + (this.width / 2);
 			},
-			right: function()
+			centerY: function()
 			{
-				return this.x + this.width;
+				return this.y + (this.height / 2);
 			},
-			top: function()
+			halfWidth: function()
 			{
-				return this.y;
+				return this.width / 2;
 			},
-			bottom: function()
+				halfHeight: function()
 			{
-				return this.y + this.height;
+				return this.height / 2;
 			}
 		};
 		
@@ -70,50 +70,138 @@
 		//An array to store the sprites
 		var sprites = [];
 		
-		//Create the square and center it
-		var square = Object.create(spriteObject);
-		square.x = canvas.width / 2 - square.width / 2;
-		square.y = canvas.height / 2 - square.height / 2;;
-		sprites.push(square);
+		//Create the redCircle circle
+		var redCircle = Object.create(spriteObject);
+		redCircle.x = 350;
+		redCircle.y = 100;
+		redCircle.height = 100;
+		redCircle.width = 100;
+		sprites.push(redCircle);
+
+		//Create the blueCircle circle
+		var blueCircle = Object.create(spriteObject);
+		blueCircle.sourceX = 64;
+		blueCircle.x = 150;
+		blueCircle.y = 250;
+		sprites.push(blueCircle);
 		
 		//Load the image
 		var image = new Image();
 		image.addEventListener("load", loadHandler, false);
-		image.src = "squares.png";
+		image.src = "circles.png";
+
+		//Arrow key codes
+		var UP = 38;
+		var DOWN = 40;
+		var RIGHT = 39;
+		var LEFT = 37;
+
+		//Directions
+		var moveUp = false;
+		var moveDown = false;
+		var moveRight = false;
+		var moveLeft = false;
 		
-		//Add a mousemove event listener
-		canvas.addEventListener("mousemove", function(event)
+		//Add keyboard listeners
+		window.addEventListener("keydown", function(event)
 		{
-		  
-		  //Find the mouse's x and y position on the canvas
-		  mouseX = event.pageX - canvas.offsetLeft;
-		  mouseY = event.pageY - canvas.offsetTop;
-		  
+		  switch(event.keyCode)
+		  {
+			case UP:
+				moveUp = true;
+				break;
+			  
+			  case DOWN:
+				moveDown = true;
+				break;
+				
+			  case LEFT:
+				moveLeft = true;
+				break;  
+				
+			  case RIGHT:
+				moveRight = true;
+				break; 
+		  }
 		}, false);
 		
-		function loadHandler()
-		{ 
-		  update();
-		}
+		window.addEventListener("keyup", function(event)
+		{
+		  switch(event.keyCode)
+		  {
+			case UP:
+				moveUp = false;
+				break;
+			  
+			  case DOWN:
+				moveDown = false;
+				break;
+				
+			  case LEFT:
+				moveLeft = false;
+				break;  
+				
+			  case RIGHT:
+				moveRight = false;
+				break; 
+		  }
+		}, false);
+		
+		
 
 		function update()
 		{
-		  //The animation loop
-		  requestAnimationFrame(update, canvas);
-		  
-		  //Use hitTestPoint to check for a collision and
-		  //return the result (true or false) to the collision variable
-		  if(hitTestPoint(mouseX, mouseY, square))
-		  {
-			message = "Collision!";
-		  }
-		  else
-		  {
-			message = "No Collision…";
-		  }
-		  
-		  //Render the sprites
-		  render();
+			//The animation loop
+			requestAnimationFrame(update, canvas);
+
+			//Up
+			if(moveUp && !moveDown)
+			{
+				blueCircle.vy = -5;
+			}
+			//Down
+			if(moveDown && !moveUp)
+			{
+				blueCircle.vy = 5;
+			}
+			//Left
+			if(moveLeft && !moveRight)
+			{
+				blueCircle.vx = -5;
+			}
+			//Right
+			if(moveRight && !moveLeft)
+			{
+				blueCircle.vx = 5;
+			}
+
+			//Set the blueCircle's velocity to zero if none of the keys are being pressed
+			if(!moveUp && !moveDown)
+			{
+				blueCircle.vy = 0;
+			}
+			if(!moveLeft && !moveRight)
+			{
+				blueCircle.vx = 0;
+			}
+
+			//Move the blueCircle circle
+			blueCircle.x += blueCircle.vx;
+			blueCircle.y += blueCircle.vy;
+
+			//Use hitTestCircle to check for a collision and
+			//return the result (true or false) to the collision variable
+			if(hitTestCircle(blueCircle, redCircle))
+			{
+				message = "Collision!";
+			}
+			else
+			{
+				message = "No collision…";
+			}
+
+			//Render the sprites
+			render();
 		}
 		
 		function render()
