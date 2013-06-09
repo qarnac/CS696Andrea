@@ -147,7 +147,10 @@
 		  }
 		}, false);
 		
-		
+		function loadHandler()
+		{ 
+		  update();
+		}
 
 		function update()
 		{
@@ -202,6 +205,26 @@
 
 			//Render the sprites
 			render();
+		}
+			
+		function hitTestCircle(c1, c2)
+		{
+		  //Calculate the vector between the circles’ center points
+		  var vx = c1.centerX() - c2.centerX();
+		  var vy = c1.centerY() - c2.centerY();
+		  
+		  //Find the distance between the circles by calculating
+		  //the vector's magnitude (how long the vector is)  
+		  var magnitude = Math.sqrt(vx * vx + vy * vy);
+		  
+		  //Add together the circles' total radii
+		  var totalRadii = c1.halfWidth() + c2.halfWidth();
+		  
+		  //Set hit to true if the distance between the circles is
+		  //less than their totalRadii
+		  var hit = magnitude < totalRadii;
+		  
+		  return hit;
 		}
 		
 		function render()
