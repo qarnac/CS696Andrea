@@ -1,0 +1,39 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title> Basic sprite </title>
+	<script src="./requestAnimationFramePolyfill.js"></script>
+</head>
+<body>
+	<script>
+		var spriteObject =
+		{
+			sourceX: 0,
+			sourceY: 0,
+			sourceWidth: 64,
+			sourceHeight: 64,
+			x: 0,
+			y: 0,
+			width: 64,
+			height: 64,
+			//Getters to define the left, right, top and bottom sides
+			left: function()
+			{
+				return this.x;
+			},
+			right: function()
+			{
+				return this.x + this.width;
+			},
+			top: function()
+			{
+				return this.y;
+			},
+			bottom: function()
+			{
+				return this.y + this.height;
+			}
+		};
+		
+	</script>
+</body>
