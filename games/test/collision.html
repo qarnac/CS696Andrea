@@ -27,11 +27,13 @@
 			sourceY: 0,
 			sourceWidth: 64,
 			sourceHeight: 64,
-			x: 0,
-			y: 0,
 			width: 64,
 			height: 64,
-			
+			x: 0,
+			y: 0,
+			vx: 0,
+			vy: 0,
+
 			//Getters
 			centerX: function()
 			{
@@ -41,11 +43,11 @@
 			{
 				return this.y + (this.height / 2);
 			},
-			halfWidth: function()
+				halfWidth: function()
 			{
 				return this.width / 2;
 			},
-				halfHeight: function()
+			halfHeight: function()
 			{
 				return this.height / 2;
 			}
