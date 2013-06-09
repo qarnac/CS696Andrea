@@ -81,6 +81,16 @@
 		image.addEventListener("load", loadHandler, false);
 		image.src = "squares.png";
 		
+		//Add a mousemove event listener
+		canvas.addEventListener("mousemove", function(event)
+		{
+		  
+		  //Find the mouse's x and y position on the canvas
+		  mouseX = event.pageX - canvas.offsetLeft;
+		  mouseY = event.pageY - canvas.offsetTop;
+		  
+		}, false);
+		
 		function loadHandler()
 		{ 
 		  update();
