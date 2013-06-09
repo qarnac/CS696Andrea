@@ -229,7 +229,6 @@
 		
 		function render()
 		{ 
-		  //Clear the previous animation frame
 		  drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
 		  
 		  //Loop through all the sprites and use 
@@ -250,8 +249,8 @@
 			}
 		  }
 		  
-		  //Display the message text above the square
-		  drawingSurface.fillText(message, square.x, square.y - 45);
+		  //Display the message
+		  drawingSurface.fillText(message, redCircle.x, redCircle.y - 45);
 		}
 		
 	</script>
