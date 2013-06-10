@@ -152,5 +152,29 @@
 		  render();
 		}
 		
+		function render(event)
+		{ 
+		  drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
+		  
+		  if(sprites.length !== 0)
+		  {
+			for(var i = 0; i < sprites.length; i++)
+			{
+			  var sprite = sprites[i];
+			  drawingSurface.drawImage
+			  (
+				image, 
+				sprite.sourceX, sprite.sourceY, 
+				sprite.sourceWidth, sprite.sourceHeight,
+				Math.floor(sprite.x), Math.floor(sprite.y), 
+				sprite.width, sprite.height
+			  ); 
+			}
+		  }
+		  
+		  //Display the message above the monster
+		  drawingSurface.fillText(score + message, monster.x, monster.y - 40);
+		}
+		
 	</script>
 </body>
