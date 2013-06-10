@@ -88,6 +88,29 @@
 		var moveRight = false;
 		var moveLeft = false;
 		
+		//Add keyboard listeners
+		window.addEventListener("keydown", function(event)
+		{
+		  switch(event.keyCode)
+		  {
+			case UP:
+				moveUp = true;
+				break;
+			  
+			  case DOWN:
+				moveDown = true;
+				break;
+				
+			  case LEFT:
+				moveLeft = true;
+				break;  
+				
+			  case RIGHT:
+				moveRight = true;
+				break; 
+		  }
+		}, false);
+		
 		function loadHandler()
 		{ 
 		  update();
