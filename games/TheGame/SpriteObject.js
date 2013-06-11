@@ -54,3 +54,14 @@ var messageObject =
   fillStyle: "red",
   textBaseline: "top"
 };
+
+//Create the background
+var background = Object.create(spriteObject);
+background.x = 0;
+background.y = 0;
+background.sourceY = 32;
+background.sourceWidth = 480;
+background.sourceHeight = 320;
+background.width = 480;
+background.height = 320;
+sprites.push(background);
