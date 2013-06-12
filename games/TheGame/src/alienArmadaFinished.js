@@ -156,10 +156,12 @@ function update()
       break;
     
     case PLAYING:
+	  console.log("playing…");
       playGame();
       break;
     
     case OVER:
+	  console.log("over…");
       endGame();
       break;
   }
@@ -463,5 +465,3 @@ function render()
 	}
   }
 }
-
-
