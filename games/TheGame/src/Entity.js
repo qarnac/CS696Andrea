@@ -6,4 +6,7 @@ function Entity(type) {
     } else if (type == "map") {
         this.__proto__ = Map.prototype;
     }
+	
+	Entity.prototype.foo = function() {
+    alert("This is Base class");
 }
