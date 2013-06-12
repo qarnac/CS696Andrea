@@ -1,4 +1,4 @@
-(function(){
+
 
 //The canvas
 var canvas = document.querySelector("canvas");
@@ -461,4 +461,4 @@ function render()
   }
 }
 
-}());
+
