@@ -1,3 +1,5 @@
+//--- The sprite object
+
 var spriteObject =
 {
   sourceX: 0,
@@ -31,6 +33,7 @@ var spriteObject =
   }
 };
 
+
 //--- The alien object
 
 var alienObject = Object.create(spriteObject);
@@ -54,3 +57,4 @@ var messageObject =
   fillStyle: "red",
   textBaseline: "top"
 };
+
