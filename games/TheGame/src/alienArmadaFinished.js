@@ -172,13 +172,13 @@ function loadHandler()
   {
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
-    music.removeEventListener("canplaythrough", loadHandler, false);
+    //music.removeEventListener("canplaythrough", loadHandler, false);
     shootSound.removeEventListener("canplaythrough", loadHandler, false);
-    explosionSound.removeEventListener("canplaythrough", loadHandler, false);
+    //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
     console.log(assetsLoaded);
     //Play the music
-    music.play();
-    music.volume = 0.3;
+    //music.play();
+    //music.volume = 0.3;
     
     //Start the game 
     gameState = PLAYING;
@@ -396,8 +396,8 @@ function fireMissile()
   missiles.push(missile);
 
   //Play the firing sound
-  shootSound.currentTime = 0;
-  shootSound.play();
+  //shootSound.currentTime = 0;
+  //shootSound.play();
 }
 
 function removeObject(objectToRemove, array) 
