@@ -54,10 +54,10 @@ image.src = "../images/alienArmada.png";
 assetsToLoad.push(image);
 
 //Load the sounds
-var music = document.querySelector("#music");
-music.addEventListener("canplaythrough", loadHandler, false);
-music.load();
-assetsToLoad.push(music);
+//var music = document.querySelector("#music");
+//music.addEventListener("canplaythrough", loadHandler, false);
+//music.load();
+//assetsToLoad.push(music);
 
 var shootSound = document.querySelector("#shootSound");
 shootSound.addEventListener("canplaythrough", loadHandler, false);
