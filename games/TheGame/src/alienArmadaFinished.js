@@ -125,14 +125,17 @@ window.addEventListener("keyup", function(event)
   switch(event.keyCode)
   {	    
 	  case LEFT:
+		console.log("left let go");
 	    moveLeft = false;
 	    break;  
 	    
 	  case RIGHT:
+		console.log("right let go");
 	    moveRight = false;
 	    break; 
 	
 	  case SPACE:
+		console.log("space button let go");
 	    spaceKeyIsDown = false;
   }
 }, false);
