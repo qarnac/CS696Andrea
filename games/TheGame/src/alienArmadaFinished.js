@@ -59,15 +59,15 @@ assetsToLoad.push(image);
 //music.load();
 //assetsToLoad.push(music);
 
-var shootSound = document.querySelector("#shootSound");
-shootSound.addEventListener("canplaythrough", loadHandler, false);
-shootSound.load();
-assetsToLoad.push(shootSound);
+//var shootSound = document.querySelector("#shootSound");
+//shootSound.addEventListener("canplaythrough", loadHandler, false);
+//shootSound.load();
+//assetsToLoad.push(shootSound);
 
-var explosionSound = document.querySelector("#explosionSound");
-explosionSound.addEventListener("canplaythrough", loadHandler, false);
-explosionSound.load();
-assetsToLoad.push(explosionSound);
+//var explosionSound = document.querySelector("#explosionSound");
+//explosionSound.addEventListener("canplaythrough", loadHandler, false);
+//explosionSound.load();
+//assetsToLoad.push(explosionSound);
 
 //Variable to count the number of assets the game needs to load
 var assetsLoaded = 0;
