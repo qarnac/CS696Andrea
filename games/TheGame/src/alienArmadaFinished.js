@@ -8,7 +8,7 @@ var drawingSurface = canvas.getContext("2d");
 
 //Arrays to store the game objects and assets to load
 var sprites = [];
-var assetsToLoad = [];
+var assetsToLoad = []; //containing maps, alien and spaceship
 var missiles = [];
 var aliens = [];
 var messages = [];
