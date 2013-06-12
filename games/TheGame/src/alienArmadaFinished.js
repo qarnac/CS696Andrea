@@ -11,7 +11,7 @@ var sprites = [];
 var assetsToLoad = []; //containing maps, alien and spaceship
 var missiles = [];
 var aliens = [];
-var messages = [];
+var messages = []; //for messages such as score, or other misc descriptions
 
 //Create the background
 var background = Object.create(spriteObject);
