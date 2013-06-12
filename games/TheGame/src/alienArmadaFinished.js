@@ -173,7 +173,7 @@ function loadHandler()
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
     //music.removeEventListener("canplaythrough", loadHandler, false);
-    shootSound.removeEventListener("canplaythrough", loadHandler, false);
+    //shootSound.removeEventListener("canplaythrough", loadHandler, false);
     //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
     console.log(assetsLoaded);
     //Play the music
@@ -328,8 +328,8 @@ function destroyAlien(alien)
   setTimeout(removeAlien, 1000);
 
   //Play the explosion sound
-  explosionSound.currentTime = 0;
-  explosionSound.play();
+  //explosionSound.currentTime = 0;
+  //explosionSound.play();
   
   function removeAlien()
   {
