@@ -7,7 +7,7 @@ var canvas = document.querySelector("canvas");
 var drawingSurface = canvas.getContext("2d");
 
 //Arrays to store the game objects and assets to load
-var sprites = [];
+var sprites = []; 
 var assetsToLoad = []; //containing maps, alien and spaceship
 var missiles = [];
 var aliens = [];
@@ -96,6 +96,10 @@ var score = 0;
 var scoreNeededToWin = 60;
 var alienFrequency = 100;
 var alienTimer = 0;
+
+var test = new Entity();
+
+alert(test instanceof Alien);
 
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
