@@ -14,10 +14,10 @@ function Canon()
     this.vy = 0;
     this.visible = true;
 	
-	
 	//Directions
 	this.moveRight = false;
 	this.moveLeft = false;
+	this.shoot = false;
 
 }
 
@@ -26,28 +26,28 @@ Canon.prototype.getName = function() {
 };
 
 Canon.prototype.move = function() {
-	  //Left
+  //Left
   if(moveLeft && !moveRight)
   {
-    cannon.vx = -8;
+    this.vx = -8;
   }
   //Right
-  if(moveRight && !moveLeft)
+  if(this.moveRight && !this.moveLeft)
   {
-    cannon.vx = 8;
+    this.vx = 8;
   }
 
   //Set the cannon's velocity to zero if none of the keys are being pressed
-  if(!moveLeft && !moveRight)
+  if(!this.moveLeft && !this.moveRight)
   {
-    cannon.vx = 0;
+    this.vx = 0;
   }
 
   //Fire a missile if shoot is true
   if(shoot)
   {
     fireMissile();
-    shoot = false;	
+    this.shoot = false;	
   }
 };
 
