@@ -19,7 +19,8 @@ function Canon()
 	this.moveLeft = false;
 	this.shoot = false;
 
-}
+};
+this.prototype = new Entity();
 
 Canon.prototype.getName = function() {
 	return this.name;
