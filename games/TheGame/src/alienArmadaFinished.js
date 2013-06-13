@@ -97,9 +97,10 @@ var scoreNeededToWin = 60;
 var alienFrequency = 100;
 var alienTimer = 0;
 
-var test = new Entity();
+var test = new Entity("alien");
+var test2 = new Entity("canon");
 
-alert(test instanceof Alien);
+
 
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
