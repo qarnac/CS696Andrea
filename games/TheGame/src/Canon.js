@@ -27,7 +27,7 @@ Canon.prototype.getName = function() {
 
 Canon.prototype.move = function() {
   //Left
-  if(moveLeft && !moveRight)
+  if(this.moveLeft && !this.moveRight)
   {
     this.vx = -8;
   }
