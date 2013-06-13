@@ -100,6 +100,7 @@ var alienTimer = 0;
 var test = new Entity("alien");
 var test2 = new Entity("canon");
 
+console.log(test.sourceX);
 
 
 //Add keyboard listeners
@@ -246,9 +247,7 @@ function playGame()
       i--;
     }
   }
-
-  //Make the aliens
-
+  
   //Add one to the alienTimer
   alienTimer++;
 
