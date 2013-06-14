@@ -367,7 +367,9 @@ function endGame()
 function makeAlien()
 {
   //Create the alien
-  var alien = Object.create(alienObject);
+  //var alien = Object.create(alienObject);
+  var alien = new Entity("alien");
+  //alert(instanceof alien);
   alien.sourceX = 32;
   
   //Set its y position above the screen boundary

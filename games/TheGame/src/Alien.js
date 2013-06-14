@@ -4,8 +4,8 @@ function Alien()
 	this.EXPLODED = 2;
 	this.state = this.NORMAL;
 	
-	this.prototype = new Entity();
-	this.prototype.constructor = Entity;
+	//this.prototype = new Entity();
+	//this.prototype.constructor = Entity;
 
 }
 
