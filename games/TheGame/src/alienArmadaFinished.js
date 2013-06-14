@@ -14,7 +14,19 @@ var aliens = [];
 var messages = []; //for messages such as score, or other misc descriptions
 
 //Create the background
+/*
 var background = Object.create(spriteObject);
+background.x = 0;
+background.y = 0;
+background.sourceY = 32;
+background.sourceWidth = 480;
+background.sourceHeight = 320;
+background.width = 480;
+background.height = 320;
+sprites.push(background);
+*/
+
+var background = new Entity();
 background.x = 0;
 background.y = 0;
 background.sourceY = 32;
@@ -25,7 +37,8 @@ background.height = 320;
 sprites.push(background);
 
 //Create the cannon and center it
-var cannon = Object.create(spriteObject);
+Entity.prototype = new Canon();
+var cannon = new Entity("canon");
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
 sprites.push(cannon);

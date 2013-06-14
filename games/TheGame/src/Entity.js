@@ -1,4 +1,5 @@
 function Entity(type) {
+	
 	this.sourceX = 0;
     this.sourceY = 0;
     this.sourceWidth = 32;
