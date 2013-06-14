@@ -14,7 +14,7 @@ function Entity(type) {
 	
 	if( type === "alien" )
 		this.prototype = new Alien();
-	if ( type === "canon" )
+	if ( type === "cannon" )
 		this.prototype = new Canon();
 	if ( type === "map" )
 		this.prototype  = new Map();
