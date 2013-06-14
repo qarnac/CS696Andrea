@@ -32,6 +32,10 @@ cannon.y = 280;
 
 sprites.push(cannon);
 
+//alert(cannon.test);
+//alert(cannon.getName());
+
+
 //Create the score message
 var scoreDisplay = Object.create(messageObject);
 scoreDisplay.font = "normal bold 30px emulogic";

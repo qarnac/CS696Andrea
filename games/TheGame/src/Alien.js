@@ -13,6 +13,8 @@ Alien.prototype.getName = function() {
 	return this.name;
 };
 
+Alien.prototype = new Entity();
+
 Alien.prototype.update = function() {
 	this.prototype.sourceX = this.state * this.prototype.width;
 };
