@@ -103,7 +103,6 @@ var alienTimer = 0;
 */
 
 
-
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
 {
@@ -179,7 +178,6 @@ function update()
 
 function loadHandler()
 { 
-  console.log("im in here");
   game.assetsLoaded++;
   console.log(assetsToLoad.length);
   console.log(game.assetsLoaded);
@@ -390,7 +388,7 @@ function makeAlien()
 function fireMissile()
 { 
   //Create a missile sprite
-  var missile = Object.create(spriteObject);
+  var missile = new Entity();
   missile.sourceX = 96;
   missile.sourceWidth = 16;
   missile.sourceHeight = 16;
