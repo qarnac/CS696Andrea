@@ -1,13 +1,19 @@
 function Game()
 {
+	//Game variables
+	this.score = 0;
+	this.scoreNeededToWin = 60;
+	this.alienFrequency = 100;
+	this.alienTimer = 0;
+
 	//Variable to count the number of assets the game needs to load
 	this.assetsLoaded = 0;
 
 	//Game states
-	this.LOADING = 0
+	this.LOADING = 0;
 	this.PLAYING = 1;
 	this.OVER = 2;
-	this.gameState = LOADING;
+	this.gameState = this.LOADING;
 
 	//Arrow key codes
 	this.RIGHT = 39;
@@ -31,7 +37,7 @@ function Game()
 }
 
 
-game.prototype.render = function() 
+Game.prototype.render = function() 
 { 
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
   

@@ -74,18 +74,18 @@ var game = new Game();
 
 /*
 //Variable to count the number of assets the game needs to load
-var game.assetsLoaded = 0;
+var assetsLoaded = 0;
 
 //Game states
 var LOADING = 0
-var game.PLAYING = 1;
+var PLAYING = 1;
 var OVER = 2;
-var game.gameState = game.LOADING;
+var gameState = LOADING;
 
 //Arrow key codes
-var game.RIGHT = 39;
-var game.LEFT = 37;
-var game.SPACE = 32;
+var RIGHT = 39;
+var LEFT = 37;
+var SPACE = 32;
 
 //Directions
 var moveRight = false;
@@ -103,24 +103,25 @@ var alienTimer = 0;
 */
 
 
+
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
 {
   switch(event.keyCode)
   {
 	  case game.LEFT:
-	    moveLeft = true;
+	    game.moveLeft = true;
 	    break;  
 	    
 	  case game.RIGHT:
-	    moveRight = true;
+	    game.moveRight = true;
 	    break;
 	 
 	  case game.SPACE:
 	    if(!spaceKeyIsDown)
 	    {
-	      shoot = true;
-	      spaceKeyIsDown = true;
+	      game.shoot = true;
+	      game.spaceKeyIsDown = true;
 	    }
    }
 
@@ -131,17 +132,17 @@ window.addEventListener("keyup", function(event)
   switch(event.keyCode)
   {	    
 	  case game.LEFT:
-		console.log("left let go");
-	    moveLeft = false;
+		console.log("move left");
+	    game.moveLeft = false;
 	    break;  
 	    
 	  case game.RIGHT:
-		console.log("right let go");
-	    moveRight = false;
+		console.log("move right");
+	    game.moveRight = false;
 	    break; 
 	
 	  case game.SPACE:
-		console.log("space button let go");
+		console.log("button space");
 	    spaceKeyIsDown = false;
   }
 }, false);
@@ -158,11 +159,11 @@ function update()
   switch(game.gameState)
   {
     case game.LOADING:
-      console.log("game.LOADING…");
+      console.log("LOADING…");
       break;
     
     case game.PLAYING:
-	  console.log("game.PLAYING…");
+	  console.log("PLAYING…");
       playGame();
       break;
     
@@ -178,8 +179,8 @@ function update()
 
 function loadHandler()
 { 
-  console.log("WTF");
-  //game.assetsLoaded++;
+  console.log("im in here");
+  game.assetsLoaded++;
   console.log(assetsToLoad.length);
   console.log(game.assetsLoaded);
   if(game.assetsLoaded === assetsToLoad.length)
@@ -202,27 +203,27 @@ function loadHandler()
 function playGame()
 {
   //Left
-  if(moveLeft && !moveRight)
+  if(game.moveLeft && !game.moveRight)
   {
     cannon.vx = -8;
   }
   //Right
-  if(moveRight && !moveLeft)
+  if(game.moveRight && !game.moveLeft)
   {
     cannon.vx = 8;
   }
 
   //Set the cannon's velocity to zero if none of the keys are being pressed
-  if(!moveLeft && !moveRight)
+  if(!game.moveLeft && !game.moveRight)
   {
     cannon.vx = 0;
   }
 
   //Fire a missile if shoot is true
-  if(shoot)
+  if(game.shoot)
   {
     fireMissile();
-    shoot = false;	
+    game.shoot = false;	
   }
   
   //Move the cannon and keep it within the screen boundaries
@@ -252,19 +253,19 @@ function playGame()
   }
   
   //Add one to the alienTimer
-  alienTimer++;
+  game.alienTimer++;
 
-  //Make a new alien if alienTimer equals the alienFrequency
-  if(alienTimer === alienFrequency)
+  //Make a new alien if alienTimer equals the game.alienFrequency
+  if(game.alienTimer === game.alienFrequency)
   {
     makeAlien();
-    alienTimer = 0;
+    game.alienTimer = 0;
 
-    //Reduce alienFrequency by one to gradually increase
+    //Reduce game.alienFrequency by one to gradually increase
     //the frequency that aliens are created
-    if(alienFrequency > 2)
+    if(game.alienFrequency > 2)
     {  
-      alienFrequency--;
+      game.alienFrequency--;
     }
   }
 
@@ -305,7 +306,7 @@ function playGame()
         destroyAlien(alien);
 
         //Update the score
-        score++;
+        game.score++;
 
         //Remove the missile
         removeObject(missile, missiles);
@@ -321,10 +322,10 @@ function playGame()
   //--- The score 
 
   //Display the score
-  scoreDisplay.text = score;
+  scoreDisplay.text = game.score;
 
   //Check for the end of the game
-  if(score === scoreNeededToWin)
+  if(game.score === game.scoreNeededToWin)
   {
     game.gameState = game.OVER;
   }
@@ -353,7 +354,7 @@ function destroyAlien(alien)
 function endGame()
 {
   gameOverMessage.visible = true;
-  if(score < scoreNeededToWin)
+  if(game.score < game.scoreNeededToWin)
   {
     gameOverMessage.text = "EARTH DESTROYED!";
   }
@@ -424,7 +425,7 @@ function removeObject(objectToRemove, array)
 function endGame()
 {
   gameOverMessage.visible = true;
-  if(score < scoreNeededToWin)
+  if(game.score < game.scoreNeededToWin)
   {
     gameOverMessage.text = "EARTH DESTROYED!";
   }
