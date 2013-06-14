@@ -29,6 +29,7 @@ sprites.push(background);
 var cannon = new Entity("cannon");
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
+
 sprites.push(cannon);
 
 //Create the score message
@@ -117,7 +118,7 @@ window.addEventListener("keydown", function(event)
 	    break;
 	 
 	  case game.SPACE:
-	    if(!spaceKeyIsDown)
+	    if(!game.spaceKeyIsDown)
 	    {
 	      game.shoot = true;
 	      game.spaceKeyIsDown = true;
@@ -142,7 +143,7 @@ window.addEventListener("keyup", function(event)
 	
 	  case game.SPACE:
 		console.log("button space");
-	    spaceKeyIsDown = false;
+	    game.spaceKeyIsDown = false;
   }
 }, false);
 

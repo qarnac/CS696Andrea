@@ -1,11 +1,8 @@
 function Cannon()
 {
-	this.name = "canon";
+	this.prototype = new Entity();
+	this.prototype.constructor = Entity;
 	
-	//Directions
-	this.moveRight = false;
-	this.moveLeft = false;
-	this.shoot = false;
 	
 };
 //this.prototype = new Entity();
@@ -13,3 +10,4 @@ function Cannon()
 Cannon.prototype.getName = function() {
 	return this.name;
 };
+

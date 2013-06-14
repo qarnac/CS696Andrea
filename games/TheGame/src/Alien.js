@@ -3,6 +3,9 @@ function Alien()
 	this.NORMAL = 1;
 	this.EXPLODED = 2;
 	this.state = this.NORMAL;
+	
+	this.prototype = new Entity();
+	this.prototype.constructor = Entity;
 
 }
 
@@ -11,5 +14,5 @@ Alien.prototype.getName = function() {
 };
 
 Alien.prototype.update = function() {
-	this.sourceX = this.state * this.width;
+	this.prototype.sourceX = this.state * this.prototype.width;
 };
