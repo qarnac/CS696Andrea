@@ -70,19 +70,22 @@ assetsToLoad.push(image);
 //explosionSound.load();
 //assetsToLoad.push(explosionSound);
 
+var game = new Game();
+
+/*
 //Variable to count the number of assets the game needs to load
-var assetsLoaded = 0;
+var game.assetsLoaded = 0;
 
 //Game states
 var LOADING = 0
-var PLAYING = 1;
+var game.PLAYING = 1;
 var OVER = 2;
-var gameState = LOADING;
+var game.gameState = game.LOADING;
 
 //Arrow key codes
-var RIGHT = 39;
-var LEFT = 37;
-var SPACE = 32;
+var game.RIGHT = 39;
+var game.LEFT = 37;
+var game.SPACE = 32;
 
 //Directions
 var moveRight = false;
@@ -97,6 +100,7 @@ var score = 0;
 var scoreNeededToWin = 60;
 var alienFrequency = 100;
 var alienTimer = 0;
+*/
 
 
 //Add keyboard listeners
@@ -104,15 +108,15 @@ window.addEventListener("keydown", function(event)
 {
   switch(event.keyCode)
   {
-	  case LEFT:
+	  case game.LEFT:
 	    moveLeft = true;
 	    break;  
 	    
-	  case RIGHT:
+	  case game.RIGHT:
 	    moveRight = true;
 	    break;
 	 
-	  case SPACE:
+	  case game.SPACE:
 	    if(!spaceKeyIsDown)
 	    {
 	      shoot = true;
@@ -126,17 +130,17 @@ window.addEventListener("keyup", function(event)
 {
   switch(event.keyCode)
   {	    
-	  case LEFT:
+	  case game.LEFT:
 		console.log("left let go");
 	    moveLeft = false;
 	    break;  
 	    
-	  case RIGHT:
+	  case game.RIGHT:
 		console.log("right let go");
 	    moveRight = false;
 	    break; 
 	
-	  case SPACE:
+	  case game.SPACE:
 		console.log("space button let go");
 	    spaceKeyIsDown = false;
   }
@@ -151,44 +155,47 @@ function update()
   requestAnimationFrame(update, canvas);
   
   //Change what the game is doing based on the game state
-  switch(gameState)
+  switch(game.gameState)
   {
-    case LOADING:
-      console.log("loading…");
+    case game.LOADING:
+      console.log("game.LOADING…");
       break;
     
-    case PLAYING:
-	  console.log("playing…");
+    case game.PLAYING:
+	  console.log("game.PLAYING…");
       playGame();
       break;
     
-    case OVER:
+    case game.OVER:
 	  console.log("over…");
       endGame();
       break;
   }
   
   //Render the game
-  render();
+  game.render();
 }
 
 function loadHandler()
 { 
-  assetsLoaded++;
-  if(assetsLoaded === assetsToLoad.length)
+  console.log("WTF");
+  //game.assetsLoaded++;
+  console.log(assetsToLoad.length);
+  console.log(game.assetsLoaded);
+  if(game.assetsLoaded === assetsToLoad.length)
   {
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
     //music.removeEventListener("canplaythrough", loadHandler, false);
     //shootSound.removeEventListener("canplaythrough", loadHandler, false);
     //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
-    console.log(assetsLoaded);
+    console.log(game.assetsLoaded);
     //Play the music
     //music.play();
     //music.volume = 0.3;
     
     //Start the game 
-    gameState = PLAYING;
+    game.gameState = game.PLAYING;
   }
 }
 
@@ -276,7 +283,7 @@ function playGame()
     if(alien.y > canvas.height + alien.height)
     { 
       //End the game if an alien has reached Earth
-      gameState = OVER;
+      game.gameState = game.OVER;
     }
   }
   
@@ -319,7 +326,7 @@ function playGame()
   //Check for the end of the game
   if(score === scoreNeededToWin)
   {
-    gameState = OVER;
+    game.gameState = game.OVER;
   }
 }
 
@@ -428,40 +435,3 @@ function endGame()
   }
 }
 
-function render()
-{ 
-  drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
-  
-  //Display the sprites
-  if(sprites.length !== 0)
-  {
-    for(var i = 0; i < sprites.length; i++)
-    {
-      var sprite = sprites[i];
-      drawingSurface.drawImage
-      (
-        image, 
-        sprite.sourceX, sprite.sourceY, 
-        sprite.sourceWidth, sprite.sourceHeight,
-        Math.floor(sprite.x), Math.floor(sprite.y), 
-        sprite.width, sprite.height
-      ); 
-    }
-  }
-
-  //Display game messages
-  if(messages.length !== 0)
-  {
-    for(var i = 0; i < messages.length; i++)
-	{
-	  var message = messages[i];
-	  if(message.visible)
-	  {
-	    drawingSurface.font = message.font;  
-        drawingSurface.fillStyle = message.fillStyle;
-        drawingSurface.textBaseline = message.textBaseline;
-		drawingSurface.fillText(message.text, message.x, message.y);  
-	  }
-	}
-  }
-}
