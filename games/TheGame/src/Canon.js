@@ -2,6 +2,7 @@ function Canon()
 {
 	this.name = "canon";
 	
+	/*
 	this.sourceX = 0;
     this.sourceY = 0;
     this.sourceWidth = 32;
@@ -13,6 +14,7 @@ function Canon()
     this.vx = 0;
     this.vy = 0;
     this.visible = true;
+	*/
 	
 	//Directions
 	this.moveRight = false;
@@ -20,7 +22,7 @@ function Canon()
 	this.shoot = false;
 
 };
-this.prototype = new Entity();
+//this.prototype = new Entity();
 
 Canon.prototype.getName = function() {
 	return this.name;
