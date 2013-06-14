@@ -1,4 +1,4 @@
-function Canon()
+function Cannon()
 {
 	this.name = "canon";
 	
@@ -10,11 +10,11 @@ function Canon()
 };
 //this.prototype = new Entity();
 
-Canon.prototype.getName = function() {
+Cannon.prototype.getName = function() {
 	return this.name;
 };
 
-Canon.prototype.move = function() {
+Cannon.prototype.move = function() {
   //Left
   if(this.moveLeft && !this.moveRight)
   {

@@ -15,10 +15,27 @@ function Entity(type) {
 	if( type === "alien" )
 		this.prototype = new Alien();
 	if ( type === "cannon" )
-		this.prototype = new Canon();
+		this.prototype = new Cannon();
 	if ( type === "map" )
 		this.prototype  = new Map();
 				
 }
+
+
+Entity.prototype.centerX = function() {
+	return this.x + (this.width / 2);
+};
+
+Entity.prototype.centerY = function() {
+	return this.y + (this.height / 2);
+};
+
+Entity.prototype.halfWidth = function() {
+	return this.width / 2;
+};
+
+Entity.prototype.halfHeight = function() {
+	return this.height / 2;
+};
 
 
