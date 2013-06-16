@@ -25,7 +25,7 @@ background.height = 320;
 sprites.push(background);
 
 //Create the cannon and center it
-var cannon = Object.create(spriteObject);
+var cannon = new Cannon();
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
 sprites.push(cannon);
@@ -54,20 +54,20 @@ image.src = "../images/alienArmada.png";
 assetsToLoad.push(image);
 
 //Load the sounds
-var music = document.querySelector("#music");
-music.addEventListener("canplaythrough", loadHandler, false);
-music.load();
-assetsToLoad.push(music);
+//var music = document.querySelector("#music");
+//music.addEventListener("canplaythrough", loadHandler, false);
+//music.load();
+//assetsToLoad.push(music);
 
-var shootSound = document.querySelector("#shootSound");
-shootSound.addEventListener("canplaythrough", loadHandler, false);
-shootSound.load();
-assetsToLoad.push(shootSound);
+//var shootSound = document.querySelector("#shootSound");
+//shootSound.addEventListener("canplaythrough", loadHandler, false);
+//shootSound.load();
+//assetsToLoad.push(shootSound);
 
-var explosionSound = document.querySelector("#explosionSound");
-explosionSound.addEventListener("canplaythrough", loadHandler, false);
-explosionSound.load();
-assetsToLoad.push(explosionSound);
+//var explosionSound = document.querySelector("#explosionSound");
+//explosionSound.addEventListener("canplaythrough", loadHandler, false);
+//explosionSound.load();
+//assetsToLoad.push(explosionSound);
 
 //Variable to count the number of assets the game needs to load
 var assetsLoaded = 0;
@@ -172,13 +172,13 @@ function loadHandler()
   {
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
-    music.removeEventListener("canplaythrough", loadHandler, false);
-    shootSound.removeEventListener("canplaythrough", loadHandler, false);
-    explosionSound.removeEventListener("canplaythrough", loadHandler, false);
+    //music.removeEventListener("canplaythrough", loadHandler, false);
+    //shootSound.removeEventListener("canplaythrough", loadHandler, false);
+    //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
     console.log(assetsLoaded);
     //Play the music
-    music.play();
-    music.volume = 0.3;
+    //music.play();
+    //music.volume = 0.3;
     
     //Start the game 
     gameState = PLAYING;
@@ -328,8 +328,8 @@ function destroyAlien(alien)
   setTimeout(removeAlien, 1000);
 
   //Play the explosion sound
-  explosionSound.currentTime = 0;
-  explosionSound.play();
+  //explosionSound.currentTime = 0;
+  //explosionSound.play();
   
   function removeAlien()
   {
@@ -396,8 +396,8 @@ function fireMissile()
   missiles.push(missile);
 
   //Play the firing sound
-  shootSound.currentTime = 0;
-  shootSound.play();
+  //shootSound.currentTime = 0;
+  //shootSound.play();
 }
 
 function removeObject(objectToRemove, array) 
