@@ -10,17 +10,7 @@ function Entity() {
     this.y = 0;
     this.vx = 0;
     this.vy = 0;
-    this.visible = true;
-	
-	/*
-	if( type === "alien" )
-		this.prototype = new Alien();
-	if ( type === "cannon" )
-		this.prototype = new Cannon();
-	if ( type === "map" )
-		this.prototype  = new Map();
-	*/
-				
+    this.visible = true;				
 }
 
 
