@@ -1,4 +1,4 @@
-
+(function(){
 
 //The canvas
 var canvas = document.querySelector("canvas");
@@ -7,15 +7,14 @@ var canvas = document.querySelector("canvas");
 var drawingSurface = canvas.getContext("2d");
 
 //Arrays to store the game objects and assets to load
-var sprites = []; 
-var assetsToLoad = []; //containing maps, alien and spaceship
+var sprites = [];
+var assetsToLoad = [];
 var missiles = [];
 var aliens = [];
-var messages = []; //for messages such as score, or other misc descriptions
+var messages = [];
 
 //Create the background
-
-var background = new Entity();
+var background = Object.create(spriteObject);
 background.x = 0;
 background.y = 0;
 background.sourceY = 32;
@@ -26,15 +25,10 @@ background.height = 320;
 sprites.push(background);
 
 //Create the cannon and center it
-var cannon = new Cannon();
+var cannon = Object.create(spriteObject);
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
-
 sprites.push(cannon);
-
-//alert(cannon.test);
-//alert(cannon.getName());
-
 
 //Create the score message
 var scoreDisplay = Object.create(messageObject);
@@ -60,24 +54,21 @@ image.src = "../images/alienArmada.png";
 assetsToLoad.push(image);
 
 //Load the sounds
-//var music = document.querySelector("#music");
-//music.addEventListener("canplaythrough", loadHandler, false);
-//music.load();
-//assetsToLoad.push(music);
+var music = document.querySelector("#music");
+music.addEventListener("canplaythrough", loadHandler, false);
+music.load();
+assetsToLoad.push(music);
 
-//var shootSound = document.querySelector("#shootSound");
-//shootSound.addEventListener("canplaythrough", loadHandler, false);
-//shootSound.load();
-//assetsToLoad.push(shootSound);
+var shootSound = document.querySelector("#shootSound");
+shootSound.addEventListener("canplaythrough", loadHandler, false);
+shootSound.load();
+assetsToLoad.push(shootSound);
 
-//var explosionSound = document.querySelector("#explosionSound");
-//explosionSound.addEventListener("canplaythrough", loadHandler, false);
-//explosionSound.load();
-//assetsToLoad.push(explosionSound);
+var explosionSound = document.querySelector("#explosionSound");
+explosionSound.addEventListener("canplaythrough", loadHandler, false);
+explosionSound.load();
+assetsToLoad.push(explosionSound);
 
-var game = new Game();
-
-/*
 //Variable to count the number of assets the game needs to load
 var assetsLoaded = 0;
 
@@ -105,27 +96,25 @@ var score = 0;
 var scoreNeededToWin = 60;
 var alienFrequency = 100;
 var alienTimer = 0;
-*/
-
 
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
 {
   switch(event.keyCode)
   {
-	  case game.LEFT:
-	    game.moveLeft = true;
+	  case LEFT:
+	    moveLeft = true;
 	    break;  
 	    
-	  case game.RIGHT:
-	    game.moveRight = true;
+	  case RIGHT:
+	    moveRight = true;
 	    break;
 	 
-	  case game.SPACE:
-	    if(!game.spaceKeyIsDown)
+	  case SPACE:
+	    if(!spaceKeyIsDown)
 	    {
-	      game.shoot = true;
-	      game.spaceKeyIsDown = true;
+	      shoot = true;
+	      spaceKeyIsDown = true;
 	    }
    }
 
@@ -135,19 +124,16 @@ window.addEventListener("keyup", function(event)
 {
   switch(event.keyCode)
   {	    
-	  case game.LEFT:
-		console.log("move left");
-	    game.moveLeft = false;
+	  case LEFT:
+	    moveLeft = false;
 	    break;  
 	    
-	  case game.RIGHT:
-		console.log("move right");
-	    game.moveRight = false;
+	  case RIGHT:
+	    moveRight = false;
 	    break; 
 	
-	  case game.SPACE:
-		console.log("button space");
-	    game.spaceKeyIsDown = false;
+	  case SPACE:
+	    spaceKeyIsDown = false;
   }
 }, false);
 
@@ -160,73 +146,69 @@ function update()
   requestAnimationFrame(update, canvas);
   
   //Change what the game is doing based on the game state
-  switch(game.gameState)
+  switch(gameState)
   {
-    case game.LOADING:
-      console.log("LOADING…");
+    case LOADING:
+      console.log("loading…");
       break;
     
-    case game.PLAYING:
-	  console.log("PLAYING…");
+    case PLAYING:
       playGame();
       break;
     
-    case game.OVER:
-	  console.log("over…");
+    case OVER:
       endGame();
       break;
   }
   
   //Render the game
-  game.render();
+  render();
 }
 
 function loadHandler()
 { 
-  game.assetsLoaded++;
-  console.log(assetsToLoad.length);
-  console.log(game.assetsLoaded);
-  if(game.assetsLoaded === assetsToLoad.length)
+  assetsLoaded++;
+  if(assetsLoaded === assetsToLoad.length)
   {
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
-    //music.removeEventListener("canplaythrough", loadHandler, false);
-    //shootSound.removeEventListener("canplaythrough", loadHandler, false);
-    //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
-    console.log(game.assetsLoaded);
+    music.removeEventListener("canplaythrough", loadHandler, false);
+    shootSound.removeEventListener("canplaythrough", loadHandler, false);
+    explosionSound.removeEventListener("canplaythrough", loadHandler, false);
+    console.log(assetsLoaded);
     //Play the music
-    //music.play();
-    //music.volume = 0.3;
+    music.play();
+    music.volume = 0.3;
     
     //Start the game 
-    game.gameState = game.PLAYING;
+    gameState = PLAYING;
   }
 }
 
 function playGame()
 {
   //Left
-  if(game.moveLeft && !game.moveRight)
+  if(moveLeft && !moveRight)
   {
     cannon.vx = -8;
   }
   //Right
-  if(game.moveRight && !game.moveLeft)
+  if(moveRight && !moveLeft)
   {
     cannon.vx = 8;
   }
 
   //Set the cannon's velocity to zero if none of the keys are being pressed
-  if(!game.moveLeft && !game.moveRight)
+  if(!moveLeft && !moveRight)
   {
     cannon.vx = 0;
   }
 
   //Fire a missile if shoot is true
-  if(game.shoot)
+  if(shoot)
   {
     fireMissile();
-    game.shoot = false;	
+    shoot = false;	
   }
   
   //Move the cannon and keep it within the screen boundaries
@@ -254,21 +236,23 @@ function playGame()
       i--;
     }
   }
-  
-  //Add one to the alienTimer
-  game.alienTimer++;
 
-  //Make a new alien if alienTimer equals the game.alienFrequency
-  if(game.alienTimer === game.alienFrequency)
+  //Make the aliens
+
+  //Add one to the alienTimer
+  alienTimer++;
+
+  //Make a new alien if alienTimer equals the alienFrequency
+  if(alienTimer === alienFrequency)
   {
     makeAlien();
-    game.alienTimer = 0;
+    alienTimer = 0;
 
-    //Reduce game.alienFrequency by one to gradually increase
+    //Reduce alienFrequency by one to gradually increase
     //the frequency that aliens are created
-    if(game.alienFrequency > 2)
+    if(alienFrequency > 2)
     {  
-      game.alienFrequency--;
+      alienFrequency--;
     }
   }
 
@@ -287,7 +271,7 @@ function playGame()
     if(alien.y > canvas.height + alien.height)
     { 
       //End the game if an alien has reached Earth
-      game.gameState = game.OVER;
+      gameState = OVER;
     }
   }
   
@@ -309,7 +293,7 @@ function playGame()
         destroyAlien(alien);
 
         //Update the score
-        game.score++;
+        score++;
 
         //Remove the missile
         removeObject(missile, missiles);
@@ -325,12 +309,12 @@ function playGame()
   //--- The score 
 
   //Display the score
-  scoreDisplay.text = game.score;
+  scoreDisplay.text = score;
 
   //Check for the end of the game
-  if(game.score === game.scoreNeededToWin)
+  if(score === scoreNeededToWin)
   {
-    game.gameState = game.OVER;
+    gameState = OVER;
   }
 }
 
@@ -344,8 +328,8 @@ function destroyAlien(alien)
   setTimeout(removeAlien, 1000);
 
   //Play the explosion sound
-  //explosionSound.currentTime = 0;
-  //explosionSound.play();
+  explosionSound.currentTime = 0;
+  explosionSound.play();
   
   function removeAlien()
   {
@@ -357,7 +341,7 @@ function destroyAlien(alien)
 function endGame()
 {
   gameOverMessage.visible = true;
-  if(game.score < game.scoreNeededToWin)
+  if(score < scoreNeededToWin)
   {
     gameOverMessage.text = "EARTH DESTROYED!";
   }
@@ -371,9 +355,7 @@ function endGame()
 function makeAlien()
 {
   //Create the alien
-  //var alien = Object.create(alienObject);
-  var alien = new Entity("alien");
-  //alert(instanceof alien);
+  var alien = Object.create(alienObject);
   alien.sourceX = 32;
   
   //Set its y position above the screen boundary
@@ -395,7 +377,7 @@ function makeAlien()
 function fireMissile()
 { 
   //Create a missile sprite
-  var missile = new Entity();
+  var missile = Object.create(spriteObject);
   missile.sourceX = 96;
   missile.sourceWidth = 16;
   missile.sourceHeight = 16;
@@ -414,8 +396,8 @@ function fireMissile()
   missiles.push(missile);
 
   //Play the firing sound
-  //shootSound.currentTime = 0;
-  //shootSound.play();
+  shootSound.currentTime = 0;
+  shootSound.play();
 }
 
 function removeObject(objectToRemove, array) 
@@ -430,7 +412,7 @@ function removeObject(objectToRemove, array)
 function endGame()
 {
   gameOverMessage.visible = true;
-  if(game.score < game.scoreNeededToWin)
+  if(score < scoreNeededToWin)
   {
     gameOverMessage.text = "EARTH DESTROYED!";
   }
@@ -441,3 +423,42 @@ function endGame()
   }
 }
 
+function render()
+{ 
+  drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
+  
+  //Display the sprites
+  if(sprites.length !== 0)
+  {
+    for(var i = 0; i < sprites.length; i++)
+    {
+      var sprite = sprites[i];
+      drawingSurface.drawImage
+      (
+        image, 
+        sprite.sourceX, sprite.sourceY, 
+        sprite.sourceWidth, sprite.sourceHeight,
+        Math.floor(sprite.x), Math.floor(sprite.y), 
+        sprite.width, sprite.height
+      ); 
+    }
+  }
+
+  //Display game messages
+  if(messages.length !== 0)
+  {
+    for(var i = 0; i < messages.length; i++)
+	{
+	  var message = messages[i];
+	  if(message.visible)
+	  {
+	    drawingSurface.font = message.font;  
+        drawingSurface.fillStyle = message.fillStyle;
+        drawingSurface.textBaseline = message.textBaseline;
+		drawingSurface.fillText(message.text, message.x, message.y);  
+	  }
+	}
+  }
+}
+
+}());
