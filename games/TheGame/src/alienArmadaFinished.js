@@ -26,7 +26,11 @@ background.height = 320;
 sprites.push(background);
 
 //Create the cannon and center it
-var cannon = Cannon();
+var cannon = new Cannon();
+
+alert( cannon instanceof Entity);
+alert( cannon instanceof Cannon);
+
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
 
