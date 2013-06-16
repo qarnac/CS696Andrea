@@ -1,4 +1,4 @@
-function Entity(type) {
+function Entity() {
 	
 	this.sourceX = 0;
     this.sourceY = 0;
@@ -12,12 +12,14 @@ function Entity(type) {
     this.vy = 0;
     this.visible = true;
 	
+	/*
 	if( type === "alien" )
 		this.prototype = new Alien();
 	if ( type === "cannon" )
 		this.prototype = new Cannon();
 	if ( type === "map" )
 		this.prototype  = new Map();
+	*/
 				
 }
 
