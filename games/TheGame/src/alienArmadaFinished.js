@@ -71,36 +71,6 @@ assetsToLoad.push(image);
 
 var game = new Game();
 
-/*
-//Variable to count the number of assets the game needs to load
-var game.assetsLoaded = 0;
-
-//Game states
-var game.LOADING = 0
-var game.PLAYING = 1;
-var game.OVER = 2;
-var gameState = game.LOADING;
-
-//Arrow key codes
-var game.RIGHT = 39;
-var game.LEFT = 37;
-var game.SPACE = 32;
-
-//Directions
-var game.moveRight = false;
-var game.moveLeft = false;
-
-//Variables to help fire missiles
-var game.shoot = false;
-var game.spaceKeyIsDown = false;
-
-//Game variables
-var score = 0;
-var scoreNeededToWin = 60;
-var game.alienFrequency = 100;
-var game.alienTimer = 0;
-*/
-
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
 {
