@@ -131,7 +131,7 @@ function update()
       break;
     
     case game.OVER:
-      endGame();
+      game.endGame();
       break;
   }
   
@@ -312,19 +312,7 @@ function destroyAlien(alien)
   }
 }
 
-function endGame()
-{
-  gameOverMessage.visible = true;
-  if(game.score < game.scoreNeededToWin)
-  {
-    gameOverMessage.text = "EARTH DESTROYED!";
-  }
-  else
-  {
-    gameOverMessage.x = 120;
-    gameOverMessage.text = "EARTH SAVED!";
-  }
-}
+
 
 function makeAlien()
 {
@@ -383,19 +371,6 @@ function removeObject(objectToRemove, array)
   }
 }
 
-function endGame()
-{
-  gameOverMessage.visible = true;
-  if(game.score < game.scoreNeededToWin)
-  {
-    gameOverMessage.text = "EARTH DESTROYED!";
-  }
-  else
-  {
-    gameOverMessage.x = 120;
-    gameOverMessage.text = "EARTH SAVED!";
-  }
-}
 
 function render()
 { 

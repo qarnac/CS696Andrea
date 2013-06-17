@@ -36,6 +36,20 @@ function Game()
 
 }
 
+Game.prototype.endGame = function()
+{
+  gameOverMessage.visible = true;
+  if(this.score < this.scoreNeededToWin)
+  {
+    gameOverMessage.text = "EARTH DESTROYED!";
+  }
+  else
+  {
+    gameOverMessage.x = 120;
+    gameOverMessage.text = "EARTH SAVED!";
+  }
+}
+
 
 Game.prototype.render = function() 
 { 
