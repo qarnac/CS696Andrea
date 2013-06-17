@@ -69,6 +69,7 @@ assetsToLoad.push(image);
 //explosionSound.load();
 //assetsToLoad.push(explosionSound);
 
+/*
 //Variable to count the number of assets the game needs to load
 var assetsLoaded = 0;
 
@@ -96,6 +97,7 @@ var score = 0;
 var scoreNeededToWin = 60;
 var alienFrequency = 100;
 var alienTimer = 0;
+*/
 
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
