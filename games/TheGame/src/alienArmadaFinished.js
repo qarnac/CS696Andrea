@@ -78,7 +78,7 @@ var game.assetsLoaded = 0;
 //Game states
 var game.LOADING = 0
 var game.PLAYING = 1;
-var OVER = 2;
+var game.OVER = 2;
 var gameState = game.LOADING;
 
 //Arrow key codes
@@ -92,7 +92,7 @@ var game.moveLeft = false;
 
 //Variables to help fire missiles
 var game.shoot = false;
-var spaceKeyIsDown = false;
+var game.spaceKeyIsDown = false;
 
 //Game variables
 var score = 0;
@@ -115,10 +115,10 @@ window.addEventListener("keydown", function(event)
 	    break;
 	 
 	  case game.SPACE:
-	    if(!spaceKeyIsDown)
+	    if(!game.spaceKeyIsDown)
 	    {
 	      game.shoot = true;
-	      spaceKeyIsDown = true;
+	      game.spaceKeyIsDown = true;
 	    }
    }
 
@@ -137,7 +137,7 @@ window.addEventListener("keyup", function(event)
 	    break; 
 	
 	  case game.SPACE:
-	    spaceKeyIsDown = false;
+	    game.spaceKeyIsDown = false;
   }
 }, false);
 
@@ -160,7 +160,7 @@ function update()
       playGame();
       break;
     
-    case OVER:
+    case game.OVER:
       endGame();
       break;
   }
@@ -275,7 +275,7 @@ function playGame()
     if(alien.y > canvas.height + alien.height)
     { 
       //End the game if an alien has reached Earth
-      game.gameState = OVER;
+      game.gameState = game.OVER;
     }
   }
   
@@ -318,7 +318,7 @@ function playGame()
   //Check for the end of the game
   if(game.score === game.scoreNeededToWin)
   {
-    game.gameState = OVER;
+    game.gameState = game.OVER;
   }
 }
 
@@ -345,7 +345,7 @@ function destroyAlien(alien)
 function endGame()
 {
   gameOverMessage.visible = true;
-  if(score < scoreNeededToWin)
+  if(game.score < game.scoreNeededToWin)
   {
     gameOverMessage.text = "EARTH DESTROYED!";
   }
@@ -416,7 +416,7 @@ function removeObject(objectToRemove, array)
 function endGame()
 {
   gameOverMessage.visible = true;
-  if(score < scoreNeededToWin)
+  if(game.score < game.scoreNeededToWin)
   {
     gameOverMessage.text = "EARTH DESTROYED!";
   }
