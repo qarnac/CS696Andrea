@@ -14,7 +14,7 @@ var aliens = [];
 var messages = [];
 
 //Create the background
-var background = Object.create(spriteObject);
+var background = new Entity();
 background.x = 0;
 background.y = 0;
 background.sourceY = 32;
