@@ -287,7 +287,7 @@ function destroyAlien(alien)
   
   function removeAlien()
   {
-    removeObject(alien, aliens);
+    removeObject(alien, game.aliens);
     removeObject(alien, sprites);
   }
 }
