@@ -15,8 +15,7 @@ function Cannon(canvas) {
 
 Cannon.prototype = new Entity();
 
-
-Cannon.prototype.moveAction = function() {
+Cannon.prototype.moveAction = function(canvas) {
    
   //Left
   if(this.moveLeft && !this.moveRight)
@@ -37,8 +36,10 @@ Cannon.prototype.moveAction = function() {
 	console.log("cannon velocity");
     this.vx = 0;
   }
+  
+  //Move the cannon and keep it within the screen boundaries
+  this.x = Math.max(0, Math.min(this.x + this.vx, canvas.width - this.width));
 };
-
 
 Cannon.prototype.fireMissile = function(sprites){
   //Create a missile sprite
@@ -61,3 +62,4 @@ Cannon.prototype.fireMissile = function(sprites){
   this.missiles.push(this.missile);
 	
 }
+

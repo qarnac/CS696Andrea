@@ -160,25 +160,7 @@ function loadHandler()
 
 function playGame()
 {
-  cannon.moveAction();
-  /*
-  //Left
-  if(game.moveLeft && !game.moveRight)
-  {
-    cannon.vx = -8;
-  }
-  //Right
-  if(game.moveRight && !game.moveLeft)
-  {
-    cannon.vx = 8;
-  }
-
-  //Set the cannon's velocity to zero if none of the keys are being pressed
-  if(!game.moveLeft && !game.moveRight)
-  {
-    cannon.vx = 0;
-  }
-  */
+  cannon.moveAction(canvas);
   
   //Fire a missile if game.shoot is true
   if(cannon.shoot)
@@ -187,8 +169,6 @@ function playGame()
     cannon.shoot = false;	
   }
   
-  //Move the cannon and keep it within the screen boundaries
-  cannon.x = Math.max(0, Math.min(cannon.x + cannon.vx, canvas.width - cannon.width));
   
   //Move the missiles
   for(var i = 0; i < cannon.missiles.length; i++)
@@ -315,8 +295,6 @@ function destroyAlien(alien)
   }
 }
 
-
-
 function makeAlien()
 {
   //Create the alien
@@ -339,34 +317,6 @@ function makeAlien()
   aliens.push(alien);
 }
 
-/*
-function fireMissile()
-{ 
-  //Create a missile sprite
-  var missile = Object.create(spriteObject);
-  missile.sourceX = 96;
-  missile.sourceWidth = 16;
-  missile.sourceHeight = 16;
-  missile.width = 16;
-  missile.height = 16;
-  
-  //Center it over the cannon
-  missile.x = cannon.centerX() - missile.halfWidth();
-  missile.y = cannon.y - missile.height;
-  
-  //Set its speed
-  missile.vy = -8;
-  
-  //Push the missile into both the sprites and missiles arrays
-  sprites.push(missile);
-  missiles.push(missile);
-
-  //Play the firing sound
-  //game.shootSound.currentTime = 0;
-  //game.shootSound.play();
-}
-
-*/
 
 function removeObject(objectToRemove, array) 
 { 
