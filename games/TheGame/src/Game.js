@@ -60,7 +60,6 @@ Game.prototype.makeAlien = function(sprites)
   this.aliens.push(alien);
 };
 
-
 Game.prototype.alienSpawnTimer = function(sprites){
 	  
   //Add one to the game.alienTimer
@@ -80,3 +79,27 @@ Game.prototype.alienSpawnTimer = function(sprites){
     }
   }
 };
+
+
+Game.prototype.alienDropDownAndStatus = function(canvas){
+  //Loop through the aliens
+  for(var i = 0; i < this.aliens.length; i++)
+  { 
+    var alien = this.aliens[i];
+
+    if(alien.state === alien.NORMAL)
+    {
+      //Move the current alien if its state is NORMAL
+      alien.y += alien.vy;
+    }
+
+    //Check if the alien has crossed the bottom of the screen
+    if(alien.y > canvas.height + alien.height)
+    { 
+      //End the game if an alien has reached Earth
+      this.gameState = this.OVER;
+    }
+  }
+
+};
+

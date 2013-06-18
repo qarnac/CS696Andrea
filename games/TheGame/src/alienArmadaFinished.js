@@ -26,7 +26,6 @@ sprites.push(background);
 var cannon = new Cannon(canvas);
 sprites.push(cannon);
 
-
 //Create the score message
 var scoreDisplay = Object.create(messageObject);
 scoreDisplay.font = "normal bold 30px emulogic";
@@ -192,26 +191,9 @@ function playGame()
   }
 
   game.alienSpawnTimer(sprites);
-
-  //Loop through the aliens
-  for(var i = 0; i < game.aliens.length; i++)
-  { 
-    var alien = game.aliens[i];
-
-    if(alien.state === alien.NORMAL)
-    {
-      //Move the current alien if its state is NORMAL
-      alien.y += alien.vy;
-    }
-
-    //Check if the alien has crossed the bottom of the screen
-    if(alien.y > canvas.height + alien.height)
-    { 
-      //End the game if an alien has reached Earth
-      game.gameState = game.OVER;
-    }
-  }
   
+  game.alienDropDownAndStatus(canvas);
+
   //--- The collisions 
 
   //Check for a collision between the aliens and missiles
@@ -275,8 +257,6 @@ function destroyAlien(alien)
     removeObject(alien, sprites);
   }
 }
-
-
 
 
 function removeObject(objectToRemove, array) 
