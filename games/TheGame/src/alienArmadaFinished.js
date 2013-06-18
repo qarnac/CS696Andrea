@@ -6,18 +6,13 @@ var canvas = document.querySelector("canvas");
 //Create the drawing surface 
 var drawingSurface = canvas.getContext("2d");
 
-/*
+
 //Arrays to store the game objects and assets to load
 var sprites = [];
 var assetsToLoad = [];
 var missiles = [];
 var aliens = [];
 var messages = [];
-*/
-
-var game = new Game();
-
-this.missiles = [];
 
 //Create the background
 var background = new Entity();
@@ -28,19 +23,36 @@ background.sourceWidth = 480;
 background.sourceHeight = 320;
 background.width = 480;
 background.height = 320;
-game.sprites.push(background);
+sprites.push(background);
 
 //Create the cannon and center it
-var cannon = new Cannon();
+var cannon = Object.create(spriteObject);
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
-game.sprites.push(cannon);
+sprites.push(cannon);
+
+//Create the score message
+var scoreDisplay = Object.create(messageObject);
+scoreDisplay.font = "normal bold 30px emulogic";
+scoreDisplay.fillStyle = "#00FF00";
+scoreDisplay.x = 400;
+scoreDisplay.y = 10;
+messages.push(scoreDisplay);
+
+//The game over message
+var gameOverMessage = Object.create(messageObject);
+gameOverMessage.font = "normal bold 20px emulogic";
+gameOverMessage.fillStyle = "#00FF00";
+gameOverMessage.x = 70;
+gameOverMessage.y = 120;
+gameOverMessage.visible = false;
+messages.push(gameOverMessage);
 
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
 image.src = "../images/alienArmada.png";
-game.assetsToLoad.push(image);
+assetsToLoad.push(image);
 
 //Load the sounds
 //var music = document.querySelector("#music");
@@ -58,6 +70,7 @@ game.assetsToLoad.push(image);
 //explosionSound.load();
 //assetsToLoad.push(explosionSound);
 
+var game = new Game();
 
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
@@ -115,7 +128,7 @@ function update()
       break;
     
     case game.PLAYING:
-      game.playGame(canvas, cannon, missiles);
+      playGame();
       break;
     
     case game.OVER:
@@ -130,7 +143,7 @@ function update()
 function loadHandler()
 { 
   game.assetsLoaded++;
-  if(game.assetsLoaded === game.assetsToLoad.length)
+  if(game.assetsLoaded === assetsToLoad.length)
   {
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
@@ -326,7 +339,31 @@ function makeAlien()
   aliens.push(alien);
 }
 
+function fireMissile()
+{ 
+  //Create a missile sprite
+  var missile = Object.create(spriteObject);
+  missile.sourceX = 96;
+  missile.sourceWidth = 16;
+  missile.sourceHeight = 16;
+  missile.width = 16;
+  missile.height = 16;
+  
+  //Center it over the cannon
+  missile.x = cannon.centerX() - missile.halfWidth();
+  missile.y = cannon.y - missile.height;
+  
+  //Set its speed
+  missile.vy = -8;
+  
+  //Push the missile into both the sprites and missiles arrays
+  sprites.push(missile);
+  missiles.push(missile);
 
+  //Play the firing sound
+  //game.shootSound.currentTime = 0;
+  //game.shootSound.play();
+}
 
 function removeObject(objectToRemove, array) 
 { 
@@ -343,11 +380,11 @@ function render()
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
   
   //Display the sprites
-  if(game.sprites.length !== 0)
+  if(sprites.length !== 0)
   {
-    for(var i = 0; i < game.sprites.length; i++)
+    for(var i = 0; i < sprites.length; i++)
     {
-      var sprite = game.sprites[i];
+      var sprite = sprites[i];
       drawingSurface.drawImage
       (
         image, 
@@ -360,11 +397,11 @@ function render()
   }
 
   //Display game messages
-  if(game.messages.length !== 0)
+  if(messages.length !== 0)
   {
-    for(var i = 0; i < game.messages.length; i++)
+    for(var i = 0; i < messages.length; i++)
 	{
-	  var message = game.messages[i];
+	  var message = messages[i];
 	  if(message.visible)
 	  {
 	    drawingSurface.font = message.font;  
