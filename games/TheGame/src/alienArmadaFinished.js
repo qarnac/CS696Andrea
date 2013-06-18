@@ -9,7 +9,7 @@ var drawingSurface = canvas.getContext("2d");
 //Arrays to store the game objects and assets to load
 var sprites = [];
 var assetsToLoad = [];
-var missiles = [];
+//var missiles = [];
 var aliens = [];
 var messages = [];
 
@@ -183,7 +183,7 @@ function playGame()
   //Fire a missile if game.shoot is true
   if(cannon.shoot)
   {
-    fireMissile();
+    cannon.fireMissile(sprites);
     cannon.shoot = false;	
   }
   
@@ -191,9 +191,9 @@ function playGame()
   cannon.x = Math.max(0, Math.min(cannon.x + cannon.vx, canvas.width - cannon.width));
   
   //Move the missiles
-  for(var i = 0; i < missiles.length; i++)
+  for(var i = 0; i < cannon.missiles.length; i++)
   {
-    var missile = missiles[i];
+    var missile = cannon.missiles[i];
 
     //Move it up the screen
     missile.y += missile.vy;
@@ -202,7 +202,7 @@ function playGame()
     if(missile.y < 0 - missile.height)
     { 
       //Remove the missile from the missiles array
-      removeObject(missile, missiles);
+      removeObject(missile, cannon.missiles);
 
       //Remove the missile from the sprites array
       removeObject(missile, sprites);
@@ -258,9 +258,9 @@ function playGame()
   {
     var alien = aliens[i];
 
-    for(var j = 0; j < missiles.length; j++)
+    for(var j = 0; j < cannon.missiles.length; j++)
     {
-      var missile = missiles[j];
+      var missile = cannon.missiles[j];
 
       if(hitTestRectangle(missile, alien)
       && alien.state === alien.NORMAL)
@@ -272,7 +272,7 @@ function playGame()
         game.score++;
 
         //Remove the missile
-        removeObject(missile, missiles);
+        removeObject(missile, cannon.missiles);
         removeObject(missile, sprites);
 
         //Subtract 1 from the loop counter to compensate
@@ -339,6 +339,7 @@ function makeAlien()
   aliens.push(alien);
 }
 
+/*
 function fireMissile()
 { 
   //Create a missile sprite
@@ -364,6 +365,8 @@ function fireMissile()
   //game.shootSound.currentTime = 0;
   //game.shootSound.play();
 }
+
+*/
 
 function removeObject(objectToRemove, array) 
 { 

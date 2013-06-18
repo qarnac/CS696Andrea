@@ -9,6 +9,8 @@ function Cannon(canvas) {
 	//Variables to help fire missiles
 	this.shoot = false;
 	this.spaceKeyIsDown = false;
+	
+	this.missiles = [];
 }
 
 Cannon.prototype = new Entity();
@@ -37,3 +39,25 @@ Cannon.prototype.moveAction = function() {
   }
 };
 
+
+Cannon.prototype.fireMissile = function(sprites){
+  //Create a missile sprite
+  this.missile = new Entity();
+  this.missile.sourceX = 96;
+  this.missile.sourceWidth = 16;
+  this.missile.sourceHeight = 16;
+  this.missile.width = 16;
+  this.missile.height = 16;
+  
+  //Center it over the cannon
+  this.missile.x = this.centerX() - this.missile.halfWidth();
+  this.missile.y = this.y - this.missile.height;
+  
+  //Set its speed
+  this.missile.vy = -8;
+  
+  //Push the missile into both the sprites and missiles arrays
+  sprites.push(this.missile);
+  this.missiles.push(this.missile);
+	
+}
