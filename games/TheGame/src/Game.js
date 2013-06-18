@@ -36,5 +36,47 @@ Game.prototype.endGame = function(gameOverMessage)
     gameOverMessage.x = 120;
     gameOverMessage.text = "EARTH SAVED!";
   }
-}
+};
 
+Game.prototype.makeAlien = function(sprites)
+{
+  //Create the alien
+  var alien = Object.create(alienObject);
+  alien.sourceX = 32;
+  
+  //Set its y position above the screen boundary
+  alien.y = 0 - alien.height;
+  
+  //Assign the alien a random x position
+  var randomPosition = Math.floor(Math.random() * 15);
+  //var randomPosition = Math.floor(Math.random() * (canvas.width / alien.width));
+  alien.x = randomPosition * alien.width;
+  
+  //Set its speed
+  alien.vy = 1;
+  
+  //Push the alien into both the sprites and aliens arrays
+  sprites.push(alien);
+  this.aliens.push(alien);
+};
+
+
+Game.prototype.alienSpawnTimer = function(sprites){
+	  
+  //Add one to the game.alienTimer
+  this.alienTimer++;
+
+  //Make a new alien if game.alienTimer equals the game.alienFrequency
+  if(this.alienTimer === this.alienFrequency)
+  {
+    this.makeAlien(sprites);
+    this.alienTimer = 0;
+
+    //Reduce game.alienFrequency by one to gradually increase
+    //the frequency that aliens are created
+    if(this.alienFrequency > 2)
+    {  
+      this.alienFrequency--;
+    }
+  }
+};
