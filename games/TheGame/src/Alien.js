@@ -10,3 +10,4 @@ Alien.prototype = new Entity();
 Alien.prototype.update = function(){
 	this.sourceX = this.state * this.width;
 };
+

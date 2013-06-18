@@ -237,7 +237,6 @@ function playGame()
   }
 }
 
-
 function destroyAlien(alien)
 {
   //Change the alien's state and update the object 

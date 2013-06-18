@@ -102,3 +102,25 @@ Game.prototype.alienDropDownAndStatus = function(canvas){
 
 };
 
+Game.prototype.destroyAlien = function(alien, sprites){
+  //Change the alien's state and update the object 
+  alien.state = alien.EXPLODED;
+  alien.update();  
+  
+  //Remove the alien after 1 second
+  setTimeout(removeAlien, 1000);
+
+  //Play the explosion sound
+  //explosionSound.currentTime = 0;
+  //explosionSound.play();
+  
+  function removeAlien()
+  {
+    removeObject(alien, game.aliens);
+    removeObject(alien, sprites);
+  }
+};
+
+
+
+
