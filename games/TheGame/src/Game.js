@@ -1,5 +1,7 @@
 function Game()
 {
+	this.aliens = [];
+
 	//Game variables
 	this.score = 0;
 	this.scoreNeededToWin = 60;
@@ -19,7 +21,6 @@ function Game()
 	this.RIGHT = 39;
 	this.LEFT = 37;
 	this.SPACE = 32;
-
 }
 
 // Integrated

@@ -9,8 +9,7 @@ var drawingSurface = canvas.getContext("2d");
 //Arrays to store the game objects and assets to load
 var sprites = [];
 var assetsToLoad = [];
-//var missiles = [];
-var aliens = [];
+//var aliens = [];
 var messages = [];
 
 //Create the background
@@ -211,9 +210,9 @@ function playGame()
   }
 
   //Loop through the aliens
-  for(var i = 0; i < aliens.length; i++)
+  for(var i = 0; i < game.aliens.length; i++)
   { 
-    var alien = aliens[i];
+    var alien = game.aliens[i];
 
     if(alien.state === alien.NORMAL)
     {
@@ -232,9 +231,9 @@ function playGame()
   //--- The collisions 
 
   //Check for a collision between the aliens and missiles
-  for(var i = 0; i < aliens.length; i++)
+  for(var i = 0; i < game.aliens.length; i++)
   {
-    var alien = aliens[i];
+    var alien = game.aliens[i];
 
     for(var j = 0; j < cannon.missiles.length; j++)
     {
@@ -312,7 +311,7 @@ function makeAlien()
   
   //Push the alien into both the sprites and aliens arrays
   sprites.push(alien);
-  aliens.push(alien);
+  game.aliens.push(alien);
 }
 
 
