@@ -6,7 +6,6 @@ var canvas = document.querySelector("canvas");
 //Create the drawing surface 
 var drawingSurface = canvas.getContext("2d");
 
-
 //Arrays to store the game objects and assets to load
 var sprites = [];
 var assetsToLoad = [];
@@ -76,11 +75,11 @@ window.addEventListener("keydown", function(event)
   switch(event.keyCode)
   {
 	  case game.LEFT:
-	    game.moveLeft = true;
+	    cannon.moveLeft = true;
 	    break;  
 	    
 	  case game.RIGHT:
-	    game.moveRight = true;
+	    cannon.moveRight = true;
 	    break;
 	 
 	  case game.SPACE:
@@ -98,11 +97,11 @@ window.addEventListener("keyup", function(event)
   switch(event.keyCode)
   {	    
 	  case game.LEFT:
-	    game.moveLeft = false;
+	    cannon.moveLeft = false;
 	    break;  
 	    
 	  case game.RIGHT:
-	    game.moveRight = false;
+	    cannon.moveRight = false;
 	    break; 
 	
 	  case game.SPACE:
@@ -161,6 +160,8 @@ function loadHandler()
 
 function playGame()
 {
+  cannon.moveAction();
+  /*
   //Left
   if(game.moveLeft && !game.moveRight)
   {
@@ -177,7 +178,8 @@ function playGame()
   {
     cannon.vx = 0;
   }
-
+  */
+  
   //Fire a missile if game.shoot is true
   if(game.shoot)
   {

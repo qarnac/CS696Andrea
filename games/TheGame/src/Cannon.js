@@ -10,7 +10,26 @@ function Cannon(canvas) {
 Cannon.prototype = new Entity();
 
 
-Cannon.prototype.getName = function() {
-	return this.name;
+Cannon.prototype.moveAction = function() {
+   
+  //Left
+  if(this.moveLeft && !this.moveRight)
+  {
+	console.log("left");
+    this.vx = -8;
+  }
+  //Right
+  if(this.moveRight && !this.moveLeft)
+  {
+	console.log("right");
+    this.vx = 8;
+  }
+
+  //Set the cannon's velocity to zero if none of the keys are being pressed
+  if(!this.moveLeft && !this.moveRight)
+  {
+	console.log("cannon velocity");
+    this.vx = 0;
+  }
 };
 
