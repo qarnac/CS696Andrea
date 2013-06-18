@@ -112,9 +112,9 @@ window.addEventListener("keyup", function(event)
 }, false);
 
 //Start the game animation loop
-update();
+update(game);
 
-function update()
+function update(game)
 { 
   //The animation loop
   requestAnimationFrame(update, canvas);
@@ -127,11 +127,11 @@ function update()
       break;
     
     case game.PLAYING:
-      playGame();
+      game.playGame();
       break;
     
     case game.OVER:
-      game.endGame();
+      game.endGame(gameOverMessage);
       break;
   }
   
@@ -159,6 +159,7 @@ function loadHandler()
   }
 }
 
+/*
 function playGame()
 {
   //Left
@@ -291,6 +292,7 @@ function playGame()
     game.gameState = game.OVER;
   }
 }
+*/
 
 function destroyAlien(alien)
 {
