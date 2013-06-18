@@ -85,8 +85,8 @@ window.addEventListener("keydown", function(event)
 	  case game.SPACE:
 	    if(!game.spaceKeyIsDown)
 	    {
-	      game.shoot = true;
-	      game.spaceKeyIsDown = true;
+	      cannon.shoot = true;
+	      cannon.spaceKeyIsDown = true;
 	    }
    }
 
@@ -105,7 +105,7 @@ window.addEventListener("keyup", function(event)
 	    break; 
 	
 	  case game.SPACE:
-	    game.spaceKeyIsDown = false;
+	    cannon.spaceKeyIsDown = false;
   }
 }, false);
 
@@ -181,10 +181,10 @@ function playGame()
   */
   
   //Fire a missile if game.shoot is true
-  if(game.shoot)
+  if(cannon.shoot)
   {
     fireMissile();
-    game.shoot = false;	
+    cannon.shoot = false;	
   }
   
   //Move the cannon and keep it within the screen boundaries

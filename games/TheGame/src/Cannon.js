@@ -5,6 +5,10 @@ function Cannon(canvas) {
 	//Cannon Directions
 	this.moveRight = false;
 	this.moveLeft = false;
+	
+	//Variables to help fire missiles
+	this.shoot = false;
+	this.spaceKeyIsDown = false;
 }
 
 Cannon.prototype = new Entity();
