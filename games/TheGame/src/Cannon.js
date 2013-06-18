@@ -62,4 +62,4 @@ Cannon.prototype.fireMissile = function(sprites){
   this.missiles.push(this.missile);
   
   this.shoot = false;
-}
+};

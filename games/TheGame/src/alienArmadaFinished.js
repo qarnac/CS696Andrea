@@ -151,7 +151,7 @@ function loadHandler()
     //Play the music
     //music.play();
     //music.volume = 0.3;
-    
+
     //Start the game 
     game.gameState = game.PLAYING;
   }
