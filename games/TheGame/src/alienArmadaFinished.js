@@ -25,11 +25,9 @@ background.width = 480;
 background.height = 320;
 sprites.push(background);
 
-//Create the cannon and center it
-var cannon = Object.create(spriteObject);
-cannon.x = canvas.width / 2 - cannon.width / 2;
-cannon.y = 280;
+var cannon = new Cannon(canvas);
 sprites.push(cannon);
+
 
 //Create the score message
 var scoreDisplay = Object.create(messageObject);

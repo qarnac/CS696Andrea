@@ -39,26 +39,10 @@ function Game()
 	this.scoreNeededToWin = 60;
 	this.alienFrequency = 100;
 	this.alienTimer = 0;
-	
-	//Create the score message
-	this.scoreDisplay = Object.create(messageObject);
-	this.scoreDisplay.font = "normal bold 30px emulogic";
-	this.scoreDisplay.fillStyle = "#00FF00";
-	this.scoreDisplay.x = 400;
-	this.scoreDisplay.y = 10;
-	this.messages.push(this.scoreDisplay);
-
-	//The game over message
-	this.gameOverMessage = Object.create(messageObject);
-	this.gameOverMessage.font = "normal bold 20px emulogic";
-	this.gameOverMessage.fillStyle = "#00FF00";
-	this.gameOverMessage.x = 70;
-	this.gameOverMessage.y = 120;
-	this.gameOverMessage.visible = false;
-	this.messages.push(this.gameOverMessage);
 
 }
 
+// Integrated
 Game.prototype.endGame = function(gameOverMessage)
 {
   gameOverMessage.visible = true;
@@ -73,7 +57,7 @@ Game.prototype.endGame = function(gameOverMessage)
   }
 }
 
-
+/* Not integrated yet
 Game.prototype.render = function() 
 { 
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
@@ -111,5 +95,5 @@ Game.prototype.render = function()
 	}
   }
 }
-
+*/
 
