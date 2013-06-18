@@ -1,9 +1,8 @@
 function Alien()
 {
-	this.alienObject = new Entity();
-	this.alienObject.NORMAL = 1;
-	this.alienObject.EXPLODED = 2;
-	this.alienObject.state = alienObject.NORMAL;
+	this.NORMAL = 1;
+	this.EXPLODED = 2;
+	this.state = this.NORMAL;
 }
 
 Alien.prototype = new Entity();

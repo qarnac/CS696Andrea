@@ -41,7 +41,7 @@ Game.prototype.endGame = function(gameOverMessage)
 Game.prototype.makeAlien = function(sprites)
 {
   //Create the alien
-  var alien = Object.create(alienObject);
+  var alien = new Alien();
   alien.sourceX = 32;
   
   //Set its y position above the screen boundary
@@ -79,7 +79,6 @@ Game.prototype.alienSpawnTimer = function(sprites){
     }
   }
 };
-
 
 Game.prototype.alienDropDownAndStatus = function(canvas){
   //Loop through the aliens
