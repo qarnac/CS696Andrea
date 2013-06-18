@@ -165,12 +165,11 @@ function playGame()
   //Fire a missile if game.shoot is true
   if(cannon.shoot)
   {
-    cannon.fireMissile(sprites);
-    cannon.shoot = false;	
+    cannon.fireMissile(sprites);	
   }
   
   
-  //Move the missiles
+  //Move the missiles THIS IS PART OF GAME CLASS
   for(var i = 0; i < cannon.missiles.length; i++)
   {
     var missile = cannon.missiles[i];
@@ -194,7 +193,6 @@ function playGame()
   }
 
   //Make the aliens
-
   //Add one to the game.alienTimer
   game.alienTimer++;
 

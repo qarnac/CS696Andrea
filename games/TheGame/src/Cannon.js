@@ -60,6 +60,6 @@ Cannon.prototype.fireMissile = function(sprites){
   //Push the missile into both the sprites and missiles arrays
   sprites.push(this.missile);
   this.missiles.push(this.missile);
-	
+  
+  this.shoot = false;
 }
-
