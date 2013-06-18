@@ -5,6 +5,12 @@ function Game()
 	this.scoreNeededToWin = 60;
 	this.alienFrequency = 100;
 	this.alienTimer = 0;
+	
+	//Arrays to store the game objects and assets to load
+	this.sprites = [];
+	this.assetsToLoad = [];
+	this.aliens = [];
+	this.messages = [];
 
 	//Variable to count the number of assets the game needs to load
 	this.assetsLoaded = 0;
@@ -33,6 +39,23 @@ function Game()
 	this.scoreNeededToWin = 60;
 	this.alienFrequency = 100;
 	this.alienTimer = 0;
+	
+	//Create the score message
+	this.scoreDisplay = Object.create(messageObject);
+	this.scoreDisplay.font = "normal bold 30px emulogic";
+	this.scoreDisplay.fillStyle = "#00FF00";
+	this.scoreDisplay.x = 400;
+	this.scoreDisplay.y = 10;
+	this.messages.push(this.scoreDisplay);
+
+	//The game over message
+	this.gameOverMessage = Object.create(messageObject);
+	this.gameOverMessage.font = "normal bold 20px emulogic";
+	this.gameOverMessage.fillStyle = "#00FF00";
+	this.gameOverMessage.x = 70;
+	this.gameOverMessage.y = 120;
+	this.gameOverMessage.visible = false;
+	this.messages.push(this.gameOverMessage);
 
 }
 
@@ -89,30 +112,31 @@ Game.prototype.render = function()
   }
 }
 
-Game.prototype.playGame = function() 
+
+Game.prototype.playGame = function(canvas, cannon, missiles) 
 {
   //Left
-  if(game.moveLeft && !game.moveRight)
+  if(this.moveLeft && !this.moveRight)
   {
     cannon.vx = -8;
   }
   //Right
-  if(game.moveRight && !game.moveLeft)
+  if(this.moveRight && !this.moveLeft)
   {
     cannon.vx = 8;
   }
 
   //Set the cannon's velocity to zero if none of the keys are being pressed
-  if(!game.moveLeft && !game.moveRight)
+  if(!this.moveLeft && !this.moveRight)
   {
     cannon.vx = 0;
   }
 
   //Fire a missile if game.shoot is true
-  if(game.shoot)
+  if(this.shoot)
   {
-    fireMissile();
-    game.shoot = false;	
+    //fireMissile();
+    this.shoot = false;	
   }
   
   //Move the cannon and keep it within the screen boundaries
@@ -144,26 +168,26 @@ Game.prototype.playGame = function()
   //Make the aliens
 
   //Add one to the game.alienTimer
-  game.alienTimer++;
+  this.alienTimer++;
 
   //Make a new alien if game.alienTimer equals the game.alienFrequency
-  if(game.alienTimer === game.alienFrequency)
+  if(this.alienTimer === this.alienFrequency)
   {
     makeAlien();
-    game.alienTimer = 0;
+    this.alienTimer = 0;
 
     //Reduce game.alienFrequency by one to gradually increase
     //the frequency that aliens are created
-    if(game.alienFrequency > 2)
+    if(this.alienFrequency > 2)
     {  
-      game.alienFrequency--;
+      this.alienFrequency--;
     }
   }
 
   //Loop through the aliens
-  for(var i = 0; i < aliens.length; i++)
+  for(var i = 0; i < this.aliens.length; i++)
   { 
-    var alien = aliens[i];
+    var alien = this.aliens[i];
 
     if(alien.state === alien.NORMAL)
     {
@@ -175,16 +199,16 @@ Game.prototype.playGame = function()
     if(alien.y > canvas.height + alien.height)
     { 
       //End the game if an alien has reached Earth
-      game.gameState = game.OVER;
+      this.gameState = game.OVER;
     }
   }
   
   //--- The collisions 
 
   //Check for a collision between the aliens and missiles
-  for(var i = 0; i < aliens.length; i++)
+  for(var i = 0; i < this.aliens.length; i++)
   {
-    var alien = aliens[i];
+    var alien = this.aliens[i];
 
     for(var j = 0; j < missiles.length; j++)
     {
@@ -197,7 +221,7 @@ Game.prototype.playGame = function()
         destroyAlien(alien);
 
         //Update the score
-        game.score++;
+        this.score++;
 
         //Remove the missile
         removeObject(missile, missiles);
@@ -213,11 +237,11 @@ Game.prototype.playGame = function()
   //--- The score 
 
   //Display the score
-  scoreDisplay.text = game.score;
+  this.scoreDisplay.text = this.score;
 
   //Check for the end of the game
-  if(game.score === game.scoreNeededToWin)
+  if(this.score === this.scoreNeededToWin)
   {
-    game.gameState = game.OVER;
+    this.gameState = this.OVER;
   }
 }

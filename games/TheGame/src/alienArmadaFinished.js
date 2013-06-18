@@ -6,12 +6,18 @@ var canvas = document.querySelector("canvas");
 //Create the drawing surface 
 var drawingSurface = canvas.getContext("2d");
 
+/*
 //Arrays to store the game objects and assets to load
 var sprites = [];
 var assetsToLoad = [];
 var missiles = [];
 var aliens = [];
 var messages = [];
+*/
+
+var game = new Game();
+
+this.missiles = [];
 
 //Create the background
 var background = new Entity();
@@ -22,36 +28,19 @@ background.sourceWidth = 480;
 background.sourceHeight = 320;
 background.width = 480;
 background.height = 320;
-sprites.push(background);
+game.sprites.push(background);
 
 //Create the cannon and center it
 var cannon = new Cannon();
 cannon.x = canvas.width / 2 - cannon.width / 2;
 cannon.y = 280;
-sprites.push(cannon);
-
-//Create the score message
-var scoreDisplay = Object.create(messageObject);
-scoreDisplay.font = "normal bold 30px emulogic";
-scoreDisplay.fillStyle = "#00FF00";
-scoreDisplay.x = 400;
-scoreDisplay.y = 10;
-messages.push(scoreDisplay);
-
-//The game over message
-var gameOverMessage = Object.create(messageObject);
-gameOverMessage.font = "normal bold 20px emulogic";
-gameOverMessage.fillStyle = "#00FF00";
-gameOverMessage.x = 70;
-gameOverMessage.y = 120;
-gameOverMessage.visible = false;
-messages.push(gameOverMessage);
+game.sprites.push(cannon);
 
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
 image.src = "../images/alienArmada.png";
-assetsToLoad.push(image);
+game.assetsToLoad.push(image);
 
 //Load the sounds
 //var music = document.querySelector("#music");
@@ -69,7 +58,6 @@ assetsToLoad.push(image);
 //explosionSound.load();
 //assetsToLoad.push(explosionSound);
 
-var game = new Game();
 
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
@@ -112,9 +100,9 @@ window.addEventListener("keyup", function(event)
 }, false);
 
 //Start the game animation loop
-update(game);
+update();
 
-function update(game)
+function update()
 { 
   //The animation loop
   requestAnimationFrame(update, canvas);
@@ -127,7 +115,7 @@ function update(game)
       break;
     
     case game.PLAYING:
-      game.playGame();
+      game.playGame(canvas, cannon, missiles);
       break;
     
     case game.OVER:
@@ -142,7 +130,7 @@ function update(game)
 function loadHandler()
 { 
   game.assetsLoaded++;
-  if(game.assetsLoaded === assetsToLoad.length)
+  if(game.assetsLoaded === game.assetsToLoad.length)
   {
     //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
@@ -159,7 +147,7 @@ function loadHandler()
   }
 }
 
-/*
+
 function playGame()
 {
   //Left
@@ -292,7 +280,7 @@ function playGame()
     game.gameState = game.OVER;
   }
 }
-*/
+
 
 function destroyAlien(alien)
 {
@@ -338,31 +326,7 @@ function makeAlien()
   aliens.push(alien);
 }
 
-function fireMissile()
-{ 
-  //Create a missile sprite
-  var missile = Object.create(spriteObject);
-  missile.sourceX = 96;
-  missile.sourceWidth = 16;
-  missile.sourceHeight = 16;
-  missile.width = 16;
-  missile.height = 16;
-  
-  //Center it over the cannon
-  missile.x = cannon.centerX() - missile.halfWidth();
-  missile.y = cannon.y - missile.height;
-  
-  //Set its speed
-  missile.vy = -8;
-  
-  //Push the missile into both the sprites and missiles arrays
-  sprites.push(missile);
-  missiles.push(missile);
 
-  //Play the firing sound
-  //game.shootSound.currentTime = 0;
-  //game.shootSound.play();
-}
 
 function removeObject(objectToRemove, array) 
 { 
@@ -379,11 +343,11 @@ function render()
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
   
   //Display the sprites
-  if(sprites.length !== 0)
+  if(game.sprites.length !== 0)
   {
-    for(var i = 0; i < sprites.length; i++)
+    for(var i = 0; i < game.sprites.length; i++)
     {
-      var sprite = sprites[i];
+      var sprite = game.sprites[i];
       drawingSurface.drawImage
       (
         image, 
@@ -396,11 +360,11 @@ function render()
   }
 
   //Display game messages
-  if(messages.length !== 0)
+  if(game.messages.length !== 0)
   {
-    for(var i = 0; i < messages.length; i++)
+    for(var i = 0; i < game.messages.length; i++)
 	{
-	  var message = messages[i];
+	  var message = game.messages[i];
 	  if(message.visible)
 	  {
 	    drawingSurface.font = message.font;  
