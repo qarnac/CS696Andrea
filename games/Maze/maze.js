@@ -1,3 +1,5 @@
+
+
 //The canvas
 var canvas = document.querySelector("canvas"); 
 var drawingSurface = canvas.getContext("2d");
@@ -82,11 +84,22 @@ var assetsLoaded = 0;
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "./images/timeBombPanic.png";
+image.src = "../images/timeBombPanic.png";
 assetsToLoad.push(image);
 
 //Game variables
 var bombsDefused = 0;
+
+//The game timer
+gameTimer.time = 30;
+gameTimer.start();
+
+//Game states
+var LOADING = 0;
+var BUILD_MAP = 1;
+var PLAYING = 2;
+var OVER = 3;
+var gameState = LOADING;
 
 //--- The gameWorld object
 var gameWorld = 
@@ -480,5 +493,69 @@ function endGame()
   else
   {
     gameOverMessage.text = "You Lost!";
+  }
+}
+
+function render()
+{ 
+
+  //Clear the drawing surface
+  drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
+  
+  //Position the gameWorld inside the camera
+  drawingSurface.save();
+  drawingSurface.translate(-camera.x, -camera.y);
+  
+  //Display the sprites in the gameWorld
+  if(sprites.length !== 0)
+  {
+    for(var i = 0; i < sprites.length; i++)
+    {
+      var sprite = sprites[i];
+	     
+      //display the scrolling sprites
+      if(sprite.visible && sprite.scrollable)
+      {
+        drawingSurface.drawImage
+        (
+          image, 
+          sprite.sourceX, sprite.sourceY, 
+          sprite.sourceWidth, sprite.sourceHeight,
+          Math.floor(sprite.x), Math.floor(sprite.y), 
+          sprite.width, sprite.height
+        ); 
+      }
+	     
+      //display the non-scrolling sprites
+      if(sprite.visible && !sprite.scrollable)
+      {
+        drawingSurface.drawImage
+        (
+          image, 
+          sprite.sourceX, sprite.sourceY, 
+          sprite.sourceWidth, sprite.sourceHeight,
+          Math.floor(camera.x + sprite.x), Math.floor(camera.y + sprite.y), 
+          sprite.width, sprite.height
+        ); 
+      }
+    }
+  }
+  
+  drawingSurface.restore();
+  
+  //Display the game messages
+  if(messages.length !== 0)
+  {
+    for(var i = 0; i < messages.length; i++)
+	{
+	  var message = messages[i];
+	  if(message.visible)
+	  {
+        drawingSurface.font = message.font;  
+        drawingSurface.fillStyle = message.fillStyle;
+        drawingSurface.textBaseline = message.textBaseline;
+        drawingSurface.fillText(message.text, message.x, message.y);  
+	   }
+	}
   }
 }
