@@ -84,7 +84,7 @@ var assetsLoaded = 0;
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "../images/timeBombPanic.png";
+image.src = "./images/timeBombPanic.png";
 assetsToLoad.push(image);
 
 //Game variables
@@ -407,7 +407,8 @@ function playGame()
   {
     blockRectangle(alien, boxes[i]);
   }
-    
+  
+  
   //Collisions with bombs
   for(var i = 0; i < bombs.length; i++)
   {
@@ -427,6 +428,7 @@ function playGame()
       }
     }
   }
+  
   
   //Display the gameTimer.
   //This modification adds an extra "0" to the time
