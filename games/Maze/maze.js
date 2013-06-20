@@ -43,3 +43,47 @@ var gameObjects =
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
+
+
+//Map code
+var EMPTY = 0;
+var FLOOR = 1;
+var BOX = 2;
+var WALL = 3;
+var ALIEN = 4;
+var BOMB = 5;
+
+//The size of each tile cell
+var SIZE = 64;
+
+//Sprites we need to access by name
+var alien = null;
+var timeDisplay = null;
+var gameOverDisplay = null;
+var gameOverMessage = null;
+var timerMessage = null;
+
+//The number of rows and columns
+var ROWS = map.length;
+var COLUMNS = map[0].length;
+
+//The number of columns on the tilesheet
+var tilesheetColumns = 5;
+
+//Arrays to store the game objects
+var sprites = [];
+var messages = [];
+var boxes = [];
+var bombs = [];
+
+var assetsToLoad = [];
+var assetsLoaded = 0;
+
+//Load the tilesheet image
+var image = new Image();
+image.addEventListener("load", loadHandler, false);
+image.src = "../images/timeBombPanic.png";
+assetsToLoad.push(image);
+
+//Game variables
+var bombsDefused = 0;
