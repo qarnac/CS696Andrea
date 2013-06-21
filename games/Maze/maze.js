@@ -7,6 +7,7 @@ var drawingSurface = canvas.getContext("2d");
 //Game Level Maps
 //Arrays to store the level maps
 var levelMaps = [];
+var gameLives = 4;
 var levelGameObjects = [];
 
 //A level counter
@@ -301,6 +302,14 @@ function update()
       createOtherSprites();
       gameState = PLAYING;
       break;
+	  
+	case RESTART:
+	  buildMap(levelMaps[levelCounter]);
+      buildMap(levelGameObjects[levelCounter]);
+      createOtherSprites();
+	  gameState = PLAYING();
+	  gameLives--;
+	  break;
     
     case PLAYING:
       playGame();
@@ -898,3 +907,4 @@ function render()
 }
 
 }());
+
