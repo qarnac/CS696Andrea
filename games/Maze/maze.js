@@ -268,6 +268,9 @@ window.addEventListener("keydown", function(event)
 	  {
 		invisibility = true;
 		invisibilityTimer.start();
+		alien.sourceX = 240;
+		alien.sourceY = 64;
+		
 		console.log('invisibility activated');  
 	  }
 	  
@@ -486,6 +489,8 @@ function buildMap(levelMap)
             star.y = row * SIZE + 8;
             stars.push(star);
             sprites.push(star);
+			console.log("star x =" + tilesheetX);
+			console.log("star y =" + tilesheetY);
             break;
             
           case ALIEN:
@@ -616,6 +621,8 @@ function playGame()
 	invisibilityTimer.reset();
 	invisibilityTimer.time = 5;
 	console.log("time reset " + invisibilityTimer.time);
+	alien.sourceX = 0;
+	alien.sourceY = 64;
 	invisibility = false;
   }
   
