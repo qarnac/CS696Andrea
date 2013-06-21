@@ -231,7 +231,7 @@ var UP = 38;
 var DOWN = 40;
 var RIGHT = 39;
 var LEFT = 37;
-var SPACE = 32;
+var ENTER = 13;
 
 //Directions
 var moveUp = false;
@@ -260,17 +260,12 @@ window.addEventListener("keydown", function(event)
       moveRight = true;
       break; 
 	  
-	case SPACE:
+	case ENTER:
 	  if( invisibility === false)
 	  {
 		  invisibility = true;
 		  console.log('invisibility activated');  
 	  }
-	  else 
-	  {
-	     invisibility = false;
-		 console.log('invisibility deactivated');  
-      }
 	  break;
 	  
   }
@@ -609,20 +604,25 @@ function playGame()
       }    
     }
   }
-   
-  //Check for collisions with monsters
-  for(var i = 0; i < monsters.length; i++)
-  { 
-    var monster = monsters[i];
-    if(hitTestCircle(alien, monster))
-    {
-	  if(gameLives != 0)
-	  {
-		gameState = RESTART;
+
+  if( invisibility === false)
+  {
+	  //Check for collisions with monsters
+	  for(var i = 0; i < monsters.length; i++)
+	  { 
+		var monster = monsters[i];
+		
+		
+		if(hitTestCircle(alien, monster))
+		{
+		  if(gameLives != 0)
+		  {
+			gameState = RESTART;
+		  }
+		  else
+			gameState = OVER;
+		}
 	  }
-	  else
-		gameState = OVER;
-    }
   }
   
   //The monsters
