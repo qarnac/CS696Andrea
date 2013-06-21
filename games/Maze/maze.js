@@ -182,6 +182,7 @@ var BUILD_MAP = 1;
 var PLAYING = 2;
 var OVER = 3;
 var LEVEL_COMPLETE = 4;
+var RESTART = 5;
 var gameState = LOADING;
 
 //--- The gameWorld object
