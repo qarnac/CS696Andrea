@@ -14,6 +14,9 @@ var levelGameObjects = [];
 //A level counter
 var levelCounter = 0;
 
+//The game timer
+invisibilityTimer.time = 5;
+
 //A timer to help delay the change time between levels
 var levelChangeTimer = 0;
 
@@ -264,6 +267,7 @@ window.addEventListener("keydown", function(event)
 	  if( invisibility === false)
 	  {
 		invisibility = true;
+		invisibilityTimer.start();
 		console.log('invisibility activated');  
 	  }
 	  
@@ -605,6 +609,16 @@ function playGame()
       }    
     }
   }
+  
+  if(invisibilityTimer.time === 0)
+  {
+    invisibilityTimer.stop();
+	invisibilityTimer.reset();
+	invisibilityTimer.time = 5;
+	console.log("time reset " + invisibilityTimer.time);
+	invisibility = false;
+  }
+  
 
   if( invisibility === false)
   {
