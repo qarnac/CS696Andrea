@@ -263,9 +263,10 @@ window.addEventListener("keydown", function(event)
 	case ENTER:
 	  if( invisibility === false)
 	  {
-		  invisibility = true;
-		  console.log('invisibility activated');  
+		invisibility = true;
+		console.log('invisibility activated');  
 	  }
+	  
 	  break;
 	  
   }
