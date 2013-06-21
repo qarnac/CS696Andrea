@@ -8,6 +8,7 @@ var drawingSurface = canvas.getContext("2d");
 //Arrays to store the level maps
 var levelMaps = [];
 var gameLives = 4;
+var invisibility = false;
 var levelGameObjects = [];
 
 //A level counter
@@ -230,6 +231,7 @@ var UP = 38;
 var DOWN = 40;
 var RIGHT = 39;
 var LEFT = 37;
+var SPACE = 32;
 
 //Directions
 var moveUp = false;
@@ -257,6 +259,20 @@ window.addEventListener("keydown", function(event)
     case RIGHT:
       moveRight = true;
       break; 
+	  
+	case SPACE:
+	  if( invisibility === false)
+	  {
+		  invisibility = true;
+		  console.log('invisibility activated');  
+	  }
+	  else 
+	  {
+	     invisibility = false;
+		 console.log('invisibility deactivated');  
+      }
+	  break;
+	  
   }
 }, false);
 
