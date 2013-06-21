@@ -165,7 +165,7 @@ var assetsLoaded = 0;
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "../images/monsterMayhem.png";
+image.src = "./images/monsterMayhem.png";
 assetsToLoad.push(image);
 
 //The number of columns on the tilesheet
