@@ -34,42 +34,31 @@ var spriteObject =
   },
 };
 
-//--- The message object
+//--- The monster object
 
-var messageObject =
-{
-  x: 0,
-  y: 0,
-  visible: true,
-  text: "Message",
-  font: "normal bold 20px Helvetica",
-  fillStyle: "red",
-  textBaseline: "top"
+monsterObject = Object.create(spriteObject);
+monsterObject.sourceX = 128;
+
+//The monster's states
+monsterObject.NORMAL = [2,0];
+monsterObject.SCARED = [2,1];
+monsterObject.state = monsterObject.NORMAL;
+   
+monsterObject.update = function()
+{ 
+  this.sourceX = this.state[0] * this.width;
+  this.sourceY = this.state[1] * this.height;
 };
 
-//--- The gameTimer object
+//The monster's allowed speed
+monsterObject.speed = 1;
 
-var gameTimer =
-{
-  time: 0,
-  interval: undefined,
-  
-  start: function()
-  {
-    var self = this;
-		this.interval = setInterval(function(){self.tick();}, 1000);
-  },
-  tick: function()
-  {
-    this.time--;
-  },
-  stop: function()
-  {
-    clearInterval(this.interval);
-  },
-  reset: function()
-  {
-    this.time = 0;
-  }
-};
-
+//Properties to help the monster change direction
+monsterObject.NONE = 0;
+monsterObject.UP = 1;
+monsterObject.DOWN = 2;
+monsterObject.LEFT = 3;
+monsterObject.RIGHT = 4;
+monsterObject.validDirections = [];
+monsterObject.direction = monsterObject.NONE;
+monsterObject.hunt = false;
