@@ -308,7 +308,7 @@ function update()
 	  buildMap(levelMaps[levelCounter]);
       buildMap(levelGameObjects[levelCounter]);
       createOtherSprites();
-	  gameState = PLAYING();
+	  gameState = PLAYING;
 	  gameLives--;
 	  break;
     
@@ -589,7 +589,10 @@ function playGame()
     var monster = monsters[i];
     if(hitTestCircle(alien, monster))
     {
-      gameState = OVER;
+	  if(gameLives != 0)
+		gameState = RESTART;
+	  else
+		gameState = OVER;
     }
   }
   
