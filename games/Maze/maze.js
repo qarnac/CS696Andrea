@@ -305,9 +305,7 @@ function update()
       break;
 	  
 	case RESTART:
-	  buildMap(levelMaps[levelCounter]);
-      buildMap(levelGameObjects[levelCounter]);
-      createOtherSprites();
+	  restartAlienLocation(levelMaps[levelCounter]);
 	  gameState = PLAYING;
 	  gameLives--;
 	  break;
@@ -395,6 +393,14 @@ function loadHandler()
   }
 }
 
+function restartAlienLocation()
+{
+	alien.sourceX = 0;
+	alien.sourceY = 64;            
+	alien.x = 448;
+	alien.y = 512;
+}
+
 function buildMap(levelMap)
 {
   for(var row = 0; row < ROWS; row++) 
@@ -445,6 +451,7 @@ function buildMap(levelMap)
             monster.sourceY = tilesheetY;
             monster.x = column * SIZE;
             monster.y = row * SIZE;
+			
             //Make the monster choose a random start direction 
             changeDirection(monster)          
             monsters.push(monster);
@@ -471,6 +478,10 @@ function buildMap(levelMap)
             alien.sourceY = tilesheetY;            
             alien.x = column * SIZE;
             alien.y = row * SIZE;
+			console.log("sourceX = " + tilesheetX);
+			console.log("sourceY = " + tilesheetY);
+			console.log("alienX = " + alien.x);
+			console.log("alienY = " + alien.y);
             sprites.push(alien);
             break;
         }
@@ -590,7 +601,9 @@ function playGame()
     if(hitTestCircle(alien, monster))
     {
 	  if(gameLives != 0)
+	  {
 		gameState = RESTART;
+	  }
 	  else
 		gameState = OVER;
     }
