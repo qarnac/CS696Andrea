@@ -1,82 +1,163 @@
-
+(function(){
 
 //The canvas
 var canvas = document.querySelector("canvas"); 
 var drawingSurface = canvas.getContext("2d");
 
-//The game map
-var map = 
+//Game Level Maps
+//Arrays to store the level maps
+var levelMaps = [];
+var levelGameObjects = [];
+
+//A level counter
+var levelCounter = 0;
+
+//A timer to help delay the change time between levels
+var levelChangeTimer = 0;
+
+//Level 0
+var map0 = 
 [
-  [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
-  [3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,3],
-  [3,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,3],
-  [3,1,1,1,1,2,1,1,1,2,2,2,1,1,1,1,1,2,1,1,1,3],
-  [3,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,2,3],
-  [3,1,1,2,2,2,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,3],
-  [3,1,1,1,1,1,1,1,2,2,1,1,2,1,1,1,2,2,2,1,1,3],
-  [3,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,1,1,3],
-  [3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,3],
-  [3,1,1,1,1,1,1,1,1,1,1,1,2,1,1,2,2,2,1,1,1,3],
-  [3,1,1,2,2,2,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,3],
-  [3,1,1,1,1,1,2,1,1,2,1,1,2,2,2,2,2,1,1,1,1,3],
-  [3,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,2,2,2,1,3],
-  [3,1,1,2,1,1,1,1,1,2,2,1,1,2,2,1,2,1,1,1,1,3],
-  [3,1,1,2,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,3],
-  [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+  [6,1,2,1,1,2,1,1,1,1,2,2,1,1,1,6],
+  [6,1,1,1,1,1,2,1,2,1,1,1,1,2,1,6],
+  [6,2,1,1,1,1,1,1,1,1,1,2,1,1,1,6],
+  [6,1,2,1,2,2,1,1,1,1,2,1,1,1,1,6],
+  [6,1,2,1,1,1,1,1,1,1,1,2,2,1,1,6],
+  [6,1,1,1,2,1,2,2,1,1,1,1,1,1,2,6],
+  [6,1,1,2,1,1,2,1,1,1,2,1,2,1,1,6],
+  [6,1,2,1,1,1,2,1,2,1,1,1,1,2,1,6],
+  [6,1,2,2,1,1,2,2,2,1,2,2,1,1,2,6],
+  [6,2,1,1,1,2,1,1,1,1,1,1,1,1,1,6],
+  [6,1,2,2,1,1,2,1,1,2,1,2,1,2,2,6],
+  [6,1,1,1,2,1,1,1,2,1,1,1,1,1,1,6],
+  [6,1,1,1,1,1,2,1,1,1,1,2,1,2,1,6],
+  [6,1,2,1,2,1,1,1,1,2,1,1,1,1,1,6],
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]
 ];
 
-//The game objects map
-var gameObjects =
+//Push map0 into the leveMaps array
+levelMaps.push(map0);
+/*
+var gameObjects0 = 
 [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0],
-  [0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,5,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0],
+  [0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,4,0,0,0,0,0,0,3,0,0,4,0,0,3,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,3,0,0,0,5,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,4,0,0,0,0,0,0,0,0,0,0,0,4,0],
+  [0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+*/
+
+var gameObjects0 = 
+[
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,3,0,0,4,0,0,3,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,3,0,0,0,5,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,3,0,0,0,3,0,0,0,0,3,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
 
+//Push gameObjects0 into the levelGameObjects array
+levelGameObjects.push(gameObjects0);
+
+//Level 1
+
+var map1 = 
+[
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+  [6,1,1,1,1,1,1,1,1,1,1,1,1,1,1,6],
+  [6,1,2,2,1,1,1,1,2,2,1,1,1,2,2,6],
+  [6,1,1,2,2,2,1,1,2,1,1,1,1,2,1,6],
+  [6,1,1,1,2,1,1,1,2,2,1,2,1,2,1,6],
+  [6,1,1,1,1,1,2,1,1,1,1,2,1,1,1,6],
+  [6,2,2,1,2,2,2,2,2,2,1,2,1,2,1,6],
+  [6,1,1,1,1,1,1,1,1,2,2,2,2,1,1,6],
+  [6,1,1,2,1,1,2,2,1,2,1,1,1,1,1,6],
+  [6,2,1,2,1,1,1,2,1,1,1,2,2,2,1,6],
+  [6,1,1,2,2,1,1,2,2,1,1,1,1,2,1,6],
+  [6,1,1,1,1,1,1,1,2,1,1,1,2,2,2,6],
+  [6,2,1,1,2,1,1,1,2,2,1,1,1,2,1,6],
+  [6,1,1,2,2,2,2,1,1,1,1,2,1,2,1,6],
+  [6,1,1,1,1,1,2,1,1,1,1,2,1,1,1,6],
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]
+];
+
+//Push map1 into the leveMaps array
+levelMaps.push(map1);
+
+//The game objects maps
+var gameObjects1 = 
+[
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,4,0,0,0,0,0,0,0,0,3,0,0,0,4,0],
+  [0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,3,0,0,0,0,0,0,5,0,0,0,0,0,0,0],
+  [0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0],
+  [0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,4,0,0,0,0,0,0,0,0,4,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,4,0,0,3,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+
+//Push gameObjects1 into the levelGameObjects array
+levelGameObjects.push(gameObjects1);
 
 //Map code
 var EMPTY = 0;
 var FLOOR = 1;
 var BOX = 2;
-var WALL = 3;
-var ALIEN = 4;
-var BOMB = 5;
+var MONSTER = 3;
+var STAR = 4;
+var ALIEN = 5;
+var WALL = 6;
 
 //The size of each tile cell
 var SIZE = 64;
 
 //Sprites we need to access by name
 var alien = null;
-var timeDisplay = null;
-var gameOverDisplay = null;
-var gameOverMessage = null;
-var timerMessage = null;
+var levelCompleteDisplay = null;
 
 //The number of rows and columns
-var ROWS = map.length;
-var COLUMNS = map[0].length;
-
-//The number of columns on the tilesheet
-var tilesheetColumns = 5;
+var ROWS = map0.length;
+var COLUMNS = map0[0].length;
 
 //Arrays to store the game objects
 var sprites = [];
-var messages = [];
+var monsters = [];
 var boxes = [];
-var bombs = [];
+var messages = [];
+var stars = [];
 
 var assetsToLoad = [];
 var assetsLoaded = 0;
@@ -84,21 +165,22 @@ var assetsLoaded = 0;
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "./images/timeBombPanic.png";
+image.src = "../images/monsterMayhem.png";
 assetsToLoad.push(image);
 
-//Game variables
-var bombsDefused = 0;
+//The number of columns on the tilesheet
+var tilesheetColumns = 4;
 
-//The game timer
-gameTimer.time = 30;
-gameTimer.start();
+//Game variables
+//Any game variables you need
+var starsCollected = 0;
 
 //Game states
 var LOADING = 0;
 var BUILD_MAP = 1;
 var PLAYING = 2;
 var OVER = 3;
+var LEVEL_COMPLETE = 4;
 var gameState = LOADING;
 
 //--- The gameWorld object
@@ -106,8 +188,8 @@ var gameWorld =
 {
   x: 0,
   y: 0,
-  width: map[0].length * SIZE,
-  height: map.length * SIZE,
+  width: map0[0].length * SIZE,
+  height: map0.length * SIZE,
 };
 
 //--- The camera object
@@ -159,20 +241,20 @@ window.addEventListener("keydown", function(event)
   switch(event.keyCode)
   {
     case UP:
-	    moveUp = true;
-	    break;
+      moveUp = true;
+      break;
 	  
-	  case DOWN:
-	    moveDown = true;
-	    break;
+    case DOWN:
+      moveDown = true;
+      break;
 	    
-	  case LEFT:
-	    moveLeft = true;
-	    break;  
+    case LEFT:
+      moveLeft = true;
+      break;  
 	    
-	  case RIGHT:
-	    moveRight = true;
-	    break; 
+    case RIGHT:
+      moveRight = true;
+      break; 
   }
 }, false);
 
@@ -181,20 +263,20 @@ window.addEventListener("keyup", function(event)
   switch(event.keyCode)
   {
     case UP:
-	    moveUp = false;
-	    break;
+      moveUp = false;
+      break;
 	  
-	  case DOWN:
-	    moveDown = false;
-	    break;
+    case DOWN:
+      moveDown = false;
+      break;
 	    
-	  case LEFT:
-	    moveLeft = false;
-	    break;  
+    case LEFT:
+      moveLeft = false;
+      break;  
 	    
-	  case RIGHT:
-	    moveRight = false;
-	    break; 
+    case RIGHT:
+      moveRight = false;
+      break; 
   }
 }, false);
 
@@ -214,14 +296,18 @@ function update()
       break;
       
     case BUILD_MAP:
-      buildMap(map);
-      buildMap(gameObjects);
-      createOtherObjects();
+      buildMap(levelMaps[levelCounter]);
+      buildMap(levelGameObjects[levelCounter]);
+      createOtherSprites();
       gameState = PLAYING;
       break;
     
     case PLAYING:
       playGame();
+      break;
+      
+    case LEVEL_COMPLETE:
+      levelComplete();
       break;
     
     case OVER:
@@ -231,6 +317,59 @@ function update()
   
   //Render the game
   render();
+}
+
+function levelComplete()
+{
+  //Make the leveCompleteDisplay visible
+  levelCompleteDisplay.visible = true;
+  
+  //Update the timer that changes the level by one
+  levelChangeTimer++;
+  
+  //Load the next level after 60 frames
+  if(levelChangeTimer === 60)
+  {
+    loadNextLevel();
+  }
+  
+  function loadNextLevel()
+  {
+    //Reset the timer that changes the level
+    levelChangeTimer = 0;
+		
+	//Update the levelCounter by 1
+    levelCounter++;
+  
+    //Load the next level if there is one or end the game if there isn't
+    if(levelCounter < levelMaps.length)
+    {
+      //Clear the arrays of objects
+      
+	  sprites = [];
+	  monsters = [];
+	  boxes = [];
+	  stars = [];
+	    
+	  //Reset any gameVariables
+	  starsCollected = 0;
+	    
+	  //Make sure the gameWorld size matches the size of the next level
+      gameWorld.width = levelMaps[levelCounter][0].length * SIZE;
+      gameWorld.height = levelMaps[levelCounter].length * SIZE;
+	    
+      //Re-center the camera
+      camera.x = (gameWorld.x + gameWorld.width / 2) - camera.width / 2;
+      camera.y = (gameWorld.y + gameWorld.height / 2) - camera.height / 2;
+	    
+      //Build the maps for the next level
+      gameState = BUILD_MAP;
+    }
+    else
+    {
+      gameState = OVER;
+    }
+  }
 }
 
 function loadHandler()
@@ -254,18 +393,18 @@ function buildMap(levelMap)
     { 
       var currentTile = levelMap[row][column];
     
-      if(currentTile !== EMPTY)
+      if(currentTile != EMPTY)
       {
         //Find the tile's x and y position on the tile sheet
-        var tileSheetX = Math.floor((currentTile - 1) % tilesheetColumns) * SIZE; 
-        var tileSheetY = Math.floor((currentTile - 1) / tilesheetColumns) * SIZE;
+        var tilesheetX = Math.floor((currentTile - 1) % tilesheetColumns) * SIZE; 
+        var tilesheetY = Math.floor((currentTile - 1) / tilesheetColumns) * SIZE;
         
         switch (currentTile)
         {
           case FLOOR:
             var floor = Object.create(spriteObject);
-            floor.sourceX = tileSheetX;
-            floor.sourceY = tileSheetY;
+            floor.sourceX = tilesheetX;
+            floor.sourceY = tilesheetY;
             floor.x = column * SIZE;
             floor.y = row * SIZE;
             sprites.push(floor);
@@ -273,8 +412,8 @@ function buildMap(levelMap)
           
           case BOX:
             var box = Object.create(spriteObject);
-            box.sourceX = tileSheetX;
-            box.sourceY = tileSheetY;
+            box.sourceX = tilesheetX;
+            box.sourceY = tilesheetY;
             box.x = column * SIZE;
             box.y = row * SIZE;
             sprites.push(box);
@@ -283,33 +422,43 @@ function buildMap(levelMap)
           
           case WALL:
             var wall = Object.create(spriteObject);
-            wall.sourceX = tileSheetX;
-            wall.sourceY = tileSheetY;           
+            wall.sourceX = tilesheetX;
+            wall.sourceY = tilesheetY;            
             wall.x = column * SIZE;
             wall.y = row * SIZE;
             sprites.push(wall);
             break;
           
-          case BOMB:
-            var bomb = Object.create(spriteObject);
-            bomb.sourceX = tileSheetX;
-            bomb.sourceY = tileSheetY; 
-            bomb.sourceWidth = 48;
-            bomb.sourceHeight = 36;
-            bomb.width = 48;  
-            bomb.height = 36;          
-            bomb.x = column * SIZE + 10;
-            bomb.y = row * SIZE + 16;
-            bombs.push(bomb);
-            sprites.push(bomb);
+          case MONSTER:
+            var monster = Object.create(monsterObject);
+            monster.sourceX = tilesheetX;
+            monster.sourceY = tilesheetY;
+            monster.x = column * SIZE;
+            monster.y = row * SIZE;
+            //Make the monster choose a random start direction 
+            changeDirection(monster)          
+            monsters.push(monster);
+            sprites.push(monster);
+            break; 
+          
+          case STAR:
+            var star = Object.create(spriteObject);
+            star.sourceX = tilesheetX;
+            star.sourceY = tilesheetY;
+            star.sourceWidth = 48;
+            star.sourceHeight = 48;
+            star.width = 48;  
+            star.height = 48;          
+            star.x = column * SIZE + 8;
+            star.y = row * SIZE + 8;
+            stars.push(star);
+            sprites.push(star);
             break;
             
           case ALIEN:
-            //Note: "alien" has already been defined in the main
-            //program so you don't neeed to preceed it with "var"
             alien = Object.create(spriteObject);
-            alien.sourceX = tileSheetX;
-            alien.sourceY = tileSheetY;          
+            alien.sourceX = tilesheetX;
+            alien.sourceY = tilesheetY;            
             alien.x = column * SIZE;
             alien.y = row * SIZE;
             sprites.push(alien);
@@ -320,49 +469,46 @@ function buildMap(levelMap)
   }
 }
 
-function createOtherObjects()
+function createOtherSprites()
 {
-  timeDisplay = Object.create(spriteObject);
-  timeDisplay.sourceX = 0;
-  timeDisplay.sourceY = 64;
-  timeDisplay.sourceWidth = 128;
-  timeDisplay.sourceHeight = 48;
-  timeDisplay.width = 128;  
-  timeDisplay.height = 48;            
-  timeDisplay.x = canvas.width / 2 - timeDisplay.width / 2;
-  timeDisplay.y = 8;
-  timeDisplay.scrollable = false;
-  sprites.push(timeDisplay);
+  levelCompleteDisplay = Object.create(spriteObject);
+  levelCompleteDisplay.sourceX = 0;
+  levelCompleteDisplay.sourceY = 384;
+  levelCompleteDisplay.sourceWidth = 256;
+  levelCompleteDisplay.sourceHeight = 128;
+  levelCompleteDisplay.width = 256;  
+  levelCompleteDisplay.height = 128;            
+  levelCompleteDisplay.x = canvas.width / 2 - levelCompleteDisplay.width / 2;
+  levelCompleteDisplay.y = canvas.height / 2 - levelCompleteDisplay.height / 2;
+  levelCompleteDisplay.visible = false;
+  levelCompleteDisplay.scrollable = false;
+  sprites.push(levelCompleteDisplay);
   
-  gameOverDisplay = Object.create(spriteObject);
-  gameOverDisplay.sourceX = 0;
-  gameOverDisplay.sourceY = 129;
-  gameOverDisplay.sourceWidth = 316;
-  gameOverDisplay.sourceHeight = 290;
-  gameOverDisplay.width = 316;  
-  gameOverDisplay.height = 290;            
-  gameOverDisplay.x = canvas.width / 2 - gameOverDisplay.width / 2;
-  gameOverDisplay.y = canvas.height / 2 - gameOverDisplay.height / 2;
-  gameOverDisplay.visible = false;
-  gameOverDisplay.scrollable = false;
-  sprites.push(gameOverDisplay);
+  youLostDisplay = Object.create(spriteObject);
+  youLostDisplay.sourceX = 0;
+  youLostDisplay.sourceY = 128;
+  youLostDisplay.sourceWidth = 256;
+  youLostDisplay.sourceHeight = 128;
+  youLostDisplay.width = 256;  
+  youLostDisplay.height = 128;            
+  youLostDisplay.x = canvas.width / 2 - youLostDisplay.width / 2;
+  youLostDisplay.y = canvas.height / 2 - youLostDisplay.height / 2;
+  youLostDisplay.visible = false;
+  youLostDisplay.scrollable = false;
+  sprites.push(youLostDisplay);
   
-  gameOverMessage = Object.create(messageObject);
-  gameOverMessage.x = 275;
-  gameOverMessage.y = 270;
-  gameOverMessage.font = "bold 30px Helvetica";
-  gameOverMessage.fillStyle = "black";
-  gameOverMessage.text = "";
-  gameOverMessage.visible = false;
-  messages.push(gameOverMessage);
-  
-  timerMessage = Object.create(messageObject);
-  timerMessage.x = 330;
-  timerMessage.y = 10;
-  timerMessage.font = "bold 40px Helvetica";
-  timerMessage.fillStyle = "white";
-  timerMessage.text = "";
-  messages.push(timerMessage);
+  youWonDisplay = Object.create(spriteObject);
+  youWonDisplay.sourceX = 0;
+  youWonDisplay.sourceY = 256;
+  youWonDisplay.sourceWidth = 256;
+  youWonDisplay.sourceHeight = 128;
+  youWonDisplay.width = 256;  
+  youWonDisplay.height = 128;            
+  youWonDisplay.x = canvas.width / 2 - youWonDisplay.width / 2;
+  youWonDisplay.y = canvas.height / 2 - youWonDisplay.height / 2;
+  youWonDisplay.visible = false;
+  youWonDisplay.scrollable = false;
+  sprites.push(youWonDisplay);
 }
 
 function playGame()
@@ -397,52 +543,83 @@ function playGame()
   {
     alien.vx = 0;
   }
-  
+
   //Move the alien and set its screen boundaries
   alien.x = Math.max(64, Math.min(alien.x + alien.vx, gameWorld.width - alien.width - 64)); 
   alien.y = Math.max(64, Math.min(alien.y + alien.vy, gameWorld.height - alien.height - 64));
   
-  //Collisions with boxes
+  //Check collision between the alien and the boxes
   for(var i = 0; i < boxes.length; i++)
   {
     blockRectangle(alien, boxes[i]);
   }
   
-  
-  //Collisions with bombs
-  for(var i = 0; i < bombs.length; i++)
-  {
-    var bomb = bombs[i];
-    
-    //If there's a collision, make the bombs invisible,
-    //reduce bombsDefused by 1, and check whether
-    //the player has won the game
-    if(hitTestCircle(alien, bomb) && bomb.visible)
+  //Check for collisions with stars
+  for(var i = 0; i < stars.length; i++)
+  { 
+    var star = stars[i];
+    if(hitTestRectangle(alien, star) && star.visible)
     {
-      bomb.visible = false;
-      bombsDefused++;
-      if(bombsDefused === bombs.length)
+      star.visible = false;
+      starsCollected++;
+      
+      //Check whether the level is over
+      //by checking if the starsCollected matches
+      //the total number in the stars array
+      if(starsCollected === stars.length)
       {
-        //Change the game state to OVER if the player has defused all the bombs
-        gameState = OVER;
-      }
+        gameState = LEVEL_COMPLETE;
+      }    
+    }
+  }
+   
+  //Check for collisions with monsters
+  for(var i = 0; i < monsters.length; i++)
+  { 
+    var monster = monsters[i];
+    if(hitTestCircle(alien, monster))
+    {
+      gameState = OVER;
     }
   }
   
-  
-  //Display the gameTimer.
-  //This modification adds an extra "0" to the time
-  //if the time is less than 10
-  timerMessage.text = gameTimer.time;
-  if(gameTimer.time < 10)
+  //The monsters
+  for(var i = 0; i < monsters.length; i++)
   {
-    timerMessage.text = "0" + gameTimer.time;
-  }
-  
-  //Check whether the time is over
-  if(gameTimer.time === 0)
-  {
-    gameState = OVER;
+    var monster = monsters[i];
+    
+    //Move the monsters
+    monster.x += monster.vx;
+    monster.y += monster.vy;
+    
+    //Check whether the monster is at a tile corner
+    if(Math.floor(monster.x) % SIZE === 0
+    && Math.floor(monster.y) % SIZE === 0)
+    {
+      //Change the monster's direction
+      changeDirection(monster);  
+    }
+   
+	//Change the monster's state to SCARED if
+	//it's 128 pixels from the alien
+	var vx = alien.centerX() - monster.centerX();
+	var vy = alien.centerY() - monster.centerY();
+	  
+	//Find the distance between the circles by calculating
+    //the vector's magnitude (how long the vector is)  
+    var magnitude = Math.sqrt(vx * vx + vy * vy);
+	  
+    if(magnitude < 192)
+    {
+      monster.state = monster.SCARED;
+    }
+    else
+    {
+      monster.state = monster.NORMAL;
+    }
+	  
+    //Update the monster to reflect state changes
+    monster.update();
   }
   
   //Scroll the camera
@@ -479,36 +656,194 @@ function playGame()
   if(camera.y + camera.height > gameWorld.height)
   {
     camera.y = gameWorld.height - camera.height;
+  }  
+}
+
+function changeDirection(monster)
+{
+  //Clear any previous direction the monster has chosen
+  monster.validDirections = [];
+  monster.direction = monster.NONE;
+  
+  //Find the monster's column and row in the array
+  var monsterColumn = Math.floor(monster.x / SIZE);
+  var monsterRow = Math.floor(monster.y / SIZE);
+  
+  //Get a reference to the current level map
+  var currentMap = levelMaps[levelCounter];
+  
+  //Find out what kinds of things are in the map cells 
+  //that surround the monster. If the cells contain a FLOOR cell,
+  //push the corresponding direction into the validDirections array
+  if(monsterRow > 0)
+  {
+    var thingAbove = currentMap[monsterRow - 1][monsterColumn];
+    if(thingAbove === FLOOR)
+    {
+      monster.validDirections.push(monster.UP);
+    }
+  }
+  if(monsterRow < ROWS - 1)
+  { 
+    var thingBelow = currentMap[monsterRow + 1][monsterColumn];
+    if(thingBelow === FLOOR)
+    {
+      monster.validDirections.push(monster.DOWN);
+    }
+  }
+  if(monsterColumn > 0)
+  {
+    var thingToTheLeft = currentMap[monsterRow][monsterColumn - 1];
+    if(thingToTheLeft === FLOOR)
+    {
+      monster.validDirections.push(monster.LEFT);
+    }
   } 
+  if(monsterColumn < COLUMNS - 1)
+  {
+    var thingToTheRight = currentMap[monsterRow][monsterColumn + 1];
+    if(thingToTheRight === FLOOR)
+    {
+      monster.validDirections.push(monster.RIGHT);
+    }
+  } 
+  
+  //The monster's validDirections array now contains 0 to 4 directions that the 
+  //contain FLOOR cells. Which of those directions will the monster
+  //choose to move in?
+  
+  //If a valid direction was found, Figure out if the monster is at an 
+  //maze passage intersection.
+  if(monster.validDirections.length !== 0)
+  {
+    //Find out if the monster is at an intersection
+    var upOrDownPassage 
+	  = (monster.validDirections.indexOf(monster.UP) !== -1 
+	  || monster.validDirections.indexOf(monster.DOWN) !== -1);
+	
+	var leftOrRightPassage
+	  = (monster.validDirections.indexOf(monster.LEFT) !== -1 
+	  || monster.validDirections.indexOf(monster.RIGHT) !== -1);
+    
+    //Change the monster's direction if it's at an intersection or
+    //in a cul-de-sac (dead-end)
+    if(upOrDownPassage && leftOrRightPassage 
+	|| monster.validDirections.length === 1)
+    {
+      //Optionally find the closest distance to the alien
+      if(alien !== null && monster.hunt === true)
+      {
+        findClosestDirection(monster);
+      }
+      
+      //Assign a random validDirection if the alien object doesn't exist in the game
+      //or a validDirection wasn't found that brings the monster closer to the alien
+      if(alien === null || monster.direction === monster.NONE)
+      {
+        var randomNumber = Math.floor(Math.random() * monster.validDirections.length);
+        monster.direction = monster.validDirections[randomNumber];
+      }
+      
+      //Choose the monster's final direction
+	  switch(monster.direction)
+	  {
+	    case monster.RIGHT:
+	      monster.vx = monster.speed;
+	      monster.vy = 0;
+	      break;
+		    
+	    case monster.LEFT:
+	      monster.vx = -monster.speed;
+	      monster.vy = 0;
+	      break;
+		      
+	    case monster.UP:
+	      monster.vx = 0;
+	      monster.vy = -monster.speed;
+	      break;
+		      
+	    case monster.DOWN:
+	      monster.vx = 0;
+	      monster.vy = monster.speed;
+	  }
+    } 
+  }  
+}
+
+function findClosestDirection(monster)
+{
+  var closestDirection = undefined;
+  
+  //Find the distance between the monster and the alien
+  var vx = alien.centerX() - monster.centerX(); 
+  var vy = alien.centerY() - monster.centerY();
+        
+  //If the distance is greater on the x axis...
+  if(Math.abs(vx) >= Math.abs(vy))
+  {
+    //Try left and right
+    if(vx <= 0)
+    {
+      closestDirection = monsterObject.LEFT;        
+    }
+    else
+    {
+      closestDirection = monsterObject.RIGHT;	    
+    }
+  }
+  //If the distance is greater on the y axis...
+  else
+  {
+    //Try up and down
+    if(vy <= 0)
+    {
+      closestDirection = monsterObject.UP;
+    }
+    else
+    {
+      closestDirection = monsterObject.DOWN;
+    }
+  }
+  
+  //Find out if the closestDirection is one of the validDirections
+  for(var i = 0; i < monster.validDirections.length; i++)
+  {
+    if(closestDirection === monster.validDirections[i])
+    {
+      //If it, assign the closestDirection to the monster's direction
+      monster.direction = closestDirection;
+    }
+  }
 }
 
 function endGame()
 {
-  gameTimer.stop();
-  gameOverDisplay.visible = true;
-  gameOverMessage.visible = true;
-    
-  if(bombsDefused === bombs.length)
+  //Make the levelCompleteDisplay invisible
+  levelCompleteDisplay.visible = false;
+  
+  //You win if you're on the last level and 
+  //you've collected all the stars
+  if(levelCounter === levelMaps.length
+  && starsCollected === stars.length)
   {
-    gameOverMessage.text = "You Won!";
+    youWonDisplay.visible = true;
   }
   else
   {
-    gameOverMessage.text = "You Lost!";
+    youLostDisplay.visible = true;
   }
 }
 
 function render()
 { 
-
-  //Clear the drawing surface
+  //Render the gameWorld
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
   
   //Position the gameWorld inside the camera
   drawingSurface.save();
   drawingSurface.translate(-camera.x, -camera.y);
   
-  //Display the sprites in the gameWorld
+  //Display the sprites on the gameWorld
   if(sprites.length !== 0)
   {
     for(var i = 0; i < sprites.length; i++)
@@ -518,46 +853,48 @@ function render()
       //display the scrolling sprites
       if(sprite.visible && sprite.scrollable)
       {
-        drawingSurface.drawImage
-        (
-          image, 
-          sprite.sourceX, sprite.sourceY, 
-          sprite.sourceWidth, sprite.sourceHeight,
-          Math.floor(sprite.x), Math.floor(sprite.y), 
-          sprite.width, sprite.height
-        ); 
-      }
+	     drawingSurface.drawImage
+	     (
+	       image, 
+	       sprite.sourceX, sprite.sourceY, 
+	       sprite.sourceWidth, sprite.sourceHeight,
+	       Math.floor(sprite.x), Math.floor(sprite.y), 
+	       sprite.width, sprite.height
+	     ); 
+       }
 	     
-      //display the non-scrolling sprites
-      if(sprite.visible && !sprite.scrollable)
-      {
-        drawingSurface.drawImage
-        (
-          image, 
-          sprite.sourceX, sprite.sourceY, 
-          sprite.sourceWidth, sprite.sourceHeight,
-          Math.floor(camera.x + sprite.x), Math.floor(camera.y + sprite.y), 
-          sprite.width, sprite.height
-        ); 
-      }
-    }
+       //display the non-scrolling sprites
+       if(sprite.visible && !sprite.scrollable)
+       {
+         drawingSurface.drawImage
+         (
+           image, 
+           sprite.sourceX, sprite.sourceY, 
+           sprite.sourceWidth, sprite.sourceHeight,
+           Math.floor(camera.x + sprite.x), Math.floor(camera.y + sprite.y), 
+           sprite.width, sprite.height
+         ); 
+       }
+     } 
   }
   
   drawingSurface.restore();
   
-  //Display the game messages
+  //Display any game messages
   if(messages.length !== 0)
   {
     for(var i = 0; i < messages.length; i++)
-	{
-	  var message = messages[i];
-	  if(message.visible)
-	  {
-        drawingSurface.font = message.font;  
-        drawingSurface.fillStyle = message.fillStyle;
-        drawingSurface.textBaseline = message.textBaseline;
-        drawingSurface.fillText(message.text, message.x, message.y);  
-	   }
+    {
+      var message = messages[i];
+      if(message.visible)
+      {
+         drawingSurface.font = message.font;  
+         drawingSurface.fillStyle = message.fillStyle;
+         drawingSurface.textBaseline = message.textBaseline;
+         drawingSurface.fillText(message.text, message.x, message.y);  
+	  }
 	}
   }
 }
+
+}());
