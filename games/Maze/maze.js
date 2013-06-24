@@ -688,10 +688,15 @@ function playGame()
   
   
   var test = 4;
+  console.log("alien width = " + alien.width);
+  console.log("alien height = " + alien.height);
+  console.log("camera width = " + camera.width);
+  console.log("camera height = " + camera.height);
   //Scroll the camera
   if(alien.x < camera.leftInnerBoundary())
   {
     camera.x = Math.floor(alien.x - (camera.width / test));
+	console.log("camera width / test" + (camera.width / test));
 	console.log("camera X Left boundary = " + camera.x);
   }
   if(alien.y < camera.topInnerBoundary())
