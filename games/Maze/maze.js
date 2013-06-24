@@ -692,20 +692,22 @@ function playGame()
   if(alien.x < camera.leftInnerBoundary())
   {
     camera.x = Math.floor(alien.x - (camera.width / test));
-	console.log("camera X = " + camera.x);
+	console.log("camera X Left boundary = " + camera.x);
   }
   if(alien.y < camera.topInnerBoundary())
   {
     camera.y = Math.floor(alien.y - (camera.height / test));
-	console.log("camera Y = " + camera.y);
+	console.log("camera Y Top Boundary = " + camera.y);
   }
   if(alien.x + alien.width > camera.rightInnerBoundary())
   {
-    camera.x = Math.floor(alien.x + alien.width - (camera.width / 4 * 3));
+    camera.x = Math.floor(alien.x + alien.width - (camera.width / test * 3));
+	console.log("im in here");
   }
   if(alien.y + alien.height > camera.bottomInnerBoundary())
   {
-    camera.y = Math.floor(alien.y + alien.height - (camera.height / 4 * 3));
+    camera.y = Math.floor(alien.y + alien.height - (camera.height / test * 3));
+	console.log("im in the 2nd one");
   }
   
   //The camera's gameWorld boundaries
