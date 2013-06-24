@@ -687,15 +687,17 @@ function playGame()
   }
   
   
-  
+  var test = 4;
   //Scroll the camera
   if(alien.x < camera.leftInnerBoundary())
   {
-    camera.x = Math.floor(alien.x - (camera.width / 2));
+    camera.x = Math.floor(alien.x - (camera.width / test));
+	console.log("camera X = " + camera.x);
   }
   if(alien.y < camera.topInnerBoundary())
   {
-    camera.y = Math.floor(alien.y - (camera.height / 2));
+    camera.y = Math.floor(alien.y - (camera.height / test));
+	console.log("camera Y = " + camera.y);
   }
   if(alien.x + alien.width > camera.rightInnerBoundary())
   {
