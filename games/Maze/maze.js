@@ -686,14 +686,16 @@ function playGame()
     monster.update();
   }
   
+  
+  
   //Scroll the camera
   if(alien.x < camera.leftInnerBoundary())
   {
-    camera.x = Math.floor(alien.x - (camera.width / 4));
+    camera.x = Math.floor(alien.x - (camera.width / 2));
   }
   if(alien.y < camera.topInnerBoundary())
   {
-    camera.y = Math.floor(alien.y - (camera.height / 4));
+    camera.y = Math.floor(alien.y - (camera.height / 2));
   }
   if(alien.x + alien.width > camera.rightInnerBoundary())
   {
