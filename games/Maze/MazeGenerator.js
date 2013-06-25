@@ -15,5 +15,8 @@ function generateMaze(maze)
 	//set the starting cell at
 	maze[row][col];
 	
+	//missing recursionCall
+	
 	return maze;
 }
+
