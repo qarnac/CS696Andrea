@@ -1,4 +1,4 @@
-function generateMaze(mapTest)
+function generateMaze(maze)
 {
 	
 	var row = Math.floor((Math.random()*16)+1);
@@ -11,4 +11,9 @@ function generateMaze(mapTest)
 		
 	console.log("row = " + row);
 	console.log("col = " + col);
+	
+	//set the starting cell at
+	maze[row][col];
+	
+	return maze;
 }
