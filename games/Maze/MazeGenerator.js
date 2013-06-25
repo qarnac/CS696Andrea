@@ -18,6 +18,7 @@ function generateMaze(maze)
 	//missing recursionCall
 	recursion(row,col, maze);
 	
+	console.log(maze);
 	return maze;
 }
 
@@ -32,7 +33,7 @@ function recursion(row, col, maze)
 			case 1:
 				if ( (row - 2) <= 0)
 					continue;
-				if ( maze[row - 2][col] !== 0) 
+				if (maze[row - 2][col] !== 0) 
 				{
 					maze[row-2][col] = 0;
 					maze[row-1][col] = 0;
@@ -45,7 +46,7 @@ function recursion(row, col, maze)
 				if ( maze[row][col + 2] !== 0)
 				{
 					maze[row][col + 2] = 0;
-					maze[row][col + 2] = 0;
+					maze[row][col + 1] = 0;
 					recursion(row, col + 2, maze);
 				}
 			break;
@@ -66,7 +67,7 @@ function recursion(row, col, maze)
 				{
 					maze[row][col-2] = 0;
 					maze[row][col-1] = 0;
-					recursion(row,col-2, maze);
+					recursion(row, col-2, maze);
 				}
 			break;
 		}

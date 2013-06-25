@@ -43,6 +43,7 @@ var mapTest =
 
 generateMaze(mapTest);
 
+
 //Level 0
 var map0 = 
 [
