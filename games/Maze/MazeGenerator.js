@@ -16,7 +16,25 @@ function generateMaze(maze)
 	maze[row][col];
 	
 	//missing recursionCall
+	generateRandomDirections();
 	
 	return maze;
 }
 
+function generateRandomDirections()
+{
+	var randoms = [];
+	for ( var i = 0; i < 4; ++i)
+	{
+		randoms[i] = i+1;
+	}
+	
+	shuffle(randoms);
+	console.log(randoms);
+	
+}
+
+function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+};
