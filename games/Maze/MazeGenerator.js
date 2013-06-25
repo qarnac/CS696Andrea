@@ -16,18 +16,61 @@ function generateMaze(maze)
 	maze[row][col];
 	
 	//missing recursionCall
-	recursion(row,col);
+	recursion(row,col, maze);
 	
 	return maze;
 }
 
-function recursion(row, col)
+function recursion(row, col, maze)
 {
 	var randDirections = generateRandomDirections();
 	
 	for ( var i = 0; i < randDirections.length; ++i)
 	{
-		console.log(randDirections[i]);
+		switch(randDirections[i])
+		{
+			case 1:
+				if ( (row - 2) <= 0)
+					continue;
+				if ( maze[row - 2][col] !== 0) 
+				{
+					maze[row-2][col] = 0;
+					maze[row-1][col] = 0;
+					recursion(row - 2, col, maze);
+				}
+			break;
+			case 2:
+				if ( col + 2 >= 16 - 1)
+					continue;
+				if ( maze[row][col + 2] !== 0)
+				{
+					maze[row][col + 2] = 0;
+					maze[row][col + 2] = 0;
+					recursion(row, col + 2, maze);
+				}
+			break;
+			case 3:
+				if(row + 2 >= 16 - 1)
+					continue;
+				if (maze[row + 2][col] !== 0)
+				{
+					maze[row+2][col] = 0;
+					maze[row+1][col] = 0;
+					recursion(row+2, col, maze);
+				}
+			break;
+			case 4:
+				if( col - 2 <= 0)
+					continue;
+				if( maze[row][col-2] !== 0)
+				{
+					maze[row][col-2] = 0;
+					maze[row][col-1] = 0;
+					recursion(row,col-2, maze);
+				}
+			break;
+		}
+		
 	}
 	
 }
