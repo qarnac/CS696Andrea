@@ -18,7 +18,17 @@ function generateMaze(maze)
 	//missing recursionCall
 	recursion(row,col, maze);
 	
+	for ( var i = 0; i < maze.length; ++i)
+	{
+		for ( var y = 0; y < maze.length; ++y)
+		{
+			if( maze[i][y] === 0)
+				maze[i][y] = 1;
+		}
+	}
+	
 	console.log(maze);
+	
 	return maze;
 }
 
