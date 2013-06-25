@@ -20,6 +20,29 @@ invisibilityTimer.time = 5;
 //A timer to help delay the change time between levels
 var levelChangeTimer = 0;
 
+
+var mapTest = 
+[
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,2,2,2,2,2,2,2,2,2,2,2,2,2,2,6],
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]
+];
+
+generateMaze(mapTest);
+
 //Level 0
 var map0 = 
 [
@@ -42,7 +65,7 @@ var map0 =
 ];
 
 //Push map0 into the leveMaps array
-levelMaps.push(map0);
+levelMaps.push(mapTest);
 /*
 var gameObjects0 = 
 [
@@ -271,7 +294,7 @@ window.addEventListener("keydown", function(event)
 		alien.sourceX = 240;
 		alien.sourceY = 64;
 		
-		console.log('invisibility activated');  
+		//console.log('invisibility activated');  
 	  }
 	  
 	  break;
@@ -489,8 +512,8 @@ function buildMap(levelMap)
             star.y = row * SIZE + 8;
             stars.push(star);
             sprites.push(star);
-			console.log("star x =" + tilesheetX);
-			console.log("star y =" + tilesheetY);
+			//console.log("star x =" + tilesheetX);
+			//console.log("star y =" + tilesheetY);
             break;
             
           case ALIEN:
@@ -499,10 +522,10 @@ function buildMap(levelMap)
             alien.sourceY = tilesheetY;            
             alien.x = column * SIZE;
             alien.y = row * SIZE;
-			console.log("sourceX = " + tilesheetX);
-			console.log("sourceY = " + tilesheetY);
-			console.log("alienX = " + alien.x);
-			console.log("alienY = " + alien.y);
+			//console.log("sourceX = " + tilesheetX);
+			//console.log("sourceY = " + tilesheetY);
+			//console.log("alienX = " + alien.x);
+			//console.log("alienY = " + alien.y);
             sprites.push(alien);
             break;
         }
@@ -620,7 +643,7 @@ function playGame()
     invisibilityTimer.stop();
 	invisibilityTimer.reset();
 	invisibilityTimer.time = 5;
-	console.log("time reset " + invisibilityTimer.time);
+	//console.log("time reset " + invisibilityTimer.time);
 	alien.sourceX = 0;
 	alien.sourceY = 64;
 	invisibility = false;
@@ -688,31 +711,31 @@ function playGame()
   
   
   var test = 4;
-  console.log("alien width = " + alien.width);
-  console.log("alien height = " + alien.height);
-  console.log("camera width = " + camera.width);
-  console.log("camera height = " + camera.height);
+  //console.log("alien width = " + alien.width);
+  //console.log("alien height = " + alien.height);
+  //console.log("camera width = " + camera.width);
+  //console.log("camera height = " + camera.height);
   //Scroll the camera
   if(alien.x < camera.leftInnerBoundary())
   {
     camera.x = Math.floor(alien.x - (camera.width / test));
-	console.log("camera width / test" + (camera.width / test));
-	console.log("camera X Left boundary = " + camera.x);
+	//console.log("camera width / test" + (camera.width / test));
+	//console.log("camera X Left boundary = " + camera.x);
   }
   if(alien.y < camera.topInnerBoundary())
   {
     camera.y = Math.floor(alien.y - (camera.height / test));
-	console.log("camera Y Top Boundary = " + camera.y);
+	//console.log("camera Y Top Boundary = " + camera.y);
   }
   if(alien.x + alien.width > camera.rightInnerBoundary())
   {
     camera.x = Math.floor(alien.x + alien.width - (camera.width / test * 3));
-	console.log("im in here");
+	//console.log("im in here");
   }
   if(alien.y + alien.height > camera.bottomInnerBoundary())
   {
     camera.y = Math.floor(alien.y + alien.height - (camera.height / test * 3));
-	console.log("im in the 2nd one");
+	//console.log("im in the 2nd one");
   }
   
   //The camera's gameWorld boundaries
