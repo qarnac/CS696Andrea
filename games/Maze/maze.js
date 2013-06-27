@@ -64,23 +64,6 @@ var gameObjects0 =
 
 generateMaze(mapTest,gameObjects0);
 
-var testMap = 
-[[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6], 
- [6, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 6], 
- [6, 1, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 1, 2, 6], 
- [6, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 2, 6], 
- [6, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 1, 2, 1, 2, 6], 
- [6, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 1, 2, 6], 
- [6, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 6], 
- [6, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 2, 1, 2, 6], 
- [6, 1, 2, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 6], 
- [6, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 6], 
- [6, 1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 6], 
- [6, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 6], 
- [6, 1, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 2, 1, 2, 6], 
- [6, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 6], 
- [6, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 6], 
- [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]];
 
 //Push map0 into the leveMaps array
 levelMaps.push(mapTest);
@@ -156,8 +139,8 @@ var alien = null;
 var levelCompleteDisplay = null;
 
 //The number of rows and columns
-var ROWS = map0.length;
-var COLUMNS = map0[0].length;
+var ROWS = mapTest.length;
+var COLUMNS = mapTest.length;
 
 //Arrays to store the game objects
 var sprites = [];
@@ -196,8 +179,8 @@ var gameWorld =
 {
   x: 0,
   y: 0,
-  width: map0[0].length * SIZE,
-  height: map0.length * SIZE,
+  width: mapTest.length * SIZE,
+  height: mapTest.length * SIZE,
 };
 
 //--- The camera object
