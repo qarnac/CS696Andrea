@@ -1,5 +1,10 @@
 function generateMaze(maze, gameObjects)
 {
+	var numOfMonsters = gameObjects[0][0];
+	var numOfStars = gameObjects[0][1];
+	
+	gameObjects[0][0] = 0;
+	gameObjects[0][0] = 0;
 	
 	var row = Math.floor((Math.random()*16)+1);
 	while( (row % 2) === 0)
@@ -16,7 +21,7 @@ function generateMaze(maze, gameObjects)
 	maze[row][col];
 	
 	//missing recursionCall
-	recursion(row,col, maze);
+	recursion(row,col, maze, numOfMonsters, numOfStars);
 	
 	for ( var i = 0; i < maze.length; ++i)
 	{
@@ -32,7 +37,7 @@ function generateMaze(maze, gameObjects)
 	return maze;
 }
 
-function recursion(row, col, maze)
+function recursion(row, col, maze, numOfMonsters, numOfStars)
 {
 	var randDirections = generateRandomDirections();
 	
@@ -47,7 +52,7 @@ function recursion(row, col, maze)
 				{
 					maze[row-2][col] = 0;
 					maze[row-1][col] = 0;
-					recursion(row - 2, col, maze);
+					recursion(row - 2, col, maze, numOfMonsters, numOfStars);
 				}
 			break;
 			case 2:
@@ -57,7 +62,7 @@ function recursion(row, col, maze)
 				{
 					maze[row][col + 2] = 0;
 					maze[row][col + 1] = 0;
-					recursion(row, col + 2, maze);
+					recursion(row, col + 2, maze, numOfMonsters, numOfStars);
 				}
 			break;
 			case 3:
@@ -67,7 +72,7 @@ function recursion(row, col, maze)
 				{
 					maze[row+2][col] = 0;
 					maze[row+1][col] = 0;
-					recursion(row+2, col, maze);
+					recursion(row+2, col, maze, numOfMonsters, numOfStars);
 				}
 			break;
 			case 4:
@@ -77,7 +82,7 @@ function recursion(row, col, maze)
 				{
 					maze[row][col-2] = 0;
 					maze[row][col-1] = 0;
-					recursion(row, col-2, maze);
+					recursion(row, col-2, maze, numOfMonsters, numOfStars);
 				}
 			break;
 		}
