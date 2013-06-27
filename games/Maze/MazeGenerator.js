@@ -1,4 +1,4 @@
-function generateMaze(maze)
+function generateMaze(maze, gameObjects)
 {
 	
 	var row = Math.floor((Math.random()*16)+1);
