@@ -74,6 +74,11 @@
 	image.src = "cat.png";
 	assetsToLoad.push(image);
 	
+	//Game states
+	var LOADING = 0;
+	var PLAYING = 1;
+	var gameState = LOADING;
+	
 	//Arrow key codes
 	var UP = 38;
 	var DOWN = 40;
@@ -169,12 +174,12 @@
 		//Up
 		if(moveUp && !moveDown)
 		{
-			cat.accelerationY = -0.2;
+			cat.accelerationY = -200.0;
 		}
 		//Down
 		if(moveDown && !moveUp)
 		{
-			cat.accelerationY = 0.2;
+			cat.accelerationY = 200.0;
 		}
 		//Left
 		if(moveLeft && !moveRight)
