@@ -133,6 +133,27 @@
 
 		update();
 		
+	function update()
+	{ 
+	  //The animation loop
+	  requestAnimationFrame(update, canvas);
+	  
+	  //Change what the game is doing based on the game state
+	  switch(gameState)
+	  {
+		case LOADING:
+		  console.log("loading...");
+		  break;
+		
+		case PLAYING:
+		  playGame();
+		  break;
+	  }
+	  
+	  //Render the game
+	  render();
+	}
+		
 	function loadHandler()
 	{ 
 		assetsLoaded++;
