@@ -61,7 +61,7 @@ monsterObject.LEFT = 3;
 monsterObject.RIGHT = 4;
 monsterObject.validDirections = [];
 monsterObject.direction = monsterObject.NONE;
-monsterObject.hunt = false;
+monsterObject.hunt = true;
 
 //--- The gameTimer object
 

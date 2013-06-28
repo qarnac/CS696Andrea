@@ -43,7 +43,7 @@ var mapTest =
 
 var gameObjects0 = 
 [
-  [4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -640,14 +640,9 @@ function playGame()
     //Move the monsters
     monster.x += monster.vx;
     monster.y += monster.vy;
-    
-    //Check whether the monster is at a tile corner
-    if(Math.floor(monster.x) % SIZE === 0
-    && Math.floor(monster.y) % SIZE === 0)
-    {
-      //Change the monster's direction
-      changeDirection(monster);  
-    }
+	
+	console.log("test " + Math.floor(monster.x) % SIZE);
+	
    
 	//Change the monster's state to SCARED if
 	//it's 128 pixels from the alien
@@ -665,6 +660,14 @@ function playGame()
     else
     {
       monster.state = monster.NORMAL;
+    }
+	
+	//Check whether the monster is at a tile corner
+    if(Math.floor(monster.x) % SIZE === 0
+    && Math.floor(monster.y) % SIZE === 0)
+    {
+      //Change the monster's direction
+      changeDirection(monster);  
     }
 	  
     //Update the monster to reflect state changes
@@ -708,6 +711,7 @@ function playGame()
   }  
 }
 
+
 function changeDirection(monster)
 {
   //Clear any previous direction the monster has chosen
@@ -721,23 +725,29 @@ function changeDirection(monster)
   //Get a reference to the current level map
   var currentMap = levelMaps[levelCounter];
   
+  
   //Find out what kinds of things are in the map cells 
   //that surround the monster. If the cells contain a FLOOR cell,
   //push the corresponding direction into the validDirections array
+  console.log(monsterRow);
+  console.log(monsterColumn);
+  
   if(monsterRow > 0)
   {
     var thingAbove = currentMap[monsterRow - 1][monsterColumn];
     if(thingAbove === FLOOR)
     {
       monster.validDirections.push(monster.UP);
+	  console.log("monster up");
     }
   }
-  if(monsterRow < ROWS - 1)
+  else if(monsterRow < ROWS - 1)
   { 
     var thingBelow = currentMap[monsterRow + 1][monsterColumn];
     if(thingBelow === FLOOR)
     {
       monster.validDirections.push(monster.DOWN);
+	  console.log("monster down");
     }
   }
   if(monsterColumn > 0)
@@ -746,14 +756,16 @@ function changeDirection(monster)
     if(thingToTheLeft === FLOOR)
     {
       monster.validDirections.push(monster.LEFT);
+	  console.log("monster left");
     }
   } 
-  if(monsterColumn < COLUMNS - 1)
+  else if(monsterColumn < COLUMNS - 1)
   {
     var thingToTheRight = currentMap[monsterRow][monsterColumn + 1];
     if(thingToTheRight === FLOOR)
     {
       monster.validDirections.push(monster.RIGHT);
+	  console.log("monster right");
     }
   } 
   
@@ -765,6 +777,7 @@ function changeDirection(monster)
   //maze passage intersection.
   if(monster.validDirections.length !== 0)
   {
+	
     //Find out if the monster is at an intersection
     var upOrDownPassage 
 	  = (monster.validDirections.indexOf(monster.UP) !== -1 
