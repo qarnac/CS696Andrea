@@ -79,6 +79,13 @@ function recursion(row, col, maze, gameObjects)
 					maze[row][col + 1] = 0;
 					
 					recursion(row, col + 2, maze, gameObjects);
+					
+					
+					if(numOfMonsters != 0 && flip())
+					{
+						gameObjects[row][col+2] = 3;
+						numOfMonsters--;
+					}
 				}
 			break;
 			case 3:
@@ -107,16 +114,11 @@ function recursion(row, col, maze, gameObjects)
 						numOfStars--;
 					}
 					
-					if(numOfMonsters != 0 && flip())
-					{
-					    gameObjects[row][col] = 3;
-						numOfMonsters--;
-					}
-					
 					recursion(row, col-2, maze, gameObjects);
 				}
 			break;
 		}
+		
 		
 	}
 	

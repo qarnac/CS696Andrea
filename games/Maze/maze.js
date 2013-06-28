@@ -43,7 +43,7 @@ var mapTest =
 
 var gameObjects0 = 
 [
-  [1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -632,6 +632,8 @@ function playGame()
 	  }
   }
   
+
+  
   //The monsters
   for(var i = 0; i < monsters.length; i++)
   {
@@ -741,7 +743,7 @@ function changeDirection(monster)
 	  console.log("monster up");
     }
   }
-  else if(monsterRow < ROWS - 1)
+  if(monsterRow < ROWS - 1)
   { 
     var thingBelow = currentMap[monsterRow + 1][monsterColumn];
     if(thingBelow === FLOOR)
@@ -759,7 +761,7 @@ function changeDirection(monster)
 	  console.log("monster left");
     }
   } 
-  else if(monsterColumn < COLUMNS - 1)
+  if(monsterColumn < COLUMNS - 1)
   {
     var thingToTheRight = currentMap[monsterRow][monsterColumn + 1];
     if(thingToTheRight === FLOOR)
@@ -921,7 +923,7 @@ function render()
 	       sprite.sourceX, sprite.sourceY, 
 	       sprite.sourceWidth, sprite.sourceHeight,
 	       Math.floor(sprite.x), Math.floor(sprite.y), 
-	       sprite.width, sprite.height
+	       sprite.width-20, sprite.height-20
 	     ); 
        }
 	     
