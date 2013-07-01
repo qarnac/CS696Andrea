@@ -7,49 +7,6 @@
 	<canvas width="550" height="400" style="border: 1px dashed black"></canvas>
 	<script src="requestAnimationFramePolyfill.js"></script>
 	<script type="text/javascript">
-	var spriteObject =
-	{
-		sourceX: 0,
-		sourceY: 0,
-		sourceWidth: 64,
-		sourceHeight: 64,
-		width: 64,
-		height: 64,
-		x: 0,
-		y: 0,
-		vx: 0,
-		vy: 0,
-		visible: true,
-		
-		//Physics properties
-		accelerationX: 0,
-		accelerationY: 0,
-		speedLimit: 5,
-		friction: 0.96,
-		bounce: -0.7,
-		gravity: 0.3,
-		//Platform game properties
-		isOnGround: undefined,
-		jumpForce: -10,
-		
-		//Getters
-		centerX: function()
-		{
-			return this.x + (this.width / 2);
-		},
-		centerY: function()
-		{
-			return this.y + (this.height / 2);
-		},
-		halfWidth: function()
-		{
-			return this.width / 2;
-		},
-		halfHeight: function()
-		{
-			return this.height / 2;
-		}
-	};
 		
 	//--- The main program
 
@@ -63,7 +20,7 @@
 	var assetsLoaded = 0;
 	
 	//The cat
-	var cat = Object.create(spriteObject);
+	var cat = new Entity();
 	cat.x = canvas.width / 2 - cat.halfWidth();
 	cat.y = canvas.height / 2 - cat.halfHeight();
 	sprites.push(cat);
