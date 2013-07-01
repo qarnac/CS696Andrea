@@ -11,61 +11,44 @@
 	<script type="text/javascript">
 		
 	//--- The main program
-	var game = new game();
+	var game = new Game();
 
 	//The canvas
 	var canvas = document.querySelector("canvas"); 
 	var drawingSurface = canvas.getContext("2d");
 	
-	
 	//The cat
 	var cat = new Entity();
 	cat.x = canvas.width / 2 - cat.halfWidth();
 	cat.y = canvas.height / 2 - cat.halfHeight();
-	sprites.push(cat);
+	game.sprites.push(cat);
 
 	//Load the tilesheet image
 	var image = new Image();
 	image.addEventListener("load", loadHandler, false);
 	image.src = "cat.png";
-	assetsToLoad.push(image);
+	game.assetsToLoad.push(image);
 	
-	//Game states
-	var LOADING = 0;
-	var PLAYING = 1;
-	var gameState = LOADING;
-	
-	//Arrow key codes
-	var UP = 38;
-	var DOWN = 40;
-	var RIGHT = 39;
-	var LEFT = 37;
-
-	//Directions
-	var moveUp = false;
-	var moveDown = false;
-	var moveRight = false;
-	var moveLeft = false;
 	
 	//Add keyboard listeners
 	window.addEventListener("keydown", function(event)
 	{
 	  switch(event.keyCode)
 	  {
-		case UP:
-			moveUp = true;
+		case game.UP:
+			game.moveUp = true;
 			break;
 		  
-		  case DOWN:
-			moveDown = true;
+		  case game.DOWN:
+			game.moveDown = true;
 			break;
 			
-		  case LEFT:
-			moveLeft = true;
+		  case game.LEFT:
+			game.moveLeft = true;
 			break;  
 			
-		  case RIGHT:
-			moveRight = true;
+		  case game.RIGHT:
+			game.moveRight = true;
 			break; 
 	  }
 	}, false);
@@ -74,20 +57,20 @@
 	{
 	  switch(event.keyCode)
 	  {
-		case UP:
-			moveUp = false;
+		case game.UP:
+			game.moveUp = false;
 			break;
 		  
-		  case DOWN:
-			moveDown = false;
+		  case game.DOWN:
+			game.moveDown = false;
 			break;
 			
-		  case LEFT:
-			moveLeft = false;
+		  case game.LEFT:
+			game.moveLeft = false;
 			break;  
 			
-		  case RIGHT:
-			moveRight = false;
+		  case game.RIGHT:
+			game.moveRight = false;
 			break; 
 	  }
 	}, false);
@@ -100,13 +83,13 @@
 	  requestAnimationFrame(update, canvas);
 	  
 	  //Change what the game is doing based on the game state
-	  switch(gameState)
+	  switch(game.gameState)
 	  {
-		case LOADING:
+		case game.LOADING:
 		  console.log("loading...");
 		  break;
 		
-		case PLAYING:
+		case game.PLAYING:
 		  playGame();
 		  break;
 	  }
@@ -117,10 +100,12 @@
 		
 	function loadHandler()
 	{ 
-		assetsLoaded++;
-		if(assetsLoaded === assetsToLoad.length)
+		game.assetsLoaded++;
+		if(game.assetsLoaded === game.assetsToLoad.length)
 		{
-			gameState = PLAYING;
+			console.log("IM IN HERE");
+			game.gameState = game.PLAYING;
+			console.log("game.gameState = "+ game.gameState);
 		}
 	}
 		
@@ -128,33 +113,33 @@
 	{ 
 		//Set the cat's acceleration if the keys are being pressed
 		//Up
-		if(moveUp && !moveDown)
+		if(game.moveUp && !game.moveDown)
 		{
 			cat.accelerationY = -200.0;
 		}
 		//Down
-		if(moveDown && !moveUp)
+		if(game.moveDown && !game.moveUp)
 		{
 			cat.accelerationY = 200.0;
 		}
 		//Left
-		if(moveLeft && !moveRight)
+		if(game.moveLeft && !game.moveRight)
 		{
 			cat.accelerationX = -0.2;
 		}
 		//Right
-		if(moveRight && !moveLeft)
+		if(game.moveRight && !game.moveLeft)
 		{
 			cat.accelerationX = 0.2;
 		}
 
 		//Set the cat's velocity and acceleration to zero if none of the keys are being pressed
-		if(!moveUp && !moveDown)
+		if(!game.moveUp && !game.moveDown)
 		{
 			cat.accelerationY = 0;
 			cat.vy = 0;
 		}
-		if(!moveLeft && !moveRight)
+		if(!game.moveLeft && !game.moveRight)
 		{
 			cat.accelerationX = 0;
 			cat.vx = 0;
@@ -209,12 +194,12 @@
 	{ 
 	  drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
 	  
-	  //Display the sprites
-	  if(sprites.length !== 0)
+	  //Display the game.sprites
+	  if(game.sprites.length !== 0)
 	  {
-		  for(var i = 0; i < sprites.length; i++)
+		  for(var i = 0; i < game.sprites.length; i++)
 		  {
-			 var sprite = sprites[i];
+			 var sprite = game.sprites[i];
 			 if(sprite.visible)
 			 {
 				 drawingSurface.drawImage
