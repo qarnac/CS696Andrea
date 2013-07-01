@@ -7,18 +7,16 @@
 	<canvas width="550" height="400" style="border: 1px dashed black"></canvas>
 	<script src="requestAnimationFramePolyfill.js"></script>
 	<script src="Entity.js"></script>
+	<script src="Game.js"></script>
 	<script type="text/javascript">
 		
 	//--- The main program
+	var game = new game();
 
 	//The canvas
 	var canvas = document.querySelector("canvas"); 
 	var drawingSurface = canvas.getContext("2d");
 	
-	//Object arrays
-	var sprites = [];
-	var assetsToLoad = [];
-	var assetsLoaded = 0;
 	
 	//The cat
 	var cat = new Entity();
