@@ -54,27 +54,11 @@
 
 	window.addEventListener("keyup", function(event)
 	{
-	  switch(event.keyCode)
-	  {
-		case game.UP:
-			game.moveUp = false;
-			break;
-		  
-		  case game.DOWN:
-			game.moveDown = false;
-			break;
-			
-		  case game.LEFT:
-			game.moveLeft = false;
-			break;  
-			
-		  case game.RIGHT:
-			game.moveRight = false;
-			break; 
-	  }
-	}, false);
+		game.KeyUpEventdetermineDirection(event.keyCode);
 
-	update();
+		update();
+		
+	}, false);
 	
     function loadHandler()
 	{

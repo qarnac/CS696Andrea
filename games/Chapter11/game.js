@@ -22,6 +22,48 @@ function Game() {
 	this.moveLeft = false;
 }
 
+Game.prototypeKeyDownEventDetemineDirection = function(keyCode){
+	  switch(event.keyCode)
+	  {
+		case this.UP:
+			this.moveUp = true;
+			break;
+		  
+		  case this.DOWN:
+			this.moveDown = true;
+			break;
+			
+		  case this.LEFT:
+			this.moveLeft = true;
+			break;  
+			
+		  case this.RIGHT:
+			this.moveRight = true;
+			break; 
+	  }
+};
+
+Game.prototype.KeyUpEventdetermineDirection = function(keyCode){
+	  switch(keyCode)
+	  {
+		case this.UP:
+			this.moveUp = false;
+			break;
+		  
+		  case this.DOWN:
+			this.moveDown = false;
+			break;
+			
+		  case this.LEFT:
+			this.moveLeft = false;
+			break;  
+			
+		  case this.RIGHT:
+			this.moveRight = false;
+			break; 
+	  }
+};
+
 Game.prototype.render = function(){
 
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
