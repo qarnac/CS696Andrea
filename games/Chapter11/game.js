@@ -91,7 +91,7 @@ Game.prototype.render = function(){
 };
 
 Game.prototype.changeGameStates = function(cat, canvas) {
-
+      console.log("test" + this.gameState);
 	  //Change what the game is doing based on the game state
 	  switch(this.gameState)
 	  {
@@ -111,12 +111,12 @@ Game.prototype.playGame = function(cat, canvas) {
 		//Up
 		if(this.moveUp && !this.moveDown)
 		{
-			cat.accelerationY = -200.0;
+			cat.accelerationY = -0.2;
 		}
 		//Down
 		if(this.moveDown && !this.moveUp)
 		{
-			cat.accelerationY = 200.0;
+			cat.accelerationY = 0.2;
 		}
 		//Left
 		if(this.moveLeft && !this.moveRight)
