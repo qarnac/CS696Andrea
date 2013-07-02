@@ -14,12 +14,14 @@ function Game() {
 	this.DOWN = 40;
 	this.RIGHT = 39;
 	this.LEFT = 37;
+	this.SPACE = 32;
 
 	//Directions
 	this.moveUp = false;
 	this.moveDown = false;
 	this.moveRight = false;
 	this.moveLeft = false;
+	this.jump = false;
 }
 
 Game.prototypeKeyDownEventDetemineDirection = function(keyCode){
@@ -29,17 +31,23 @@ Game.prototypeKeyDownEventDetemineDirection = function(keyCode){
 			this.moveUp = true;
 			break;
 		  
-		  case this.DOWN:
+		case this.DOWN:
 			this.moveDown = true;
 			break;
-			
-		  case this.LEFT:
+
+		case this.LEFT:
 			this.moveLeft = true;
 			break;  
-			
-		  case this.RIGHT:
+
+		case this.RIGHT:
 			this.moveRight = true;
 			break; 
+			
+		case this.JUMP:
+			this.jump = true;
+			break;
+			
+		 
 	  }
 };
 
@@ -50,17 +58,21 @@ Game.prototype.KeyUpEventdetermineDirection = function(keyCode){
 			this.moveUp = false;
 			break;
 		  
-		  case this.DOWN:
+		case this.DOWN:
 			this.moveDown = false;
 			break;
 			
-		  case this.LEFT:
+		case this.LEFT:
 			this.moveLeft = false;
 			break;  
 			
-		  case this.RIGHT:
+		case this.RIGHT:
 			this.moveRight = false;
 			break; 
+		
+		case this.JUMP:
+			this.jump = true;
+			break;
 	  }
 };
 
