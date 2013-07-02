@@ -113,6 +113,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	{
 		controlObject.accelerationY = -0.2;
 		controlObject.friction = 1;
+		controlObject.gravity = 0;
 	}
 	//Down
 	if(this.moveDown && !this.moveUp)
@@ -147,7 +148,8 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	
 	if( !this.moveUP && !this.moveDown && !this.moveLeft && !this.moveRight)
 	{
-		controlObject.friction = 0.96
+		controlObject.friction = 0.96;
+		controlObject.friction = 0.3;
 	}
 
 	//Apply the acceleration
@@ -157,6 +159,10 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	//Apply friction
 	controlObject.vx *= controlObject.friction;
 	controlObject.vy *= controlObject.friction;
+	
+	//Apply gravity
+	cat.vy += cat.gravity;
+	
 	
 
 	//Limit the speed
