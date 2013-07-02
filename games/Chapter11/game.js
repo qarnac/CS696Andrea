@@ -145,7 +145,7 @@ Game.prototype.playGame = function(cat, canvas) {
 			cat.vx = 0;
 		}
 		
-		if( !this.moveUP && !moveDown && !move.Left && !moveRight)
+		if( !this.moveUP && !this.moveDown && !this.moveLeft && !this.moveRight)
 		{
 			cat.friction = 0.96
 		}
