@@ -112,21 +112,25 @@ Game.prototype.playGame = function(cat, canvas) {
 		if(this.moveUp && !this.moveDown)
 		{
 			cat.accelerationY = -0.2;
+			cat.friction = 1;
 		}
 		//Down
 		if(this.moveDown && !this.moveUp)
 		{
 			cat.accelerationY = 0.2;
+			cat.friction = 1;
 		}
 		//Left
 		if(this.moveLeft && !this.moveRight)
 		{
 			cat.accelerationX = -0.2;
+			cat.friction = 1;
 		}
 		//Right
 		if(this.moveRight && !this.moveLeft)
 		{
 			cat.accelerationX = 0.2;
+			cat.friction = 1;
 		}
 
 		//Set the cat's velocity and acceleration to zero if none of the keys are being pressed
@@ -140,10 +144,20 @@ Game.prototype.playGame = function(cat, canvas) {
 			cat.accelerationX = 0;
 			cat.vx = 0;
 		}
+		
+		if( !this.moveUP && !moveDown && !move.Left && !moveRight)
+		{
+			cat.friction = 0.96
+		}
 
 		//Apply the acceleration
 		cat.vx += cat.accelerationX; 
 		cat.vy += cat.accelerationY;
+		
+		//Apply friction
+		cat.vx *= cat.friction;
+		cat.vy *= cat.friction;
+		
 
 		//Limit the speed
 		if (cat.vx > cat.speedLimit)
