@@ -182,20 +182,25 @@ Game.prototype.playGame = function(cat, canvas) {
 		cat.y += cat.vy;
 
 		//Screen boundaries
+		//Adding bounce on the screen boundaries
 		if (cat.x < 0)
 		{
 			cat.x = 0;
+			cat.vx *= cat.bounce;
 		}
 		if (cat.y < 0)
 		{
 			cat.y = 0;
+			cat.vy *= cat.bounce;
 		}
 		if (cat.x + cat.width > canvas.width)
 		{
 			cat.x = canvas.width - cat.width;
+			cat.vx *= cat.bounce;
 		}
 		if (cat.y + cat.height > canvas.height)
 		{
 			cat.y = canvas.height - cat.height;
+			cat.vy *= cat.bounce;
 		}
 };
