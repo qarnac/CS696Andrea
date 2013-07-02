@@ -23,6 +23,7 @@
 	box.y = 100;
 	box.width = 100;
 	box.height = 100;
+	box.shape = "rectangular";
 	game.sprites.push(box);
 	
 	//Create the cat
@@ -30,6 +31,7 @@
 	cat.sourceX = 64;
 	cat.x = 150;
 	cat.y = 250;
+	cat.shape = "animal";
 	game.sprites.push(cat);
 	
 	/*
@@ -108,7 +110,7 @@
 	  //The animation loop
 	  requestAnimationFrame(update, canvas);
 	  
-	  game.changeGameStates(cat, canvas);
+	  game.changeGameStates(cat, box, canvas);
 	  
 	  //Render the game
 	  game.render();

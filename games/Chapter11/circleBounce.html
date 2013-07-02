@@ -24,6 +24,7 @@ redCircle.x = 350;
 redCircle.y = 100;
 redCircle.height = 100;
 redCircle.width = 100;
+redCircle.shape = "circle";
 game.sprites.push(redCircle);
 
 //Create the blue circle 
@@ -31,6 +32,7 @@ var blueCircle = new Entity();
 blueCircle.sourceX = 64;
 blueCircle.x = 150;
 blueCircle.y = 250;
+blueCircle.shape = "circle";
 game.sprites.push(blueCircle);
 
 //Load the tilesheet image
@@ -84,13 +86,14 @@ window.addEventListener("keyup", function(event)
   }
 }, false);
 
+update();
 
 function update()
 { 
 	//The animation loop
 	requestAnimationFrame(update, canvas);
 
-	game.changeGameStates(cat, canvas);
+	game.changeGameStates(blueCircle, redCircle, canvas);
 
 	//Render the game
 	game.render();

@@ -11,6 +11,8 @@ function Entity() {
 	this.vy= 0;
 	this.visible= true;
 	
+	this.shape = "";
+	
 	//Physics properties
 	this.accelerationX= 0;
 	this.accelerationY= 0;
@@ -21,7 +23,9 @@ function Entity() {
 	
 	//Platform game properties
 	this.isOnGround= undefined;
-	this.jumpForce= -10;			
+	this.jumpForce= -10;
+	
+	
 }
 
 

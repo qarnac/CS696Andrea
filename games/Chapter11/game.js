@@ -90,8 +90,8 @@ Game.prototype.render = function(){
 
 };
 
-Game.prototype.changeGameStates = function(controlObject, canvas) {
-      console.log("test" + this.gameState);
+Game.prototype.changeGameStates = function(controlObject, bigObject, canvas) {
+     
 	  //Change what the game is doing based on the game state
 	  switch(this.gameState)
 	  {
@@ -100,12 +100,12 @@ Game.prototype.changeGameStates = function(controlObject, canvas) {
 		  break;
 		
 		case this.PLAYING:
-		  this.playGame(controlObject, canvas);
+		  this.playGame(controlObject, bigObject, canvas);
 		  break;
 	  }
 };
 
-Game.prototype.playGame = function(controlObject, canvas) {
+Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 
 	//Set the controlObject's acceleration if the keys are being pressed
 	//Up
@@ -181,9 +181,13 @@ Game.prototype.playGame = function(controlObject, canvas) {
 	controlObject.x += controlObject.vx;
 	controlObject.y += controlObject.vy;
 	
-	//Bounce the objects
-	this.blockRectangle(controlObject, box, true);
-
+	if( bigObject.shape === "rectangular")
+		//Bounce the objects
+		this.blockRectangle(controlObject, bigObject, true);
+	else if ( bigObject.shape === "circle")
+		//Bounce the circles
+		this.blockCircle(blueCircle, redCircle, true);
+	
 	//Screen boundaries
 	//Adding bounce on the screen boundaries
 	if (controlObject.x < 0)
