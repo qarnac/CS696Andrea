@@ -90,7 +90,7 @@ Game.prototype.render = function(){
 
 };
 
-Game.prototype.changeGameStates = function(cat, canvas) {
+Game.prototype.changeGameStates = function(controlObject, canvas) {
       console.log("test" + this.gameState);
 	  //Change what the game is doing based on the game state
 	  switch(this.gameState)
@@ -100,112 +100,112 @@ Game.prototype.changeGameStates = function(cat, canvas) {
 		  break;
 		
 		case this.PLAYING:
-		  this.playGame(cat, canvas);
+		  this.playGame(controlObject, canvas);
 		  break;
 	  }
 };
 
-Game.prototype.playGame = function(cat, canvas) {
+Game.prototype.playGame = function(controlObject, canvas) {
 
-		//Set the cat's acceleration if the keys are being pressed
-		//Up
-		if(this.moveUp && !this.moveDown)
-		{
-			cat.accelerationY = -0.2;
-			cat.friction = 1;
-		}
-		//Down
-		if(this.moveDown && !this.moveUp)
-		{
-			cat.accelerationY = 0.2;
-			cat.friction = 1;
-		}
-		//Left
-		if(this.moveLeft && !this.moveRight)
-		{
-			cat.accelerationX = -0.2;
-			cat.friction = 1;
-		}
-		//Right
-		if(this.moveRight && !this.moveLeft)
-		{
-			cat.accelerationX = 0.2;
-			cat.friction = 1;
-		}
+	//Set the controlObject's acceleration if the keys are being pressed
+	//Up
+	if(this.moveUp && !this.moveDown)
+	{
+		controlObject.accelerationY = -0.2;
+		controlObject.friction = 1;
+	}
+	//Down
+	if(this.moveDown && !this.moveUp)
+	{
+		controlObject.accelerationY = 0.2;
+		controlObject.friction = 1;
+	}
+	//Left
+	if(this.moveLeft && !this.moveRight)
+	{
+		controlObject.accelerationX = -0.2;
+		controlObject.friction = 1;
+	}
+	//Right
+	if(this.moveRight && !this.moveLeft)
+	{
+		controlObject.accelerationX = 0.2;
+		controlObject.friction = 1;
+	}
 
-		//Set the cat's velocity and acceleration to zero if none of the keys are being pressed
-		if(!this.moveUp && !this.moveDown)
-		{
-			cat.accelerationY = 0;
-			cat.vy = 0;
-		}
-		if(!this.moveLeft && !this.moveRight)
-		{
-			cat.accelerationX = 0;
-			cat.vx = 0;
-		}
-		
-		if( !this.moveUP && !this.moveDown && !this.moveLeft && !this.moveRight)
-		{
-			cat.friction = 0.96
-		}
+	//Set the controlObject's velocity and acceleration to zero if none of the keys are being pressed
+	if(!this.moveUp && !this.moveDown)
+	{
+		controlObject.accelerationY = 0;
+		controlObject.vy = 0;
+	}
+	if(!this.moveLeft && !this.moveRight)
+	{
+		controlObject.accelerationX = 0;
+		controlObject.vx = 0;
+	}
+	
+	if( !this.moveUP && !this.moveDown && !this.moveLeft && !this.moveRight)
+	{
+		controlObject.friction = 0.96
+	}
 
-		//Apply the acceleration
-		cat.vx += cat.accelerationX; 
-		cat.vy += cat.accelerationY;
-		
-		//Apply friction
-		cat.vx *= cat.friction;
-		cat.vy *= cat.friction;
-		
+	//Apply the acceleration
+	controlObject.vx += controlObject.accelerationX; 
+	controlObject.vy += controlObject.accelerationY;
+	
+	//Apply friction
+	controlObject.vx *= controlObject.friction;
+	controlObject.vy *= controlObject.friction;
+	
 
-		//Limit the speed
-		if (cat.vx > cat.speedLimit)
-		{
-			cat.vx = cat.speedLimit;
-		}
-		if (cat.vx < -cat.speedLimit)
-		{
-			cat.vx = -cat.speedLimit;
-		}
-		if (cat.vy > cat.speedLimit)
-		{
-			cat.vy = cat.speedLimit;
-		} 
-		if (cat.vy < -cat.speedLimit)
-		{
-			cat.vy = -cat.speedLimit;
-		}
-		
-		//Move the cat
-		cat.x += cat.vx;
-		cat.y += cat.vy;
-		
-		//Bounce the objects
-		this.blockRectangle(cat, box, true);
+	//Limit the speed
+	if (controlObject.vx > controlObject.speedLimit)
+	{
+		controlObject.vx = controlObject.speedLimit;
+	}
+	if (controlObject.vx < -controlObject.speedLimit)
+	{
+		controlObject.vx = -controlObject.speedLimit;
+	}
+	if (controlObject.vy > controlObject.speedLimit)
+	{
+		controlObject.vy = controlObject.speedLimit;
+	} 
+	if (controlObject.vy < -controlObject.speedLimit)
+	{
+		controlObject.vy = -controlObject.speedLimit;
+	}
+	
+	//Move the controlObject
+	controlObject.x += controlObject.vx;
+	controlObject.y += controlObject.vy;
+	
+	//Bounce the objects
+	this.blockRectangle(controlObject, box, true);
 
-		//Screen boundaries
-		//Adding bounce on the screen boundaries
-		if (cat.x < 0)
-		{
-			cat.x = 0;
-			cat.vx *= cat.bounce;
-		}
-		if (cat.y < 0)
-		{
-			cat.y = 0;
-			cat.vy *= cat.bounce;
-		}
-		if (cat.x + cat.width > canvas.width)
-		{
-			cat.x = canvas.width - cat.width;
-			cat.vx *= cat.bounce;
-		}
-		if (cat.y + cat.height > canvas.height)
-		{
-			cat.y = canvas.height - cat.height;
-			cat.vy *= cat.bounce;
-		}
+	//Screen boundaries
+	//Adding bounce on the screen boundaries
+	if (controlObject.x < 0)
+	{
+		controlObject.x = 0;
+		controlObject.vx *= controlObject.bounce;
+	}
+	if (controlObject.y < 0)
+	{
+		controlObject.y = 0;
+		controlObject.vy *= controlObject.bounce;
+	}
+	if (controlObject.x + controlObject.width > canvas.width)
+	{
+		controlObject.x = canvas.width - controlObject.width;
+		controlObject.vx *= controlObject.bounce;
+	}
+	if (controlObject.y + controlObject.height > canvas.height)
+	{
+		controlObject.y = canvas.height - controlObject.height;
+		controlObject.vy *= controlObject.bounce;
+	}
 };
 
 Game.prototype.blockRectangle = function(r1, r2, bounce) {
@@ -315,3 +315,7 @@ Game.prototype.blockRectangle = function(r1, r2, bounce) {
 
 	return collisionSide;
 };
+
+Game.prototype.blockCircle = function(c1, c2, bounce){
+	
+}

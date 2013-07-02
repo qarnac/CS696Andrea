@@ -3,56 +3,13 @@
 <title>Circle bounce</title>
 
 <canvas width="550" height="400" style="border: 1px dashed black"></canvas>
-
 <script src="requestAnimationFramePolyfill.js"></script>
+<script src="Entity.js"></script>
+<script src="Game.js"></script>
 <script type="text/javascript">
 
-//--- The sprite object
-
-var spriteObject =
-{
-  sourceX: 0,
-  sourceY: 0,
-  sourceWidth: 64,
-  sourceHeight: 64,
-  width: 64,
-  height: 64,
-  x: 0,
-  y: 0,
-  vx: 0,
-  vy: 0,
-  visible: true,
-  
-  //Physics properties
-  accelerationX: 0, 
-  accelerationY: 0, 
-  speedLimit: 5, 
-  friction: 0.96,
-  bounce: -0.7,
-  gravity: 0.3,
-    
-  //Platform game properties   
-  isOnGround: undefined,
-  jumpForce: -10,
-
-  //Getters
-  centerX: function()
-  {
-    return this.x + (this.width / 2);
-  },
-  centerY: function()
-  {
-    return this.y + (this.height / 2);
-  },
-  halfWidth: function()
-  {
-    return this.width / 2;
-  },
-  halfHeight: function()
-  {
-    return this.height / 2;
-  }
-};
+//--- The main program
+var game = new Game();
 
 //--- The main program
 
@@ -60,25 +17,21 @@ var spriteObject =
 var canvas = document.querySelector("canvas"); 
 var drawingSurface = canvas.getContext("2d");
 
-//Object arrays
-var sprites = [];
-var assetsToLoad = [];
-var assetsLoaded = 0;
 
 //Create the red circle 
-var redCircle = Object.create(spriteObject);
+var redCircle = new Entity();
 redCircle.x = 350;
 redCircle.y = 100;
 redCircle.height = 100;
 redCircle.width = 100;
-sprites.push(redCircle);
+game.sprites.push(redCircle);
 
 //Create the blue circle 
-var blueCircle = Object.create(spriteObject);
+var blueCircle = new Entity();
 blueCircle.sourceX = 64;
 blueCircle.x = 150;
 blueCircle.y = 250;
-sprites.push(blueCircle);
+game.sprites.push(blueCircle);
 
 //Load the tilesheet image
 var image = new Image();
