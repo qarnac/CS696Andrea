@@ -133,6 +133,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		controlObject.accelerationY = 0.2;
 		controlObject.friction = 1;
 	}
+	
 	//Left
 	if(this.moveLeft && !this.moveRight)
 	{
@@ -222,6 +223,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	if (controlObject.y + controlObject.height > canvas.height)
 	{
 		controlObject.y = canvas.height - controlObject.height;
+		
 		controlObject.vy *= controlObject.bounce;
 	}
 };
