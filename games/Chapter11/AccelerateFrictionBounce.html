@@ -17,16 +17,33 @@
 	var canvas = document.querySelector("canvas"); 
 	var drawingSurface = canvas.getContext("2d");
 	
+	//Create the box 
+	var box = new Entity();
+	box.x = 350;
+	box.y = 100;
+	box.width = 100;
+	box.height = 100;
+	game.sprites.push(box);
+	
+	//Create the cat
+	var cat = new Entity();
+	cat.sourceX = 64;
+	cat.x = 150;
+	cat.y = 250;
+	game.sprites.push(cat);
+	
+	/*
 	//The cat
 	var cat = new Entity();
 	cat.x = canvas.width / 2 - cat.halfWidth();
 	cat.y = canvas.height / 2 - cat.halfHeight();
 	game.sprites.push(cat);
+	*/
 	
 	//Load the tilesheet image
 	var image = new Image();
 	image.addEventListener("load", loadHandler, false);
-	image.src = "cat.png";
+	image.src = "catAndBox.png";
 	game.assetsToLoad.push(image);
 	
 	//Add keyboard listeners
