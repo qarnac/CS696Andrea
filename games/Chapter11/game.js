@@ -112,8 +112,8 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	if(this.moveUp && !this.moveDown)
 	{
 		controlObject.accelerationY = -0.2;
-		controlObject.friction = 1;
 		controlObject.gravity = 0;
+		controlObject.friction = 1;
 	}
 	//Down
 	if(this.moveDown && !this.moveUp)
@@ -134,51 +134,47 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		controlObject.friction = 1;
 	}
 
-	//Set the controlObject's velocity and acceleration to zero if none of the keys are being pressed
+	//Set the cat's acceleration, friction and gravity 
+	//to zero if none of the keys are being pressed
 	if(!this.moveUp && !this.moveDown)
 	{
 		controlObject.accelerationY = 0;
-		controlObject.vy = 0;
 	}
 	if(!this.moveLeft && !this.moveRight)
 	{
-		controlObject.accelerationX = 0;
-		controlObject.vx = 0;
+		controlObject.accelerationX = 0; 
+	}
+	if(!this.moveUp && !this.moveDown && !this.moveLeft && !this.moveRight)
+	{
+		controlObject.friction = 0.96; 
+		controlObject.gravity = 0.3;
 	}
 	
-	if( !this.moveUP && !this.moveDown && !this.moveLeft && !this.moveRight)
-	{
-		controlObject.friction = 0.96;
-		controlObject.friction = 0.3;
-	}
-
 	//Apply the acceleration
 	controlObject.vx += controlObject.accelerationX; 
 	controlObject.vy += controlObject.accelerationY;
 	
 	//Apply friction
 	controlObject.vx *= controlObject.friction;
-	controlObject.vy *= controlObject.friction;
 	
 	//Apply gravity
-	cat.vy += cat.gravity;
-	
-	
+	controlObject.vy += controlObject.gravity;
 
 	//Limit the speed
-	if (controlObject.vx > controlObject.speedLimit)
+	if(controlObject.vx > controlObject.speedLimit)
 	{
 		controlObject.vx = controlObject.speedLimit;
 	}
-	if (controlObject.vx < -controlObject.speedLimit)
+	if(controlObject.vx < -controlObject.speedLimit)
 	{
 		controlObject.vx = -controlObject.speedLimit;
 	}
-	if (controlObject.vy > controlObject.speedLimit)
+	if(controlObject.vy > controlObject.speedLimit * 2)
 	{
-		controlObject.vy = controlObject.speedLimit;
+		controlObject.vy = controlObject.speedLimit * 2;
+		console.log("Terminal velocity!");
 	} 
-	if (controlObject.vy < -controlObject.speedLimit)
+	if(controlObject.vy < -controlObject.speedLimit)
 	{
 		controlObject.vy = -controlObject.speedLimit;
 	}

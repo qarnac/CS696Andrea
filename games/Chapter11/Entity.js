@@ -16,15 +16,14 @@ function Entity() {
 	//Physics properties
 	this.accelerationX= 0;
 	this.accelerationY= 0;
-	this.speedLimit= 5;
-	this.friction= 0.96;
-	this.bounce= -0.7;
-	this.gravity= 0.3;
+	this.speedLimit = 5;
+	this.friction = 0.96;
+	this.bounce = -0.7;
+	this.gravity = 0.3;
 	
 	//Platform game properties
 	this.isOnGround= undefined;
 	this.jumpForce= -10;
-	
 	
 }
 
