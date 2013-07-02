@@ -133,7 +133,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		controlObject.accelerationY = 0.2;
 		controlObject.friction = 1;
 	}
-	
+
 	//Left
 	if(this.moveLeft && !this.moveRight)
 	{
