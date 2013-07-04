@@ -643,7 +643,7 @@ function playGame()
     monster.x += monster.vx;
     monster.y += monster.vy;
 	
-	console.log("test " + Math.floor(monster.x) % SIZE);
+	//console.log("test " + Math.floor(monster.x) % SIZE);
 	
    
 	//Change the monster's state to SCARED if
@@ -731,8 +731,8 @@ function changeDirection(monster)
   //Find out what kinds of things are in the map cells 
   //that surround the monster. If the cells contain a FLOOR cell,
   //push the corresponding direction into the validDirections array
-  console.log(monsterRow);
-  console.log(monsterColumn);
+  //console.log(monsterRow);
+  //console.log(monsterColumn);
   
   if(monsterRow > 0)
   {
@@ -740,7 +740,7 @@ function changeDirection(monster)
     if(thingAbove === FLOOR)
     {
       monster.validDirections.push(monster.UP);
-	  console.log("monster up");
+	  //console.log("monster up");
     }
   }
   if(monsterRow < ROWS - 1)
@@ -749,7 +749,7 @@ function changeDirection(monster)
     if(thingBelow === FLOOR)
     {
       monster.validDirections.push(monster.DOWN);
-	  console.log("monster down");
+	  //console.log("monster down");
     }
   }
   if(monsterColumn > 0)
@@ -758,7 +758,7 @@ function changeDirection(monster)
     if(thingToTheLeft === FLOOR)
     {
       monster.validDirections.push(monster.LEFT);
-	  console.log("monster left");
+	  //console.log("monster left");
     }
   } 
   if(monsterColumn < COLUMNS - 1)
@@ -781,6 +781,7 @@ function changeDirection(monster)
   {
 	
     //Find out if the monster is at an intersection
+	
     var upOrDownPassage 
 	  = (monster.validDirections.indexOf(monster.UP) !== -1 
 	  || monster.validDirections.indexOf(monster.DOWN) !== -1);
@@ -788,12 +789,13 @@ function changeDirection(monster)
 	var leftOrRightPassage
 	  = (monster.validDirections.indexOf(monster.LEFT) !== -1 
 	  || monster.validDirections.indexOf(monster.RIGHT) !== -1);
+	 
     
     //Change the monster's direction if it's at an intersection or
     //in a cul-de-sac (dead-end)
-    if(upOrDownPassage && leftOrRightPassage 
-	|| monster.validDirections.length === 1)
+    if(upOrDownPassage || leftOrRightPassage ||monster.validDirections.length === 1)
     {
+	  console.log("IM in here");
       //Optionally find the closest distance to the alien
       if(alien !== null && monster.hunt === true)
       {
