@@ -21,7 +21,7 @@ var drawingSurface = canvas.getContext("2d");
 //Create the red circle 
 var redCircle = new Entity();
 redCircle.x = 350;
-redCircle.y = 100;
+redCircle.y = 300;
 redCircle.height = 100;
 redCircle.width = 100;
 redCircle.shape = "circle";
@@ -61,6 +61,9 @@ window.addEventListener("keydown", function(event)
 	  case game.RIGHT:
 		game.moveRight = true;
 		break; 
+	  case game.SPACE:
+		game.jump = true;
+		break; 
   }
 }, false);
 
@@ -82,6 +85,10 @@ window.addEventListener("keyup", function(event)
 		
 	  case game.RIGHT:
 		game.moveRight = false;
+		break; 
+		
+	  case game.SPACE:
+		game.jump = false;
 		break; 
   }
 }, false);
