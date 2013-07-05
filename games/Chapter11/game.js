@@ -235,6 +235,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		//Neutralize gravity by applying its
 		//exact opposite force to the character's vy
 		controlObject.vy = -controlObject.gravity;
+		controlObject.vy = -controlObject.vy;
 	}
 	
 	else if(collisionSide === "top" && controlObject.vy <= 0)
