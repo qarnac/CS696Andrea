@@ -193,7 +193,6 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		controlObject.vx *= controlObject.friction;
 	}
 	
-	
 	//Apply gravity
 	controlObject.vy += controlObject.gravity;
 
@@ -213,10 +212,20 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		
 	} 
 	
-  //Check for a collision with the box
-  var collisionSide = blockRectangle(controlObject, bigObject, false);
-  
-
+	//Check for a collision with the box
+	var collisionSide = "none";
+	
+	if( bigObject.shape === "rectangular")
+	{
+		//Bounce the objects
+		collisionSide = this.blockRectangle(controlObject, bigObject, false);
+	}
+	else if ( bigObject.shape === "circle")
+		//Bounce the circles
+		collisionSide = this.blockCircle(blueCircle, redCircle, false);
+	
+	
+	
 	if(collisionSide === "bottom" && controlObject.vy >= 0)
 	{
 		//Tell the game that the controlObject is on the ground if 
@@ -227,6 +236,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		//exact opposite force to the character's vy
 		controlObject.vy = -controlObject.gravity;
 	}
+	
 	else if(collisionSide === "top" && controlObject.vy <= 0)
 	{
 		controlObject.vy = 0;
@@ -247,32 +257,24 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	//Move the controlObject
 	controlObject.x += controlObject.vx;
 	controlObject.y += controlObject.vy;
-	
-	if( bigObject.shape === "rectangular")
-	{
-		//Bounce the objects
-		this.blockRectangle(controlObject, bigObject, true);
-	}
-	else if ( bigObject.shape === "circle")
-		//Bounce the circles
-		this.blockCircle(blueCircle, redCircle, true);
+
 	
 	//Screen boundaries
 	//Adding bounce on the screen boundaries
 	if (controlObject.x < 0)
 	{
-		controlObject.x = 0;
 		controlObject.vx *= controlObject.bounce;
+		controlObject.x = 0;
 	}
 	if (controlObject.y < 0)
 	{
-		controlObject.y = 0;
 		controlObject.vy *= controlObject.bounce;
+		controlObject.y = 0;
 	}
 	if (controlObject.x + controlObject.width > canvas.width)
 	{
-		controlObject.x = canvas.width - controlObject.width;
 		controlObject.vx *= controlObject.bounce;
+		controlObject.x = canvas.width - controlObject.width;
 	}
 	if (controlObject.y + controlObject.height > canvas.height)
 	{
