@@ -25,6 +25,7 @@ function Game() {
 }
 
 Game.prototypeKeyDownEventDetemineDirection = function(keyCode){
+	  console.log(event.keyCode);
 	  switch(event.keyCode)
 	  {
 		case this.UP:
@@ -43,7 +44,8 @@ Game.prototypeKeyDownEventDetemineDirection = function(keyCode){
 			this.moveRight = true;
 			break; 
 			
-		case this.JUMP:
+		case this.SPACE:
+			console.log("space");
 			this.jump = true;
 			break;
 			
@@ -70,7 +72,7 @@ Game.prototype.KeyUpEventdetermineDirection = function(keyCode){
 			this.moveRight = false;
 			break; 
 		
-		case this.JUMP:
+		case this.SPACE:
 			this.jump = true;
 			break;
 	  }
@@ -120,6 +122,8 @@ Game.prototype.changeGameStates = function(controlObject, bigObject, canvas) {
 Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 
 	//Set the controlObject's acceleration if the keys are being pressed
+	
+	/*
 	//Up
 	if(this.moveUp && !this.moveDown)
 	{
@@ -133,6 +137,7 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		controlObject.accelerationY = 0.2;
 		controlObject.friction = 1;
 	}
+	*/
 
 	//Left
 	if(this.moveLeft && !this.moveRight)
@@ -147,8 +152,19 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 		controlObject.friction = 1;
 	}
 
+	
+	//Space
+	if(this.jump && controlObject.isOnGround)
+	{
+		controlObject.vy += controlObject.jumpForce;
+		controlObject.isOnGround = false;
+		console.log(controlObject.isOnGround);
+		controlObject.friction = 1;
+	}
+
 	//Set the cat's acceleration, friction and gravity 
 	//to zero if none of the keys are being pressed
+	/*
 	if(!this.moveUp && !this.moveDown)
 	{
 		controlObject.accelerationY = 0;
@@ -157,8 +173,12 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	{
 		controlObject.accelerationX = 0; 
 	}
-	if(!this.moveUp && !this.moveDown && !this.moveLeft && !this.moveRight)
+	*/
+	if(!this.moveLeft && !this.moveRight)
 	{
+		//controlObject.friction = 0.96; 
+		//controlObject.gravity = 0.3;
+		controlObject.accelerationX = 0; 
 		controlObject.friction = 0.96; 
 		controlObject.gravity = 0.3;
 	}
@@ -168,12 +188,17 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	controlObject.vy += controlObject.accelerationY;
 	
 	//Apply friction
-	controlObject.vx *= controlObject.friction;
+	if(controlObject.isOnGround)
+	{
+		controlObject.vx *= controlObject.friction;
+	}
+	
 	
 	//Apply gravity
 	controlObject.vy += controlObject.gravity;
 
 	//Limit the speed
+	//Don't limit the upward speed because it will choke the jump effect.
 	if(controlObject.vx > controlObject.speedLimit)
 	{
 		controlObject.vx = controlObject.speedLimit;
@@ -185,20 +210,49 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	if(controlObject.vy > controlObject.speedLimit * 2)
 	{
 		controlObject.vy = controlObject.speedLimit * 2;
-		console.log("Terminal velocity!");
+		
 	} 
-	if(controlObject.vy < -controlObject.speedLimit)
-	{
-		controlObject.vy = -controlObject.speedLimit;
-	}
 	
+  //Check for a collision with the box
+  var collisionSide = blockRectangle(controlObject, bigObject, false);
+  
+
+	if(collisionSide === "bottom" && controlObject.vy >= 0)
+	{
+		//Tell the game that the controlObject is on the ground if 
+		//it's standing on top of a platform
+		controlObject.isOnGround = true;
+			
+		//Neutralize gravity by applying its
+		//exact opposite force to the character's vy
+		controlObject.vy = -controlObject.gravity;
+	}
+	else if(collisionSide === "top" && controlObject.vy <= 0)
+	{
+		controlObject.vy = 0;
+	}
+	else if(collisionSide === "right" && controlObject.vx >= 0)
+	{
+		controlObject.vx = 0;
+	}
+	else if(collisionSide === "left" && controlObject.vx <= 0)
+	{
+		controlObject.vx = 0;
+	}
+	if(collisionSide !== "bottom" && controlObject.vy > 0)
+	{
+		controlObject.isOnGround = false;
+	}	
+
 	//Move the controlObject
 	controlObject.x += controlObject.vx;
 	controlObject.y += controlObject.vy;
 	
 	if( bigObject.shape === "rectangular")
+	{
 		//Bounce the objects
 		this.blockRectangle(controlObject, bigObject, true);
+	}
 	else if ( bigObject.shape === "circle")
 		//Bounce the circles
 		this.blockCircle(blueCircle, redCircle, true);
@@ -223,8 +277,8 @@ Game.prototype.playGame = function(controlObject, bigObject, canvas) {
 	if (controlObject.y + controlObject.height > canvas.height)
 	{
 		controlObject.y = canvas.height - controlObject.height;
-		
-		controlObject.vy *= controlObject.bounce;
+		controlObject.isOnGround = true;
+		controlObject.vy = -controlObject.gravity;
 	}
 };
 

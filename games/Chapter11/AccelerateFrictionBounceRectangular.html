@@ -8,6 +8,7 @@
 	<script src="requestAnimationFramePolyfill.js"></script>
 	<script src="Entity.js"></script>
 	<script src="Game.js"></script>
+	<script src="collision.js"></script>
 	<script type="text/javascript">
 		
 	//--- The main program
@@ -20,7 +21,7 @@
 	//Create the box 
 	var box = new Entity();
 	box.x = 350;
-	box.y = 100;
+	box.y = 250;
 	box.width = 100;
 	box.height = 100;
 	box.shape = "rectangular";
@@ -68,6 +69,10 @@
 		  case game.RIGHT:
 			game.moveRight = true;
 			break; 
+			
+		  case game.SPACE:
+			game.jump = true;
+			break; 
 	  }
 	}, false);
 
@@ -89,6 +94,10 @@
 			
 		  case game.RIGHT:
 			game.moveRight = false;
+			break; 
+			
+		  case game.SPACE:
+			game.jump = false;
 			break; 
 	  }
 	}, false);
