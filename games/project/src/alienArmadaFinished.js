@@ -261,6 +261,19 @@ function playGame()
       }
     }
 	
+	for(var j = 0; j < game.alienMissiles.length; j++)
+    {
+		var missile = game.alienMissiles[j];
+		
+		if( hitTestRectangle(missile, cannon) )
+		{
+			game.gameState = game.OVER;
+			break;
+		}
+		
+	}
+	
+	
 	if(hitTestRectangle(cannon, alien)
       && alien.state === alien.NORMAL)
     {
