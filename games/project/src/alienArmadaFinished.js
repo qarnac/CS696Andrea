@@ -194,19 +194,20 @@ function playGame()
 	var alien = game.aliens[i];
 	var myVar;
 	
-	console.log(alien.shoot);
 	
 	if( alien.shoot === true)
-		myVar = setTimeout(function(){alien.fireMissile(sprites,game.alienMissiles)},2000);
+	{
+		alien.fireMissile(sprites,game.alienMissiles);
+	}
 	
-	console.log("im in here");
-	console.log("alien = " + game.aliens.length);
+  }
+  
 	//Move the missiles THIS IS PART OF GAME CLASS
 	for(var l = 0; l < game.alienMissiles.length; l++)
 	{
-		console.log("missile = " + game.alienMissiles.length);
+		
 		var missile = game.alienMissiles[l];
-
+		
 		//Move it up the screen
 		missile.y += missile.vy;
 
@@ -224,7 +225,8 @@ function playGame()
 		  l--;
 		}
 	}
-  }
+  
+
 
   game.alienSpawnTimer(sprites);
   
@@ -277,7 +279,7 @@ function playGame()
 	if(hitTestRectangle(cannon, alien)
       && alien.state === alien.NORMAL)
     {
-		console.log("IN HERE");
+		
 		game.gameState = game.OVER;
     }
   }

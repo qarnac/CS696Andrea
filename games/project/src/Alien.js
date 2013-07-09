@@ -14,7 +14,6 @@ Alien.prototype.update = function(){
 };
 
 Alien.prototype.fireMissile = function(sprites, alienMissiles){
-
   if( this.shoot === false)
 	return;
 
@@ -31,7 +30,7 @@ Alien.prototype.fireMissile = function(sprites, alienMissiles){
   this.missile.y = this.y + this.missile.height;
   
   //Set its speed
-  this.missile.vy = 1;
+  this.missile.vy = 2;
   
   //Push the missile into both the sprites and missiles arrays
   sprites.push(this.missile);
