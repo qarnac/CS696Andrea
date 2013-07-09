@@ -30,12 +30,12 @@ Game.prototype.endGame = function(gameOverMessage)
   gameOverMessage.visible = true;
   if(this.score < this.scoreNeededToWin)
   {
-    gameOverMessage.text = "EARTH DESTROYED!";
+    gameOverMessage.text = "Game Over!";
   }
   else
   {
     gameOverMessage.x = 120;
-    gameOverMessage.text = "EARTH SAVED!";
+    gameOverMessage.text = "You've Won!";
   }
 };
 

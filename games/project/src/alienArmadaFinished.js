@@ -260,6 +260,13 @@ function playGame()
         j--;
       }
     }
+	
+	if(hitTestRectangle(cannon, alien)
+      && alien.state === alien.NORMAL)
+    {
+		console.log("IN HERE");
+		game.gameState = game.OVER;
+    }
   }
   
   //--- The score 
