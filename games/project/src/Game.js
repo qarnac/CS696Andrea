@@ -93,6 +93,7 @@ Game.prototype.alienDropDownAndStatus = function(canvas){
     {
       //Move the current alien if its state is NORMAL
       alien.y += alien.vy;
+	  alien.x += alien.vx;
     }
 
     //Check if the alien has crossed the bottom of the screen
