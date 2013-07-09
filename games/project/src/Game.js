@@ -58,6 +58,10 @@ Game.prototype.makeAlien = function(sprites)
   //Push the alien into both the sprites and aliens arrays
   sprites.push(alien);
   this.aliens.push(alien);
+  
+  alien.fireMissile(sprites);
+  
+  console.log("make Alien");
 };
 
 Game.prototype.alienSpawnTimer = function(sprites){
@@ -69,6 +73,7 @@ Game.prototype.alienSpawnTimer = function(sprites){
   if(this.alienTimer === this.alienFrequency)
   {
     this.makeAlien(sprites);
+	
     this.alienTimer = 0;
 
     //Reduce game.alienFrequency by one to gradually increase

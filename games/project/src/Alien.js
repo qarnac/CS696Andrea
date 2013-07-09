@@ -3,6 +3,8 @@ function Alien()
 	this.NORMAL = 1;
 	this.EXPLODED = 2;
 	this.state = this.NORMAL;
+	
+	this.missiles = [];
 }
 
 Alien.prototype = new Entity();
