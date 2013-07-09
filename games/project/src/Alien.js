@@ -13,7 +13,7 @@ Alien.prototype.update = function(){
 	this.sourceX = this.state * this.width;
 };
 
-Alien.prototype.fireMissile = function(sprites){
+Alien.prototype.fireMissile = function(sprites, alienMissiles){
 
   if( this.shoot === false)
 	return;
@@ -35,7 +35,7 @@ Alien.prototype.fireMissile = function(sprites){
   
   //Push the missile into both the sprites and missiles arrays
   sprites.push(this.missile);
-  this.missiles.push(this.missile);
+  alienMissiles.push(this.missile);
   
   this.shoot = false;
 };

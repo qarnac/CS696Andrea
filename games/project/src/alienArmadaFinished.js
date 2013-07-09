@@ -197,15 +197,15 @@ function playGame()
 	console.log(alien.shoot);
 	
 	if( alien.shoot === true)
-		myVar = setTimeout(function(){alien.fireMissile(sprites)},2000);
+		myVar = setTimeout(function(){alien.fireMissile(sprites,game.alienMissiles)},2000);
 	
 	console.log("im in here");
 	console.log("alien = " + game.aliens.length);
 	//Move the missiles THIS IS PART OF GAME CLASS
-	for(var l = 0; l < game.missiles.length; l++)
+	for(var l = 0; l < game.alienMissiles.length; l++)
 	{
-		console.log("missile = " + game.missiles.length);
-		var missile = game.missiles[l];
+		console.log("missile = " + game.alienMissiles.length);
+		var missile = game.alienMissiles[l];
 
 		//Move it up the screen
 		missile.y += missile.vy;
@@ -214,7 +214,7 @@ function playGame()
 		if(missile.y < 0 - missile.height)
 		{ 
 		  //Remove the missile from the missiles array
-		  removeObject(missile, game.missiles);
+		  removeObject(missile, game.alienMissiles);
 
 		  //Remove the missile from the sprites array
 		  removeObject(missile, sprites);
