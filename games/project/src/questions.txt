@@ -1,1 +1,0 @@
-how do i use a method or a member of base class while i am in the derived class.
