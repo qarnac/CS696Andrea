@@ -97,18 +97,20 @@ Game.prototype.alienDropDownAndStatus = function(canvas){
 	  if(alien.move === true)
 	  {
 	    alien.move = false;
-		setTimeout(function(){alien.moveLeftRight()},0);
+		setTimeout(function(){alien.moveLeftRight()},2000);
 	  }
 		
 	  alien.x += alien.vx;
     }
 
+	/*
     //Check if the alien has crossed the bottom of the screen
     if(alien.y > canvas.height + alien.height)
     { 
       //End the game if an alien has reached Earth
       this.gameState = this.OVER;
     }
+	*/
   }
 
 };
