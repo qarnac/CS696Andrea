@@ -61,7 +61,7 @@ Game.prototype.makeAlien = function(sprites)
   
   alien.fireMissile(sprites);
   
-  console.log("make Alien");
+  //console.log("make Alien");
 };
 
 Game.prototype.alienSpawnTimer = function(sprites){

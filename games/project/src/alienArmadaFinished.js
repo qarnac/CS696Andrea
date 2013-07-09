@@ -84,6 +84,7 @@ window.addEventListener("keydown", function(event)
 	    if(!game.spaceKeyIsDown)
 	    {
 	      cannon.shoot = true;
+		  alien.shoot = true;
 	      cannon.spaceKeyIsDown = true;
 	    }
    }
@@ -145,7 +146,7 @@ function loadHandler()
     //music.removeEventListener("canplaythrough", loadHandler, false);
     //game.shootSound.removeEventListener("canplaythrough", loadHandler, false);
     //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
-    console.log(game.assetsLoaded);
+    //console.log(game.assetsLoaded);
     //Play the music
     //music.play();
     //music.volume = 0.3;
@@ -163,9 +164,8 @@ function playGame()
   //Fire a missile if game.shoot is true
   if(cannon.shoot)
   {
-    cannon.fireMissile(sprites);	
+	cannon.fireMissile(sprites);
   }
-  
   
   //Move the missiles THIS IS PART OF GAME CLASS
   for(var i = 0; i < cannon.missiles.length; i++)
@@ -190,9 +190,47 @@ function playGame()
     }
   }
 
+  for(var i = 0; i < game.aliens.length; i++)
+  {
+	var alien = game.aliens[i];
+	
+	if(cannon.shoot)
+	{
+		alien.fireMissile(sprites);
+		console.log("fire!!!");
+	}
+	
+	console.log("im in here");
+	console.log("alien = " + game.aliens.length);
+	//Move the missiles THIS IS PART OF GAME CLASS
+	for(var l = 0; l < alien.missiles.length; l++)
+	{
+		console.log("missile = " + alien.missiles.length);
+		var missile = alien.missiles[l];
+
+		//Move it up the screen
+		missile.y += missile.vy;
+
+		//Remove the missile if it crosses the top of the screen
+		if(missile.y < 0 - missile.height)
+		{ 
+		  //Remove the missile from the missiles array
+		  removeObject(missile, alien.missiles);
+
+		  //Remove the missile from the sprites array
+		  removeObject(missile, sprites);
+
+		  //Reduce the loop counter by 1 to compensate 
+		  //for the removed element
+		  l--;
+		}
+	}
+  }
+
   game.alienSpawnTimer(sprites);
   
   game.alienDropDownAndStatus(canvas);
+
 
   //--- The collisions 
 

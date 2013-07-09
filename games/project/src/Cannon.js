@@ -20,20 +20,20 @@ Cannon.prototype.moveAction = function(canvas) {
   //Left
   if(this.moveLeft && !this.moveRight)
   {
-	console.log("left");
+	//console.log("left");
     this.vx = -8;
   }
   //Right
   if(this.moveRight && !this.moveLeft)
   {
-	console.log("right");
+	//console.log("right");
     this.vx = 8;
   }
 
   //Set the cannon's velocity to zero if none of the keys are being pressed
   if(!this.moveLeft && !this.moveRight)
   {
-	console.log("cannon velocity");
+	//console.log("cannon velocity");
     this.vx = 0;
   }
   
