@@ -3,8 +3,8 @@ function Alien()
 	this.NORMAL = 1;
 	this.EXPLODED = 2;
 	this.state = this.NORMAL;
-	
-	this.missiles = [];
+	this.shoot = true;
+
 }
 
 Alien.prototype = new Entity();
@@ -14,6 +14,10 @@ Alien.prototype.update = function(){
 };
 
 Alien.prototype.fireMissile = function(sprites){
+
+  if( this.shoot === false)
+	return;
+
   //Create a missile sprite
   this.missile = new Entity();
   this.missile.sourceX = 96;
@@ -24,10 +28,10 @@ Alien.prototype.fireMissile = function(sprites){
   
   //Center it over the alien for release
   this.missile.x = this.centerX() - this.missile.halfWidth();
-  this.missile.y = this.y - this.missile.height;
+  this.missile.y = this.y + this.missile.height;
   
   //Set its speed
-  this.missile.vy = -8;
+  this.missile.vy = 2;
   
   //Push the missile into both the sprites and missiles arrays
   sprites.push(this.missile);

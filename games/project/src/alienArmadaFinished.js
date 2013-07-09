@@ -84,7 +84,6 @@ window.addEventListener("keydown", function(event)
 	    if(!game.spaceKeyIsDown)
 	    {
 	      cannon.shoot = true;
-		  alien.shoot = true;
 	      cannon.spaceKeyIsDown = true;
 	    }
    }
@@ -193,20 +192,20 @@ function playGame()
   for(var i = 0; i < game.aliens.length; i++)
   {
 	var alien = game.aliens[i];
+	var myVar;
 	
-	if(cannon.shoot)
-	{
-		alien.fireMissile(sprites);
-		console.log("fire!!!");
-	}
+	console.log(alien.shoot);
+	
+	if( alien.shoot === true)
+		myVar = setTimeout(function(){alien.fireMissile(sprites)},2000);
 	
 	console.log("im in here");
 	console.log("alien = " + game.aliens.length);
 	//Move the missiles THIS IS PART OF GAME CLASS
-	for(var l = 0; l < alien.missiles.length; l++)
+	for(var l = 0; l < game.missiles.length; l++)
 	{
-		console.log("missile = " + alien.missiles.length);
-		var missile = alien.missiles[l];
+		console.log("missile = " + game.missiles.length);
+		var missile = game.missiles[l];
 
 		//Move it up the screen
 		missile.y += missile.vy;
@@ -215,7 +214,7 @@ function playGame()
 		if(missile.y < 0 - missile.height)
 		{ 
 		  //Remove the missile from the missiles array
-		  removeObject(missile, alien.missiles);
+		  removeObject(missile, game.missiles);
 
 		  //Remove the missile from the sprites array
 		  removeObject(missile, sprites);

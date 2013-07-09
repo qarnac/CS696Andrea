@@ -1,6 +1,7 @@
 function Game()
 {
 	this.aliens = [];
+	this.alienMissiles = [];
 
 	//Game variables
 	this.score = 0;
@@ -58,10 +59,7 @@ Game.prototype.makeAlien = function(sprites)
   //Push the alien into both the sprites and aliens arrays
   sprites.push(alien);
   this.aliens.push(alien);
-  
-  alien.fireMissile(sprites);
-  
-  //console.log("make Alien");
+ 
 };
 
 Game.prototype.alienSpawnTimer = function(sprites){
