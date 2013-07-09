@@ -93,6 +93,13 @@ Game.prototype.alienDropDownAndStatus = function(canvas){
     {
       //Move the current alien if its state is NORMAL
       alien.y += alien.vy;
+		
+	  if(alien.move === true)
+	  {
+	    alien.move = false;
+		setTimeout(function(){alien.moveLeftRight()},0);
+	  }
+		
 	  alien.x += alien.vx;
     }
 
