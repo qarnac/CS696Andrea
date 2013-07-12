@@ -63,7 +63,25 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
   camera.x = Math.floor(this.x + (this.width / 2) - (camera.width / 2));
   camera.y = Math.floor(this.y + (this.height / 2) - (camera.height / 2));
   
-  //Keep the camera inside the gameWorld boundaries
+  //Scroll the camera
+  if(this.x < camera.leftInnerBoundary())
+  {
+    camera.x = Math.floor(this.x - (camera.width * 0.25));
+  }
+  if(this.y < camera.topInnerBoundary())
+  {
+    camera.y = Math.floor(this.y - (camera.height * 0.25));
+  }
+  if(this.x + this.width > camera.rightInnerBoundary())
+  {
+    camera.x = Math.floor(this.x + this.width - (camera.width * 0.75));
+  }
+  if(this.y + this.height > camera.bottomInnerBoundary())
+  {
+    camera.y = Math.floor(this.y + this.height - (camera.height * 0.75));
+  }
+  
+  //The camera's world boundaries
   if(camera.x < gameWorld.x)
   {
     camera.x = gameWorld.x;
@@ -79,7 +97,8 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
   if(camera.y + camera.height > gameWorld.height)
   {
     camera.y = gameWorld.height - camera.height;
-  }
+  } 
+  
 };
 
 Cannon.prototype.fireMissile = function(sprites){

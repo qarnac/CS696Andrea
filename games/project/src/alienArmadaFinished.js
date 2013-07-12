@@ -37,7 +37,25 @@ var camera =
   x: 0,
   y: 0,
   width: canvas.width,
-  height: canvas.height
+  height: canvas.height,
+  
+  //The camera's inner scroll boundaries
+  rightInnerBoundary: function()
+  {
+    return this.x + (this.width * 0.75);
+  },
+  leftInnerBoundary: function()
+  {
+    return this.x + (this.width * 0.25);
+  },
+  topInnerBoundary: function()
+  {
+    return this.y + (this.height * 0.25);
+  },
+  bottomInnerBoundary: function()
+  {
+    return this.y + (this.height * 0.75);
+  }
 };
 
 
