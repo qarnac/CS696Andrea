@@ -12,16 +12,15 @@ var assetsToLoad = [];
 //var aliens = [];
 var messages = [];
 
-
 //Create the background
 var background = new Entity();
-background.x = 0;
-background.y = 0;
-background.sourceY = 32;
+background.sourceY = 64;
 background.sourceWidth = 480;
 background.sourceHeight = 320;
 background.width = 480;
 background.height = 320;
+background.x = 0 //-(background.width - canvas.width) / 2; 
+background.y = 0//-(background.height - canvas.height) / 2;
 sprites.push(background);
 
 var gameWorld = 
@@ -421,5 +420,5 @@ function render()
 	}
   }
 }
-
+	drawingSurface.restore();
 }());
