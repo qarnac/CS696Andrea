@@ -15,8 +15,8 @@ var messages = [];
 //Create the background
 var background = new Entity();
 background.sourceY = 64;
-background.sourceWidth = 480;
-background.sourceHeight = 320;
+background.sourceWidth = 2561;
+background.sourceHeight = 1922;
 background.width = 480;
 background.height = 320;
 background.x = 0 //-(background.width - canvas.width) / 2; 
@@ -81,7 +81,7 @@ messages.push(gameOverMessage);
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "../images/alienArmada.png";
+image.src = "../images/phobosTileSheet.png";
 assetsToLoad.push(image);
 
 //Load the sounds
