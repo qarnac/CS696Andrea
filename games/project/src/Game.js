@@ -21,22 +21,25 @@ function Game()
 	//Arrow key codes
 	this.RIGHT = 39;
 	this.LEFT = 37;
+	this.UP = 38;
+	this.DOWN = 40;
 	this.SPACE = 32;
 }
 
 // Integrated
 Game.prototype.endGame = function(gameOverMessage)
 {
-  gameOverMessage.visible = true;
-  if(this.score < this.scoreNeededToWin)
-  {
-    gameOverMessage.text = "Game Over!";
-  }
-  else
-  {
-    gameOverMessage.x = 120;
-    gameOverMessage.text = "You've Won!";
-  }
+	gameOverMessage.visible = true;
+	
+	if(this.score < this.scoreNeededToWin)
+	{
+		gameOverMessage.text = "Game Over!";
+	}
+	else
+	{
+		gameOverMessage.x = 120;
+		gameOverMessage.text = "You've Won!";
+	}
 };
 
 Game.prototype.makeAlien = function(sprites)
