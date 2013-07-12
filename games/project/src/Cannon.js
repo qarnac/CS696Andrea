@@ -23,25 +23,30 @@ Cannon.prototype.moveAction = function(canvas) {
   if(this.moveLeft && !this.moveRight)
   {
 	//console.log("left");
-    this.vx = -8;
+    this.vx = -4;
   }
   //Right
   if(this.moveRight && !this.moveLeft)
   {
 	//console.log("right");
-    this.vx = 8;
+    this.vx = 4;
   }
   
   //UP
   if(this.moveUp && !this.moveDown)
   {
-	this.vy = -8;
+	this.vy = -4;
   }
   
   //DOWN
   if(this.moveDown && !this.moveUp)
   {
-	this.vy = 8;
+	this.vy = 4;
+  }
+  
+  if(!this.moveUp && !this.moveDown)
+  {
+	this.vy = 0;
   }
 
   //Set the cannon's velocity to zero if none of the keys are being pressed
@@ -54,6 +59,27 @@ Cannon.prototype.moveAction = function(canvas) {
   this.y = Math.max(0, Math.min(this.y + this.vy, canvas.height - this.height));
   //Move the cannon and keep it within the screen boundaries
   this.x = Math.max(0, Math.min(this.x + this.vx, canvas.width - this.width));
+  
+  camera.x = Math.floor(this.x + (this.width / 2) - (camera.width / 2));
+  camera.y = Math.floor(this.y + (this.height / 2) - (camera.height / 2));
+  
+  //Keep the camera inside the gameWorld boundaries
+  if(camera.x < gameWorld.x)
+  {
+    camera.x = gameWorld.x;
+  }
+  if(camera.y < gameWorld.y)
+  {
+    camera.y = gameWorld.y;
+  }
+  if(camera.x + camera.width > gameWorld.x + gameWorld.width)
+  {
+    camera.x = gameWorld.x + gameWorld.width - camera.width;
+  }
+  if(camera.y + camera.height > gameWorld.height)
+  {
+    camera.y = gameWorld.height - camera.height;
+  }
 };
 
 Cannon.prototype.fireMissile = function(sprites){
