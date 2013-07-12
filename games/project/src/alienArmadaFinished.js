@@ -348,6 +348,10 @@ function render()
 { 
   drawingSurface.clearRect(0, 0, canvas.width, canvas.height);
   
+  drawingSurface.save();
+  
+  drawingSurface.translate(-camera.x, -camera.y);
+  
   //Display the sprites
   if(sprites.length !== 0)
   {
