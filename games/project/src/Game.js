@@ -74,10 +74,11 @@ Game.prototype.alienSpawnTimer = function(sprites){
 	if(this.alienTimer === this.alienFrequency)
 	{
 		this.makeAlien(sprites);
+		console.log(this.alienTimer);
 
 		this.alienTimer = 0;
 		
-		if( this.alienFrequency === 2)
+		if( this.alienFrequency === 30)
 			this.alienFrequency = 100;
 		//Reduce game.alienFrequency by one to gradually increase
 		//the frequency that aliens are created
