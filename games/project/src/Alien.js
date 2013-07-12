@@ -14,6 +14,7 @@ Alien.prototype.update = function(){
 };
 
 Alien.prototype.fireMissile = function(sprites, alienMissiles){
+  
   if( this.shoot === false)
 	return;
 
