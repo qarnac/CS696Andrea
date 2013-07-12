@@ -12,6 +12,7 @@ var assetsToLoad = [];
 //var aliens = [];
 var messages = [];
 
+
 //Create the background
 var background = new Entity();
 background.x = 0;
@@ -22,6 +23,23 @@ background.sourceHeight = 320;
 background.width = 480;
 background.height = 320;
 sprites.push(background);
+
+var gameWorld = 
+{
+  x: 0,
+  y: 0,
+  width: background.width,
+  height: background.height
+};
+
+var camera = 
+{
+  x: 0,
+  y: 0,
+  width: canvas.width,
+  height: canvas.height
+};
+
 
 var cannon = new Cannon(canvas);
 sprites.push(cannon);
@@ -175,7 +193,7 @@ function loadHandler()
 
 function playGame()
 {
-  cannon.moveAction(canvas);
+  cannon.moveAction(canvas, camera, gameWorld);
   
   //Fire a missile if game.shoot is true
   if(cannon.shoot)

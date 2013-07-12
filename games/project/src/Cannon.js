@@ -17,7 +17,7 @@ function Cannon(canvas) {
 
 Cannon.prototype = new Entity();
 
-Cannon.prototype.moveAction = function(canvas) {
+Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
    
   //Left
   if(this.moveLeft && !this.moveRight)
