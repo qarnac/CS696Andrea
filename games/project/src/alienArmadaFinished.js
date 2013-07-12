@@ -17,7 +17,7 @@ var background = new Entity();
 background.sourceY = 64;
 background.sourceWidth = 2561;
 background.sourceHeight = 1922;
-background.width = 480;
+background.width = 2561;
 background.height = 320;
 background.x = 0 //-(background.width - canvas.width) / 2; 
 background.y = 0//-(background.height - canvas.height) / 2;
@@ -57,8 +57,13 @@ var camera =
   }
 };
 
+//Center the camera over the gameWorld
+camera.x = (gameWorld.x + gameWorld.width / 2) - camera.width / 2;
+camera.y = (gameWorld.y + gameWorld.height / 2) - camera.height / 2;
 
 var cannon = new Cannon(canvas);
+cannon.x = (gameWorld.x + gameWorld.width / 2) - cannon.width / 2;
+cannon.y = (gameWorld.y + gameWorld.height / 2) - cannon.height / 2;
 sprites.push(cannon);
 
 //Create the score message
