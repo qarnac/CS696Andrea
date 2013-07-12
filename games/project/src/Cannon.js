@@ -5,6 +5,8 @@ function Cannon(canvas) {
 	//Cannon Directions
 	this.moveRight = false;
 	this.moveLeft = false;
+	this.moveUp = false;
+	this.moveDown = false;
 	
 	//Variables to help fire missiles
 	this.shoot = false;
@@ -31,13 +33,13 @@ Cannon.prototype.moveAction = function(canvas) {
   }
   
   //UP
-  if(this.moveUP && !this.moveDown)
+  if(this.moveUp && !this.moveDown)
   {
 	this.vy = -8;
   }
   
   //DOWN
-  if(this.moveDown && !this.moveUP)
+  if(this.moveDown && !this.moveUp)
   {
 	this.vy = 8;
   }
@@ -48,7 +50,8 @@ Cannon.prototype.moveAction = function(canvas) {
 	//console.log("cannon velocity");
     this.vx = 0;
   }
-  
+
+  this.y = Math.max(0, Math.min(this.y + this.vy, canvas.height - this.height));
   //Move the cannon and keep it within the screen boundaries
   this.x = Math.max(0, Math.min(this.x + this.vx, canvas.width - this.width));
 };

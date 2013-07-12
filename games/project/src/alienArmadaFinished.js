@@ -70,41 +70,58 @@ var game = new Game();
 //Add keyboard listeners
 window.addEventListener("keydown", function(event)
 {
-  switch(event.keyCode)
-  {
-	  case game.LEFT:
-	    cannon.moveLeft = true;
-	    break;  
+	switch(event.keyCode)
+	{
+		case game.LEFT:
+			cannon.moveLeft = true;
+			break;  
 	    
-	  case game.RIGHT:
-	    cannon.moveRight = true;
-	    break;
+		case game.RIGHT:
+			cannon.moveRight = true;
+			break;
+		
+		case game.UP:
+			cannon.moveUp = true;
+			break;
+		
+		case game.DOWN:
+			cannon.moveDown = true;
+			break;
 	 
-	  case game.SPACE:
-	    if(!game.spaceKeyIsDown)
-	    {
-	      cannon.shoot = true;
-	      cannon.spaceKeyIsDown = true;
-	    }
-   }
+		case game.SPACE:
+			if(!game.spaceKeyIsDown)
+			{
+				cannon.shoot = true;
+				cannon.spaceKeyIsDown = true;
+			}
+		break;
+	}
 
 }, false);
 
 window.addEventListener("keyup", function(event)
 {
-  switch(event.keyCode)
-  {	    
-	  case game.LEFT:
-	    cannon.moveLeft = false;
-	    break;  
-	    
-	  case game.RIGHT:
-	    cannon.moveRight = false;
-	    break; 
-	
-	  case game.SPACE:
-	    cannon.spaceKeyIsDown = false;
-  }
+	switch(event.keyCode)
+	{	    
+		case game.LEFT:
+			cannon.moveLeft = false;
+			break;  
+			
+		case game.RIGHT:
+			cannon.moveRight = false;
+			break; 
+			
+		case game.UP:
+			cannon.moveUp = false;
+			break;
+		
+		case game.DOWN:
+			cannon.moveDown = false;
+			break;
+		
+		case game.SPACE:
+			cannon.spaceKeyIsDown = false;
+	}
 }, false);
 
 //Start the game animation loop
