@@ -74,7 +74,7 @@ Game.prototype.alienSpawnTimer = function(sprites){
 	if(this.alienTimer === this.alienFrequency)
 	{
 		this.makeAlien(sprites);
-		console.log(this.alienTimer);
+		//console.log(this.alienTimer);
 
 		this.alienTimer = 0;
 		

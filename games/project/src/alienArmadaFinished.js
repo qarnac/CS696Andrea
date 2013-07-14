@@ -17,8 +17,8 @@ var background = new Entity();
 background.sourceY = 64;
 background.sourceWidth = 2561;
 background.sourceHeight = 1922;
-background.width = 550;
-background.height = 400;
+background.width = 2561;
+background.height = 1922;
 background.x = 0 //-(background.width - canvas.width) / 2; 
 background.y = 0//-(background.height - canvas.height) / 2;
 sprites.push(background);
@@ -96,22 +96,6 @@ var image = new Image();
 image.addEventListener("load", loadHandler, false);
 image.src = "../images/phobosTileSheet.png";
 assetsToLoad.push(image);
-
-//Load the sounds
-//var music = document.querySelector("#music");
-//music.addEventListener("canplaythrough", loadHandler, false);
-//music.load();
-//assetsToLoad.push(music);
-
-//var shootSound = document.querySelector("#game.shootSound");
-//game.shootSound.addEventListener("canplaythrough", loadHandler, false);
-//game.shootSound.load();
-//assetsToLoad.push(game.shootSound);
-
-//var explosionSound = document.querySelector("#explosionSound");
-//explosionSound.addEventListener("canplaythrough", loadHandler, false);
-//explosionSound.load();
-//assetsToLoad.push(explosionSound);
 
 var game = new Game();
 
@@ -205,16 +189,8 @@ function loadHandler()
   game.assetsLoaded++;
   if(game.assetsLoaded === assetsToLoad.length)
   {
-    //Remove the load event listener from the image and sounds
     image.removeEventListener("load", loadHandler, false);
-    //music.removeEventListener("canplaythrough", loadHandler, false);
-    //game.shootSound.removeEventListener("canplaythrough", loadHandler, false);
-    //explosionSound.removeEventListener("canplaythrough", loadHandler, false);
-    //console.log(game.assetsLoaded);
-    //Play the music
-    //music.play();
-    //music.volume = 0.3;
-
+	
     //Start the game 
     game.gameState = game.PLAYING;
   }
@@ -291,14 +267,9 @@ function playGame()
 		}
 	}
   
-
-
   game.alienSpawnTimer(sprites);
   
   game.alienDropDownAndStatus(canvas);
-
-
-  //--- The collisions 
 
   //Check for a collision between the aliens and missiles
   for(var i = 0; i < game.aliens.length; i++)
@@ -380,7 +351,6 @@ function destroyAlien(alien)
     removeObject(alien, sprites);
   }
 }
-
 
 function removeObject(objectToRemove, array) 
 { 

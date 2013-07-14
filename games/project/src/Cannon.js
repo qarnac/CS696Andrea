@@ -119,7 +119,7 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
 Cannon.prototype.fireMissile = function(sprites){
   //Create a missile sprite
   this.missile = new Entity();
-  this.missile.sourceX = 96;
+  this.missile.sourceY = 96;
   this.missile.sourceWidth = 16;
   this.missile.sourceHeight = 16;
   this.missile.width = 16;
