@@ -2,10 +2,10 @@ function Entity() {
 	
 	this.sourceX = 0;
     this.sourceY = 0;
-    this.sourceWidth = 32;
-    this.sourceHeight = 32;
-    this.width = 32;
-    this.height= 32;
+    this.sourceWidth = 64;
+    this.sourceHeight = 64;
+    this.width = 64;
+    this.height= 64;
     this.x = 0;
     this.y = 0;
     this.vx = 0;

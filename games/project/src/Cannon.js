@@ -63,54 +63,66 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
 	//Scroll the camera
 	if(this.x < camera.leftInnerBoundary())
 	{
+		
 		camera.x = Math.floor(this.x - (camera.width * 0.25));
 	}
 	if(this.y < camera.topInnerBoundary())
 	{
+		
 		camera.y = Math.floor(this.y - (camera.height * 0.25));
 	}
 	if(this.x + this.width > camera.rightInnerBoundary())
 	{
+		
 		camera.x = Math.floor(this.x + this.width - (camera.width * 0.75));
 	}
 	if(this.y + this.height > camera.bottomInnerBoundary())
 	{
+		
 		camera.y = Math.floor(this.y + this.height - (camera.height * 0.75));
 	}
 
 	//The camera's world boundaries
 	if(camera.x < gameWorld.x)
 	{
+		console.log("IN HERE");
 		camera.x = gameWorld.x;
 	}
 	if(camera.y < gameWorld.y)
 	{
+		console.log("IN HERE");
 		camera.y = gameWorld.y;
 	}
 	if(camera.x + camera.width > gameWorld.x + gameWorld.width)
 	{
+		console.log("IN HERE");
 		camera.x = gameWorld.x + gameWorld.width - camera.width;
 	}
 	if(camera.y + camera.height > gameWorld.height)
 	{
+		console.log("IN HERE");
 		camera.y = gameWorld.height - camera.height;
 	} 
   
 	//The camera's world boundaries
 	if(camera.x < gameWorld.x)
 	{
+		console.log("IN HERE");
 		camera.x = gameWorld.x;
 	}
 	if(camera.y < gameWorld.y)
 	{
+		console.log("IN HERE");
 		camera.y = gameWorld.y;
 	}
 	if(camera.x + camera.width > gameWorld.x + gameWorld.width)
 	{
+		console.log("IN HERE");
 		camera.x = gameWorld.x + gameWorld.width - camera.width;
 	}
 	if(camera.y + camera.height > gameWorld.height)
 	{
+		console.log("IN HERE");
 		camera.y = gameWorld.height - camera.height;
 	} 
   

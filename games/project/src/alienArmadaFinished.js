@@ -17,8 +17,8 @@ var background = new Entity();
 background.sourceY = 64;
 background.sourceWidth = 2561;
 background.sourceHeight = 1922;
-background.width = 2561;
-background.height = 1922;
+background.width = 550;
+background.height = 400;
 background.x = 0 //-(background.width - canvas.width) / 2; 
 background.y = 0//-(background.height - canvas.height) / 2;
 sprites.push(background);
@@ -61,14 +61,12 @@ var camera =
 camera.x = (gameWorld.x + gameWorld.width / 2) - camera.width / 2;
 camera.y = (gameWorld.y + gameWorld.height / 2) - camera.height / 2;
 
-console.log("camera x " + camera.x);
-console.log("camera y " + camera.y);
+
 
 var cannon = new Cannon(canvas);
 cannon.x = (gameWorld.x + gameWorld.width / 2) - cannon.width / 2;
 cannon.y = (gameWorld.y + gameWorld.height / 2) - cannon.height / 2;
-console.log("cannon x " + camera.x);
-console.log("cannon y " + camera.y);
+
 
 sprites.push(cannon);
 
