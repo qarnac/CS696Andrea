@@ -17,7 +17,7 @@ var background = new Entity();
 background.sourceY = 64;
 background.sourceWidth = 2561;
 background.sourceHeight = 1922;
-background.width = 2561;
+background.width = 480;
 background.height = 320;
 background.x = 0 //-(background.width - canvas.width) / 2; 
 background.y = 0//-(background.height - canvas.height) / 2;
@@ -25,36 +25,36 @@ sprites.push(background);
 
 var gameWorld = 
 {
-  x: 0,
-  y: 0,
-  width: background.width,
-  height: background.height
+	x: 0,
+	y: 0,
+	width: background.width,
+	height: background.height
 };
 
 var camera = 
 {
-  x: 0,
-  y: 0,
-  width: canvas.width,
-  height: canvas.height,
-  
-  //The camera's inner scroll boundaries
-  rightInnerBoundary: function()
-  {
-    return this.x + (this.width * 0.75);
-  },
-  leftInnerBoundary: function()
-  {
-    return this.x + (this.width * 0.25);
-  },
-  topInnerBoundary: function()
-  {
-    return this.y + (this.height * 0.25);
-  },
-  bottomInnerBoundary: function()
-  {
-    return this.y + (this.height * 0.75);
-  }
+	x: 0,
+	y: 0,
+	width: canvas.width,
+	height: canvas.height,
+
+	//The camera's inner scroll boundaries
+	rightInnerBoundary: function()
+	{
+		return this.x + (this.width * 0.75);
+	},
+	leftInnerBoundary: function()
+	{
+		return this.x + (this.width * 0.25);
+	},
+	topInnerBoundary: function()
+	{
+		return this.y + (this.height * 0.25);
+	},
+	bottomInnerBoundary: function()
+	{
+		return this.y + (this.height * 0.75);
+	}
 };
 
 //Center the camera over the gameWorld
