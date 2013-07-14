@@ -61,12 +61,9 @@ var camera =
 camera.x = (gameWorld.x + gameWorld.width / 2) - camera.width / 2;
 camera.y = (gameWorld.y + gameWorld.height / 2) - camera.height / 2;
 
-
-
 var cannon = new Cannon(canvas);
 cannon.x = (gameWorld.x + gameWorld.width / 2) - cannon.width / 2;
 cannon.y = (gameWorld.y + gameWorld.height / 2) - cannon.height / 2;
-
 
 sprites.push(cannon);
 
@@ -199,6 +196,7 @@ function playGame()
 {
   cannon.moveAction(canvas, camera, gameWorld);
   
+  
   //Fire a missile if game.shoot is true
   if(cannon.shoot)
   {
@@ -328,6 +326,7 @@ function playGame()
   {
     game.gameState = game.OVER;
   }
+  
 }
 
 function destroyAlien(alien)
@@ -366,40 +365,44 @@ function render()
   
   drawingSurface.save();
   
+  //Move the drawing surface so that it's positioned relative to the camera
   drawingSurface.translate(-camera.x, -camera.y);
   
-  //Display the sprites
-  if(sprites.length !== 0)
-  {
-    for(var i = 0; i < sprites.length; i++)
-    {
-      var sprite = sprites[i];
-      drawingSurface.drawImage
-      (
-        image, 
-        sprite.sourceX, sprite.sourceY, 
-        sprite.sourceWidth, sprite.sourceHeight,
-        Math.floor(sprite.x), Math.floor(sprite.y), 
-        sprite.width, sprite.height
-      ); 
-    }
-  }
-
-  //Display game messages
-  if(messages.length !== 0)
-  {
-    for(var i = 0; i < messages.length; i++)
+  //Loop through all the sprites and use their properties to display them
+	if(sprites.length !== 0)
 	{
-	  var message = messages[i];
-	  if(message.visible)
-	  {
-	    drawingSurface.font = message.font;  
-        drawingSurface.fillStyle = message.fillStyle;
-        drawingSurface.textBaseline = message.textBaseline;
-		drawingSurface.fillText(message.text, message.x, message.y);  
-	  }
+		for(var i = 0; i < sprites.length; i++)
+		{
+			var sprite = sprites[i];
+			drawingSurface.drawImage
+			(
+				image, 
+				sprite.sourceX, sprite.sourceY, 
+				sprite.sourceWidth, sprite.sourceHeight,
+				Math.floor(sprite.x), Math.floor(sprite.y), 
+				sprite.width, sprite.height
+			); 
+		}	
 	}
-  }
-}
-	drawingSurface.restore();
+
+	
+	//Display game messages
+	if(messages.length !== 0)
+	{
+		for(var i = 0; i < messages.length; i++)
+		{
+			var message = messages[i];
+			if(message.visible)
+			{
+				drawingSurface.font = message.font;  
+				drawingSurface.fillStyle = message.fillStyle;
+				drawingSurface.textBaseline = message.textBaseline;
+				drawingSurface.fillText(message.text, message.x, message.y);  
+			}
+		}
+	}
+	
+		drawingSurface.restore();
+	}
+	
 }());
