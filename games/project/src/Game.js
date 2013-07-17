@@ -65,7 +65,7 @@ Game.prototype.makeAlien = function(sprites)
 	
 };
 
-Game.prototype.alienSpawnTimer = function(sprites){
+Game.prototype.alienSpawnTimer = function(sprites, camera){
 	  
 	//Add one to the game.alienTimer
 	this.alienTimer++;

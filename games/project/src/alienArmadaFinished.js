@@ -263,7 +263,7 @@ function playGame()
 		}
 	}
   
-  game.alienSpawnTimer(sprites);
+  game.alienSpawnTimer(sprites, camera);
   
   game.alienDropDownAndStatus(canvas);
 
