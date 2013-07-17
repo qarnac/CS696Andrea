@@ -42,14 +42,15 @@ Game.prototype.endGame = function(gameOverMessage)
 	}
 };
 
-Game.prototype.makeAlien = function(sprites)
+Game.prototype.makeAlien = function(sprites, camera)
 {
 	//Create the alien
 	var alien = new Alien();
 	alien.sourceX = 32;
 
 	//Set its y position above the screen boundary
-	alien.y = 0 - alien.height;
+	console.log(alien.height);
+	alien.y = 0 - (alien.height + camera.y);
 
 	//Assign the alien a random x position
 	var randomPosition = Math.floor(Math.random() * 15);
@@ -73,7 +74,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	//Make a new alien if game.alienTimer equals the game.alienFrequency
 	if(this.alienTimer === this.alienFrequency)
 	{
-		this.makeAlien(sprites);
+		this.makeAlien(sprites, camera);
 		//console.log(this.alienTimer);
 
 		this.alienTimer = 0;
