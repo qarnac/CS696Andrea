@@ -85,12 +85,10 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
 	//The camera's world boundaries
 	if(camera.x < gameWorld.x)
 	{
-		console.log("IN HERE");
 		camera.x = gameWorld.x;
 	}
 	if(camera.y < gameWorld.y)
 	{
-		console.log("IN HERE");
 		camera.y = gameWorld.y;
 	}
 	if(camera.x + camera.width > gameWorld.x + gameWorld.width)
@@ -100,29 +98,25 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
 	}
 	if(camera.y + camera.height > gameWorld.height)
 	{
-		console.log("IN HERE");
 		camera.y = gameWorld.height - camera.height;
 	} 
   
 	//The camera's world boundaries
 	if(camera.x < gameWorld.x)
 	{
-		console.log("IN HERE");
 		camera.x = gameWorld.x;
 	}
 	if(camera.y < gameWorld.y)
 	{
-		console.log("IN HERE");
 		camera.y = gameWorld.y;
 	}
 	if(camera.x + camera.width > gameWorld.x + gameWorld.width)
 	{
-		console.log("IN HERE");
 		camera.x = gameWorld.x + gameWorld.width - camera.width;
 	}
 	if(camera.y + camera.height > gameWorld.height)
 	{
-		console.log("IN HERE");
+		
 		camera.y = gameWorld.height - camera.height;
 	} 
   
