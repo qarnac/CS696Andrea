@@ -92,6 +92,12 @@ image.addEventListener("load", loadHandler, false);
 image.src = "../images/phobosTileSheet.png";
 assetsToLoad.push(image);
 
+
+var image2 = new Image();
+image.addEventListener("load", loadHandler, false);
+image.src = "../images/alienArmadaRED3.png";
+assetsToLoad.push(image2);
+
 var game = new Game();
 
 //Add keyboard listeners
