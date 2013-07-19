@@ -320,6 +320,8 @@ function playGame()
 
   //Display the score
   scoreDisplay.text = game.score;
+  scoreDisplay.x = camera.x + 500;
+  scoreDisplay.y = camera.y + 10;
 
   //Check for the end of the game
   if(game.score === game.scoreNeededToWin)
