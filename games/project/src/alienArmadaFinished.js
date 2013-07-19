@@ -76,15 +76,15 @@ scoreDisplay.y = camera.y + 10;
 messages.push(scoreDisplay);
 
 //The game over message
-/*
+
 var gameOverMessage = Object.create(messageObject);
 gameOverMessage.font = "normal bold 20px emulogic";
 gameOverMessage.fillStyle = "#00FF00";
-gameOverMessage.x = 70;
-gameOverMessage.y = 120;
+gameOverMessage.x = camera.x + 70;
+gameOverMessage.y = camera.y + 120;
 gameOverMessage.visible = false;
 messages.push(gameOverMessage);
-*/
+
 
 //Load the tilesheet image
 var image = new Image();
@@ -171,7 +171,7 @@ function update()
       break;
     
     case game.OVER:
-      game.endGame(gameOverMessage);
+      game.endGame(gameOverMessage, camera);
       break;
   }
   

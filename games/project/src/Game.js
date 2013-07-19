@@ -27,9 +27,12 @@ function Game()
 }
 
 // Integrated
-Game.prototype.endGame = function(gameOverMessage)
+Game.prototype.endGame = function(gameOverMessage, camera)
 {
 	gameOverMessage.visible = true;
+	
+	gameOverMessage.x = camera.x + 120;
+	gameOverMessage.y = camera.y + 170;
 	
 	if(this.score < this.scoreNeededToWin)
 	{
@@ -37,7 +40,6 @@ Game.prototype.endGame = function(gameOverMessage)
 	}
 	else
 	{
-		gameOverMessage.x = 120;
 		gameOverMessage.text = "You've Won!";
 	}
 };
