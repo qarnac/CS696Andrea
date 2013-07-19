@@ -20,6 +20,12 @@ Alien.prototype.fireMissile = function(sprites, alienMissiles){
 
   //Create a missile sprite
   this.missile = new Missile();
+  this.missile.sourceX = 96;
+  this.missile.sourceY = 0;
+  this.missile.sourceWidth = 32;
+  this.missile.sourceHeight = 32;
+  this.missile.width = 16;
+  this.missile.height = 16;
   
   //Center it over the alien for release
   this.missile.x = this.centerX() - this.missile.halfWidth();

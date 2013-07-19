@@ -1,8 +1,9 @@
 function Missile()
 {
-  this.sourceY = 96;
-  this.sourceWidth = 16;
-  this.sourceHeight = 16;
+  this.sourceX = 96;
+  this.sourceY = 0;
+  this.sourceWidth = 32;
+  this.sourceHeight = 32;
   this.width = 16;
   this.height = 16;
 }
