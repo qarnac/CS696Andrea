@@ -71,8 +71,8 @@ sprites.push(cannon);
 var scoreDisplay = Object.create(messageObject);
 scoreDisplay.font = "normal bold 30px emulogic";
 scoreDisplay.fillStyle = "#00FF00";
-scoreDisplay.x = 400;
-scoreDisplay.y = 10;
+scoreDisplay.x = camera.x + 500;
+scoreDisplay.y = camera.y + 10;
 messages.push(scoreDisplay);
 
 //The game over message
