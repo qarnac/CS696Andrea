@@ -92,11 +92,17 @@ image.addEventListener("load", loadHandler, false);
 image.src = "../images/phobosTileSheet.png";
 assetsToLoad.push(image);
 
-
+//Load the tilesheet image
 var image2 = new Image();
-image.addEventListener("load", loadHandler, false);
-image.src = "../images/alienArmadaRED3.png";
+image2.addEventListener("load", loadHandler, false);
+image2.src = "../images/alienArmadaRED3.png";
 assetsToLoad.push(image2);
+
+
+//var image2 = new Image();
+//image.addEventListener("load", loadHandler, false);
+//image.src = "../images/alienArmadaRED3.png";
+//assetsToLoad.push(image2);
 
 var game = new Game();
 
@@ -190,8 +196,9 @@ function loadHandler()
   game.assetsLoaded++;
   if(game.assetsLoaded === assetsToLoad.length)
   {
+	console.log("in here");
     image.removeEventListener("load", loadHandler, false);
-	
+	image2.removeEventListener("load", loadHandler, false);
     //Start the game 
     game.gameState = game.PLAYING;
   }
@@ -382,14 +389,29 @@ function render()
 		for(var i = 0; i < sprites.length; i++)
 		{
 			var sprite = sprites[i];
-			drawingSurface.drawImage
-			(
-				image, 
-				sprite.sourceX, sprite.sourceY, 
-				sprite.sourceWidth, sprite.sourceHeight,
-				Math.floor(sprite.x), Math.floor(sprite.y), 
-				sprite.width, sprite.height
-			); 
+			
+			if(sprite instanceof Alien || sprite instanceof Cannon)
+			{
+				drawingSurface.drawImage
+				(
+					image, 
+					sprite.sourceX, sprite.sourceY, 
+					sprite.sourceWidth, sprite.sourceHeight,
+					Math.floor(sprite.x), Math.floor(sprite.y), 
+					sprite.width, sprite.height
+				);
+			}
+			else
+			{
+				drawingSurface.drawImage
+				(
+					image, 
+					sprite.sourceX, sprite.sourceY, 
+					sprite.sourceWidth, sprite.sourceHeight,
+					Math.floor(sprite.x), Math.floor(sprite.y), 
+					sprite.width, sprite.height
+				);
+			}			
 		}	
 	}
 
