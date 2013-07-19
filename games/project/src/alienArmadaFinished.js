@@ -64,8 +64,10 @@ camera.y = (gameWorld.y + gameWorld.height / 2) - camera.height / 2;
 var cannon = new Cannon(canvas);
 cannon.x = (gameWorld.x + gameWorld.width / 2) - cannon.width / 2;
 cannon.y = (gameWorld.y + gameWorld.height / 2) - cannon.height / 2;
-
 sprites.push(cannon);
+
+//create healthpack Obj
+var healthPacks = new Entity();
 
 //Create the score message
 var scoreDisplay = Object.create(messageObject);
