@@ -394,7 +394,7 @@ function render()
 			{
 				drawingSurface.drawImage
 				(
-					image, 
+					image2, 
 					sprite.sourceX, sprite.sourceY, 
 					sprite.sourceWidth, sprite.sourceHeight,
 					Math.floor(sprite.x), Math.floor(sprite.y), 
