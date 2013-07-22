@@ -50,8 +50,8 @@ Game.prototype.makeAlien = function(sprites, camera)
 	var alien = new Alien();
 	alien.sourceX = 32;
 	
-	console.log("camera x", camera.x);
-	console.log("camera y", camera.y);
+	//console.log("camera x", camera.x);
+	//console.log("camera y", camera.y);
 
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
@@ -62,7 +62,7 @@ Game.prototype.makeAlien = function(sprites, camera)
 	//Assign the alien a random x position
 	var randomPosition = Math.floor(Math.random() * camera.width);
 	
-	console.log(randomPosition);
+	//console.log(randomPosition);
 	
 	//alien.x = randomPosition * alien.width;
 	alien.x = camera.x + randomPosition + 30;
