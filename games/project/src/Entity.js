@@ -1,5 +1,5 @@
 function Entity() {
-	
+
 	this.sourceX = 0;
     this.sourceY = 0;
     this.sourceWidth = 32;
@@ -10,7 +10,8 @@ function Entity() {
     this.y = 0;
     this.vx = 0;
     this.vy = 0;
-    this.visible = true;				
+    this.visible = true;
+	
 }
 
 
