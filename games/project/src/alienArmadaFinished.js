@@ -212,7 +212,6 @@ function playGame()
 {
   cannon.moveAction(canvas, camera, gameWorld);
   
-  
   //Fire a missile if game.shoot is true
   if(cannon.shoot)
   {
@@ -393,7 +392,8 @@ function render()
 		{
 			var sprite = sprites[i];
 			
-			if(sprite instanceof Alien || sprite instanceof Cannon || sprite instanceof Missile)
+			if(sprite instanceof Alien || sprite instanceof Cannon || sprite instanceof Missile ||
+			   sprite instanceof Item)
 			{
 				drawingSurface.drawImage
 				(

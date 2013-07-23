@@ -51,7 +51,6 @@ Game.prototype.makeItem = function(sprites, camera)
 {
 	var item = new Repair();
 	
-	item.sourceX = 32;
 	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
