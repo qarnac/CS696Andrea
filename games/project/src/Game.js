@@ -108,12 +108,19 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	{
 		this.makeAlien(sprites, camera);
 		
+		if( this.alienFrequency === 80 ||
+			this.alienFrequency === 90 ||
+			this.alienFrequency === 70 ||
+			this.alienFrequency === 50 )
+		{
+			this.makeItem(sprites, camera);
+		}
+		   
 
 		this.alienTimer = 0;
 		
 		if( this.alienFrequency === 30)
 		{
-			this.makeItem(sprites, camera);
 			this.alienFrequency = 100;
 		}
 			
