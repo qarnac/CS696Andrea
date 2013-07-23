@@ -87,6 +87,13 @@ gameOverMessage.y = camera.y + 120;
 gameOverMessage.visible = false;
 messages.push(gameOverMessage);
 
+var gameStatusMessage = Object.create(messageObject);
+gameStatusMessage.font = "normal bold 20px emulogic";
+gameStatusMessage.fillStyle = "#00FF00";
+gameStatusMessage.x = camera.x + 70;
+gameStatusMessage.y = camera.y + 120;
+gameStatusMessage.visible = false;
+messages.push(gameStatusMessage);
 
 //Load the tilesheet image
 var image = new Image();
