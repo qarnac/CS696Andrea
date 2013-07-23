@@ -49,27 +49,27 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 
 Game.prototype.makeItem = function(sprites, camera)
 {
-	var test = new Health();
+	var item = new Repair();
 	
-	test.sourceX = 32;
+	item.sourceX = 32;
 	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
-		test.y = camera.y - 64;
+		item.y = camera.y - 64;
 	else 
-		test.y = camera.y;
+		item.y = camera.y;
 		
 	//Assign the alien a random x position
 	var randomPosition = Math.floor(Math.random() * camera.width);
 	
 	//alien.x = randomPosition * alien.width;
-	test.x = camera.x + randomPosition + 30;
+	item.x = camera.x + randomPosition + 30;
 	
 	//Set its speed
-	test.vy = 1;
+	item.vy = 1;
 	
-	sprites.push(test);
-	this.items.push(test);
+	sprites.push(item);
+	this.items.push(item);
 }
 
 Game.prototype.makeAlien = function(sprites, camera)
