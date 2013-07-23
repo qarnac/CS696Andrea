@@ -24,6 +24,7 @@ function Game()
 	this.UP = 38;
 	this.DOWN = 40;
 	this.SPACE = 32;
+	
 }
 
 // Integrated
@@ -47,7 +48,7 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 
 Game.prototype.makeItem = function(sprites, camera)
 {
-	
+	var test = new Health();
 
 }
 

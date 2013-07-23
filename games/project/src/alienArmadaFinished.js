@@ -22,6 +22,7 @@ background.x = 0 //-(background.width - canvas.width) / 2;
 background.y = 0//-(background.height - canvas.height) / 2;
 sprites.push(background);
 
+
 var gameWorld = 
 {
 	x: 0,
@@ -195,6 +196,7 @@ function update()
 function loadHandler()
 { 
   game.assetsLoaded++;
+  game.makeItem();
   if(game.assetsLoaded === assetsToLoad.length)
   {
 	console.log("in here");
