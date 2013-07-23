@@ -108,6 +108,9 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	{
 		this.makeAlien(sprites, camera);
 		
+		//modify this to spawn the health on low
+		
+		/*
 		if( this.alienFrequency === 80 ||
 			this.alienFrequency === 90 ||
 			this.alienFrequency === 70 ||
@@ -115,6 +118,8 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 		{
 			this.makeItem(sprites, camera);
 		}
+		*/
+		this.makeItem(sprites, camera);
 		   
 
 		this.alienTimer = 0;

@@ -318,14 +318,14 @@ function playGame()
       }
     }
 	
-	for(var j = 0; j < game.items.length; j++)
+	// Bug detection on collision
+	for(var j = 0; j < game.items.length;j++)
     {
-		var items = game.items[j];
+		var item = game.items[j];
 		
 		if( hitTestRectangle(item, cannon) )
 		{
 			removeObject(item, sprites);
-			j--;
 		}
 		
 	}
