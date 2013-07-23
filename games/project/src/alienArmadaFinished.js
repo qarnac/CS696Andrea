@@ -293,6 +293,7 @@ function playGame()
   for(var i = 0; i < game.aliens.length; i++)
   {
     var alien = game.aliens[i];
+	var item  = game.items[i];
 
     for(var j = 0; j < cannon.missiles.length; j++)
     {
@@ -316,6 +317,18 @@ function playGame()
         j--;
       }
     }
+	
+	for(var j = 0; j < game.items.length; j++)
+    {
+		var items = game.items[j];
+		
+		if( hitTestRectangle(item, cannon) )
+		{
+			removeObject(item, sprites);
+			j--;
+		}
+		
+	}
 	
 	for(var j = 0; j < game.alienMissiles.length; j++)
     {
