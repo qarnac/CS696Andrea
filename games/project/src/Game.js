@@ -42,7 +42,14 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 	{
 		gameOverMessage.text = "You've Won!";
 	}
+	
 };
+
+Game.prototype.makeItem = function(sprites, camera)
+{
+	
+
+}
 
 Game.prototype.makeAlien = function(sprites, camera)
 {
