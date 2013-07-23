@@ -1,6 +1,7 @@
 function Game()
 {
 	this.aliens = [];
+	this.items  = [];
 	this.alienMissiles = [];
 
 	//Game variables
@@ -49,7 +50,26 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 Game.prototype.makeItem = function(sprites, camera)
 {
 	var test = new Health();
-
+	
+	test.sourceX = 32;
+	
+	//Set its y position above the screen boundary
+	if( camera.y != 0)
+		test.y = camera.y - 64;
+	else 
+		test.y = camera.y;
+		
+	//Assign the alien a random x position
+	var randomPosition = Math.floor(Math.random() * camera.width);
+	
+	//alien.x = randomPosition * alien.width;
+	test.x = camera.x + randomPosition + 30;
+	
+	//Set its speed
+	test.vy = 1;
+	
+	sprites.push(test);
+	this.items.push(test);
 }
 
 Game.prototype.makeAlien = function(sprites, camera)
@@ -58,9 +78,6 @@ Game.prototype.makeAlien = function(sprites, camera)
 	var alien = new Alien();
 	alien.sourceX = 32;
 	
-	//console.log("camera x", camera.x);
-	//console.log("camera y", camera.y);
-
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
 		alien.y = camera.y - 64;
@@ -70,12 +87,8 @@ Game.prototype.makeAlien = function(sprites, camera)
 	//Assign the alien a random x position
 	var randomPosition = Math.floor(Math.random() * camera.width);
 	
-	//console.log(randomPosition);
-	
 	//alien.x = randomPosition * alien.width;
 	alien.x = camera.x + randomPosition + 30;
-	
-	
 	
 	//Set its speed
 	alien.vy = 1;
@@ -95,7 +108,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	if(this.alienTimer === this.alienFrequency)
 	{
 		this.makeAlien(sprites, camera);
-		//console.log(this.alienTimer);
+		this.makeItem(sprites, camera);
 
 		this.alienTimer = 0;
 		
@@ -118,29 +131,20 @@ Game.prototype.alienDropDownAndStatus = function(canvas){
 	{ 
 		var alien = this.aliens[i];
 
-	if(alien.state === alien.NORMAL)
-	{
-		//Move the current alien if its state is NORMAL
-		alien.y += alien.vy;
+		if(alien.state === alien.NORMAL)
+		{
+			//Move the current alien if its state is NORMAL
+			alien.y += alien.vy;
 
-	if(alien.move === true)
-	{
-		alien.move = false;
-		setTimeout(function(){alien.moveLeftRight()},2000);
-	}
+		if(alien.move === true)
+		{
+			alien.move = false;
+			setTimeout(function(){alien.moveLeftRight()},2000);
+		}
 
-		alien.x += alien.vx;
+			alien.x += alien.vx;
+		}
 	}
-
-	/*
-	//Check if the alien has crossed the bottom of the screen
-	if(alien.y > canvas.height + alien.height)
-	{ 
-		//End the game if an alien has reached Earth
-		this.gameState = this.OVER;
-	}
-	*/
-  }
 
 };
 
@@ -152,9 +156,6 @@ Game.prototype.destroyAlien = function(alien, sprites){
   //Remove the alien after 1 second
   setTimeout(removeAlien, 1000);
 
-  //Play the explosion sound
-  //explosionSound.currentTime = 0;
-  //explosionSound.play();
   
   function removeAlien()
   {

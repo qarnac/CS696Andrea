@@ -196,7 +196,7 @@ function update()
 function loadHandler()
 { 
   game.assetsLoaded++;
-  game.makeItem();
+  
   if(game.assetsLoaded === assetsToLoad.length)
   {
 	console.log("in here");
