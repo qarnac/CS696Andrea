@@ -281,7 +281,7 @@ function playGame()
   
   game.alienSpawnTimer(sprites, camera);
   
-  game.alienDropDownAndStatus(canvas);
+  game.alienAndItemDropDownAndStatus(canvas);
 
   //Check for a collision between the aliens and missiles
   for(var i = 0; i < game.aliens.length; i++)

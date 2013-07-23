@@ -124,7 +124,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	}
 };
 
-Game.prototype.alienDropDownAndStatus = function(canvas){
+Game.prototype.alienAndItemDropDownAndStatus = function(canvas){
   
 	//Loop through the aliens
 	for(var i = 0; i < this.aliens.length; i++)
@@ -145,7 +145,19 @@ Game.prototype.alienDropDownAndStatus = function(canvas){
 			alien.x += alien.vx;
 		}
 	}
+	
+	for(var i = 0; i < this.items.length; i++)
+	{ 
+		var item = this.items[i];
+		
+		console.log("item state = " + item.state);
 
+		if(item.state === item.NORMAL)
+		{
+			//Move the current alien if its state is NORMAL
+			item.y += item.vy;
+		}
+	}
 };
 
 Game.prototype.destroyAlien = function(alien, sprites){
