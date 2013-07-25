@@ -14,10 +14,14 @@ var messages = [];
 //Create the background
 var background = new Entity();
 background.sourceY = 64;
-background.sourceWidth = 2561;
-background.sourceHeight = 1922;
-background.width = 2561;
-background.height = 1922;
+background.sourceWidth = 4000;
+background.sourceHeight = 3000;
+background.width = 4000;
+background.height = 3000;
+//background.sourceWidth = 2046;
+//background.sourceHeight = 748;
+//background.width = 2561;
+//background.height = 1922;
 background.x = 0 //-(background.width - canvas.width) / 2; 
 background.y = 0//-(background.height - canvas.height) / 2;
 sprites.push(background);
@@ -99,7 +103,7 @@ messages.push(gameStatusMessage);
 //Load the tilesheet image
 var image = new Image();
 image.addEventListener("load", loadHandler, false);
-image.src = "../images/phobosTileSheet.png";
+image.src = "../images/background.png";
 assetsToLoad.push(image);
 
 //Load the tilesheet image
