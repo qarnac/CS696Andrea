@@ -66,6 +66,10 @@ cannon.x = (gameWorld.x + gameWorld.width / 2) - cannon.width / 2;
 cannon.y = (gameWorld.y + gameWorld.height / 2) - cannon.height / 2;
 sprites.push(cannon);
 
+var cannonHealthDisplay = new CannonHealthDisplay();
+sprites.push(cannonHealthDisplay);
+
+
 //Create the score message
 var scoreDisplay = Object.create(messageObject);
 scoreDisplay.font = "normal bold 30px emulogic";
@@ -74,8 +78,8 @@ scoreDisplay.x = camera.x + 500;
 scoreDisplay.y = camera.y + 10;
 messages.push(scoreDisplay);
 
-//The game over message
 
+//The game over message
 var gameOverMessage = Object.create(messageObject);
 gameOverMessage.font = "normal bold 20px emulogic";
 gameOverMessage.fillStyle = "#00FF00";
@@ -410,7 +414,7 @@ function render()
 			var sprite = sprites[i];
 			
 			if(sprite instanceof Alien || sprite instanceof Cannon || sprite instanceof Missile ||
-			   sprite instanceof Item)
+			   sprite instanceof Item || sprite.name === "CannonHealth")
 			{
 				drawingSurface.drawImage
 				(

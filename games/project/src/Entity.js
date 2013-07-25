@@ -11,6 +11,7 @@ function Entity() {
     this.vx = 0;
     this.vy = 0;
     this.visible = true;
+	this.name = "";
 	
 }
 
