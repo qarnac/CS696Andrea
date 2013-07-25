@@ -288,6 +288,8 @@ function playGame()
   
   game.alienSpawnTimer(sprites, camera);
   
+  cannonHealthDisplay.gainHealth();
+  
   game.alienAndItemDropDownAndStatus(canvas);
 
   //Check for a collision between the aliens and missiles
