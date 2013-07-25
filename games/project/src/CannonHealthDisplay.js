@@ -1,8 +1,8 @@
 function CannonHealthDisplay(camera) {
 	this.name = "CannonHealth";
 	this.sourceX = 300;
-	this.sourceWidth = 180;
-	this.width = 180;
+	this.sourceWidth = 180-36;
+	this.width = 180-36;
 	this.x = camera.x + 20;
 	this.y = camera.y + 10;
 	

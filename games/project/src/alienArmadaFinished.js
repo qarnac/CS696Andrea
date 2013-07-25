@@ -82,7 +82,6 @@ scoreDisplay.x = camera.x + 500;
 scoreDisplay.y = camera.y + 10;
 messages.push(scoreDisplay);
 
-
 //The game over message
 var gameOverMessage = Object.create(messageObject);
 gameOverMessage.font = "normal bold 20px emulogic";
@@ -211,7 +210,7 @@ function loadHandler()
   
   if(game.assetsLoaded === assetsToLoad.length)
   {
-	console.log("in here");
+	
     image.removeEventListener("load", loadHandler, false);
 	image2.removeEventListener("load", loadHandler, false);
     //Start the game 
@@ -292,8 +291,6 @@ function playGame()
   
   game.alienSpawnTimer(sprites, camera);
   
-  cannonHealthDisplay.gainHealth();
-  
   game.alienAndItemDropDownAndStatus(canvas);
 
   //Check for a collision between the aliens and missiles
@@ -325,13 +322,14 @@ function playGame()
       }
     }
 	
-	// Bug detection on collision
+	
 	for(var j = 0; j < game.items.length;j++)
     {
 		var item = game.items[j];
 		
 		if( hitTestRectangle(item, cannon) )
 		{
+			cannonHealthDisplay.gainHealth();
 			removeObject(item, sprites);
 		}
 		
@@ -343,12 +341,16 @@ function playGame()
 		
 		if( hitTestRectangle(missile, cannon) )
 		{
-			game.gameState = game.OVER;
-			break;
+			console.log("cannon = " + cannon.health);
+			if( cannon.health === 0)
+				game.gameState = game.OVER;
+				
+			removeObject(missile, sprites);
+				
+			
 		}
 		
 	}
-	
 	
 	if(hitTestRectangle(cannon, alien)
       && alien.state === alien.NORMAL)

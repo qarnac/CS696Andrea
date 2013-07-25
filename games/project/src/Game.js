@@ -163,8 +163,6 @@ Game.prototype.alienAndItemDropDownAndStatus = function(canvas){
 	for(var i = 0; i < this.items.length; i++)
 	{ 
 		var item = this.items[i];
-		
-		console.log("item state = " + item.state);
 
 		if(item.state === item.NORMAL)
 		{
@@ -182,7 +180,6 @@ Game.prototype.destroyAlien = function(alien, sprites){
   //Remove the alien after 1 second
   setTimeout(removeAlien, 1000);
 
-  
   function removeAlien()
   {
     removeObject(alien, game.aliens);
