@@ -11,8 +11,16 @@ function CannonHealthDisplay(camera) {
 
 CannonHealthDisplay.prototype = new Entity();
 
-
 CannonHealthDisplay.prototype.display = function(camera) {
   this.x = camera.x + 20;
   this.y = camera.y + 10;
+};
+
+
+CannonHealthDisplay.prototype.gainHealth = function(camera) {
+
+};
+
+CannonHealthDisplay.prototype.loseHealth = function(camera) {
+
 };
