@@ -1,4 +1,4 @@
-function CannonHealthDisplay() {
+function CannonHealthDisplay(camera) {
 
 	this.name = "CannonHealth";
 	this.sourceX = 300;
@@ -10,3 +10,9 @@ function CannonHealthDisplay() {
 }
 
 CannonHealthDisplay.prototype = new Entity();
+
+
+CannonHealthDisplay.prototype.display = function(camera) {
+  this.x = camera.x + 20;
+  this.y = camera.y + 10;
+};

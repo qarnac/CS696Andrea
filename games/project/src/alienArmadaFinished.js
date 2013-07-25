@@ -66,7 +66,7 @@ cannon.x = (gameWorld.x + gameWorld.width / 2) - cannon.width / 2;
 cannon.y = (gameWorld.y + gameWorld.height / 2) - cannon.height / 2;
 sprites.push(cannon);
 
-var cannonHealthDisplay = new CannonHealthDisplay();
+var cannonHealthDisplay = new CannonHealthDisplay(camera);
 sprites.push(cannonHealthDisplay);
 
 
@@ -352,12 +352,17 @@ function playGame()
     }
   }
   
+  
+  //display Cannon Health
+  cannonHealthDisplay.display(camera);
+  
   //--- The score 
 
   //Display the score
   scoreDisplay.text = game.score;
   scoreDisplay.x = camera.x + 500;
   scoreDisplay.y = camera.y + 10;
+  
 
   //Check for the end of the game
   if(game.score === game.scoreNeededToWin)
