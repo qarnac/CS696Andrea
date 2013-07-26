@@ -35,6 +35,11 @@ CannonHealthDisplay.prototype.loseHealth = function() {
 		this.sourceWidth -= 36;
 		this.width -= 36;
 	}
+	if (this.width > 36)
+	{
+		this.sourceWidth -= 35;
+		this.width -= 35;
+	}
 	
 	//supposed to return health
 	return 1;

@@ -268,7 +268,6 @@ function playGame()
 	//Move the missiles THIS IS PART OF GAME CLASS
 	for(var l = 0; l < game.alienMissiles.length; l++)
 	{
-		
 		var missile = game.alienMissiles[l];
 		
 		//Move it up the screen
@@ -352,24 +351,17 @@ function playGame()
 	{
 		var missile = game.alienMissiles[i];
 		
-		console.log(game.alienMissiles.length);
 		
 		if( hitTestRectangle(missile, cannon) )
 		{
-			
-			cannon.health -= 1;
+			cannonHealthDisplay.loseHealth();
 			removeObject(missile, sprites);
 			break;
-			console.log("in here");
 			
 		}
 		
 	}
-	
-	if( cannon.health === 0)
-	{
-		game.gameState = game.OVER;
-	}
+
 
 
 	//display Cannon Health
