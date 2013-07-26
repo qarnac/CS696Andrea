@@ -1,6 +1,7 @@
 function Item()
 {
 	this.NORMAL = 1;
+	this.ACQUIRED = 2;
 	this.state = this.NORMAL;
 	this.move = true;
 }

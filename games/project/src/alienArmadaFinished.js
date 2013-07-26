@@ -257,7 +257,6 @@ function playGame()
 		var alien = game.aliens[i];
 		var myVar;
 
-
 		if( alien.shoot === true)
 		{
 			alien.fireMissile(sprites,game.alienMissiles);
@@ -324,7 +323,6 @@ function playGame()
 		if(hitTestRectangle(cannon, alien)
 		  && alien.state === alien.NORMAL)
 		{
-			
 			game.gameState = game.OVER;
 		}
 	}
@@ -333,36 +331,41 @@ function playGame()
   	for(var i = 0; i < game.items.length; i++)
 	{
 		var item  = game.items[i];
-		for(var j = 0; j < game.items.length;j++)
+	
+		if( hitTestRectangle(item, cannon)  && item.state === item.NORMAL)
 		{
-			var item = game.items[j];
-			
-			if( hitTestRectangle(item, cannon) )
-			{
-				cannonHealthDisplay.gainHealth();
-				removeObject(item, sprites);
-			}
-			
+			item.state = item.ACQUIRED;
+			cannon.health += cannonHealthDisplay.gainHealth();
+			removeObject(item, sprites);
+			break;
 		}
+
 	}
 
   
-	for(var i = 0; i < game.alienMissiles.length; i++)
+	for(var k = 0; k < game.alienMissiles.length; k++)
 	{
-		var missile = game.alienMissiles[i];
+		var missile = game.alienMissiles[k];
 		
 		
-		if( hitTestRectangle(missile, cannon) )
+		if( hitTestRectangle(missile, cannon) && missile.state === missile.NORMAL)
 		{
-			cannonHealthDisplay.loseHealth();
+			missile.state = missile.EXPLODED;
+			
+			cannon.health += cannonHealthDisplay.loseHealth();
 			removeObject(missile, sprites);
 			break;
 			
 		}
 		
 	}
-
-
+	
+	console.log(cannon.health);
+	
+	if( cannon.health === 0)
+	{
+		game.gameState = game.OVER;
+	}
 
 	//display Cannon Health
 	cannonHealthDisplay.display(camera);
@@ -378,7 +381,7 @@ function playGame()
 	//Check for the end of the game
 	if(game.score === game.scoreNeededToWin)
 	{
-	game.gameState = game.OVER;
+		game.gameState = game.OVER;
 	}
   
 }

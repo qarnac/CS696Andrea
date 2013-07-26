@@ -18,11 +18,15 @@ CannonHealthDisplay.prototype.display = function(camera) {
 
 
 CannonHealthDisplay.prototype.gainHealth = function() {
+	
 	if(this.width < 180)
 	{
 		this.sourceWidth += 36;
 		this.width += 36;
+		return 1;
 	}
+	else
+		return 0;
 	
 	//supposed to return health
 	return 1;
@@ -30,17 +34,20 @@ CannonHealthDisplay.prototype.gainHealth = function() {
 
 CannonHealthDisplay.prototype.loseHealth = function() {
 	
+	var result = -1;
+	
 	if(this.width > 36)
 	{
 		this.sourceWidth -= 36;
 		this.width -= 36;
-	}
-	if (this.width > 36)
-	{
-		this.sourceWidth -= 35;
-		this.width -= 35;
+		
 	}
 	
-	//supposed to return health
-	return 1;
+	else if (this.width === 36)
+	{
+		this.sourceWidth = 1;
+		this.width = 1;
+	}
+	
+	return result;
 };
