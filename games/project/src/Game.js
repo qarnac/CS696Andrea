@@ -51,7 +51,6 @@ Game.prototype.makeItem = function(sprites, camera)
 {
 	var item = new Repair();
 	
-	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
 		item.y = camera.y - 64;
@@ -108,17 +107,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	{
 		this.makeAlien(sprites, camera);
 		
-		//modify this to spawn the health on low
-		
-		/*
-		if( this.alienFrequency === 80 ||
-			this.alienFrequency === 90 ||
-			this.alienFrequency === 70 ||
-			this.alienFrequency === 50 )
-		{
-			this.makeItem(sprites, camera);
-		}
-		*/
 		this.makeItem(sprites, camera);
 		   
 

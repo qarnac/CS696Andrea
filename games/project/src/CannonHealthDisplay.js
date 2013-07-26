@@ -1,4 +1,5 @@
 function CannonHealthDisplay(camera) {
+
 	this.name = "CannonHealth";
 	this.sourceX = 300;
 	this.sourceWidth = 144;
@@ -17,7 +18,6 @@ CannonHealthDisplay.prototype.display = function(camera) {
 
 
 CannonHealthDisplay.prototype.gainHealth = function() {
-
 	if(this.width < 180)
 	{
 		this.sourceWidth += 36;
