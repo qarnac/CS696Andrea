@@ -323,7 +323,9 @@ function playGame()
 		if(hitTestRectangle(cannon, alien)
 		  && alien.state === alien.NORMAL)
 		{
-			game.gameState = game.OVER;
+			destroyAlien(alien);
+			cannon.health += cannonHealthDisplay.loseHealth();
+			removeObject(alien, sprites);
 		}
 	}
   
@@ -335,7 +337,17 @@ function playGame()
 		if( hitTestRectangle(item, cannon)  && item.state === item.NORMAL)
 		{
 			item.state = item.ACQUIRED;
-			cannon.health += cannonHealthDisplay.gainHealth();
+			switch(item.name)
+			{
+				case 'Repair':
+					cannon.health += cannonHealthDisplay.gainHealth();
+					break;
+				case 'Clock':
+					break;
+				
+				
+			}
+			
 			removeObject(item, sprites);
 			break;
 		}
@@ -351,8 +363,9 @@ function playGame()
 		if( hitTestRectangle(missile, cannon) && missile.state === missile.NORMAL)
 		{
 			missile.state = missile.EXPLODED;
-			
+
 			cannon.health += cannonHealthDisplay.loseHealth();
+
 			removeObject(missile, sprites);
 			break;
 			

@@ -49,7 +49,20 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 
 Game.prototype.makeItem = function(sprites, camera)
 {
-	var item = new Repair();
+	var randomnumber = Math.floor(Math.random()*2)
+
+	var item;
+	new Repair();
+	
+	switch(randomnumber)
+	{
+		case 0:
+		  item  = new Repair();
+		  break;
+		case 1:
+		  item  = new ClockStopper();
+		  break;
+	}
 	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
