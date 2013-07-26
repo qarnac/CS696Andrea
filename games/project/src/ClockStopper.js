@@ -4,4 +4,4 @@ function ClockStopper()
 	this.sourceX = 672;
 }
 
-Clock.prototype = new Item();
+ClockStopper.prototype = new Item();

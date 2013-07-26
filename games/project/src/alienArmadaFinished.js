@@ -221,49 +221,49 @@ function loadHandler()
 
 function playGame()
 {
-  cannon.moveAction(canvas, camera, gameWorld);
+	cannon.moveAction(canvas, camera, gameWorld);
   
-  //Fire a missile if game.shoot is true
-  if(cannon.shoot)
-  {
-	cannon.fireMissile(sprites);
-  }
-  
-  //Move the missiles THIS IS PART OF GAME CLASS
-  for(var i = 0; i < cannon.missiles.length; i++)
-  {
-    var missile = cannon.missiles[i];
-
-    //Move it up the screen
-    missile.y += missile.vy;
-
-    //Remove the missile if it crosses the top of the screen
-    if(missile.y < 0 - missile.height)
-    { 
-      //Remove the missile from the missiles array
-      removeObject(missile, cannon.missiles);
-
-      //Remove the missile from the sprites array
-      removeObject(missile, sprites);
-
-      //Reduce the loop counter by 1 to compensate 
-      //for the removed element
-      i--;
-    }
-  }
-
-  for(var i = 0; i < game.aliens.length; i++)
-  {
-	var alien = game.aliens[i];
-	var myVar;
-	
-	
-	if( alien.shoot === true)
+	//Fire a missile if game.shoot is true
+	if(cannon.shoot)
 	{
-		alien.fireMissile(sprites,game.alienMissiles);
+		cannon.fireMissile(sprites);
 	}
-	
-  }
+  
+	//Move the missiles THIS IS PART OF GAME CLASS
+	for(var i = 0; i < cannon.missiles.length; i++)
+	{
+		var missile = cannon.missiles[i];
+
+		//Move it up the screen
+		missile.y += missile.vy;
+
+		//Remove the missile if it crosses the top of the screen
+		if(missile.y < 0 - missile.height)
+		{ 
+			//Remove the missile from the missiles array
+			removeObject(missile, cannon.missiles);
+
+			//Remove the missile from the sprites array
+			removeObject(missile, sprites);
+
+			//Reduce the loop counter by 1 to compensate 
+			//for the removed element
+			i--;
+		}
+	}
+
+	for(var i = 0; i < game.aliens.length; i++)
+	{
+		var alien = game.aliens[i];
+		var myVar;
+
+
+		if( alien.shoot === true)
+		{
+			alien.fireMissile(sprites,game.alienMissiles);
+		}
+
+	}
   
 	//Move the missiles THIS IS PART OF GAME CLASS
 	for(var l = 0; l < game.alienMissiles.length; l++)
@@ -289,94 +289,105 @@ function playGame()
 		}
 	}
   
-  game.alienSpawnTimer(sprites, camera);
+	game.alienSpawnTimer(sprites, camera);
   
-  game.alienAndItemDropDownAndStatus(canvas);
+	game.alienAndItemDropDownAndStatus(canvas);
 
-  //Check for a collision between the aliens and missiles
-  for(var i = 0; i < game.aliens.length; i++)
-  {
-    var alien = game.aliens[i];
-	var item  = game.items[i];
+	//Check for a collision between the aliens and missiles
+	for(var i = 0; i < game.aliens.length; i++)
+	{
+		var alien = game.aliens[i];
 
-    for(var j = 0; j < cannon.missiles.length; j++)
-    {
-      var missile = cannon.missiles[j];
-
-      if(hitTestRectangle(missile, alien)
-      && alien.state === alien.NORMAL)
-      {
-        //Destroy the alien
-        destroyAlien(alien);
-
-        //Update the score
-        game.score++;
-
-        //Remove the missile
-        removeObject(missile, cannon.missiles);
-        removeObject(missile, sprites);
-
-        //Subtract 1 from the loop counter to compensate
-        //for the removed missile
-        j--;
-      }
-    }
-	
-	
-	for(var j = 0; j < game.items.length;j++)
-    {
-		var item = game.items[j];
-		
-		if( hitTestRectangle(item, cannon) )
+		for(var j = 0; j < cannon.missiles.length; j++)
 		{
-			cannonHealthDisplay.gainHealth();
-			removeObject(item, sprites);
+			var missile = cannon.missiles[j];
+
+			if(hitTestRectangle(missile, alien)
+			&& alien.state === alien.NORMAL)
+			{
+				//Destroy the alien
+				destroyAlien(alien);
+
+				//Update the score
+				game.score++;
+
+				//Remove the missile
+				removeObject(missile, cannon.missiles);
+				removeObject(missile, sprites);
+
+				//Subtract 1 from the loop counter to compensate
+				//for the removed missile
+				j--;
+			}
 		}
 		
-	}
 	
-	for(var j = 0; j < game.alienMissiles.length; j++)
-    {
-		var missile = game.alienMissiles[j];
+		if(hitTestRectangle(cannon, alien)
+		  && alien.state === alien.NORMAL)
+		{
+			
+			game.gameState = game.OVER;
+		}
+	}
+  
+	//check for collision between items and cannon
+  	for(var i = 0; i < game.items.length; i++)
+	{
+		var item  = game.items[i];
+		for(var j = 0; j < game.items.length;j++)
+		{
+			var item = game.items[j];
+			
+			if( hitTestRectangle(item, cannon) )
+			{
+				cannonHealthDisplay.gainHealth();
+				removeObject(item, sprites);
+			}
+			
+		}
+	}
+
+  
+	for(var i = 0; i < game.alienMissiles.length; i++)
+	{
+		var missile = game.alienMissiles[i];
+		
+		console.log(game.alienMissiles.length);
 		
 		if( hitTestRectangle(missile, cannon) )
 		{
-			console.log("cannon = " + cannon.health);
-			if( cannon.health === 0)
-				game.gameState = game.OVER;
-				
+			
+			cannon.health -= 1;
 			removeObject(missile, sprites);
-				
+			break;
+			console.log("in here");
 			
 		}
 		
 	}
 	
-	if(hitTestRectangle(cannon, alien)
-      && alien.state === alien.NORMAL)
-    {
-		
+	if( cannon.health === 0)
+	{
 		game.gameState = game.OVER;
-    }
-  }
-  
-  
-  //display Cannon Health
-  cannonHealthDisplay.display(camera);
-  
-  //--- The score 
+	}
 
-  //Display the score
-  scoreDisplay.text = game.score;
-  scoreDisplay.x = camera.x + 500;
-  scoreDisplay.y = camera.y + 10;
-  
 
-  //Check for the end of the game
-  if(game.score === game.scoreNeededToWin)
-  {
-    game.gameState = game.OVER;
-  }
+	//display Cannon Health
+	cannonHealthDisplay.display(camera);
+	
+	
+
+	//Display the score
+	scoreDisplay.text = game.score;
+	scoreDisplay.x = camera.x + 500;
+	scoreDisplay.y = camera.y + 10;
+
+
+	//Check for the end of the game
+	if(game.score === game.scoreNeededToWin)
+	{
+	game.gameState = game.OVER;
+	}
   
 }
 
