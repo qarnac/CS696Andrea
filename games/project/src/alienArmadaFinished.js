@@ -338,6 +338,8 @@ function playGame()
 	
 		if( hitTestRectangle(item, cannon)  && item.state === item.NORMAL)
 		{
+			game.DO_NOT_SPAWN_ITEM = false;
+		
 			item.state = item.ACQUIRED;
 			switch(item.name)
 			{

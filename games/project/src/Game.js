@@ -126,16 +126,19 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		
 		this.alienTimer = 0;
 		
-		if(cannon.health < 5 && this.items.length === 0)
+		
+		if(cannon.health < 5 && this.items.length === 0 && this.DO_NOT_SPAWN_ITEM === false)
 		{
+			this.DO_NOT_SPAWN_ITEM = true;
+			var timer = Math.floor( (Math.random()*20000) + 5000);
+			var thisClass = this;
+			setTimeout(
+				function(){
+					thisClass.makeItem(sprites,camera);
+					},timer);
 			
-			var randomnumber = Math.floor( (Math.random()*10000)+5000);	
-			var me = this;
-			
-			setTimeout(function() {
-				me.makeItem(sprites, camera);
-			}, randomnumber);
 		}
+
 		
 		if( this.alienFrequency === 30)
 		{
