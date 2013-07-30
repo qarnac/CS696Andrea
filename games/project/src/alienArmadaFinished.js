@@ -347,6 +347,7 @@ function playGame()
 				case 'Clock':
 					item.haltAllObjects(game);
 					game.TIMESTOP = true;
+					setTimeout(function(){item.UnHaltAllObjects(game)},7000);
 					break;
 				
 				
