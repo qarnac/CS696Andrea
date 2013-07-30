@@ -26,6 +26,8 @@ function Game()
 	this.DOWN = 40;
 	this.SPACE = 32;
 	
+	this.TIMESTOP = false;
+	
 }
 
 // Integrated

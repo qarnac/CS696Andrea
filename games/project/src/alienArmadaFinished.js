@@ -287,9 +287,11 @@ function playGame()
 		}
 	}
   
-	game.alienSpawnTimer(sprites, camera);
-  
-	game.alienAndItemDropDownAndStatus(canvas);
+	if(game.TIMESTOP != true)
+	{
+		game.alienSpawnTimer(sprites, camera);
+		game.alienAndItemDropDownAndStatus(canvas);
+	}
 
 	//Check for a collision between the aliens and missiles
 	for(var i = 0; i < game.aliens.length; i++)
@@ -343,6 +345,8 @@ function playGame()
 					cannon.health += cannonHealthDisplay.gainHealth();
 					break;
 				case 'Clock':
+					item.haltAllObjects(game);
+					game.TIMESTOP = true;
 					break;
 				
 				
