@@ -27,6 +27,7 @@ function Game()
 	this.SPACE = 32;
 	
 	this.TIMESTOP = false;
+	this.DO_NOT_SPAWN_ITEM = false;
 	
 }
 
@@ -51,10 +52,10 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 
 Game.prototype.makeItem = function(sprites, camera)
 {
-	var randomnumber = Math.floor(Math.random()*2)
+	
+	var randomnumber = Math.floor(Math.random()*2);
 
 	var item;
-	new Repair();
 	
 	switch(randomnumber)
 	{
@@ -83,7 +84,8 @@ Game.prototype.makeItem = function(sprites, camera)
 	
 	sprites.push(item);
 	this.items.push(item);
-}
+};
+
 
 Game.prototype.makeAlien = function(sprites, camera)
 {
@@ -112,7 +114,7 @@ Game.prototype.makeAlien = function(sprites, camera)
 	
 };
 
-Game.prototype.alienSpawnTimer = function(sprites, camera){
+Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	  
 	//Add one to the game.alienTimer
 	this.alienTimer++;
@@ -122,10 +124,18 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 	{
 		this.makeAlien(sprites, camera);
 		
-		this.makeItem(sprites, camera);
-		   
-
 		this.alienTimer = 0;
+		
+		if(cannon.health < 5 && this.items.length === 0)
+		{
+			
+			var randomnumber = Math.floor( (Math.random()*10000)+5000);	
+			var me = this;
+			
+			setTimeout(function() {
+				me.makeItem(sprites, camera);
+			}, randomnumber);
+		}
 		
 		if( this.alienFrequency === 30)
 		{
@@ -138,6 +148,8 @@ Game.prototype.alienSpawnTimer = function(sprites, camera){
 		{  
 			this.alienFrequency--;
 		}
+		
+		
 	}
 };
 

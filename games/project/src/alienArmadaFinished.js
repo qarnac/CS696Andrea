@@ -289,7 +289,7 @@ function playGame()
   
 	if(game.TIMESTOP != true)
 	{
-		game.alienSpawnTimer(sprites, camera);
+		game.alienSpawnTimer(sprites, camera, cannon);
 		game.alienAndItemDropDownAndStatus(canvas);
 	}
 
@@ -327,7 +327,7 @@ function playGame()
 		{
 			destroyAlien(alien);
 			cannon.health += cannonHealthDisplay.loseHealth();
-			removeObject(alien, sprites);
+			//removeObject(alien, sprites);
 		}
 	}
   
@@ -353,7 +353,9 @@ function playGame()
 				
 			}
 			
+			removeObject(item, game.items);
 			removeObject(item, sprites);
+			
 			break;
 		}
 
