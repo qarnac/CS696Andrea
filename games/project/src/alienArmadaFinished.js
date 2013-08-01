@@ -352,6 +352,9 @@ function playGame()
 					setTimeout(function(){item.UnHaltAllObjects(game)},7000);
 					break;
 				
+				case 'Money':
+					game.score += 10;
+					break;
 				
 				
 			}

@@ -53,7 +53,7 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 Game.prototype.makeItem = function(sprites, camera)
 {
 	
-	var randomnumber = Math.floor(Math.random()*2);
+	var randomnumber = Math.floor(Math.random()*3);
 
 	var item;
 	
@@ -65,6 +65,8 @@ Game.prototype.makeItem = function(sprites, camera)
 		case 1:
 		  item  = new ClockStopper();
 		  break;
+		case 2:
+		  item  = new Money();
 	}
 	
 	//Set its y position above the screen boundary
@@ -126,7 +128,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		
 		this.alienTimer = 0;
 		
-		
+		this.makeItem(sprites,camera);
 		if(cannon.health < 5 && this.items.length === 0 && this.DO_NOT_SPAWN_ITEM === false)
 		{
 			this.DO_NOT_SPAWN_ITEM = true;
