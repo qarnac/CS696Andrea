@@ -353,6 +353,7 @@ function playGame()
 					break;
 				
 				
+				
 			}
 			
 			removeObject(item, game.items);

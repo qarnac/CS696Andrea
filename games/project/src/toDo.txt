@@ -1,0 +1,8 @@
+- added health to increase of the enemies (level changes for both alien and mothership)
+- increase hardness of the level based on scores & level? 2 levels are enough.
+- display indication to next level. (background changes)
+- upgrade weapons both enemies and cannons (item drop reset if u take it again).
+- Mothership deployment.
+- make Item missile upgrade and score(money).
+
+- think about project.

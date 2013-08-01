@@ -139,7 +139,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 			
 		}
 
-		
 		if( this.alienFrequency === 30)
 		{
 			this.alienFrequency = 100;
@@ -151,7 +150,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		{  
 			this.alienFrequency--;
 		}
-		
 		
 	}
 };
