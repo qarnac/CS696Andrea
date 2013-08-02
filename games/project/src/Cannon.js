@@ -2,7 +2,7 @@ function Cannon(canvas) {
 	this.x = canvas.width / 2 - this.width / 2;
 	this.y = 280;
 	this.health = 3;
-	this.bulletLevel = 3;
+	this.bulletLevel = 1;
 	
 	//Cannon Directions
 	this.moveRight = false;

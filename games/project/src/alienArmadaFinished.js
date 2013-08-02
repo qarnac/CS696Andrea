@@ -231,8 +231,8 @@ function playGame()
 	
 	else if (cannon.shoot && cannon.bulletLevel === 2)
 	{
-		cannon.fireMissile(sprites,0);
 		cannon.fireMissile(sprites,1);
+		cannon.fireMissile(sprites,2);
 	}
 	
 	else if (cannon.shoot && cannon.bulletLevel === 3)
