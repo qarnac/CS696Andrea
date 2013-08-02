@@ -412,6 +412,7 @@ function playGame()
 			{
 				destroyAlien(alien);
 				cannon.health += cannonHealthDisplay.loseHealth();
+				this.DO_NOT_SPAWN_HEALTH = false;
 			}
 			else
 			{
@@ -435,7 +436,7 @@ function playGame()
 			switch(item.name)
 			{
 				case 'Repair':
-					if( cannon.health < 4)
+					if( cannon.health < 5)
 						game.DO_NOT_SPAWN_HEALTH = false;
 						
 					cannon.health += cannonHealthDisplay.gainHealth();
@@ -480,6 +481,7 @@ function playGame()
 			missile.state = missile.EXPLODED;
 
 			cannon.health += cannonHealthDisplay.loseHealth();
+			this.DO_NOT_SPAWN_HEALTH = false;
 
 			removeObject(missile, sprites);
 			break;

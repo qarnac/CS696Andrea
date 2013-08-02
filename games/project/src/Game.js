@@ -145,12 +145,16 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	}
 	
 	//health spawn
-	if(cannon.health < 5 && this.items.length === 0 && this.DO_NOT_SPAWN_HEALTH === false)
+	if(cannon.health < 5 && this.DO_NOT_SPAWN_HEALTH === false)
 	{
 		this.DO_NOT_SPAWN_HEALTH = true;
 		console.log("making health");
-		
-		var timer = Math.floor( (Math.random()*40000) + 15000);
+	
+		var timer = 0;
+		if( this.level === 2) 
+			Math.floor( (Math.random()*40000) + 15000);
+		else
+			Math.floor( (Math.random()*10000) + 5000);
 		var thisClass = this;
 		setTimeout(
 			function(){
@@ -194,7 +198,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	{
 		console.log("switching to level 2");
 		this.level = 2
-		this.frequencyLimit = 15;
 	}
 	
 	//Make a new alien if game.alienTimer equals the game.alienFrequency
@@ -213,7 +216,10 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		//the frequency that aliens are created
 		if(this.alienFrequency > 2)
 		{  
-			this.alienFrequency -= 5;
+			if( this.level === 2)
+				this.alienFrequency -= 5;
+			else
+				this.alienFrequency -= 2;
 		}
 		
 	}
