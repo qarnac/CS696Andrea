@@ -408,8 +408,16 @@ function playGame()
 		if(hitTestRectangle(cannon, alien)
 		  && alien.state === alien.NORMAL)
 		{
-			destroyAlien(alien);
-			cannon.health += cannonHealthDisplay.loseHealth();
+			if( game.level === 1)
+			{
+				destroyAlien(alien);
+				cannon.health += cannonHealthDisplay.loseHealth();
+			}
+			else
+			{
+				game.gameState = game.OVER;
+				game.endGame(gameOverMessage, camera);
+			}
 			//removeObject(alien, sprites);
 		}
 	}
