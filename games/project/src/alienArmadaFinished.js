@@ -224,22 +224,43 @@ function playGame()
 	cannon.moveAction(canvas, camera, gameWorld);
   
 	//Fire a missile if game.shoot is true
-	if(cannon.shoot)
+	if(cannon.shoot && cannon.bulletLevel === 1)
 	{
-		cannon.fireMissile(sprites);
+		cannon.fireMissile(sprites,0);
 	}
-  
+	
+	else if (cannon.shoot && cannon.bulletLevel === 2)
+	{
+		cannon.fireMissile(sprites,0);
+		cannon.fireMissile(sprites,1);
+	}
+	
+	else if (cannon.shoot && cannon.bulletLevel === 3)
+	{
+		cannon.fireMissile(sprites,0);
+		cannon.fireMissile(sprites,1);
+		cannon.fireMissile(sprites,2);
+	}
+	
+	//console.log(cannon.missiles.length);
+	
 	//Move the missiles THIS IS PART OF GAME CLASS
 	for(var i = 0; i < cannon.missiles.length; i++)
 	{
+		console.log(cannon.missiles.length);
 		var missile = cannon.missiles[i];
 
 		//Move it up the screen
 		missile.y += missile.vy;
+		
+		if ( missile.type === "second" && cannon.bulletLevel === 3)
+			missile.x += missile.vx;
+		if ( missile.type === "third" && cannon.bulletLevel === 3)
+		    missile.x += missile.vx;
 
 		//Remove the missile if it crosses the top of the screen
 		if(missile.y < 0 - missile.height)
-		{ 
+		{   
 			//Remove the missile from the missiles array
 			removeObject(missile, cannon.missiles);
 
@@ -271,6 +292,7 @@ function playGame()
 		
 		//Move it up the screen
 		missile.y += missile.vy;
+
 
 		//Remove the missile if it crosses the top of the screen
 		if(missile.y < 0 - missile.height)
@@ -346,6 +368,7 @@ function playGame()
 				case 'Repair':
 					cannon.health += cannonHealthDisplay.gainHealth();
 					break;
+					
 				case 'Clock':
 					item.haltAllObjects(game);
 					game.TIMESTOP = true;
@@ -354,6 +377,10 @@ function playGame()
 				
 				case 'Money':
 					game.score += 10;
+					break;
+					
+				case 'Bullet':
+				
 					break;
 				
 				
@@ -386,7 +413,7 @@ function playGame()
 		
 	}
 	
-	console.log(cannon.health);
+	//console.log(cannon.health);
 	
 	if( cannon.health === 0)
 	{

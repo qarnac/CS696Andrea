@@ -2,6 +2,7 @@ function Cannon(canvas) {
 	this.x = canvas.width / 2 - this.width / 2;
 	this.y = 280;
 	this.health = 3;
+	this.bulletLevel = 3;
 	
 	//Cannon Directions
 	this.moveRight = false;
@@ -123,17 +124,43 @@ Cannon.prototype.moveAction = function(canvas, camera, gameWorld) {
   
 };
 
-Cannon.prototype.fireMissile = function(sprites){
+Cannon.prototype.fireMissile = function(sprites , x){
   //Create a missile sprite
   this.missile = new Missile();
-
   
-  //Center it over the cannon
-  this.missile.x = this.centerX() - this.missile.halfWidth();
-  this.missile.y = this.y - this.missile.height;
+
+  if( x === 0)
+  {
+    this.missile.type = "first";
+	//Center it over the cannon
+	this.missile.x = this.centerX() - this.missile.halfWidth();
+	this.missile.y = this.y - this.missile.height;
+  }
+  else if ( x === 1)
+  {
+	this.missile.type = "second";
+	this.missile.x = this.centerX() - this.missile.halfWidth() + 10;
+	this.missile.y = this.y - this.missile.height;
+  }
+  else if (x === 2)
+  {
+	this.missile.type = "third";
+	this.missile.x = this.centerX() - this.missile.halfWidth() - 10;
+	this.missile.y = this.y - this.missile.height;
+  }
   
   //Set its speed
   this.missile.vy = -8;
+  
+  if( x === 1)
+  {
+	this.missile.vx = -3;
+  }
+  
+  if( x === 2)
+  {
+    this.missile.vx = 3;
+  }
   
   //Push the missile into both the sprites and missiles arrays
   sprites.push(this.missile);

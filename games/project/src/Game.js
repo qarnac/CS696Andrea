@@ -53,7 +53,7 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 Game.prototype.makeItem = function(sprites, camera)
 {
 	
-	var randomnumber = Math.floor(Math.random()*3);
+	var randomnumber = Math.floor(Math.random()*4);
 
 	var item;
 	
@@ -67,6 +67,10 @@ Game.prototype.makeItem = function(sprites, camera)
 		  break;
 		case 2:
 		  item  = new Money();
+		  break;
+		case 3:
+		  item  = new Bullet();
+		  break;
 	}
 	
 	//Set its y position above the screen boundary
