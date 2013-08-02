@@ -9,6 +9,7 @@ function Game()
 	this.score = 0;
 	this.alienFrequency = 100;
 	this.alienTimer = 0;
+	this.frequencyLimit = 30;
 	
 	//Variable to count the number of assets the game needs to load
 	this.assetsLoaded = 0;
@@ -101,6 +102,11 @@ Game.prototype.makeAlien = function(sprites, camera)
 	var alien = new Alien();
 	alien.sourceX = 32;
 	
+	if( this.level === 2)
+	{
+		alien.health = 5;
+	}
+	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
 		alien.y = camera.y - 64;
@@ -169,15 +175,22 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		
 	}
 	
+			
+	if( this.alienFrequency < 40)
+	{
+		console.log("switching to level 2");
+		this.level = 2
+		this.frequencyLimit = 15;
+	}
+	
 	//Make a new alien if game.alienTimer equals the game.alienFrequency
 	if(this.alienTimer === this.alienFrequency)
 	{
 		this.makeAlien(sprites, camera);
 		
 		this.alienTimer = 0;
-		
 
-		if( this.alienFrequency === 30)
+		if( this.alienFrequency === this.frequencyLimit)
 		{
 			this.alienFrequency = 100;
 		}
@@ -186,7 +199,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		//the frequency that aliens are created
 		if(this.alienFrequency > 2)
 		{  
-			this.alienFrequency--;
+			this.alienFrequency -= 5;
 		}
 		
 	}

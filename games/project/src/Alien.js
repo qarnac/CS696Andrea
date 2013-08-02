@@ -33,7 +33,10 @@ Alien.prototype.fireMissile = function(sprites, alienMissiles){
   this.missile.y = this.y + this.missile.height;
   
   //Set its speed
-  this.missile.vy = 2;
+  if( this.health === 1)
+	this.missile.vy = 2;
+  else 
+	this.missile.vy = 4;
   
   //Push the missile into both the sprites and missiles arrays
   sprites.push(this.missile);

@@ -342,6 +342,9 @@ function playGame()
 	      if( item.name === "Repair" && cannon.health < 4)
 			game.DO_NOT_SPAWN_HEALTH = false;
 			
+		  if( item.name === "Bullet" || item.name === "Money" )
+		   game.DO_NOT_SPAWN_ITEM = false;
+			
 		  //Remove the items from the missiles array
 		  removeObject(item, game.items);
 
