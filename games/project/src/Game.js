@@ -214,11 +214,6 @@ Game.prototype.alienAndItemDropDownAndStatus = function(canvas, gameWorld){
 
 			alien.x += alien.vx;
 			
-			if(alien.y > gameWorld.height )
-			{
-
-				//i--;
-			}
 		}
 	}
 	
@@ -232,11 +227,6 @@ Game.prototype.alienAndItemDropDownAndStatus = function(canvas, gameWorld){
 			item.y += item.vy;
 		}
 		
-		if(item.y > gameWorld.height )
-		{
-			//removeObject(item, game.items);
-			//removeObject(item, sprites);
-		}
 	}
 };
 

@@ -319,7 +319,7 @@ function playGame()
 	{
 		var alien = game.aliens[m];
 	
-		//Remove the alien if it crosses the top of the screen
+		//Remove the alien if it crosses the bottom of the map
 		if(alien.y > gameWorld.height)
 		{ 
 		  //Remove the alien from the missiles array
@@ -336,13 +336,16 @@ function playGame()
 	{
 		var item = game.items[n];
 	
-		//Remove the alien if it crosses the top of the screen
+		//Remove the items if it crosses the bottom of the map
 		if(item.y > gameWorld.height)
 		{ 
-		  //Remove the alien from the missiles array
+	      if( item.name === "Repair" && cannon.health < 4)
+			game.DO_NOT_SPAWN_HEALTH = false;
+			
+		  //Remove the items from the missiles array
 		  removeObject(item, game.items);
 
-		  //Remove the alien from the sprites array
+		  //Remove the items from the sprites array
 		  removeObject(item, sprites);
 
 		  n--;
@@ -425,6 +428,7 @@ function playGame()
 					break;
 					
 				case 'Clock':
+					game.DO_NOT_SPAWN_CLOCK = true;
 					item.haltAllObjects(game);
 					game.TIMESTOP = true;
 					setTimeout(function(){item.UnHaltAllObjects(game)},7000);
