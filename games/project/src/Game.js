@@ -3,6 +3,7 @@ function Game()
 	this.aliens = [];
 	this.items  = [];
 	this.alienMissiles = [];
+	this.level = 1;
 
 	//Game variables
 	this.score = 0;
