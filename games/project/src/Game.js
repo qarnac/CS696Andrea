@@ -39,6 +39,8 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 	gameOverMessage.x = camera.x + 120;
 	gameOverMessage.y = camera.y + 170;
 	
+	gameOverMessage.text = "Game Over!";
+	/*
 	if(this.score < this.scoreNeededToWin)
 	{
 		gameOverMessage.text = "Game Over!";
@@ -47,6 +49,7 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 	{
 		gameOverMessage.text = "You've Won!";
 	}
+	*/
 	
 };
 

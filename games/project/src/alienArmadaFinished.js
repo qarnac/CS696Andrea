@@ -235,12 +235,21 @@ function playGame()
 		cannon.fireMissile(sprites,2);
 	}
 	
-	else if (cannon.shoot && cannon.bulletLevel === 3)
+	else if (cannon.shoot && cannon.bulletLevel === 3 )
 	{
 		cannon.fireMissile(sprites,0);
 		cannon.fireMissile(sprites,1);
 		cannon.fireMissile(sprites,2);
 	}
+
+	else if (cannon.shoot && cannon.bulletLevel === 4 )
+	{
+		cannon.fireMissile(sprites,0);
+		cannon.fireMissile(sprites,1);
+		cannon.fireMissile(sprites,2);
+	}
+	
+
 	
 	//console.log(cannon.missiles.length);
 	
@@ -253,9 +262,9 @@ function playGame()
 		//Move it up the screen
 		missile.y += missile.vy;
 		
-		if ( missile.type === "second" && cannon.bulletLevel === 3)
+		if ( missile.type === "second" && cannon.bulletLevel === 4)
 			missile.x += missile.vx;
-		if ( missile.type === "third" && cannon.bulletLevel === 3)
+		if ( missile.type === "third" && cannon.bulletLevel === 4)
 		    missile.x += missile.vx;
 
 		//Remove the missile if it crosses the top of the screen
@@ -380,7 +389,10 @@ function playGame()
 					break;
 					
 				case 'Bullet':
-				
+					if( cannon.bulletLevel < 4)
+						cannon.bulletLevel++;
+					else
+						cannon.bulletLevel = 1;
 					break;
 				
 				

@@ -2,7 +2,7 @@ function Cannon(canvas) {
 	this.x = canvas.width / 2 - this.width / 2;
 	this.y = 280;
 	this.health = 3;
-	this.bulletLevel = 1;
+	this.bulletLevel = 4;
 	
 	//Cannon Directions
 	this.moveRight = false;
@@ -142,6 +142,7 @@ Cannon.prototype.fireMissile = function(sprites , x){
 	this.missile.x = this.centerX() - this.missile.halfWidth() + 10;
 	this.missile.y = this.y - this.missile.height;
   }
+  
   else if (x === 2)
   {
 	this.missile.type = "third";
@@ -154,12 +155,12 @@ Cannon.prototype.fireMissile = function(sprites , x){
   
   if( x === 1)
   {
-	this.missile.vx = -3;
+	this.missile.vx = 3;
   }
   
   if( x === 2)
   {
-    this.missile.vx = 3;
+    this.missile.vx = -3;
   }
   
   //Push the missile into both the sprites and missiles arrays
