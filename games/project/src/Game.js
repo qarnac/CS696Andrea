@@ -136,7 +136,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	//console.log(this.items.length);
 	if( this.items.length === 0 && this.DO_NOT_SPAWN_ITEM === false)
 	{
-		
 		console.log("making money");
 		var money = this;
 		var timer = 17000;
@@ -170,6 +169,21 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		setTimeout(
 			function(){
 				thisClass.makeItem(sprites,camera,3); //spawn weapon upgrade
+				},timer);
+		
+		
+	}
+	
+	//Time stopper
+	if(this.items.length === 0 && this.DO_NOT_SPAWN_CLOCK === false)
+	{
+		this.DO_NOT_SPAWN_CLOCK = true;
+		console.log("making Clock");
+		var timer = Math.floor( (Math.random()*35000) + 20000);
+		var thisClass = this;
+		setTimeout(
+			function(){
+				thisClass.makeItem(sprites,camera,1); //spawn weapon upgrade
 				},timer);
 		
 		

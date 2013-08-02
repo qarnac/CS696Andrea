@@ -344,6 +344,9 @@ function playGame()
 			
 		  if( item.name === "Bullet" || item.name === "Money" )
 		   game.DO_NOT_SPAWN_ITEM = false;
+		   
+		  if (item.name === "Clock")
+		   game.DO_NOT_SPAWN_CLOCK = false;
 			
 		  //Remove the items from the missiles array
 		  removeObject(item, game.items);
