@@ -1,6 +1,7 @@
 function Game()
 {
 	this.aliens = [];
+	this.motherShips = [];
 	this.items  = [];
 	this.alienMissiles = [];
 	this.level = 1;
@@ -95,6 +96,37 @@ Game.prototype.makeItem = function(sprites, camera, choice)
 	this.items.push(item);
 };
 
+Game.prototype.makeMotherShip = function(sprites, camera)
+{
+	//Create the motherShip
+	var motherShip = new MotherShip();
+	
+	motherShip.sourceX = 32;
+	
+	if( this.level === 2)
+	{
+		motherShip.health = 5;
+	}
+	
+	//Set its y position above the screen boundary
+	if( camera.y != 0)
+		motherShip.y = camera.y - 64;
+	else 
+		motherShip.y = camera.y;
+		
+	//Assign the alien a random x position
+	var randomPosition = Math.floor(Math.random() * camera.width);
+	
+	//alien.x = randomPosition * alien.width;
+	motherShip.x = camera.x + randomPosition + 30;
+	
+	//Set its speed
+	motherShip.vy = 1;
+
+	//Push the alien into both the sprites and aliens arrays
+	sprites.push(motherShip);
+	this.motherShips.push(motherShip);
+};
 
 Game.prototype.makeAlien = function(sprites, camera)
 {
@@ -125,7 +157,6 @@ Game.prototype.makeAlien = function(sprites, camera)
 	//Push the alien into both the sprites and aliens arrays
 	sprites.push(alien);
 	this.aliens.push(alien);
-	
 };
 
 Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
@@ -205,6 +236,8 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	if(this.alienTimer === this.alienFrequency)
 	{
 		this.makeAlien(sprites, camera);
+		
+		this.makeMotherShip(sprites, camera);
 		
 		this.alienTimer = 0;
 
