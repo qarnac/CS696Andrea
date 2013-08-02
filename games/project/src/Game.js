@@ -152,9 +152,10 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	
 		var timer = 0;
 		if( this.level === 2) 
-			Math.floor( (Math.random()*40000) + 15000);
+			timer = Math.floor( (Math.random()*40000) + 15000);
 		else
-			Math.floor( (Math.random()*10000) + 5000);
+			timer = Math.floor( (Math.random()*10000) + 5000);
+			
 		var thisClass = this;
 		setTimeout(
 			function(){
@@ -216,9 +217,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		//the frequency that aliens are created
 		if(this.alienFrequency > 2)
 		{  
-			if( this.level === 2)
-				this.alienFrequency -= 5;
-			else
 				this.alienFrequency -= 2;
 		}
 		
