@@ -256,7 +256,7 @@ function playGame()
 	//Move the missiles THIS IS PART OF GAME CLASS
 	for(var i = 0; i < cannon.missiles.length; i++)
 	{
-		console.log(cannon.missiles.length);
+		
 		var missile = cannon.missiles[i];
 
 		//Move it up the screen
@@ -336,19 +336,33 @@ function playGame()
 			if(hitTestRectangle(missile, alien)
 			&& alien.state === alien.NORMAL)
 			{
-				//Destroy the alien
-				destroyAlien(alien);
+				alien.health--;
+				
+				if( alien.health === 0 && alien.state === alien.NORMAL)
+				{
+					//Destroy the alien
+					destroyAlien(alien);
 
-				//Update the score
-				game.score++;
+					//Update the score
+					game.score++;
 
+					//Remove the missile
+					removeObject(missile, cannon.missiles);
+					removeObject(missile, sprites);
+
+
+				}
+				
+				
 				//Remove the missile
 				removeObject(missile, cannon.missiles);
 				removeObject(missile, sprites);
-
+				
 				//Subtract 1 from the loop counter to compensate
 				//for the removed missile
 				j--;
+				
+				
 			}
 		}
 		

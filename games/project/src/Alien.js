@@ -2,6 +2,7 @@ function Alien()
 {
 	this.NORMAL = 1;
 	this.EXPLODED = 2;
+	this.health = 3;
 	this.state = this.NORMAL;
 	this.shoot = true;
 	this.move = true;
