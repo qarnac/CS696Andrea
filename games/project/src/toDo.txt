@@ -4,5 +4,3 @@
 - upgrade weapons both enemies and cannons (item drop reset if u take it again).
 - Mothership deployment.
 - make Item missile upgrade and score(money).
-
-- think about project.

@@ -248,15 +248,12 @@ function playGame()
 		cannon.fireMissile(sprites,1);
 		cannon.fireMissile(sprites,2);
 	}
-	
-
-	
+		
 	//console.log(cannon.missiles.length);
 	
 	//Move the missiles THIS IS PART OF GAME CLASS
 	for(var i = 0; i < cannon.missiles.length; i++)
 	{
-		
 		var missile = cannon.missiles[i];
 
 		//Move it up the screen
@@ -299,13 +296,13 @@ function playGame()
 	{
 		var missile = game.alienMissiles[l];
 		
-		//Move it up the screen
+		//Move it down the screen
 		missile.y += missile.vy;
 
-
 		//Remove the missile if it crosses the top of the screen
-		if(missile.y < 0 - missile.height)
+		if(missile.y > gameWorld.height)
 		{ 
+		  console.log("remove alien missile");
 		  //Remove the missile from the missiles array
 		  removeObject(missile, game.alienMissiles);
 
@@ -317,11 +314,45 @@ function playGame()
 		  l--;
 		}
 	}
+	
+	for(var m = 0; m < game.aliens.length; m++)
+	{
+		var alien = game.aliens[m];
+	
+		//Remove the alien if it crosses the top of the screen
+		if(alien.y > gameWorld.height)
+		{ 
+		  //Remove the alien from the missiles array
+		  removeObject(alien, game.aliens);
+
+		  //Remove the alien from the sprites array
+		  removeObject(alien, sprites);
+
+		  m--;
+		}
+	}
+
+	for(var n = 0; n < game.items.length; n++)
+	{
+		var item = game.items[n];
+	
+		//Remove the alien if it crosses the top of the screen
+		if(item.y > gameWorld.height)
+		{ 
+		  //Remove the alien from the missiles array
+		  removeObject(item, game.items);
+
+		  //Remove the alien from the sprites array
+		  removeObject(item, sprites);
+
+		  n--;
+		}
+	}
   
 	if(game.TIMESTOP != true)
 	{
 		game.alienSpawnTimer(sprites, camera, cannon);
-		game.alienAndItemDropDownAndStatus(canvas);
+		game.alienAndItemDropDownAndStatus(canvas, gameWorld);
 	}
 
 	//Check for a collision between the aliens and missiles
@@ -350,9 +381,7 @@ function playGame()
 					removeObject(missile, cannon.missiles);
 					removeObject(missile, sprites);
 
-
 				}
-				
 				
 				//Remove the missile
 				removeObject(missile, cannon.missiles);
@@ -389,6 +418,9 @@ function playGame()
 			switch(item.name)
 			{
 				case 'Repair':
+					if( cannon.health < 4)
+						game.DO_NOT_SPAWN_HEALTH = false;
+						
 					cannon.health += cannonHealthDisplay.gainHealth();
 					break;
 					
@@ -425,7 +457,6 @@ function playGame()
 	{
 		var missile = game.alienMissiles[k];
 		
-		
 		if( hitTestRectangle(missile, cannon) && missile.state === missile.NORMAL)
 		{
 			missile.state = missile.EXPLODED;
@@ -434,7 +465,7 @@ function playGame()
 
 			removeObject(missile, sprites);
 			break;
-			
+
 		}
 		
 	}

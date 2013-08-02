@@ -6,7 +6,6 @@ function Game()
 
 	//Game variables
 	this.score = 0;
-	this.scoreNeededToWin = 60;
 	this.alienFrequency = 100;
 	this.alienTimer = 0;
 	
@@ -27,8 +26,9 @@ function Game()
 	this.SPACE = 32;
 	
 	this.TIMESTOP = false;
+	this.DO_NOT_SPAWN_HEALTH = false;
+	this.DO_NOT_SPAWN_CLOCK = false;
 	this.DO_NOT_SPAWN_ITEM = false;
-	
 }
 
 // Integrated
@@ -53,14 +53,12 @@ Game.prototype.endGame = function(gameOverMessage, camera)
 	
 };
 
-Game.prototype.makeItem = function(sprites, camera)
+Game.prototype.makeItem = function(sprites, camera, choice)
 {
-	
-	var randomnumber = Math.floor(Math.random()*4);
 
 	var item;
 	
-	switch(randomnumber)
+	switch(choice)
 	{
 		case 0:
 		  item  = new Repair();
@@ -127,7 +125,49 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	  
 	//Add one to the game.alienTimer
 	this.alienTimer++;
-
+	
+	//console.log(this.items.length);
+	if( this.items.length === 0 && this.DO_NOT_SPAWN_ITEM === false)
+	{
+		
+		console.log("making money");
+		var money = this;
+		var timer = 17000;
+		setTimeout(function(){
+					money.makeItem(sprites,camera,2); //spawn money
+					}, timer);
+	}
+	
+	//health spawn
+	if(cannon.health < 5 && this.items.length === 0 && this.DO_NOT_SPAWN_HEALTH === false)
+	{
+		this.DO_NOT_SPAWN_HEALTH = true;
+		console.log("making health");
+		
+		var timer = Math.floor( (Math.random()*40000) + 15000);
+		var thisClass = this;
+		setTimeout(
+			function(){
+				thisClass.makeItem(sprites,camera,0); //spawn repair
+				},timer);
+		
+	}
+	
+	//weapon upgrade
+	if(this.items.length === 0 && this.DO_NOT_SPAWN_ITEM === false)
+	{
+		this.DO_NOT_SPAWN_ITEM = true;
+		console.log("making weapon");
+		var timer = Math.floor( (Math.random()*9000) + 5000);
+		var thisClass = this;
+		setTimeout(
+			function(){
+				thisClass.makeItem(sprites,camera,3); //spawn weapon upgrade
+				},timer);
+		
+		
+	}
+	
 	//Make a new alien if game.alienTimer equals the game.alienFrequency
 	if(this.alienTimer === this.alienFrequency)
 	{
@@ -135,18 +175,6 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		
 		this.alienTimer = 0;
 		
-		this.makeItem(sprites,camera);
-		if(cannon.health < 5 && this.items.length === 0 && this.DO_NOT_SPAWN_ITEM === false)
-		{
-			this.DO_NOT_SPAWN_ITEM = true;
-			var timer = Math.floor( (Math.random()*20000) + 5000);
-			var thisClass = this;
-			setTimeout(
-				function(){
-					thisClass.makeItem(sprites,camera);
-					},timer);
-			
-		}
 
 		if( this.alienFrequency === 30)
 		{
@@ -163,7 +191,9 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	}
 };
 
-Game.prototype.alienAndItemDropDownAndStatus = function(canvas){
+Game.prototype.alienAndItemDropDownAndStatus = function(canvas, gameWorld){
+  
+	console.log("aliens length " + this.aliens.length);
   
 	//Loop through the aliens
 	for(var i = 0; i < this.aliens.length; i++)
@@ -175,13 +205,19 @@ Game.prototype.alienAndItemDropDownAndStatus = function(canvas){
 			//Move the current alien if its state is NORMAL
 			alien.y += alien.vy;
 
-		if(alien.move === true)
-		{
-			alien.move = false;
-			setTimeout(function(){alien.moveLeftRight()},2000);
-		}
+			if(alien.move === true)
+			{
+				alien.move = false;
+				setTimeout(function(){alien.moveLeftRight()},2000);
+			}
 
 			alien.x += alien.vx;
+			
+			if(alien.y > gameWorld.height )
+			{
+
+				//i--;
+			}
 		}
 	}
 	
@@ -193,6 +229,12 @@ Game.prototype.alienAndItemDropDownAndStatus = function(canvas){
 		{
 			//Move the current alien if its state is NORMAL
 			item.y += item.vy;
+		}
+		
+		if(item.y > gameWorld.height )
+		{
+			//removeObject(item, game.items);
+			//removeObject(item, sprites);
 		}
 	}
 };
