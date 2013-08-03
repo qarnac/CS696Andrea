@@ -234,7 +234,8 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	{
 		this.makeAlien(sprites, camera);
 		
-		this.makeMotherShip(sprites, camera);
+		if( this.level === 2)
+			this.makeMotherShip(sprites, camera);
 		
 		this.alienTimer = 0;
 
@@ -247,9 +248,9 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		//the frequency that aliens are created
 		if(this.alienFrequency > 2)
 		{  
-				this.alienFrequency -= 2;
+			this.alienFrequency -= 2;
 		}
-		
+	
 	}
 };
 
@@ -325,78 +326,79 @@ function blockRectangle(r1, r2, bounce)
   //Check whether vx is less than the combined half widths 
   if(Math.abs(vx) < combinedHalfWidths) 
   {
-    //A collision might be occurring! 
-    //Check whether vy is less than the combined half heights 
-    if(Math.abs(vy) < combinedHalfHeights)
-    {
-      //A collision has occurred! This is good! 
-      //Find out the size of the overlap on both the X and Y axes
-      var overlapX = combinedHalfWidths - Math.abs(vx);
-      var overlapY = combinedHalfHeights - Math.abs(vy);
+	//A collision might be occurring! 
+	//Check whether vy is less than the combined half heights 
+	if(Math.abs(vy) < combinedHalfHeights)
+	{
+		//A collision has occurred! This is good! 
+		//Find out the size of the overlap on both the X and Y axes
+		var overlapX = combinedHalfWidths - Math.abs(vx);
+		var overlapY = combinedHalfHeights - Math.abs(vy);
         
-      //The collision has occurred on the axis with the
-      //*smallest* amount of overlap. Let's figure out which
-      //axis that is
+		//The collision has occurred on the axis with the
+		//*smallest* amount of overlap. Let's figure out which
+		//axis that is
         
-      if(overlapX >= overlapY)
-      {
-        //The collision is happening on the X axis 
-        //But on which side? vy can tell us
-        if(vy > 0)
-        {
-          collisionSide = "top";
-            
-          //Move the rectangle out of the collision
-          r1.y = r1.y + overlapY;
-        }
+		if(overlapX >= overlapY)
+		{
+			//The collision is happening on the X axis 
+			//But on which side? vy can tell us
+			if(vy > 0)
+			{
+				collisionSide = "top";
+
+				//Move the rectangle out of the collision
+				r1.y = r1.y + overlapY;
+			}
         else 
-        {
-          collisionSide = "bottom";
-          
-          //Move the rectangle out of the collision
-          r1.y = r1.y - overlapY;
-        }
+		{
+			collisionSide = "bottom";
+
+			//Move the rectangle out of the collision
+			r1.y = r1.y - overlapY;
+		}
     
         //Bounce
         if(bounce)
-        {
-          r1.vy *= -1;
-		      
-          /*Alternative
-          //Find the bounce surface's vx and vy properties
-          var s = {};
-          s.vx = r2.x - r2.x + r2.width; 
-          s.vy = 0;
-		    
-          //Bounce r1 off the surface
-          //bounceOffSurface(r1, s);
-          */
-        }
-      } 
+		{
+			r1.vy *= -1;
+			  
+			/*
+			Alternative
+			//Find the bounce surface's vx and vy properties
+			var s = {};
+			s.vx = r2.x - r2.x + r2.width; 
+			s.vy = 0;
+
+			//Bounce r1 off the surface
+			//bounceOffSurface(r1, s);
+			*/
+		}
+      }
       else 
       {
         //The collision is happening on the Y axis 
         //But on which side? vx can tell us
         if(vx > 0)
         {
-          collisionSide = "left";
-            
-          //Move the rectangle out of the collision
-          r1.x = r1.x + overlapX;
+			collisionSide = "left";
+			
+			//Move the rectangle out of the collision
+			r1.x = r1.x + overlapX;
         }
         else 
         {
-          collisionSide = "right";
-            
-          //Move the rectangle out of the collision
-          r1.x = r1.x - overlapX;
+			collisionSide = "right";
+				
+			//Move the rectangle out of the collision
+			r1.x = r1.x - overlapX;
         }
         
         //Bounce
         if(bounce)
         {
           r1.vx *= -1;
-			    
+		  
           /*Alternative
           //Find the bounce surface's vx and vy properties
           var s = {};
