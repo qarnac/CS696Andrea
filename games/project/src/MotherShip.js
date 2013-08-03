@@ -6,6 +6,10 @@ function MotherShip()
 	this.shoot = true;
 	this.move = true;
 	this.health = 10;
+	
+	this.sourceX = 126;
+	this.sourceWidth = 64;
+	this.width = 96;
 }
 
 MotherShip.prototype = new Entity();

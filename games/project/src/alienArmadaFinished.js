@@ -562,7 +562,7 @@ function render()
 		{
 			var sprite = sprites[i];
 			
-			if(sprite instanceof Alien || sprite instanceof Cannon || sprite instanceof Missile ||
+			if(sprite instanceof Alien || sprite instanceof MotherShip || sprite instanceof Cannon || sprite instanceof Missile ||
 			   sprite instanceof Item || sprite.name === "CannonHealth")
 			{
 				drawingSurface.drawImage

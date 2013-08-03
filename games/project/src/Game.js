@@ -101,12 +101,9 @@ Game.prototype.makeMotherShip = function(sprites, camera)
 	//Create the motherShip
 	var motherShip = new MotherShip();
 	
-	motherShip.sourceX = 32;
-	
-	if( this.level === 2)
-	{
-		motherShip.health = 5;
-	}
+
+	motherShip.health = 10;
+
 	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
@@ -121,7 +118,7 @@ Game.prototype.makeMotherShip = function(sprites, camera)
 	motherShip.x = camera.x + randomPosition + 30;
 	
 	//Set its speed
-	motherShip.vy = 1;
+	motherShip.vy = 0.5;
 
 	//Push the alien into both the sprites and aliens arrays
 	sprites.push(motherShip);
@@ -277,6 +274,20 @@ Game.prototype.alienAndItemDropDownAndStatus = function(canvas, gameWorld){
 			}
 
 			alien.x += alien.vx;
+			
+		}
+	}
+		for(var i = 0; i < this.motherShips.length; i++)
+	{ 
+		var motherShip = this.motherShips[i];
+
+		if(motherShip.state === motherShip.NORMAL)
+		{
+			//Move the current alien if its state is NORMAL
+			motherShip.y += motherShip.vy;
+
+
+			motherShip.x += motherShip.vx;
 			
 		}
 	}
