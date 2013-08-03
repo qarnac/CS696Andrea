@@ -331,6 +331,23 @@ function playGame()
 		  m--;
 		}
 	}
+	
+	for(var m = 0; m < game.motherShips.length; m++)
+	{
+		var motherShip = game.motherShips[m];
+	
+		//Remove the alien if it crosses the bottom of the map
+		if(motherShip.y > gameWorld.height)
+		{ 
+		  //Remove the alien from the missiles array
+		  removeObject(motherShip, game.motherShips);
+
+		  //Remove the alien from the sprites array
+		  removeObject(motherShip, sprites);
+
+		  m--;
+		}
+	}
 
 	for(var n = 0; n < game.items.length; n++)
 	{
@@ -399,7 +416,6 @@ function playGame()
 				//Subtract 1 from the loop counter to compensate
 				//for the removed missile
 				j--;
-				
 				
 			}
 		}
