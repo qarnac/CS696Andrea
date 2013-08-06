@@ -397,7 +397,7 @@ function playGame()
 				if( mothership.health === 0 && mothership.state === mothership.NORMAL)
 				{
 					//Destroy the alien
-					destroyAlien(mothership);
+					destroyMothership(mothership);
 
 					//Update the score
 					game.score+= 20;
@@ -586,6 +586,26 @@ function destroyAlien(alien)
   {
     removeObject(alien, game.aliens);
     removeObject(alien, sprites);
+  }
+}
+
+function destroyMothership(mothership)
+{
+  //Change the alien's state and update the object 
+  mothership.state = mothership.EXPLODED;
+  mothership.update();  
+  
+  //Remove the alien after 1 second
+  setTimeout(removeMothership, 1000);
+
+  //Play the explosion sound
+  //explosionSound.currentTime = 0;
+  //explosionSound.play();
+  
+  function removeMothership()
+  {
+    removeObject(mothership, game.motherShips);
+    removeObject(mothership, sprites);
   }
 }
 

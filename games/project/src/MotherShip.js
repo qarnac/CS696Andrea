@@ -5,7 +5,7 @@ function MotherShip()
 	this.state = this.NORMAL;
 	this.shoot = true;
 	this.move = true;
-	this.health = 10;
+	this.health = 20;
 	
 	this.sourceX = 126;
 	this.sourceWidth = 64;

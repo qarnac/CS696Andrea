@@ -225,7 +225,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 			
 	if( this.alienFrequency < 40)
 	{
-		console.log("switching to level 2");
+		//console.log("switching to level 2");
 		this.level = 2
 	}
 	
@@ -234,8 +234,13 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 	{
 		this.makeAlien(sprites, camera);
 		
-		if( this.level === 2)
+		console.log(this.alienFrequency);
+		
+		if( this.level === 2 && (this.alienFrequency === 90 || this.alienFrequency === 80 ||this.alienFrequency === 60 || this.alienFrequency === 40))
+		{
 			this.makeMotherShip(sprites, camera);
+			this.makeMotherShip(sprites, camera);
+		}
 		
 		this.alienTimer = 0;
 
@@ -256,7 +261,7 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 
 Game.prototype.alienAndItemDropDownAndStatus = function(canvas, gameWorld){
   
-	console.log("aliens length " + this.aliens.length);
+	//console.log("aliens length " + this.aliens.length);
   
 	//Loop through the aliens
 	for(var i = 0; i < this.aliens.length; i++)
