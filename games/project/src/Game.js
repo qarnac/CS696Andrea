@@ -101,10 +101,6 @@ Game.prototype.makeMotherShip = function(sprites, camera)
 	//Create the motherShip
 	var motherShip = new MotherShip();
 	
-
-	motherShip.health = 10;
-
-	
 	//Set its y position above the screen boundary
 	if( camera.y != 0)
 		motherShip.y = camera.y - 64;
@@ -238,7 +234,9 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		
 		if( this.level === 2 && (this.alienFrequency === 90 || this.alienFrequency === 80 ||this.alienFrequency === 60 || this.alienFrequency === 40))
 		{
+		var randomPosition = Math.floor(Math.random() * 4000) + 1000;
 			this.makeMotherShip(sprites, camera);
+			
 			this.makeMotherShip(sprites, camera);
 		}
 		

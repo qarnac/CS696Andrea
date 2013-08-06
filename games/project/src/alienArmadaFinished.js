@@ -393,6 +393,7 @@ function playGame()
 			&& mothership.state === mothership.NORMAL)
 			{
 				mothership.health--;
+				console.log(mothership.health);
 				
 				if( mothership.health === 0 && mothership.state === mothership.NORMAL)
 				{
