@@ -380,6 +380,50 @@ function playGame()
 		game.alienSpawnTimer(sprites, camera, cannon);
 		game.alienAndItemDropDownAndStatus(canvas, gameWorld);
 	}
+	
+	for(var i = 0; i < game.motherShips.length; i++)
+	{
+		var mothership = game.motherShips[i];
+		
+		for(var j = 0; j < cannon.missiles.length; j++)
+		{
+			var missile = cannon.missiles[j];
+
+			if(hitTestRectangle(missile, mothership)
+			&& mothership.state === mothership.NORMAL)
+			{
+				mothership.health--;
+				
+				if( mothership.health === 0 && mothership.state === mothership.NORMAL)
+				{
+					//Destroy the alien
+					destroyAlien(mothership);
+
+					//Update the score
+					game.score+= 20;
+
+					//Remove the missile
+					removeObject(missile, cannon.missiles);
+					removeObject(missile, sprites);
+				}
+				
+				//Remove the missile
+				removeObject(missile, cannon.missiles);
+				removeObject(missile, sprites);
+				
+				//Subtract 1 from the loop counter to compensate
+				//for the removed missile
+				j--;				
+			}
+		}
+		
+		if(hitTestRectangle(cannon, mothership)
+		  && mothership.state === alien.NORMAL)
+		{
+			game.gameState = game.OVER;
+			game.endGame(gameOverMessage, camera);
+		}
+	}
 
 	//Check for a collision between the aliens and missiles
 	for(var i = 0; i < game.aliens.length; i++)
@@ -406,7 +450,6 @@ function playGame()
 					//Remove the missile
 					removeObject(missile, cannon.missiles);
 					removeObject(missile, sprites);
-
 				}
 				
 				//Remove the missile
@@ -415,8 +458,7 @@ function playGame()
 				
 				//Subtract 1 from the loop counter to compensate
 				//for the removed missile
-				j--;
-				
+				j--;				
 			}
 		}
 		
@@ -439,6 +481,7 @@ function playGame()
 		}
 	}
   
+	
 	//check for collision between items and cannon
   	for(var i = 0; i < game.items.length; i++)
 	{
@@ -487,7 +530,7 @@ function playGame()
 
 	}
 
-  
+
 	for(var k = 0; k < game.alienMissiles.length; k++)
 	{
 		var missile = game.alienMissiles[k];
@@ -505,8 +548,6 @@ function playGame()
 		}
 		
 	}
-	
-	//console.log(cannon.health);
 	
 	if( cannon.health === 0)
 	{
@@ -526,7 +567,6 @@ function playGame()
 	{
 		game.gameState = game.OVER;
 	}
-  
 }
 
 function destroyAlien(alien)
