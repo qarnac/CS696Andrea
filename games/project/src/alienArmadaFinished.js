@@ -111,6 +111,11 @@ image2.addEventListener("load", loadHandler, false);
 image2.src = "../images/alienArmadaRED3.png";
 assetsToLoad.push(image2);
 
+//Load the tilesheet image
+var image3 = new Image();
+image3.addEventListener("load", loadHandler, false);
+image3.src = "../images/background2.png";
+assetsToLoad.push(image3);
 
 //var image2 = new Image();
 //image.addEventListener("load", loadHandler, false);
@@ -213,6 +218,7 @@ function loadHandler()
 	
     image.removeEventListener("load", loadHandler, false);
 	image2.removeEventListener("load", loadHandler, false);
+	image3.removeEventListener("load", loadHandler, false);
     //Start the game 
     game.gameState = game.PLAYING;
   }
@@ -650,14 +656,28 @@ function render()
 			}
 			else
 			{
-				drawingSurface.drawImage
-				(
-					image, 
-					sprite.sourceX, sprite.sourceY, 
-					sprite.sourceWidth, sprite.sourceHeight,
-					Math.floor(sprite.x), Math.floor(sprite.y), 
-					sprite.width, sprite.height
-				);
+				if(game.level === 1)
+				{
+					drawingSurface.drawImage
+					(
+						image, 
+						sprite.sourceX, sprite.sourceY, 
+						sprite.sourceWidth, sprite.sourceHeight,
+						Math.floor(sprite.x), Math.floor(sprite.y), 
+						sprite.width, sprite.height
+					);
+				}
+				else
+				{
+					drawingSurface.drawImage
+					(
+						image3, 
+						sprite.sourceX, sprite.sourceY, 
+						sprite.sourceWidth, sprite.sourceHeight,
+						Math.floor(sprite.x), Math.floor(sprite.y), 
+						sprite.width, sprite.height
+					);
+				}
 			}			
 		}	
 	}
