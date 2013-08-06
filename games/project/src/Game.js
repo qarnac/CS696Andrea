@@ -234,10 +234,14 @@ Game.prototype.alienSpawnTimer = function(sprites, camera, cannon){
 		
 		if( this.level === 2 && (this.alienFrequency === 90 || this.alienFrequency === 80 ||this.alienFrequency === 60 || this.alienFrequency === 40))
 		{
-		var randomPosition = Math.floor(Math.random() * 4000) + 1000;
+			var timer = Math.floor(Math.random() * 4000) + 1000;
+			var thisClass = this;
 			this.makeMotherShip(sprites, camera);
+			setTimeout(
+			function(){
+				thisClass.makeMotherShip(sprites,camera); //spawn weapon upgrade
+				},timer);
 			
-			this.makeMotherShip(sprites, camera);
 		}
 		
 		this.alienTimer = 0;
