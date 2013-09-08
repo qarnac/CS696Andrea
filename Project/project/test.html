@@ -6,4 +6,8 @@
 <body>
     <p>Camera<br>
     <input id="camerainput" type="file" accept="video/*,image/*">
+	
+	<script>
+		document.getElementById('camerainput').addEventListener('change', readSingleFile, false);
+	</script>
 </body>
