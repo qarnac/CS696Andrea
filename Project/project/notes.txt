@@ -8,3 +8,7 @@ Source code sample of reading video and pictures
 Device orientations
 - http://mobiforge.com/developing/story/html5-mobile-web-device-orientation-events
 
+GeoLocation
+- http://diveintohtml5.info/geolocation.html
+
+
