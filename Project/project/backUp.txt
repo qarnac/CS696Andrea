@@ -17,17 +17,11 @@
 		var drawingSurface = canvas.getContext("2d");
 
 		var cameraInput = document.getElementById('camerainput');
-		cameraInput.addEventListener('change', handleFiles);
+		cameraInput.addEventListener('change', loadHandler, false);
 		
 		var img = new Image;
-		
-		function handleFiles(e) {
-			img.src = URL.createObjectURL(e.target.files[0]);
-			img.onload = function() {
-				loadHandler();
-			}
-		}
-		
+		img.src = document.getElementById('input').files[0];
+
 		/*
 		document.getElementById('camerainput').addEventListener('change', readSingleFile, false);
 		var canvas = document.getElementById("camerainput");
@@ -48,18 +42,17 @@
 		
 		//4. Add a listener to the image to call the 
 		//render function when the image has loaded
-		img.addEventListener("load", loadHandler, false);
+		//img.addEventListener("load", loadHandler, false);
 		
 		function loadHandler()
 		{ 
-		
 		  //6. Draw the img onto the drawingSurface
 		  //drawingSurface.drawImage(img, 20, 20);
 		  drawingSurface.drawImage
 		  (
 			img, 
-			0, 0, img.width, img.height,
-			0, 0, canvas.width, canvas.height
+			0, 0, 64, 64,
+			0, 0, 64, 64
 		  );
 		  
 		}
