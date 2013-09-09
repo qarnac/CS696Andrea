@@ -4,10 +4,59 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 </head>
 <body>
+	
     <p>Camera<br>
     <input id="camerainput" type="file" accept="video/*,image/*">
+	<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>
 	
 	<script>
+		//1. Get a reference to the canvas
+		var canvas = document.querySelector("canvas");
+
+		//2. Get a reference to the canvas's drawing surface
+		var drawingSurface = canvas.getContext("2d");
+		
+		//3. Create a img variable to hold the new image
+		var img = new Image();
+		
+		/*
 		document.getElementById('camerainput').addEventListener('change', readSingleFile, false);
+		var canvas = document.getElementById("camerainput");
+		var cc = canvas.getContext("2d");
+		
+		// Define viewports for scrolling inside the canvas
+
+		/* Viewport x position    view_xview = 0;
+		/* Viewport y position    view_yview = 0;
+		/* Viewport width         view_wview = 960;
+		/* Viewport height        view_hview = 560;
+		/* Sector width          room_width = 5000;
+		/* Sector height          room_height = 3000;
+
+		canvas.width = view_wview;
+		canvas.height = view_hview;
+		*/
+		
+		//4. Add a listener to the image to call the 
+		//render function when the image has loaded
+		img.addEventListener("load", loadHandler, false);
+		
+		function loadHandler()
+		{ 
+		  //6. Draw the img onto the drawingSurface
+		  //drawingSurface.drawImage(img, 20, 20);
+		  drawingSurface.drawImage
+		  (
+			img, 
+			0, 0, 64, 64,
+			0, 0, 64, 64
+		  );
+		  
+		}
+		
+		img.onload = function() {
+			loadHandler();
+		}
+		
 	</script>
 </body>
