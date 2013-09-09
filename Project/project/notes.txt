@@ -5,3 +5,6 @@ CSS device adaptation with viewport
 Source code sample of reading video and pictures
 - https://github.com/blackberry/BB10-WebWorks-Framework/blob/master/test/test-app/manual/html5/input.html
 
+Device orientations
+- http://mobiforge.com/developing/story/html5-mobile-web-device-orientation-events
+
