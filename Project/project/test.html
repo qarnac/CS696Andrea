@@ -5,61 +5,45 @@
 	<script type="text/javascript" charset="utf-8" src="jquery-1.10.2.js"></script>
 </head>
 <body>
-
+   <form>
+     <input type="button" onclick="getLocationUpdate();" value="GPS test"/>
+   </form>
 	<div>
     <p>Camera<br>
 	
     <input id="camerainput" type="file" accept="video/*,image/*">
-	<input type="button" id="go" value="Click Me To View Your Location" />
 	<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>
 	
-	<script>
-		$(document).ready(function () {
-			// wire up button click
-			$('#go').click(function () {
-				// test for presence of geolocation
-				if (navigator && navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(geo_success, geo_error);
-				} else {
-					error('Geolocation is not supported.');
-				}
-			});
-		});
-		
-		function geo_success(position) {
-			printLatLong(position.coords.latitude, position.coords.longitude);
-		}
- 
-		// The PositionError object returned contains the following attributes:
-		// code: a numeric response code
-		// PERMISSION_DENIED = 1
-		// POSITION_UNAVAILABLE = 2
-		// TIMEOUT = 3
-		// message: Primarily for debugging. It's recommended not to show this error
-		// to users.
-		function geo_error(err) {
-			if (err.code == 1) {
-				error('The user denied the request for location information.')
-			} else if (err.code == 2) {
-				error('Your location information is unavailable.')
-			} else if (err.code == 3) {
-				error('The request to get your location timed out.')
-			} else {
-				error('An unknown error occurred while requesting your location.')
-			}
-		}
-		
-	
-		
-		// output lat and long
-		function printLatLong(lat, long) {
-			$('body').append('<p>Lat: ' + lat + '</p>');
-			$('body').append('<p>Long: ' + long + '</p>');
-		}
- 
-		function error(msg) {
-			alert(msg);
-		}
+	<script>	
+	var watchID;
+	var geoLoc;
+
+	function showLocation(position) {
+	  var latitude = position.coords.latitude;
+	  var longitude = position.coords.longitude;
+	  alert("Latitude : " + latitude + " Longitude: " + longitude);
+	}
+
+	function errorHandler(err) {
+	  if(err.code == 1) {
+		alert("Error: Access is denied!");
+	  }else if( err.code == 2) {
+		alert("Error: Position is unavailable!");
+	  }
+	}
+	function getLocationUpdate(){
+
+	   if(navigator.geolocation){
+		  // timeout at 60000 milliseconds (60 seconds)
+		  var options = {timeout:60000};
+		  geoLoc = navigator.geolocation;
+		  watchID = geoLoc.watchPosition(showLocation, 
+										 errorHandler,
+										 options);
+	   }else{
+		  alert("Sorry, browser does not support geolocation!");
+	   }
+	}
 	
 	
 		//1. Get a reference to the canvas
