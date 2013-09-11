@@ -8,7 +8,6 @@
 	<form>
 		<input type="button" onclick="getLocationUpdate();" value="GPS test"/>
 	</form>
-	<p><button onclick="geoFindMe()">Show my location</button></p>
 	<div id="out"></div>
 	
 	<div>
@@ -26,11 +25,14 @@
 	function showLocation(position) {
 	  var latitude = position.coords.latitude;
 	  var longitude = position.coords.longitude;
+	  var accuracy = position.coords.accuracy;
 	  
 	  var img = new Image();
 	  img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-	  output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+	  output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '° + <br>Accuracy is '+ accuracy +'</p>';
 	  output.appendChild(img);
+	  
+	  console.log("TEST");
 	  
 	  //alert("Latitude : " + latitude + " Longitude: " + longitude);
 	}
@@ -42,6 +44,7 @@
 		alert("Error: Position is unavailable!");
 	  }
 	}
+	
 	function getLocationUpdate(){
 
 	   if(navigator.geolocation){
@@ -50,10 +53,14 @@
 		  geoLoc = navigator.geolocation;
 		  watchID = geoLoc.getCurrentPosition (showLocation, 
 										 errorHandler, options);
+		  //watchID = geoLoc.watchPosition (showLocation, 
+			//							 errorHandler, options);
 	   }else{
 		  alert("Sorry, browser does not support geolocation!");
 	   }
 	}
+	
+	
 	
 	
 	/*
