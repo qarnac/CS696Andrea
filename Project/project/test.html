@@ -23,18 +23,23 @@
 	var output = document.getElementById("out");
 	
 	function showLocation(position) {
-	  var latitude = position.coords.latitude;
-	  var longitude = position.coords.longitude;
-	  var accuracy = position.coords.accuracy;
+		var latitude = position.coords.latitude;
+		var longitude = position.coords.longitude;
+		var accuracy = position.coords.accuracy;
+
+		if (accuracy < 50)
+		{
+			clearWatch();
+			console.log("in clear watch");
+		}
+	
+		var img = new Image();
+		img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+		output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '° <br>Accuracy is '+ accuracy +'</p>';
+		output.appendChild(img);
+		console.log("HELLO");
 	  
-	  var img = new Image();
-	  img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-	  output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '° + <br>Accuracy is '+ accuracy +'</p>';
-	  output.appendChild(img);
-	  
-	  console.log("TEST");
-	  
-	  //alert("Latitude : " + latitude + " Longitude: " + longitude);
+		//alert("Latitude : " + latitude + " Longitude: " + longitude);
 	}
 
 	function errorHandler(err) {
@@ -49,15 +54,27 @@
 
 	   if(navigator.geolocation){
 		  // timeout at 60000 milliseconds (60 seconds)
-		  var options = {timeout:60000};
+		  var options = {	//frequency:60000, 
+							enableHighAccuracy: true
+							};
 		  geoLoc = navigator.geolocation;
-		  watchID = geoLoc.getCurrentPosition (showLocation, 
+		  //watchID = geoLoc.getCurrentPosition (showLocation, 
+		//								 errorHandler, options);
+		  watchID = geoLoc.watchPosition (showLocation, 
 										 errorHandler, options);
-		  //watchID = geoLoc.watchPosition (showLocation, 
-			//							 errorHandler, options);
+										 								 
 	   }else{
 		  alert("Sorry, browser does not support geolocation!");
 	   }
+	}
+	
+// clear the watch that was started earlier
+// 
+	function clearWatch() {
+		if (watchID != null) {
+			navigator.geolocation.clearWatch(watchID);
+			watchID = null;
+		}
 	}
 	
 	
