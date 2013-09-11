@@ -18,16 +18,21 @@
 	<!--<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>-->
 	
 	<script>
-
-
 	
 	var watchID;
 	var geoLoc;
-
+	var output = document.getElementById("out");
+	
 	function showLocation(position) {
 	  var latitude = position.coords.latitude;
 	  var longitude = position.coords.longitude;
-	  alert("Latitude : " + latitude + " Longitude: " + longitude);
+	  
+	  var img = new Image();
+	  img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+	  output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+	  output.appendChild(img);
+	  
+	  //alert("Latitude : " + latitude + " Longitude: " + longitude);
 	}
 
 	function errorHandler(err) {
