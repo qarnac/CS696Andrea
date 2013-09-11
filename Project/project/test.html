@@ -5,16 +5,22 @@
 	<script type="text/javascript" charset="utf-8" src="jquery-1.10.2.js"></script>
 </head>
 <body>
-   <form>
-     <input type="button" onclick="getLocationUpdate();" value="GPS test"/>
-   </form>
+	<form>
+		<input type="button" onclick="getLocationUpdate();" value="GPS test"/>
+	</form>
+	<p><button onclick="geoFindMe()">Show my location</button></p>
+	<div id="out"></div>
+	
 	<div>
-    <p>Camera<br>
+	<p>Camera<br>
 	
     <input id="camerainput" type="file" accept="video/*,image/*">
-	<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>
+	<!--<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>-->
 	
-	<script>	
+	<script>
+
+
+	
 	var watchID;
 	var geoLoc;
 
@@ -45,11 +51,13 @@
 	}
 	
 	
+	/*
 		//1. Get a reference to the canvas
 		var canvas = document.querySelector("canvas");
 
 		//2. Get a reference to the canvas's drawing surface
 		var drawingSurface = canvas.getContext("2d");
+		*/
 
 		var cameraInput = document.getElementById('camerainput');
 		cameraInput.addEventListener('change', handleFiles);
