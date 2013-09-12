@@ -12,7 +12,11 @@
 	
 	<div>
 	<p>Camera<br>
-	
+		<h2>Preview:</h2>
+	<p>
+		<img src="about:blank" alt="" id="show-picture">
+	</p>
+	<p id="error"></p>
     <input id="camerainput" type="file" accept="video/*,image/*">
 	<!--<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>-->
 	
@@ -68,8 +72,8 @@
 	   }
 	}
 	
-// clear the watch that was started earlier
-// 
+	// clear the watch that was started earlier
+	// 
 	function clearWatch() {
 		if (watchID != null) {
 			navigator.geolocation.clearWatch(watchID);
@@ -77,7 +81,50 @@
 		}
 	}
 	
-	
+    var takePicture = document.querySelector("#take-picture"),
+        showPicture = document.querySelector("#show-picture");
+
+    if (takePicture && showPicture) {
+        // Set events
+        takePicture.onchange = function (event) {
+            // Get a reference to the taken picture or chosen file
+            var files = event.target.files,
+                file;
+            if (files && files.length > 0) {
+                file = files[0];
+                try {
+                    // Get window.URL object
+                    var URL = window.URL || window.webkitURL;
+
+                    // Create ObjectURL
+                    var imgURL = URL.createObjectURL(file);
+
+                    // Set img src to ObjectURL
+                    showPicture.src = imgURL;
+
+                    // Revoke ObjectURL
+                    URL.revokeObjectURL(imgURL);
+                }
+                catch (e) {
+                    try {
+                        // Fallback if createObjectURL is not supported
+                        var fileReader = new FileReader();
+                        fileReader.onload = function (event) {
+                            showPicture.src = event.target.result;
+                        };
+                        fileReader.readAsDataURL(file);
+                    }
+                    catch (e) {
+                        //
+                        var error = document.querySelector("#error");
+                        if (error) {
+                            error.innerHTML = "Neither createObjectURL or FileReader are supported";
+                        }
+                    }
+                }
+            }
+        };
+    }
 	
 	
 	/*
@@ -86,7 +133,7 @@
 
 		//2. Get a reference to the canvas's drawing surface
 		var drawingSurface = canvas.getContext("2d");
-		*/
+		
 
 		var cameraInput = document.getElementById('camerainput');
 		cameraInput.addEventListener('change', handleFiles);
@@ -99,7 +146,7 @@
 				loadHandler();
 			}
 		}
-		
+		*/
 		/*
 		document.getElementById('camerainput').addEventListener('change', readSingleFile, false);
 		var canvas = document.getElementById("camerainput");
@@ -120,8 +167,9 @@
 		
 		//4. Add a listener to the image to call the 
 		//render function when the image has loaded
-		img.addEventListener("load", loadHandler, false);
-		
+		//img.addEventListener("load", loadHandler, false);
+	
+		/*
 		function loadHandler()
 		{ 
 		
@@ -135,6 +183,7 @@
 		  );
 		  
 		}
+		*/
 	</script>
 	</div>
 </body>
