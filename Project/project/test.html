@@ -2,7 +2,6 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-	<script type="text/javascript" charset="utf-8" src="jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
 </head>
 <body>
@@ -26,6 +25,7 @@
 	<script>
 	var map;
 	var marker;
+	var marker2;
 	var defaultLocation = new google.maps.LatLng(33.00, -117.0);
 
 	var watchID;
@@ -39,10 +39,9 @@
 
 	map = new google.maps.Map(document.getElementById("map"), myOptions);
 	
-	
 	map.setCenter(defaultLocation);
 	
-	addMarker(defaultLocation, "test default marker");
+	addMarker(marker, defaultLocation, "test default marker");
 	
 	
 	function showLocation(position) {
@@ -63,13 +62,13 @@
 		//output.appendChild(img);
 		
 		output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '° <br>Accuracy is '+ accuracy +'</p>';
-		addMarker(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), "My location");
+		addMarker(marker2, new google.maps.LatLng(position.coords.latitude, position.coords.longitude), "My location");
 		
 		console.log("HELLO");
 	  
 	}
 	
-	function addMarker(latitudeLongitude, titleMarker)
+	function addMarker(marker, latitudeLongitude, titleMarker)
 	{
 		if(marker) 
 			marker.setMap(null); 
