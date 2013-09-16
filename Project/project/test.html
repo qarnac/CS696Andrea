@@ -3,12 +3,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<script type="text/javascript" charset="utf-8" src="jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
 </head>
 <body>
 	<form>
 		<input type="button" onclick="getLocationUpdate();" value="GPS test"/>
 	</form>
 	<div id="out"></div>
+	<div id="map" style="width:450px; height:300px; border:1px solid #999"></div>
+
 	
 	<div>
 	<p>Camera<br>
@@ -21,10 +24,26 @@
 	<!--<canvas width="device-width" height="device-height" style="border: 1px dashed black"/>-->
 	
 	<script>
-	
+	var map;
+	var marker;
+	var defaultLocation = new google.maps.LatLng(33.00, -117.0);
+
 	var watchID;
 	var geoLoc;
 	var output = document.getElementById("out");
+	
+	var myOptions = {
+		zoom: 10,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+
+	map = new google.maps.Map(document.getElementById("map"), myOptions);
+	
+	
+	map.setCenter(defaultLocation);
+	
+	addMarker(defaultLocation, "test default marker");
+	
 	
 	function showLocation(position) {
 		var latitude = position.coords.latitude;
@@ -36,14 +55,33 @@
 			clearWatch();
 			console.log("in clear watch");
 		}
-	
+		
+		/*
 		var img = new Image();
 		img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
+		*/
+		//output.appendChild(img);
+		
 		output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '° <br>Accuracy is '+ accuracy +'</p>';
-		output.appendChild(img);
+		addMarker(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), "My location");
+		
 		console.log("HELLO");
 	  
-		//alert("Latitude : " + latitude + " Longitude: " + longitude);
+	}
+	
+	function addMarker(latitudeLongitude, titleMarker)
+	{
+		if(marker) 
+			marker.setMap(null); 
+		
+		marker = new google.maps.Marker({
+			position: latitudeLongitude,  
+			title: titleMarker
+		});
+		
+		marker.setMap(map);
+
+		map.panTo(latitudeLongitude);
 	}
 
 	function errorHandler(err) {
@@ -62,8 +100,7 @@
 							enableHighAccuracy: true
 							};
 		  geoLoc = navigator.geolocation;
-		  //watchID = geoLoc.getCurrentPosition (showLocation, 
-		//								 errorHandler, options);
+		  
 		  watchID = geoLoc.watchPosition (showLocation, 
 										 errorHandler, options);
 										 								 
@@ -72,7 +109,7 @@
 	   }
 	}
 	
-	// clear the watch that was started earlier
+	// stop WatchPostition that was started earlier
 	// 
 	function clearWatch() {
 		if (watchID != null) {
@@ -125,65 +162,6 @@
             }
         };
     }
-	
-	
-	/*
-		//1. Get a reference to the canvas
-		var canvas = document.querySelector("canvas");
-
-		//2. Get a reference to the canvas's drawing surface
-		var drawingSurface = canvas.getContext("2d");
-		
-
-		var cameraInput = document.getElementById('camerainput');
-		cameraInput.addEventListener('change', handleFiles);
-		
-		var img = new Image;
-		
-		function handleFiles(e) {
-			img.src = URL.createObjectURL(e.target.files[0]);
-			img.onload = function() {
-				loadHandler();
-			}
-		}
-		*/
-		/*
-		document.getElementById('camerainput').addEventListener('change', readSingleFile, false);
-		var canvas = document.getElementById("camerainput");
-		var cc = canvas.getContext("2d");
-		
-		// Define viewports for scrolling inside the canvas
-
-		/* Viewport x position    view_xview = 0;
-		/* Viewport y position    view_yview = 0;
-		/* Viewport width         view_wview = 960;
-		/* Viewport height        view_hview = 560;
-		/* Sector width          room_width = 5000;
-		/* Sector height          room_height = 3000;
-
-		canvas.width = view_wview;
-		canvas.height = view_hview;
-		*/
-		
-		//4. Add a listener to the image to call the 
-		//render function when the image has loaded
-		//img.addEventListener("load", loadHandler, false);
-	
-		/*
-		function loadHandler()
-		{ 
-		
-		  //6. Draw the img onto the drawingSurface
-		  //drawingSurface.drawImage(img, 20, 20);
-		  drawingSurface.drawImage
-		  (
-			img, 
-			0, 0, img.width, img.height,
-			0, 0, canvas.width, canvas.height
-		  );
-		  
-		}
-		*/
 	</script>
 	</div>
 </body>
