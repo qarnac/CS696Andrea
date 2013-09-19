@@ -27,12 +27,17 @@ nav.primary > ul li a {
 
 /*----------------------------pages*/
 
+#description {
+    width: 150px;
+	height: 200px;
+}
+
 #home-page {
-    background-color: #6495ed;
+    background-color: #cccc33;
 }
 
 #products-page {
-    background-color: #a52a2a;
+    background-color: #ccffbb;
 }
 
 #about-page {
