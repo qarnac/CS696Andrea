@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<head>
+	<!--<script type="text/javascript" src="./pageTransition.css"></script>-->
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<link rel="stylesheet" href="pageTransition.css">
+	<script type="text/javascript" src="./slidfast.js" ></script>
+</head>
+<body>
+	<div id="browser">
+		<nav class="primary">
+			<ul>
+				<li><a href="#home-page" onclick="slidfast.ui.slideTo('home-page')">Home</a></li>
+				<li><a href="#products-page" onclick="slidfast.ui.slideTo('products-page')">Products</a></li>
+				<li><a href="#about-page" onclick="slidfast.ui.slideTo('about-page')">About</a></li>
+				<!--<li id="flip-button"><a href="#contact-page" onclick="slidfast.ui.flip('contact-page')">Contact</a></li>-->
+			<ul>
+		</nav>
+		<div id="front" class="normal">
+			<div id="page-container">
+				<div id="home-page" class="page">
+				  <h1>Home Page</h1>
+				</div>
+
+				<div id="products-page" class="page stage-right">
+				  <h1>Products Page</h1>
+				</div>
+
+				<div id="about-page" class="page stage-left">
+				  <h1>About Page</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
