@@ -6,11 +6,89 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    font: 80% / 1.5em "Lucida Sans Unicode", "Lucida Grande", Geneva, Verdana, Arial, sans-serif;
+    font: 80% / 1.5em "Helvetica", "Lucida Sans", Verdana, Arial, sans-serif;
 }
+/*----------------------------nav bar*/
+nav.primary > ul {
+    text-align: center;
+}
+
+nav.primary > ul li {
+    list-style: none;
+    display: inline;
+    padding: 5px;
+    border: 1px solid #fff;
+}
+
+nav.primary > ul li a {
+    color: #fff;
+}
+
+
+/*----------------------------pages*/
+
+#home-page {
+    background-color: #6495ed;
+}
+
+#products-page {
+    background-color: #a52a2a;
+}
+
+#about-page {
+    background-color: #006400;
+}
+
+#contact-page {
+    background-color: #ff1493;
+    width: 100%;
+    height: 100%;
+}
+
+.worker-table {
+    border:  1px solid black;
+}
+
+.worker-table tr td {
+    border:  1px solid black
+}
+
+.worker-table tr td.a1 {
+    background-color: #f5f5dc;
+}
+
+.worker-table tr td.a2 {
+    background-color: #bc8f8f;
+}
+
+.worker-table tr td.a3 {
+    background-color: red;
+}
+
+.worker-table tr td.a4 {
+    background-color: #adff2f;
+}
+
+.worker-table tr td.a5 {
+    background-color: #00ffff;
+}
+
+.worker-table tr td.a6 {
+    background-color: white;
+}
+
+.worker-table tr td.a7 {
+    background-color: green;
+}
+
+.worker-table tr td.a8 {
+    background-color: yellow;
+}
+
 
 a {
     text-decoration: none;
+    color: #fff;
 }
 
 /*************************************************
@@ -18,26 +96,30 @@ Mobile Device Page Setup
 *************************************************/
 
 #browser {
+    background: #000 -moz-linear-gradient(top, #0e0e0e, #313131);
+    background: #000 -webkit-gradient(linear, left top, left bottom, from(#0e0e0e), to(#313131));
     position: relative;
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #page-container {
-    position:absolute;
-    width:100%;
-    height: 100%;
-    overflow: hidden;
+
 }
 
 .page {
     position: absolute;
     width: 100%;
     height: 100%;
-    /*top: 0;*/
     background-color: #fff;
-    /*activate the GPU for compositing each page */
-    /*-webkit-transform: translate3d(0, 0, 0);*/
+}
+
+.back-page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 /*************************************************

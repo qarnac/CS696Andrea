@@ -3,31 +3,64 @@
 	<!--<script type="text/javascript" src="./pageTransition.css"></script>-->
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
-	<link rel="stylesheet" href="pageTransition.css">
+	<link rel="stylesheet" href="./pageTransition.css">
 	<script type="text/javascript" src="./slidfast.js" ></script>
+	<script type="text/javascript" src="./mapsGoogle.js" ></script>
+	<script>
+		
+		
+		slidfast({
+			defaultPageID:'home-page',
+			touchEnabled: false,
+			singlePageModel: true,
+			optimizeNetwork: true
+		});
+
+	//hide the flip functionality on certain devices/browsers
+	var ua = navigator.userAgent.toLowerCase();
+	var hidestuff = ua.indexOf("android") > -1 || ua.indexOf("opera") > -1  || ua.indexOf("fennec") > -1;
+	if(hidestuff) {
+	  //hide any 360 flip stuff
+	  document.querySelector("#back").style.display = 'none';
+	  document.querySelector("#flip-button").style.display = 'none';
+	}
+	
+	</script>
 </head>
 <body>
 	<div id="browser">
+	<!--
 		<nav class="primary">
 			<ul>
-				<li><a href="#home-page" onclick="slidfast.ui.slideTo('home-page')">Home</a></li>
-				<li><a href="#products-page" onclick="slidfast.ui.slideTo('products-page')">Products</a></li>
-				<li><a href="#about-page" onclick="slidfast.ui.slideTo('about-page')">About</a></li>
-				<!--<li id="flip-button"><a href="#contact-page" onclick="slidfast.ui.flip('contact-page')">Contact</a></li>-->
+				<li><a href="#sf-home-page" onclick="slidfast.ui.slideTo('home-page')">Home</a></li>
+				<li><a href="#sf-products-page" onclick="slidfast.ui.slideTo('products-page')">Products</a></li>
+				<li><a href="#sf-about-page" onclick="slidfast.ui.slideTo('about-page')">About</a></li>
+				<!--<li id="flip-button"><a href="#contact-page" onclick="slidfast.ui.flip('contact-page')">Contact</a></li>
 			<ul>
 		</nav>
+		-->
 		<div id="front" class="normal">
 			<div id="page-container">
 				<div id="home-page" class="page">
 				  <h1>Home Page</h1>
+				  <a href="demo/home-detail.html" class="fetch">Find out more about the home page!</a>
 				</div>
 
 				<div id="products-page" class="page stage-right">
 				  <h1>Products Page</h1>
+				  <a href="demo/home-detail.html" class="fetch">Find out more about the home page!</a>
 				</div>
 
 				<div id="about-page" class="page stage-left">
 				  <h1>About Page</h1>
+				  <a href="demo/home-detail.html" class="fetch">Find out more about the home page!</a>
+				</div>
+			</div>
+			
+			<div id="back" class="flipped">
+				<div id="contact-page" class="page">
+					<h1>Contact Page</h1>
+					<a href="demo/contact-map.html" class="fetch">Check out our map!</a>
 				</div>
 			</div>
 		</div>
