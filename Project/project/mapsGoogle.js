@@ -50,8 +50,14 @@
 		
 		marker = new google.maps.Marker({
 			position: latitudeLongitude,  
-			title: titleMarker
+			title: titleMarker,
 		});
+		
+		
+		google.maps.event.addListener(marker, 'click', function() {
+		  slidfast.ui.slideTo('products-page');
+		});
+		
 		
 		marker.setMap(map);
 
