@@ -7,6 +7,7 @@ $passwrd= "Carefusion101@";
 $databaseName = "cyberscavenger";
 $tablename = "hunt";
 $sqlStmt = "SELECT * FROM $tablename";
+$myArray = array();
 
 
 // Create connection
@@ -22,10 +23,15 @@ if (mysqli_connect_errno($con))
 
 if ( $result = $con->query($sqlStmt) )
 {
-	/* associative array */
-	$row = $result->fetch_array(MYSQLI_ASSOC);
-	printf ("%s (%s)\n", $row["title"], $row["teacher_id"]);
+   /* fetch associative array */
+    while ($row = mysqli_fetch_assoc($result)) {
+        //printf ("%s (%s)\n", $row["title"], $row["teacher_id"]);
+		array_push($myArray, $row);
+    }
+	
+	echo json_encode($myArray);
 }
 
-	//print('DB connecteed!');
+/* close connection */
+mysqli_close($con);
 ?>
