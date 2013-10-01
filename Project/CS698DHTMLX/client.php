@@ -31,8 +31,8 @@ I recommend going to http://jquery.com/ for the great documentation there about 
       dataType: 'json',                //data format      
       success: function(data)          //on recieve of reply
       {
-        var id = data[0];              //get id
-        var vname = data[1];           //get name
+        var id = data[0]["id"];              //get id
+        var vname = data[1]["teacher_id"];           //get name
         //--------------------------------------------------------------------------------------
         // 3) Update html content
         //--------------------------------------------------------------------------------------
