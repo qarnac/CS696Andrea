@@ -31,12 +31,12 @@ I recommend going to http://jquery.com/ for the great documentation there about 
       dataType: 'json',                //data format      
       success: function(data)          //on recieve of reply
       {
-        var id = data[0]["id"];              //get id
-        var vname = data[1]["teacher_id"];           //get name
+        var title = data[0]["title"];              //get id
+        var teacherId = data[1]["teacher_id"];           //get name
         //--------------------------------------------------------------------------------------
         // 3) Update html content
         //--------------------------------------------------------------------------------------
-        $('#output').html("<b>id: </b>"+id+"<b> name: </b>"+vname);     //Set output element html
+        $('#output').html("<b>title: </b>"+title+"<b> name: </b>"+teacherId);     //Set output element html
         //recommend reading up on jquery selectors they are awesome http://api.jquery.com/category/selectors/
       } 
     });
