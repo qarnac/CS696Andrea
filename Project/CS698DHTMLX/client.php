@@ -6,7 +6,7 @@ I recommend going to http://jquery.com/ for the great documentation there about 
 ---------------------------------------------------------------------------------------------->
 <html>
   <head>
-    <script language="javascript" type="text/javascript" src="jquery.js"></script>
+	<script language="javascript" type="text/javascript" src="js/vendor/jquery.js"></script>
   </head>
   <body>
 
@@ -26,7 +26,7 @@ I recommend going to http://jquery.com/ for the great documentation there about 
     // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
     //-------------------------------------------------------------------------------------------
     $.ajax({                                      
-      url: 'api.php',                  //the script to call to get data          
+      url: 'apiCyberScavenger.php',                  //the script to call to get data          
       data: "",                        //you can insert url argumnets here to pass to api.php for example "id=5&parent=6"
       dataType: 'json',                //data format      
       success: function(data)          //on recieve of reply
