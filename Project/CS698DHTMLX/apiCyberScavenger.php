@@ -6,7 +6,7 @@ $passwrd= "Carefusion101@";
 
 $databaseName = "cyberscavenger";
 $tablename = "hunt";
-$sqlStmt = "SELECT * FROM $tablename";
+$sqlStmt = "SELECT title FROM $tablename";
 $myArray = array();
 
 
