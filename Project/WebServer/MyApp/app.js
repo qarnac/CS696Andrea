@@ -14,12 +14,35 @@ Ext.application({
     name: 'myApp',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+		'Ext.data.reader.Xml'
     ],
 
+	/*
+	models: [
+		'Hunt',
+		'Article',
+		'Section'
+	],
+	*/
+	
+	
+	
     views: [
-        'Main', 'Home', 'Login'
+		'Main', 'Hunts', 'Login', 'Blog'
     ],
+	
+	
+	controllers: [
+		'Main'
+	],
+	
+	/*
+	stores: [
+		'HuntsStore'
+	],
+	*/
+	
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -39,14 +62,47 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
+	
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('myApp.view.Main'));
+	
+/*	
+        var issueStores = Ext.getStore('issuestores');
+        issueStores.load(function(records, options, success){
+ 
+            //console.log(records);
+            if(success){
+                Ext.each(records,function(record){
+                    console.log('Issue Name: '+record.data.Name);
+                    var sections = record.section();
+ 
+                    if(sections.data.length > 0){
+                        //console.log(sections.data.items);
+                        Ext.each(sections.data.items,function(section){
+ 
+                            console.log('Section: '+section.data.SectionName);
+                            var articles = section.articles();
+                            if(articles.data.length > 0){
+ 
+                                Ext.each(articles.data.items,function(article){
+                                    console.log('Article ID: '+article.data.ArticleId+ ' Article HeadLine: '+article.data.ArticleHeadline);
+                                });
+                            }
+                        });
+                    }
+  
+                });
+            }
+        });
+		*/
+		
     },
 
+	
     onUpdated: function() {
         Ext.Msg.confirm(
             "Application Update",

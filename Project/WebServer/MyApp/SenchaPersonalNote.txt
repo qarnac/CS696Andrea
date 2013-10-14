@@ -1,0 +1,32 @@
+Accessors guys can be accesse when you use config
+for ex:
+
+Ext.define('My.sample.Person',{
+	config: {
+		name: 'Anonymous',
+		age: 0,
+		gender: 'Male'
+	},
+	
+	constructor: function(config){
+		this.initConfig(config);
+	}
+});
+
+to use 
+var robert = new My.sample.Person({
+	name: 'Robert',
+	age: 21
+});
+
+robert.setName('Rob');
+alert(robert.getAge());
+robert.setAge(22);
+alert(robert.getAge());
+
+Note: when extend from parent class, config will do deep merging there for
+set and getters will be available in sub class as well.
+
+=========================================
+
+Dependency Injection using Ext.factory()

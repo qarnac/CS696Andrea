@@ -11,11 +11,16 @@ Ext.define('myApp.view.Main', {
 
         items: [
 			{
-				xtype: 'homepanel'
+				xtype: 'hunts'
+			},
+			{
+				xtype: 'blog'
 			},
 			{
 				xtype: 'loginform'
 			}
+
         ]
+	
     }
 });

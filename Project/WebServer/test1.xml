@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Issue>
+  <IssueId>1</IssueId>
+  <Name>2013-02-11</Name>
+  <PublicationDate>2013-02-11</PublicationDate>
+  <Sections>
+    <Section>
+    <SectionId>1</SectionId>
+    <SectionName>News</SectionName>
+    <Articles>
+      <Article>
+        <ArticleId>1</ArticleId>
+        <ArticleHeadLine>Article Headline1</ArticleHeadLine>
+      </Article>
+      <Article>
+        <ArticleId>2</ArticleId>
+        <ArticleHeadLine>Article Headline2</ArticleHeadLine>
+      </Article>
+    </Articles>
+    </Section>
+    <Section>
+    <SectionId>2</SectionId>
+    <SectionName>Blog</SectionName>
+    <Articles>
+      <Article>
+        <ArticleId>5</ArticleId>
+        <ArticleHeadLine>Article Headline5</ArticleHeadLine>
+      </Article>
+      <Article>
+        <ArticleId>6</ArticleId>
+        <ArticleHeadLine>Article Headline6</ArticleHeadLine>
+      </Article>
+    </Articles>
+    </Section>
+  </Sections>
+</Issue>

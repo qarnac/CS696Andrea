@@ -1,14 +1,18 @@
 Ext.define('myApp.view.Blog', {
-	extend: 'Ext.navigation.View',
+		extend: 'Ext.navigation.View',
+		xtype: 'blog',
 	
 	config:{
 		title:'Blog',
-		iconCls: 'star,
+		iconCls: 'star',
 		
 		items: {
 			xtype: 'list',
+			itemTpl: '{title}',
+			title: 'Recent Posts',
 			
 			store: {
+				autoLoad: true,
 				fields: ['title', 'author', 'content'],
 				
 				//proxy tells how to load the data
@@ -18,8 +22,10 @@ Ext.define('myApp.view.Blog', {
                     reader: {
                         type: 'json',
                         rootProperty: 'responseData.feed.entries'
+					}
 				}
 			}
 		}
 	}
+
 });
