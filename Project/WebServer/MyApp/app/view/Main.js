@@ -14,6 +14,9 @@ Ext.define('myApp.view.Main', {
 				xtype: 'hunts'
 			},
 			{
+				xtype: 'map',
+			},
+			{
 				xtype: 'blog'
 			},
 			{

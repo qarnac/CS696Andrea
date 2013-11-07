@@ -29,7 +29,7 @@ Ext.application({
 	
 	
     views: [
-		'Main', 'Hunts', 'Login', 'Blog'
+		'Main', 'Hunts', 'Login', 'Blog', 'GoogleMap'
     ],
 	
 	
