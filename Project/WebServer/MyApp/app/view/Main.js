@@ -1,6 +1,7 @@
 Ext.define('myApp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
+	
     requires: [
         'Ext.TitleBar',
         'Ext.Video'
