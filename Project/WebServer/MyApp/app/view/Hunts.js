@@ -1,45 +1,46 @@
 Ext.define('myApp.view.Hunts', {
 	extend: 'Ext.navigation.View',
+	
+	requires: [
+		'Ext.data.proxy.*',
+		'Ext.dataview.List',
+		'Ext.data.Model',
+	],
+	
 	xtype: 'hunts',
 	
-	requires: ['Ext.data.reader.Xml'],
-	
 	config:{
-		title:'Hunts',
+		title:'Hunt',
 		iconCls: 'home',
-		itemTpl: '{user}',
-		
-		/*
-		items: {
+
+		items:[{
 			xtype: 'list',
+			title: 'Scavenger Hunt',
 			itemTpl: '{id}',
-			title: 'Recent Posts',
-		}
-		*/
-	
-		items: {
-			xtype: 'list',
-			itemTpl: '{user}',
-			title: 'Recent Posts',
 			
 			store: {
 				autoLoad: true,
-				fields: ['user'],
+				fields: ['id'],
 				
 				//proxy tells how to load the data
 				proxy: {
-					type: 'ajax',							//checked
-					url: 'http://localhost:8080/test.xml', //checked
+					type: 'ajax',
+					
+					//force to use method get
+					useDefaultXhrHeader: false,
+	
+					url: 'http://southsuco.com/apiCyberScavenger.php',
 					
                     reader: {
                         type: 'xml',
-						rootProperty: 'users',
+						contentType: "text/XML;",
+                        rootProperty: 'users',
+						record: 'user'
 					}
 				}
 			}
-		}
-	
-		
+			
+			
+		}]
 	}
-
 });

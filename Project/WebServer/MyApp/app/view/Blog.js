@@ -1,10 +1,11 @@
 Ext.define('myApp.view.Blog', {
-		extend: 'Ext.navigation.View',
-		xtype: 'blog',
+	extend: 'Ext.navigation.View',
+	xtype: 'blog',
 	
 	config:{
 		title:'Blog',
 		iconCls: 'star',
+
 		
 		items: {
 			xtype: 'list',

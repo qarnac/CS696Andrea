@@ -17,6 +17,9 @@ Ext.define('myApp.view.Main', {
 				xtype: 'blog'
 			},
 			{
+				xtype: 'map'
+			},
+			{
 				xtype: 'loginform'
 			}
 
