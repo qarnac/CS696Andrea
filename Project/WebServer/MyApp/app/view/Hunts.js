@@ -29,7 +29,8 @@ Ext.define('myApp.view.Hunts', {
 					//force to use method get
 					useDefaultXhrHeader: false,
 	
-					url: 'http://southsuco.com/apiCyberScavenger.php',
+					//url: 'http://southsuco.com/MyApp/test.xml',
+					url: 'http://southsuco.com/test.xml',
 					
                     reader: {
                         type: 'xml',
