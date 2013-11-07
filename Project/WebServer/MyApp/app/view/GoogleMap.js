@@ -1,4 +1,5 @@
 Ext.define('myApp.view.GoogleMap', {
+
     extend: 'Ext.Map',
 	xtype: 'map',
 	layout: 'fit',

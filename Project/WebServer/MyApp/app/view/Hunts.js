@@ -30,7 +30,7 @@ Ext.define('myApp.view.Hunts', {
 					useDefaultXhrHeader: false,
 	
 					//url: 'http://southsuco.com/MyApp/test.xml',
-					url: 'http://southsuco.com/test.xml',
+					url: 'http://southsuco.com/apiCyberScavenger.php',
 					
                     reader: {
                         type: 'xml',
