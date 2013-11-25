@@ -3,10 +3,22 @@ Ext.define('myApp.view.GoogleMap', {
 	xtype: 'map',
 	layout: 'fit',
 	
+	
+	mapMarkers : [], // store all markers
+	
 	config:{
 		title:'Map',
 		iconCls: 'action',
 		useCurrentLocation:true,
+		itemId: 'mapbox',
+		
+		/*		
+		control: {
+			'map[itemId="mapHomeView"]': {
+				maprender: 'mapHomeViewMapRenderer'
+			}
+		},
+		*/
 		
 		mapOptions: {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -16,14 +28,18 @@ Ext.define('myApp.view.GoogleMap', {
 		
 		listeners: {
             maprender: function() {
+			
                 var gMap = this.getMap();
-
-                new google.maps.Marker({
-                    map: gMap,
-                    animation: google.maps.Animation.DROP,
-					title: "test",
-                });
-
+				/*
+				var marker = new google.maps.Marker({
+					map: gMap,
+					animation: google.maps.Animation.DROP,
+					position: new google.maps.LatLng (12.82787,80.219722),
+					title:"Hello World!"
+				});
+				*/
+				
+				/*
                 var geo = Ext.create('Ext.util.Geolocation', {
                     autoUpdate: true,
                     listeners: {
@@ -42,6 +58,7 @@ Ext.define('myApp.view.GoogleMap', {
                     }
                 });
                 geo.updateLocation();
+				*/
 				
             }
         } //end listener
