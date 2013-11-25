@@ -31,6 +31,7 @@ Ext.define('myApp.controller.Main', {
 			title: record.get('id'),
 			fullscreen: true,
 			layout:'fit',
+			//added comment test
 			useCurrentLocation: false,
 			listeners: {
 				maprender: function(comp, map) {
