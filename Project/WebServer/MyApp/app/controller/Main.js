@@ -17,13 +17,11 @@ Ext.define('myApp.controller.Main', {
             'hunts list':{
 				itemtap: 'showPost'
 			}
-			
         }
     },
 	
 	showPost: function(list, index, element, record){
 		console.log('Item tapped');
-		
 		var me = this;
 		
 		this.getBlog().push({
@@ -37,9 +35,15 @@ Ext.define('myApp.controller.Main', {
 				maprender: function(comp, map) {
 					var lat = parseFloat(record.get('latitude'));
 					var longi = parseFloat(record.get('longitude'));
+					var minLat = parseFloat(record.get('min_lat'));
+					var minLng = parseFloat(record.get('min_lng'));
+					var maxLat = parseFloat(record.get('max_lat'));
+					var maxLng = parseFloat(record.get('max_lng'));
 					
-					console.log(lat);
-					console.log(longi);
+					console.log(minLat);
+					console.log(minLng);
+					console.log(maxLat);
+					console.log(maxLng);
 					
 					var position = new google.maps.LatLng(
 						lat, 
@@ -53,7 +57,20 @@ Ext.define('myApp.controller.Main', {
 						animation: google.maps.Animation.DROP,
 					});
 					
+					var rectangle = new google.maps.Rectangle({
+						strokeColor: '#FF0000',
+						strokeOpacity: 0.8,
+						strokeWeight: 2,
+						fillColor: '#FF0000',
+						fillOpacity: 0.35,
+						map: map,
+						bounds: new google.maps.LatLngBounds(
+						  new google.maps.LatLng(minLat, minLng),
+						  new google.maps.LatLng(maxLat, maxLng))
+					});
+					
 					map.panTo(marker.getPosition());
+					map.setZoom(map.getZoom() - 5);
 					
                 }
             }
