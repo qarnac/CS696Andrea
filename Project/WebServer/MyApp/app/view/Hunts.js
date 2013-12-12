@@ -17,11 +17,11 @@ Ext.define('myApp.view.Hunts', {
 		items:[{
 			xtype: 'list',
 			title: 'Scavenger Hunt',
-			itemTpl: '{id}',
+			itemTpl: '{title}',
 			
 			store: {
 				autoLoad: true,
-				fields: ['id','latitude','longitude','min_lat','min_lng','max_lat','max_lng'],
+				fields: ['id','title','latitude','longitude','min_lat','min_lng','max_lat','max_lng','question'],
 				
 				//proxy tells how to load the data
 				proxy: {
@@ -33,8 +33,8 @@ Ext.define('myApp.view.Hunts', {
                     reader: {
                         type: 'xml',
 						contentType: "text/XML;",
-                        rootProperty: 'users',
-						record: 'user'
+                        rootProperty: 'hunts',
+						record: 'hunt'
 					}
 				}
 			}

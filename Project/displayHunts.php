@@ -14,17 +14,19 @@ if ( $result = $con->query($sqlStmt) )
 
 function appendResultToXml($result)
 {
-	$xmlResult = "<users>";
+	$xmlResult = "<hunts>";
 	while ($row = $result->fetch_assoc()) 
 	{
-		$xmlResult .= "<user>
-					  <id>".$row['title']."</id><latitude>".$row['start_lat']."</latitude><longitude>".$row['start_lng']."</longitude>
+		$xmlResult .= "<hunt>
+					  <id>".$row['id']."</id>
+					  <title>".$row['title']."</title><latitude>".$row['start_lat']."</latitude><longitude>".$row['start_lng']."</longitude>
 					  <min_lat>".$row['minlat']."</min_lat><min_lng>".$row['minlng']."</min_lng>
 					  <max_lat>".$row['maxlat']."</max_lat><max_lng>".$row['maxlng']."</max_lng>
-					  </user>";
+					  <question>".$row['additionalQuestions']."</question>
+					  </hunt>";
 	}
 	
-	$xmlResult .= "</users>";
+	$xmlResult .= "</hunts>";
 	return $xmlResult;
 }
 

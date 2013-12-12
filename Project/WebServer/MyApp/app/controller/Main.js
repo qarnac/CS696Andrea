@@ -58,7 +58,7 @@ Ext.define('myApp.controller.Main', {
                     var marker = new google.maps.Marker({
                         position: position,
                         map: map,
-                        title: record.get('id'),
+                        title: record.get('title'),
                         animation: google.maps.Animation.DROP,
                     });
 					
