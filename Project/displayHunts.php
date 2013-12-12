@@ -1,0 +1,7 @@
+<?php
+
+require('cyberScavengerAPI.php');
+
+
+
+?>
