@@ -9,11 +9,13 @@ $tablename = "hunt";
 //$xml = new XMLWriter();
 $con = ConnectToDatabase($host, $userName, $passwrd, $databaseName);
 $sqlStmt = "SELECT * FROM $tablename";//when query is sucessful
+
 if ( $result = $con->query($sqlStmt) )
 {
 	$xml = appendResultToXml($result);
 	writeToXml($xml);
 }	
+
 function appendResultToXml($result)
 {
 	$xmlResult = "<users>";
