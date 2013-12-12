@@ -27,7 +27,7 @@ Ext.define('myApp.controller.Main', {
 
 		this.getBlog().push({
 			xtype: 'map',
-			title: record.get('id'),
+			title: record.get('title'),
 			fullscreen: true,
 			layout:'fit',
 			//added comment test
@@ -85,21 +85,33 @@ Ext.define('myApp.controller.Main', {
                         {
                             console.log('clicked!');
 
-                            /*
-                            var view = Ext.create('Ext.NavigationView', {
+                            var str = record.get('question');
+                            var res = str.replace('"questiona"','');
+                            res = res.replace('"questionb"','');
+                            res = res.replace('"questionc"','');
+                            res = res.replace('"questiond"','');
+                            res = res.replace('{','');
+                            res = res.replace('}','');
+                            res = res.split(":");
 
-                                title: 'Second',
-                                html: 'Second view!'
-                            });
-                            */
+
+                            var result = "";
+                            for (var i = 0; i < res.length; i++) {
+                               // if((i % 2) != 0)
+                                res[i] = res[i].replace("\"",'');
+                                res[i] = res[i].replace("?\"",'?');
+                                res[i] = res[i].replace(',','');
+
+                                result += res[i] + "<br/><br/>" ;
+                            }
+
                             me.push({
-                                title: 'test',
-                                html: 'new view'
+                                title: 'questions',
+                                html: result
                             });
 
 
-                            //Ext.Viewport.add(view);
-                            //Ext.Viewport.setActiveItem(view);
+
 
                             //var mainNav = this.getMainPanel();
                             //mainNav.push(view);
