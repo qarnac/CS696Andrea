@@ -110,12 +110,6 @@ Ext.define('myApp.controller.Main', {
                                 html: result
                             });
 
-
-
-
-                            //var mainNav = this.getMainPanel();
-                            //mainNav.push(view);
-
                         });
                     }
 
