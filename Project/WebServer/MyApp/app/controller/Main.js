@@ -34,7 +34,8 @@ Ext.define('myApp.controller.Main', {
 			useCurrentLocation: false,
 			listeners: {				
 				    maprender: function(comp, map) {
-					
+
+
 					var lat = parseFloat(record.get('latitude'));
 					var longi = parseFloat(record.get('longitude'));
 					var minLat = parseFloat(record.get('min_lat'));
@@ -55,12 +56,42 @@ Ext.define('myApp.controller.Main', {
 						longi
 					);
 
+                    var arrayOfStrings = record.get('lat_lng').split('|');
+
+                    var marker;
+
+                    for(var i = 0; i < arrayOfStrings.length; ++i)
+                    {
+                        if( arrayOfStrings[i] == "")
+                            break;
+
+                        var result = arrayOfStrings[i].split(',');
+
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(result[0], result[1]),
+                            map: map
+                        });
+
+                        /*
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(result[0], result[1),
+                            map: map,
+                            title: record.get('title'),
+                            animation: google.maps.Animation.DROP,
+                        });
+                        */
+
+                    }
+
+                    /*
                     var marker = new google.maps.Marker({
                         position: position,
                         map: map,
                         title: record.get('title'),
                         animation: google.maps.Animation.DROP,
                     });
+                    */
+
 					
 					var rectangle = new google.maps.Rectangle({
 						strokeColor: '#FF0000',
