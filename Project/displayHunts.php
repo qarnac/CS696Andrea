@@ -25,14 +25,14 @@ function appendResultToXml($result, $markersResult)
 		//xpath
 		$resLat = $xml->xpath("/root/hunt_id[@id=".$row['id']."]/lat");
 		$resLng = $xml->xpath("/root/hunt_id[@id=".$row['id']."]/lng");
-		$latStr = "";
-		$lngStr = "";
-		
+		$latLngStr = "<lat_lng>";
 
 		foreach ( $resLat as $index => $valueLat ) {
-			$latStr .= "<lat_lng>".$valueLat.", ".$resLng[$index]."</lat_lng>";	
+			$latLngStr .= $valueLat.",".$resLng[$index]."|";	
 		}
 		
+		
+		$latLngStr .= "</lat_lng>";
 
 		
 		
@@ -42,7 +42,7 @@ function appendResultToXml($result, $markersResult)
 					  <min_lat>".$row['minlat']."</min_lat><min_lng>".$row['minlng']."</min_lng>
 					  <max_lat>".$row['maxlat']."</max_lat><max_lng>".$row['maxlng']."</max_lng>
 					  <question>".$row['additionalQuestions']."</question>"
-					  .$latStr.$lngStr."
+					  .$latLngStr."
 					  </hunt>";
 				
 	}

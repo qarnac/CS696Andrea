@@ -50,7 +50,6 @@ Ext.define('myApp.controller.Main', {
 					var northEast = new google.maps.LatLng(maxLat,maxLng);
 					var bounds = new google.maps.LatLngBounds(southWest,northEast);
 
-					
 					var position = new google.maps.LatLng(
 						lat, 
 						longi
@@ -71,15 +70,6 @@ Ext.define('myApp.controller.Main', {
                             position: new google.maps.LatLng(result[0], result[1]),
                             map: map
                         });
-
-                        /*
-                        var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(result[0], result[1),
-                            map: map,
-                            title: record.get('title'),
-                            animation: google.maps.Animation.DROP,
-                        });
-                        */
 
                     }
 
@@ -116,29 +106,12 @@ Ext.define('myApp.controller.Main', {
                         {
                             console.log('clicked!');
 
-                            var str = record.get('question');
-                            var res = str.replace('"questiona"','');
-                            res = res.replace('"questionb"','');
-                            res = res.replace('"questionc"','');
-                            res = res.replace('"questiond"','');
-                            res = res.replace('{','');
-                            res = res.replace('}','');
-                            res = res.split(":");
-
-
-                            var result = "";
-                            for (var i = 0; i < res.length; i++) {
-                               // if((i % 2) != 0)
-                                res[i] = res[i].replace("\"",'');
-                                res[i] = res[i].replace("?\"",'?');
-                                res[i] = res[i].replace(',','');
-
-                                result += res[i] + "<br/><br/>" ;
-                            }
+                            var contentQuestions = record.get('question');
+                            var result = JSON.parse(contentQuestions);
 
                             me.push({
                                 title: 'questions',
-                                html: result
+                                html: result.questiona + '<br/>' + result.questionb + '<br/>' + result.questionc,
                             });
 
                         });
