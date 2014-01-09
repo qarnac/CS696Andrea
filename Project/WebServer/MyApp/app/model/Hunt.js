@@ -3,7 +3,7 @@ Ext.define('myApp.model.Hunt',{
 	
 	uses:[
 		'myApp.model.Section'
-	]
+	],
 	
     config: {
         fields: [
@@ -17,10 +17,10 @@ Ext.define('myApp.model.Hunt',{
                 name: 'PublicationDate'
             }
         ],
-        hasMany: {
-            associationKey: 'Sections',
-            model: 'myApp.model.Section',
-            name: 'section'
+        associations: [ {
+            type: 'hasMany',
+            model: 'MyApp.model.Floorplan',
+            associationKey: 'floorplans'
         }
     }
 	

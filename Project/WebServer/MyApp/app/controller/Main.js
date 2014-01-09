@@ -35,7 +35,6 @@ Ext.define('myApp.controller.Main', {
 			listeners: {				
 				    maprender: function(comp, map) {
 
-
 					var lat = parseFloat(record.get('latitude'));
 					var longi = parseFloat(record.get('longitude'));
 					var minLat = parseFloat(record.get('min_lat'));
@@ -55,10 +54,14 @@ Ext.define('myApp.controller.Main', {
 						longi
 					);
 
-                    var arrayOfStrings = record.get('lat_lng').split('|');
+                    var arrayOfStrings = record.get('markers');
 
                     var marker;
 
+                    console.log(record.get('markers'));
+                    console.log(record.getData());
+                    console.log(index);
+                    /*
                     for(var i = 0; i < arrayOfStrings.length; ++i)
                     {
                         if( arrayOfStrings[i] == "")
@@ -72,6 +75,7 @@ Ext.define('myApp.controller.Main', {
                         });
 
                     }
+                    */
 
                     /*
                     var marker = new google.maps.Marker({
