@@ -49,7 +49,7 @@ function formatResultIntoXMLformat($distinctIDresult, $stud_activityResult)
 			$target_hunt_id = $val['hunt_id'];
 			
 			if( $hunt_id == $target_hunt_id)
-				$xmlResult .= "<lat>".$val['lat']."</lat><lng>".$val['lng']."</lng>";
+				$xmlResult .= "<lat>".$val['lat']."</lat><lng>".$val['lng']."</lng><media_id>".$val['media_id']."</media_id><additionalAnswers>".$val['additionalAnswers']."</additionalAnswers>";
 		}
 		
 		$xmlResult .= "</hunt_id>";
