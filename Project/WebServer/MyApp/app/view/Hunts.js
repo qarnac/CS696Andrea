@@ -21,7 +21,7 @@ Ext.define('myApp.view.Hunts', {
 			
 			store: {
 				autoLoad: true,
-				fields: ['id','title','latitude','longitude','min_lat','min_lng','max_lat','max_lng','question', 'lat_lng'],
+				fields: ['id','title','latitude','longitude','min_lat','min_lng','max_lat','max_lng','question', 'lat_lng', 'markers'],
 
 
 				//proxy tells how to load the data
