@@ -1,0 +1,19 @@
+Ext.define('myApp.controller.main', {
+    extend: 'Ext.app.Controller',
+    
+    config: {
+        refs: {
+            
+        },
+        control: {
+            'blog list':{
+				itemtap: 'showPost'
+			}
+        }
+    }
+    
+	showPost:function()
+	{
+		console.log('test');
+	}
+});
