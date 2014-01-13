@@ -22,52 +22,6 @@ Ext.define('myApp.controller.Hunts', {
        // console.log(controllerTest);
     },
 
-    drawRectangle: function (record, minLat, minLng, maxLat, maxLng, map) {
-        var lat = parseFloat(record.get('latitude'));
-        var longi = parseFloat(record.get('longitude'));
-
-        var southWest = new google.maps.LatLng(minLat, minLng);
-        var northEast = new google.maps.LatLng(maxLat, maxLng);
-        var bounds = new google.maps.LatLngBounds(southWest, northEast);
-
-        var position = new google.maps.LatLng(
-            lat,
-            longi
-        );
-
-        var rectangle = new google.maps.Rectangle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: map,
-            bounds: new google.maps.LatLngBounds(
-                new google.maps.LatLng(minLat, minLng),
-                new google.maps.LatLng(maxLat, maxLng))
-        });
-        return bounds;
-
-    },
-
-    MapPanning: function (record, map) {
-        var minLat = parseFloat(record.get('min_lat'));
-        var minLng = parseFloat(record.get('min_lng'));
-        var maxLat = parseFloat(record.get('max_lat'));
-        var maxLng = parseFloat(record.get('max_lng'));
-
-        var centerX = (minLat + maxLat) / 2;
-        var centerY = (minLng + maxLng) / 2;
-
-        var bounds = this.drawRectangle(record, minLat, minLng, maxLat, maxLng, map);
-
-        var panningPoint = new google.maps.LatLng(centerX, centerY);
-
-        map.fitBounds(bounds);
-        map.panTo(panningPoint);
-        map.setZoom(map.getZoom());
-    },
-
     showPost: function(list, index, element, record){
         console.log('Item tapped');
         var me = this.getBlog();
@@ -82,7 +36,38 @@ Ext.define('myApp.controller.Hunts', {
             listeners: {
                 maprender: function(comp, map) {
 
-                    this.MapPanning(record, map);
+                    var minLat = parseFloat(record.get('min_lat'));
+                    var minLng = parseFloat(record.get('min_lng'));
+                    var maxLat = parseFloat(record.get('max_lat'));
+                    var maxLng = parseFloat(record.get('max_lng'));
+
+                    var centerX = (minLat + maxLat) / 2;
+                    var centerY = (minLng + maxLng) / 2;
+
+                    var lat = parseFloat(record.get('latitude'));
+                    var longi = parseFloat(record.get('longitude'));
+
+                    var southWest = new google.maps.LatLng(minLat, minLng);
+                    var northEast = new google.maps.LatLng(maxLat, maxLng);
+                    var bounds = new google.maps.LatLngBounds(southWest, northEast);
+
+                    var rectangle = new google.maps.Rectangle({
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        map: map,
+                        bounds: new google.maps.LatLngBounds(
+                            new google.maps.LatLng(minLat, minLng),
+                            new google.maps.LatLng(maxLat, maxLng))
+                    });
+
+                    var panningPoint = new google.maps.LatLng(centerX, centerY);
+
+                    map.fitBounds(bounds);
+                    map.panTo(panningPoint);
+                    map.setZoom(map.getZoom());
 
                     function attachSecretMessage(map, marker, number) {
                         google.maps.event.addListener(marker, 'click', function()
@@ -100,7 +85,7 @@ Ext.define('myApp.controller.Hunts', {
                         });
                     }
 
-                    attachSecretMessage(map, marker, 1);
+                    //attachSecretMessage(map, marker, 1);
                 }
             }
 

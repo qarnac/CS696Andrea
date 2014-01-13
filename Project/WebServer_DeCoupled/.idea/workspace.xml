@@ -44,7 +44,7 @@
       <file leaf-file-name="Hunt.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/model/Hunt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="442">
+            <state line="11" column="23" selection-start="0" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="442">
               <folding />
             </state>
           </provider>
@@ -53,28 +53,43 @@
       <file leaf-file-name="HuntsStore.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/store/HuntsStore.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="4" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="578">
+            <state line="9" column="13" selection-start="0" selection-end="619" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="578">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Hunts.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Hunts.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="39" selection-start="2359" selection-end="2359" vertical-scroll-proportion="0.47863248" vertical-offset="298" max-vertical-offset="1241">
-              <folding>
-                <element signature="e#616#1465#0" expanded="false" />
-                <element signature="e#1507#2087#0" expanded="false" />
-              </folding>
+            <state line="30" column="20" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1700">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoogleMap.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/store/GoogleMap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="38" selection-start="541" selection-end="541" vertical-scroll-proportion="0.6683761" vertical-offset="0" max-vertical-offset="585">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="GoogleMap.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/model/GoogleMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="53" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="442">
+            <state line="12" column="21" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoogleMap.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/GoogleMap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="12" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122">
               <folding />
             </state>
           </provider>
@@ -83,25 +98,16 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="27" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="391">
+            <state line="13" column="27" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Central.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Central.js">
+      <file leaf-file-name="GoogleMap.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="28" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="527">
+            <state line="14" column="6" selection-start="285" selection-end="285" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
               <folding />
             </state>
           </provider>
@@ -124,15 +130,17 @@
         <option value="$PROJECT_DIR$/MyApp3/app/store/HuntsStore.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/Hunts.js" />
         <option value="$PROJECT_DIR$/MyApp3/app.js" />
-        <option value="$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/Hunts.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/model/GoogleMap.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/store/GoogleMap.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -357,14 +365,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35139093" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23201175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -392,16 +400,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Blog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/GoogleMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2397" />
@@ -422,6 +420,16 @@
         <state line="405" column="4" selection-start="18194" selection-end="18194" vertical-scroll-proportion="-0.23522854" vertical-offset="7096" max-vertical-offset="12801" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="10" selection-start="269" selection-end="269" vertical-scroll-proportion="0.4068376" vertical-offset="0" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="28" selection-start="171" selection-end="171" vertical-scroll-proportion="0.23247863" vertical-offset="0" max-vertical-offset="585" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="35" selection-start="864" selection-end="873" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
@@ -436,28 +444,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/model/Hunt.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="10" selection-start="269" selection-end="269" vertical-scroll-proportion="0.4068376" vertical-offset="0" max-vertical-offset="585" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="28" selection-start="171" selection-end="171" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+        <state line="30" column="20" selection-start="792" selection-end="792" vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1700">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/store/HuntsStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="4" selection-start="117" selection-end="117" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+        <state line="9" column="13" selection-start="0" selection-end="619" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/model/Hunt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="23" selection-start="0" selection-end="329" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/model/GoogleMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="21" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="6" selection-start="285" selection-end="285" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
           <folding />
         </state>
       </provider>
@@ -469,27 +486,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Central.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/GoogleMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+        <state line="8" column="12" selection-start="145" selection-end="145" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1122">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/store/GoogleMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="53" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+        <state line="23" column="38" selection-start="541" selection-end="541" vertical-scroll-proportion="0.6683761" vertical-offset="0" max-vertical-offset="585">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="39" selection-start="2359" selection-end="2359" vertical-scroll-proportion="0.47863248" vertical-offset="298" max-vertical-offset="1241">
-          <folding>
-            <element signature="e#616#1465#0" expanded="false" />
-            <element signature="e#1507#2087#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

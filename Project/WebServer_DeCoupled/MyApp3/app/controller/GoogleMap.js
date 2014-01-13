@@ -14,8 +14,4 @@ Ext.define('myApp.controller.GoogleMap', {
     launch: function(app) {
     },
 
-    showPost: function(list, index, element, record){
-
-    }
-
 });

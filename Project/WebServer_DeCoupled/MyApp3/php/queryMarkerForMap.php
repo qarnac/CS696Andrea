@@ -48,17 +48,19 @@ function formatResultIntoXMLformat($distinctIDresult, $stud_activityResult)
 	{
 		$hunt_id = $row['hunt_id'];
 		
-		$xmlResult .= "<hunt_id id=\"$hunt_id\">";
+		$xmlResult .= "<markers id=\"$hunt_id\">";
 
 		foreach ($target as $val) 
 		{
 			$target_hunt_id = $val['hunt_id'];
 			
 			if( $hunt_id == $target_hunt_id)
-				$xmlResult .= "<lat>".$val['lat']."</lat><lng>".$val['lng']."</lng><media_id>".$val['media_id']."</media_id><additionalAnswers>".$val['additionalAnswers']."</additionalAnswers>";
+			{
+				$xmlResult .= "<marker><lat>".$val['lat']."</lat><lng>".$val['lng']."</lng><media_id>".$val['media_id']."</media_id><additionalAnswers>".$val['additionalAnswers']."</additionalAnswers></marker>";
+			}
 		}
 		
-		$xmlResult .= "</hunt_id>";
+		$xmlResult .= "</markers>";
 	}
 	
 	$xmlResult .= "</root>";
@@ -82,23 +84,6 @@ function queryDistinctHuntId($con)
 	}
 	
 	return null;
-}
-
-function queryXMLResult($result)
-{
-	$xmlResult = "<hunts>";
-	
-	while ($row = $result->fetch_assoc() ) 
-	{
-		print_r ($row);
-		$xmlResult .= "<hunt>
-					  <hunt_id>".$row['lat']."</hunt_id>
-					  </hunt>"; //<lat>".$row['lat']."</lat><lng>".$row['lng']."</lng>
-	}
-	
-	$xmlResult .= "</hunts>";
-		
-	return $xmlResult;
 }
 
 if (isset($_GET["id"]) ) {
