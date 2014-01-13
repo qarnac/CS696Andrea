@@ -13,12 +13,13 @@ Ext.define('myApp.view.Hunts', {
 	config:{
 		title:'Hunt',
 		iconCls: 'home',
+        store : 'myApp.store.HuntsStore',
 
-		items:[{
+        items:[{
 			xtype: 'list',
 			title: 'Scavenger Hunt',
 			itemTpl: '{title}',
-			
+
 			store: {
 				autoLoad: true,
 				fields: ['id','title','latitude','longitude','min_lat','min_lng','max_lat','max_lng'],
@@ -29,7 +30,7 @@ Ext.define('myApp.view.Hunts', {
 					//force to use method get
 					useDefaultXhrHeader: false,
 					url: 'http://southsuco.com/MyApp3/php/HomeDisplayHunt.php',
-					
+
                     reader: {
                         type: 'xml',
 						contentType: "text/XML;",
@@ -38,8 +39,9 @@ Ext.define('myApp.view.Hunts', {
 					}
 				}
 			}
-			
-			
+
+
+
 		}]
 	}
 });

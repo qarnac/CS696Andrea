@@ -20,6 +20,7 @@ Ext.application({
     ],
 
 
+
 	models: [
 		'Hunt',
 	],
@@ -31,14 +32,13 @@ Ext.application({
 	
 	
 	controllers: [
-
+        'Main', 'Hunts'
 	],
 	
-	/*
+
 	stores: [
 		'HuntsStore'
 	],
-	*/
 	
 
     icon: {

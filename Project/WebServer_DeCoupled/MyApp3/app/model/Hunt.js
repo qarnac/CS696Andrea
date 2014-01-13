@@ -4,20 +4,18 @@ Ext.define('myApp.model.Hunt',{
 	uses:[
 		'myApp.model.Section'
 	],
-	
+
     config: {
         fields: [
-            {
-                name: 'IssueId'
-            },
-            {
-                name: 'Name'
-            },
-            {
-                name: 'PublicationDate'
-            }
+            'id',
+            'title',
+            'latitude',
+            'longitude',
+            'min_lat',
+            'min_lng',
+            'max_lat',
+            'max_lng'
         ]
-
     }
-	
+
 });

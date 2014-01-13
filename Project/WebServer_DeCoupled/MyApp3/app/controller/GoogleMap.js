@@ -2,31 +2,18 @@ Ext.define('myApp.controller.Hunts', {
     extend: 'Ext.app.Controller',
 
     config: {
-        stores : ['HuntsStore'],
-        models : ['Hunt'],
-
         refs: {
             blog: 'hunts'
         },
         control: {
-            'hunts list':{
-                itemtap: 'showPost'
-            }
-        },
-
+        }
     },
-    
+
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-            console.log('Hi!!!!!');
     },
 
-    passVariableToPHP: function(idNumber) {
-        console.log(idNumber);
-        window.location.href = "queryMarkerForMap.php?w1=hello";
-    },
-
-    showPost: function(list, index, element, record){
+    showMap: function(list, index, element, record){
         console.log('Item tapped');
         var me = this.getBlog();
 
@@ -48,8 +35,7 @@ Ext.define('myApp.controller.Hunts', {
                         longi
                     );
 
-                    //var arrayOfStrings = record.get('markers');
-                    passVariableToPhp
+                    var arrayOfStrings = record.get('markers');
 
 
                 }
