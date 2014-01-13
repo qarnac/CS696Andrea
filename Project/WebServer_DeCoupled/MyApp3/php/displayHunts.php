@@ -7,7 +7,6 @@ require('queryMarkersLatitudesLongitudes.php');
 $tablename = "hunt";
 $sqlStmt = "SELECT * FROM $tablename";//when query is sucessful
 
-
 if ( $result = $con->query($sqlStmt) )
 {
 	$xml = appendResultToXml($result,$markersResult);
