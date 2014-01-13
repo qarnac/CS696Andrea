@@ -17,6 +17,7 @@ function appendResultToXml($result, $markersResult)
 	$xml = simplexml_load_string($markersResult);
 
 	$xmlResult = "<hunts>";
+	
 	while ($row = $result->fetch_assoc()) 
 	{
 		
