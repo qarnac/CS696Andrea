@@ -1,4 +1,4 @@
-Ext.define('myApp.controller.Hunts', {
+Ext.define('myApp.controller.GoogleMap', {
     extend: 'Ext.app.Controller',
 
     config: {
@@ -6,6 +6,7 @@ Ext.define('myApp.controller.Hunts', {
             blog: 'hunts'
         },
         control: {
+
         }
     },
 
@@ -13,36 +14,8 @@ Ext.define('myApp.controller.Hunts', {
     launch: function(app) {
     },
 
-    showMap: function(list, index, element, record){
-        console.log('Item tapped');
-        var me = this.getBlog();
+    showPost: function(list, index, element, record){
 
-        this.getBlog().push({
-            title: record.get('title'),
-            fullscreen: true,
-            layout:'fit',
-            //added comment test
-            useCurrentLocation: false,
-            listeners: {
-                maprender: function(comp, map) {
-
-                    var southWest = new google.maps.LatLng(minLat,minLng);
-                    var northEast = new google.maps.LatLng(maxLat,maxLng);
-                    var bounds = new google.maps.LatLngBounds(southWest,northEast);
-
-                    var position = new google.maps.LatLng(
-                        lat,
-                        longi
-                    );
-
-                    var arrayOfStrings = record.get('markers');
-
-
-                }
-
-            }
-
-        });
     }
 
 });

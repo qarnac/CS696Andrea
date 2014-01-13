@@ -32,7 +32,7 @@ Ext.application({
 	
 	
 	controllers: [
-        'Main', 'Hunts'
+        'Main', 'Hunts', 'GoogleMap'
 	],
 	
 
