@@ -19,15 +19,11 @@ Ext.application({
 		'Ext.data.reader.Xml'
     ],
 
-	/*
+
 	models: [
 		'Hunt',
-		'Article',
-		'Section'
 	],
-	*/
-	
-	
+
 	
     views: [
 		'Main', 'Hunts', 'Login', 'Blog', 'GoogleMap'
@@ -35,7 +31,7 @@ Ext.application({
 	
 	
 	controllers: [
-		'Main'
+
 	],
 	
 	/*

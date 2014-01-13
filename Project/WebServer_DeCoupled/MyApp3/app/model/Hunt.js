@@ -16,12 +16,8 @@ Ext.define('myApp.model.Hunt',{
             {
                 name: 'PublicationDate'
             }
-        ],
-        associations: [ {
-            type: 'hasMany',
-            model: 'MyApp.model.Floorplan',
-            associationKey: 'floorplans'
-        }
+        ]
+
     }
 	
 });

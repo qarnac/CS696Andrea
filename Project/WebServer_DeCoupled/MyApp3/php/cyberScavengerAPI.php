@@ -22,5 +22,11 @@ function ConnectToDatabase($host, $userName, $passwrd, $databaseName){
 	return $con;
 }
 
+function writeToXml($xml)
+{
+	$sxe = new SimpleXMLElement($xml);
+	echo $sxe -> asXML();
+}
+
 
 ?>

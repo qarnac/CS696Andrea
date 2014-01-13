@@ -12,13 +12,7 @@ Ext.define('myApp.view.GoogleMap', {
 		useCurrentLocation:true,
 		itemId: 'mapbox',
 		
-		/*		
-		control: {
-			'map[itemId="mapHomeView"]': {
-				maprender: 'mapHomeViewMapRenderer'
-			}
-		},
-		*/
+
 		
 		mapOptions: {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,

@@ -21,15 +21,14 @@ Ext.define('myApp.view.Hunts', {
 			
 			store: {
 				autoLoad: true,
-				fields: ['id','title','latitude','longitude','min_lat','min_lng','max_lat','max_lng','question', 'lat_lng', 'markers'],
-
+				fields: ['id','title','latitude','longitude','min_lat','min_lng','max_lat','max_lng'],
 
 				//proxy tells how to load the data
 				proxy: {
 					type: 'ajax',
 					//force to use method get
 					useDefaultXhrHeader: false,
-					url: 'http://southsuco.com/displayHunts.php',
+					url: 'http://southsuco.com/MyApp3/php/HomeDisplayHunt.php',
 					
                     reader: {
                         type: 'xml',
