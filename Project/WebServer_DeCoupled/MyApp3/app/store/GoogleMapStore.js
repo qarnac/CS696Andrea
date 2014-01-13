@@ -2,9 +2,8 @@
 Ext.define('myApp.store.GoogleMapStore', {
     extend: 'Ext.data.Store',
 
-
      requires: [
-     'myApp.model.Hunt'
+        'myApp.model.GoogleMap'
      ],
 
 
@@ -16,7 +15,7 @@ Ext.define('myApp.store.GoogleMapStore', {
             type: 'ajax',
             //force to use method get
             useDefaultXhrHeader: false,
-            url: 'http://southsuco.com/MyApp3/php/queryMarkerForMap.php.php',
+            url: 'http://southsuco.com/MyApp3/php/queryMarkerForMap.php',
 
             reader: {
                 type: 'xml',

@@ -69,6 +69,11 @@ Ext.define('myApp.controller.Hunts', {
                     map.panTo(panningPoint);
                     map.setZoom(map.getZoom());
 
+                    var summaryDataStore = Ext.getStore('myApp.store.GoogleMapStore');
+                    summaryDataStore.load();
+                    console.log(summaryDataStore.getCount());
+
+
                     function attachSecretMessage(map, marker, number) {
                         google.maps.event.addListener(marker, 'click', function()
                         {
