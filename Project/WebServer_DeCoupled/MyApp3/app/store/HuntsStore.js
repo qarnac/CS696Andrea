@@ -8,7 +8,7 @@ Ext.define('myApp.store.HuntsStore', {
 	*/
 	
 	config: {
-        // model: 'myApp.model.Hunt',
+        //model: 'myApp.model.Hunt',
         //view: 'myApp.model.Hunts',
         autoLoad: true,
 

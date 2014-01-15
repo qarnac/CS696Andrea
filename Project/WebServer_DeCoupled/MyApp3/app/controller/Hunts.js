@@ -2,14 +2,14 @@ Ext.define('myApp.controller.Hunts', {
     extend: 'Ext.app.Controller',
 
     config: {
-        stores : ['HuntsStore'],
-        models : ['Hunt'],
+        //stores : ['HuntsStore'],
+        //models : ['Hunt'],
 
         refs: {
             blog: 'hunts'
         },
         control: {
-            'hunts list':{
+            'huntspanel list':{
                 itemtap: 'showPost'
             }
         },
@@ -19,7 +19,7 @@ Ext.define('myApp.controller.Hunts', {
     //called when the Application is launched, remove if not needed
     launch: function(app) {
        // var controllerTest = this.getApplication().getController('GoogleMap');
-       // console.log(controllerTest);
+       console.log("in launch");
     },
 
     showPost: function(list, index, element, record){

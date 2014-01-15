@@ -8,14 +8,15 @@ Ext.define('myApp.view.Hunts', {
 		'Ext.data.Model',
 	],
 	
-	xtype: 'hunts',
-	
+	xtype: 'huntspanel',
+
+
 	config:{
 		title:'Hunt',
 		iconCls: 'home',
 
-        //controller:['Hunt'],
-        //store : 'myApp.store.HuntsStore',
+        // controllers:['Hunt'],
+        // store : 'myApp.store.HuntsStore',
 
         items:[{
 			xtype: 'list',

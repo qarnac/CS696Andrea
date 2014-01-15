@@ -10,7 +10,7 @@ Ext.define('myApp.view.Main', {
 
         items: [
 			{
-				xtype: 'hunts'
+				xtype: 'huntspanel'
 			},
 			{
 				xtype: 'map'
