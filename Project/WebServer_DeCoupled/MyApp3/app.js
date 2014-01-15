@@ -19,25 +19,28 @@ Ext.application({
 		'Ext.data.reader.Xml'
     ],
 
-
-
 	models: [
-		'Hunt', 'GoogleMap'
+		//'Hunt',
+        //'GoogleMap'
 	],
 
 	
     views: [
-		'Main', 'Hunts', 'Login', 'Blog', 'GoogleMap'
+		'Main',
+        'Hunts',
+        'Login',
+        //'GoogleMap'
     ],
 	
-	
 	controllers: [
-        'Main', 'Hunts', 'GoogleMap'
+        'Main',
+        //'Hunts',
+        //'GoogleMap'
 	],
-	
 
 	stores: [
-		'HuntsStore', 'GoogleMap'
+		//'HuntsStore',
+        //'GoogleMapStore'
 	],
 	
 

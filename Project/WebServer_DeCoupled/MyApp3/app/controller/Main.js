@@ -9,7 +9,9 @@ Ext.define('myApp.controller.Main', {
         'Ext.field.Slider'
     ],
 
+
     config: {
+
         refs: {
 
         },

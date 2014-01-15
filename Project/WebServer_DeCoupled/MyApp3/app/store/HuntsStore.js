@@ -8,7 +8,8 @@ Ext.define('myApp.store.HuntsStore', {
 	*/
 	
 	config: {
-        model: 'myApp.model.Hunt',
+        // model: 'myApp.model.Hunt',
+        //view: 'myApp.model.Hunts',
         autoLoad: true,
 
         //proxy tells how to load the data
@@ -16,6 +17,7 @@ Ext.define('myApp.store.HuntsStore', {
             type: 'ajax',
             //force to use method get
             useDefaultXhrHeader: false,
+
             url: 'http://southsuco.com/MyApp3/php/HomeDisplayHunt.php',
 
             reader: {
@@ -24,6 +26,9 @@ Ext.define('myApp.store.HuntsStore', {
                 rootProperty: 'hunts',
                 record: 'hunt'
             }
+
         }
 	}
+
+
 });
