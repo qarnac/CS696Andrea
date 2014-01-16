@@ -20,7 +20,7 @@ Ext.application({
     ],
 
 	models: [
-		//'Hunt',
+		'Hunt',
         //'GoogleMap'
 	],
 
@@ -39,7 +39,7 @@ Ext.application({
 	],
 
 	stores: [
-		//'HuntsStore',
+		'HuntsStore',
         //'GoogleMapStore'
 	],
 	

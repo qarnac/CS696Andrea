@@ -2,8 +2,9 @@ Ext.define('myApp.controller.Hunts', {
     extend: 'Ext.app.Controller',
 
     config: {
-        //stores : ['HuntsStore'],
-        //models : ['Hunt'],
+       // models : ['myApp.model.Hunt'],
+       // stores : ['myApp.store.HuntsStore'],
+       // views  : ['myApp.view.Hunts'],
 
         refs: {
             // We're going to lookup views by xtype
@@ -22,8 +23,9 @@ Ext.define('myApp.controller.Hunts', {
     launch: function(app) {
        // var controllerTest = this.getApplication().getController('GoogleMap');
        console.log("in launch");
-    },
+    }//,
 
+    /*
     showPost: function(list, index, element, record){
         console.log('Item tapped');
         var me = this.getBlog();
@@ -98,5 +100,6 @@ Ext.define('myApp.controller.Hunts', {
 
         });
     }
+    */
 
 });

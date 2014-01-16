@@ -5,11 +5,11 @@ Ext.define('myApp.view.Hunts', {
 		'Ext.data.proxy.*',
 		'Ext.dataview.List',
 		'Ext.data.reader.Reader',
-		'Ext.data.Model',
+        'Ext.data.Store',
+        'Ext.data.proxy.JsonP',
 	],
 	
 	xtype: 'huntspanel',
-
 
 	config:{
 		title:'Hunt',
@@ -23,6 +23,7 @@ Ext.define('myApp.view.Hunts', {
 			title: 'Scavenger Hunt',
 			itemTpl: '{title}',
 
+            //store: 'HuntsStore'
             /*
 			store: {
 				autoLoad: true,
@@ -43,9 +44,7 @@ Ext.define('myApp.view.Hunts', {
 					}
 				}
 			}*/
-
-
-
 		}]
+
 	}
 });
