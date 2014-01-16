@@ -12,6 +12,7 @@ Ext.define('myApp.controller.GoogleMap', {
 
     //called when the Application is launched, remove if not needed
     launch: function(app) {
+        console.log('im in google controller')
     },
 
     maprender: function(comp, map) {

@@ -15,7 +15,6 @@ Ext.define('myApp.view.GoogleMap', {
 
         store: 'GoogleMapStore',
 
-
 		mapOptions: {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			zoom: 15,

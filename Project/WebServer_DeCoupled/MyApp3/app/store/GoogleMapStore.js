@@ -6,7 +6,6 @@ Ext.define('myApp.store.GoogleMapStore', {
         'myApp.model.GoogleMap'
      ],
 
-
     config: {
         autoLoad: false,
         model: 'myApp.model.GoogleMap',

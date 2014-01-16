@@ -25,7 +25,34 @@ Ext.define('myApp.controller.Hunts', {
        console.log("in launch");
     },
 
+    showPost: function(list,index,element,record){
+        console.log('Hi Debug');
+        var me = this.getBlog();
+        me.push({
+            xtype: 'map',
+            title: record.get('title'),
+            fullscreen: true,
+            layout:'fit',
 
+            useCurrentLocation: false,
+
+
+            listeners: {
+                'maprender' : function(comp, map){
+                    Ext.dispatch({
+                        controller: 'myApp.controller.GoogleMap,
+                        action: 'map_rendered',
+                        map: map
+                    });
+                }
+            }
+
+
+        });
+    }
+
+
+    /*
     showPost: function(list, index, element, record){
         console.log('Item tapped');
         var me = this.getBlog();
@@ -102,6 +129,6 @@ Ext.define('myApp.controller.Hunts', {
 
         });
     }
-
+    */
 
 });
