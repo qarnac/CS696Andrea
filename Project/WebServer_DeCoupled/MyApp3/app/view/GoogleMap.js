@@ -20,9 +20,7 @@ Ext.define('myApp.view.GoogleMap', {
 		
 		listeners: {
             maprender: function() {
-			
                 var gMap = this.getMap();
-				
             }
         } //end listener
 	},

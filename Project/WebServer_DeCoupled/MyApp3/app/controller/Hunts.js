@@ -8,14 +8,14 @@ Ext.define('myApp.controller.Hunts', {
 
         refs: {
             // We're going to lookup views by xtype
-            blog: 'hunts'
+            blog: 'huntspanel'
         },
         control: {
             // The commands fired by the hunt list
             'huntspanel list':{
                 itemtap: 'showPost'
             }
-        },
+        }
 
     },
 
@@ -23,9 +23,9 @@ Ext.define('myApp.controller.Hunts', {
     launch: function(app) {
        // var controllerTest = this.getApplication().getController('GoogleMap');
        console.log("in launch");
-    }//,
+    },
 
-    /*
+
     showPost: function(list, index, element, record){
         console.log('Item tapped');
         var me = this.getBlog();
@@ -100,6 +100,6 @@ Ext.define('myApp.controller.Hunts', {
 
         });
     }
-    */
+
 
 });

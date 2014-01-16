@@ -21,7 +21,8 @@ Ext.define('myApp.view.Hunts', {
 			title: 'Scavenger Hunt',
 			itemTpl: '{title}',
 
-            store: 'HuntsStore'
+            store: 'HuntsStore',
+            control: 'Hunts'
 		}]
 
 	}
