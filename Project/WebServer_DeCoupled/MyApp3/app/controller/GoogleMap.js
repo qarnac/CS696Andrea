@@ -3,7 +3,7 @@ Ext.define('myApp.controller.GoogleMap', {
 
     config: {
         refs: {
-            blog: 'hunts'
+            //blog: 'hunts'
         },
         control: {
 
@@ -13,6 +13,10 @@ Ext.define('myApp.controller.GoogleMap', {
     //called when the Application is launched, remove if not needed
     launch: function(app) {
         console.log('im in google controller')
+    },
+
+    map_rendered: function(options) {
+        console.log("map rendered");
     },
 
     maprender: function(comp, map) {
