@@ -6,9 +6,11 @@ Ext.define('myApp.controller.Hunts', {
         //models : ['Hunt'],
 
         refs: {
+            // We're going to lookup views by xtype
             blog: 'hunts'
         },
         control: {
+            // The commands fired by the hunt list
             'huntspanel list':{
                 itemtap: 'showPost'
             }
