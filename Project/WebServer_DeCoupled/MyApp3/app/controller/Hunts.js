@@ -30,6 +30,8 @@ Ext.define('myApp.controller.Hunts', {
         console.log('Item tapped');
         var me = this.getBlog();
 
+        //Ext.getApplication().getController('Controllername');
+
         this.getBlog().push({
             xtype: 'map',       //grap the xtype and use it from google map
             title: record.get('title'),
@@ -38,7 +40,8 @@ Ext.define('myApp.controller.Hunts', {
             //added comment test
             useCurrentLocation: false,
             listeners: {
-                maprender: function(comp, map) {
+                mapRender: function(comp, map) {
+
 
                     var minLat = parseFloat(record.get('min_lat'));
                     var minLng = parseFloat(record.get('min_lng'));
@@ -76,7 +79,6 @@ Ext.define('myApp.controller.Hunts', {
                     var summaryDataStore = Ext.getStore('myApp.store.GoogleMapStore');
                     summaryDataStore.load();
                     console.log(summaryDataStore.getCount());
-
 
                     function attachSecretMessage(map, marker, number) {
                         google.maps.event.addListener(marker, 'click', function()

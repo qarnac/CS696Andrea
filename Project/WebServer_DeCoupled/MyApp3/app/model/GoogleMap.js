@@ -1,4 +1,4 @@
-Ext.define('myApp.model.Hunt',{
+Ext.define('myApp.model.GoogleMap',{
     extend: 'Ext.data.Model',
 
     uses:[

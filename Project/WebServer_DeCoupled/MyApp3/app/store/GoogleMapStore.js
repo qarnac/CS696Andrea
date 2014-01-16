@@ -9,6 +9,7 @@ Ext.define('myApp.store.GoogleMapStore', {
 
     config: {
         autoLoad: false,
+        model: 'myApp.model.GoogleMap',
 
         //proxy tells how to load the data
         proxy: {

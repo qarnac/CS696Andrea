@@ -2,8 +2,9 @@ Ext.define('myApp.view.GoogleMap', {
     extend: 'Ext.Map',
 	xtype: 'map',
 	layout: 'fit',
-	
-	
+
+    requires: ['myApp.store.GoogleMapStore'],
+
 	mapMarkers : [], // store all markers
 	
 	config:{
@@ -12,17 +13,15 @@ Ext.define('myApp.view.GoogleMap', {
 		useCurrentLocation:true,
 		itemId: 'mapbox',
 
+        store: 'GoogleMapStore',
+
+
 		mapOptions: {
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			zoom: 15,
 			navigationControl: true,
-		},
-		
-		listeners: {
-            maprender: function() {
-                var gMap = this.getMap();
-            }
-        } //end listener
-	},
-	
+		}
+
+    }
 });
+
