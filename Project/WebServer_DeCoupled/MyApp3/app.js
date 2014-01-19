@@ -35,7 +35,7 @@ Ext.application({
 	controllers: [
         'Main',
         'Hunts',
-        //'GoogleMap'
+        'GoogleMap'
 	],
 
 	stores: [

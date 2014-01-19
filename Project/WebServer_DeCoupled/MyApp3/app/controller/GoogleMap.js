@@ -15,7 +15,7 @@ Ext.define('myApp.controller.GoogleMap', {
         console.log('im in google controller')
     },
 
-    map_rendered: function(options) {
+    map_rendered: function() {
         console.log("map rendered");
     },
 
