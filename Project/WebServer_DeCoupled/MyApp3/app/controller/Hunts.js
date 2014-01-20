@@ -40,7 +40,7 @@ Ext.define('myApp.controller.Hunts', {
             listeners: {
                 'maprender' : function(comp, map){
 
-                    window['myApp'].app.getController('GoogleMap').map_rendered(comp, map, record);
+                    window['myApp'].app.getController('GoogleMap').map_render(comp, map, record);
 
                 }
             }
