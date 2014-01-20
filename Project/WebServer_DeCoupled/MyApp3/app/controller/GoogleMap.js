@@ -18,8 +18,6 @@ Ext.define('myApp.controller.GoogleMap', {
     map_rendered: function(comp, map, record) {
         console.log("map rendered");
 
-        console.log(record);
-
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));
         var maxLat = parseFloat(record.get('max_lat'));
@@ -53,9 +51,9 @@ Ext.define('myApp.controller.GoogleMap', {
         map.panTo(panningPoint);
         map.setZoom(map.getZoom());
 
-        var summaryDataStore = Ext.getStore('myApp.store.GoogleMapStore');
-        summaryDataStore.load();
-        console.log(summaryDataStore.getCount());
+        //var summaryDataStore = Ext.getStore('myApp.store.GoogleMapStore');
+        //summaryDataStore.load();
+        //console.log(summaryDataStore.getCount());
 
         function attachSecretMessage(map, marker, number) {
             google.maps.event.addListener(marker, 'click', function()
