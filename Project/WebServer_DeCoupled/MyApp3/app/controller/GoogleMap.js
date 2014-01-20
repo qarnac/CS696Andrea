@@ -15,11 +15,12 @@ Ext.define('myApp.controller.GoogleMap', {
         console.log('im in google controller')
     },
 
-    map_rendered: function() {
+    map_rendered: function(comp, map) {
         console.log("map rendered");
     },
 
     maprender: function(comp, map) {
+        console.log('hi im  in google map render');
 
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));
