@@ -5,7 +5,7 @@ Ext.define('myApp.view.GoogleMap', {
 
     requires: ['myApp.store.GoogleMapStore'],
 
-	mapMarkers : [], // store all markers
+	//mapMarkers : [], // store all markers
 	
 	config:{
 		title:'Map',
@@ -22,5 +22,6 @@ Ext.define('myApp.view.GoogleMap', {
 		}
 
     }
+
 });
 
