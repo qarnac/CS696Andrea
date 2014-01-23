@@ -2,21 +2,20 @@ Ext.define('myApp.controller.GoogleMap', {
     extend: 'Ext.app.Controller',
 
     config: {
-        refs: {
-            //blog: 'hunts'
-        },
-        control: {
-
-        }
+        stores: ['HuntsStore', 'GoogleMapStore'],
     },
 
     //called when the Application is launched, remove if not needed
-    launch: function(app) {
+    launch: function() {
         console.log('im in google controller')
     },
 
     map_render: function(comp, map, record) {
         console.log("map rendered");
+
+        var stationsStore = Ext.getStore('GoogleMapStore');
+        stationsStore.load();
+        console.log(stationsStore);
 
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));
@@ -51,10 +50,6 @@ Ext.define('myApp.controller.GoogleMap', {
         map.panTo(panningPoint);
         map.setZoom(map.getZoom());
 
-        //var summaryDataStore = Ext.getStore('myApp.store.GoogleMapStore');
-        //summaryDataStore.load();
-        //console.log(summaryDataStore.getCount());
-
         function attachSecretMessage(map, marker, number) {
             google.maps.event.addListener(marker, 'click', function()
             {
@@ -70,7 +65,6 @@ Ext.define('myApp.controller.GoogleMap', {
 
             });
         }
-    },
-
+    }
 
 });

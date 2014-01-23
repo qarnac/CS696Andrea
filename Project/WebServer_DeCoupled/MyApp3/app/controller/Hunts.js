@@ -36,7 +36,6 @@ Ext.define('myApp.controller.Hunts', {
 
             useCurrentLocation: false,
 
-
             listeners: {
                 'maprender' : function(comp, map){
 

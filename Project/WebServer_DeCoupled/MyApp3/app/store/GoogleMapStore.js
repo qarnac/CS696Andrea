@@ -23,6 +23,11 @@ Ext.define('myApp.store.GoogleMapStore', {
                 rootProperty: 'markers',
                 record: 'marker'
             }
-        }
+        },
+
+        launch: function() {
+            console.log('im in  GOOOOOGLE STORE');
+        },
     }
+
 });
