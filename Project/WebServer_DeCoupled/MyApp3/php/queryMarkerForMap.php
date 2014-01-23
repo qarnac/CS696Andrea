@@ -5,27 +5,33 @@ require('cyberScavengerAPI.php');
 $studentTableName = "stud_activity";
 
 $markersResult = "";
+$huntID = "";
 
-$studentTableName = "stud_activity";
+// hunt id exists
+if(isset($_GET['huntID'])) {
 
-$markersResult = "";
-
-if( $distinctIDresult = queryDistinctHuntId($con))
-{
-	if( $stud_activityResult = queryStudActivityTable($con) )
-	{
-		$xml = formatResultIntoXMLformat($distinctIDresult, $stud_activityResult);
-		//writeToXml($xml);
-		$markersResult = $xml;
+	$huntID = $_GET['huntID'];
+    
+	//if( $distinctIDresult = queryDistinctHuntId($con))
+	//{
+		if( $stud_activityResult = queryStudActivityTable($con,$huntID) )
+		{
+			//obselete because we will only see the one which contain the same id
+			//$xml = formatResultIntoXMLformat($distinctIDresult, $stud_activityResult);
+			$xml = formatResultIntoXMLformat($huntID, $stud_activityResult);
+			$markersResult = $xml;
+			
+			writeToXml($markersResult);
+		}
 		
-		writeToXml($markersResult);
-	}
+	//}
 }
 
-function queryStudActivityTable($con)
+function queryStudActivityTable($con,$huntID)
 {
+
 	$studentTableName = "stud_activity";
-	$sqlStmt = "SELECT * FROM $studentTableName";
+	$sqlStmt = "SELECT * FROM $studentTableName WHERE hunt_id = " . $huntID;
 	
 	if ( $result = $con->query($sqlStmt) )
 	{
@@ -44,9 +50,11 @@ function formatResultIntoXMLformat($distinctIDresult, $stud_activityResult)
 	}
 	
 	$xmlResult = "<root>";
-	while ($row = $distinctIDresult->fetch_assoc() ) 
-	{
-		$hunt_id = $row['hunt_id'];
+	//while ($row = $distinctIDresult->fetch_assoc() ) 
+	//{
+		//$hunt_id = $row['hunt_id'];
+		$hunt_id = $distinctIDresult;
+		
 		
 		$xmlResult .= "<markers id=\"$hunt_id\">";
 
@@ -61,7 +69,7 @@ function formatResultIntoXMLformat($distinctIDresult, $stud_activityResult)
 		}
 		
 		$xmlResult .= "</markers>";
-	}
+	//}
 	
 	$xmlResult .= "</root>";
 	
@@ -69,7 +77,7 @@ function formatResultIntoXMLformat($distinctIDresult, $stud_activityResult)
 	return $xmlResult;
 }
 
-function queryDistinctHuntId($con)
+function queryDistinctHuntId($con, $huntID)
 {
 	$studentTableName = "stud_activity";
 	$sqlStmt = "SELECT DISTINCT hunt_id FROM $studentTableName";//when query is sucessful

@@ -15,7 +15,7 @@ Ext.define('myApp.controller.GoogleMap', {
 
         var stationsStore = Ext.getStore('GoogleMapStore');
         var proxy= stationsStore.getProxy();
-        //proxy.setExtraParam('param1', 'value 1' );
+        proxy.setExtraParam('huntID', record.get('id') );
 
 
         stationsStore.load({

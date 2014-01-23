@@ -3,7 +3,7 @@ header("Content-type: text/XML");
 require('cyberScavengerAPI.php');
 
 $studentTableName = "stud_activity";
-
+$huntID = "";
 $markersResult = "";
 
 if( $distinctIDresult = queryDistinctHuntId($con))
@@ -19,8 +19,8 @@ if( $distinctIDresult = queryDistinctHuntId($con))
 function queryStudActivityTable($con)
 {
 	$studentTableName = "stud_activity";
-	$sqlStmt = "SELECT * FROM $studentTableName";
-	
+	$sqlStmt = "SELECT * FROM $studentTableName WHERE 'hunt_id' =" + $huntID;
+ 	
 	if ( $result = $con->query($sqlStmt) )
 	{
 		return $result;
