@@ -14,8 +14,34 @@ Ext.define('myApp.controller.GoogleMap', {
         console.log("map rendered");
 
         var stationsStore = Ext.getStore('GoogleMapStore');
-        stationsStore.load();
-        console.log(stationsStore);
+        var proxy= stationsStore.getProxy();
+        //proxy.setExtraParam('param1', 'value 1' );
+
+
+        stationsStore.load({
+            callback: function(markerRecords){
+                var data = markerRecords[0].getData(); //Get the data from the record
+                console.log(data['lat']);
+            }
+        });
+
+        /*
+        var lmao = Ext.getStore('GoogleMapStore').
+            store.each(function(record){
+                console.log(record.get('media_id'));
+            });
+
+        */
+
+        //var test = stationsStore.getById('id');
+        //console.log(record);
+
+       // var data = stationsStore.getData();
+        //var lolRecord = data.getAt(0); // get first record of store
+
+        //console.log(lolRecord.get('resultText')); // get value of the resultText field
+
+        //stationsStore.data.size
 
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));
