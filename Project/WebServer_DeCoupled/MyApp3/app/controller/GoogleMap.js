@@ -20,28 +20,20 @@ Ext.define('myApp.controller.GoogleMap', {
 
         stationsStore.load({
             callback: function(markerRecords){
-                var data = markerRecords[0].getData(); //Get the data from the record
-                console.log(data['lat']);
+
+
+                for(var i = 0; i < markerRecords.length; ++i)
+                {
+                    var data = markerRecords[i].getData(); //Get the data from the record
+                    marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(data['lat'], data['lng']),
+                        map: map
+                    });
+                }
+
             }
         });
 
-        /*
-        var lmao = Ext.getStore('GoogleMapStore').
-            store.each(function(record){
-                console.log(record.get('media_id'));
-            });
-
-        */
-
-        //var test = stationsStore.getById('id');
-        //console.log(record);
-
-       // var data = stationsStore.getData();
-        //var lolRecord = data.getAt(0); // get first record of store
-
-        //console.log(lolRecord.get('resultText')); // get value of the resultText field
-
-        //stationsStore.data.size
 
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));

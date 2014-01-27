@@ -29,7 +29,6 @@ Ext.application({
 		'Main',
         'Hunts',
         'Login',
-        //'GoogleMap'
     ],
 	
 	controllers: [
