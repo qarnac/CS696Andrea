@@ -2,6 +2,10 @@ Ext.define('myApp.controller.GoogleMap', {
     extend: 'Ext.app.Controller',
 
     config: {
+        refs: {
+            // We're going to lookup views by xtype
+            blog: 'huntspanel'
+        },
         stores: ['HuntsStore', 'GoogleMapStore'],
     },
 
@@ -10,30 +14,36 @@ Ext.define('myApp.controller.GoogleMap', {
         console.log('im in google controller')
     },
 
+    drawRectangle: function (map, minLat, minLng, maxLat, maxLng) {
+        var rectangle = new google.maps.Rectangle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: map,
+            bounds: new google.maps.LatLngBounds(
+                new google.maps.LatLng(minLat, minLng),
+                new google.maps.LatLng(maxLat, maxLng))
+        });
+    },
+
+    setFocus: function (centerX, centerY, map, bounds) {
+        var panningPoint = new google.maps.LatLng(centerX, centerY);
+
+        map.fitBounds(bounds);
+        map.panTo(panningPoint);
+        map.setZoom(map.getZoom());
+    },
+
     map_render: function(comp, map, record) {
         console.log("map rendered");
 
         var stationsStore = Ext.getStore('GoogleMapStore');
         var proxy= stationsStore.getProxy();
         proxy.setExtraParam('huntID', record.get('id') );
-
-
-        stationsStore.load({
-            callback: function(markerRecords){
-
-
-                for(var i = 0; i < markerRecords.length; ++i)
-                {
-                    var data = markerRecords[i].getData(); //Get the data from the record
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(data['lat'], data['lng']),
-                        map: map
-                    });
-                }
-
-            }
-        });
-
+        var markerPositions = [];
+        var me = this.getBlog();
 
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));
@@ -50,39 +60,38 @@ Ext.define('myApp.controller.GoogleMap', {
         var northEast = new google.maps.LatLng(maxLat, maxLng);
         var bounds = new google.maps.LatLngBounds(southWest, northEast);
 
-        var rectangle = new google.maps.Rectangle({
-            strokeColor: '#FF0000',
-            strokeOpacity: 0.8,
-            strokeWeight: 2,
-            fillColor: '#FF0000',
-            fillOpacity: 0.35,
-            map: map,
-            bounds: new google.maps.LatLngBounds(
-                new google.maps.LatLng(minLat, minLng),
-                new google.maps.LatLng(maxLat, maxLng))
-        });
+        this.drawRectangle(map, minLat, minLng, maxLat, maxLng);
 
-        var panningPoint = new google.maps.LatLng(centerX, centerY);
+        this.setFocus(centerX, centerY, map, bounds);
 
-        map.fitBounds(bounds);
-        map.panTo(panningPoint);
-        map.setZoom(map.getZoom());
-
-        function attachSecretMessage(map, marker, number) {
-            google.maps.event.addListener(marker, 'click', function()
-            {
-                console.log('clicked!');
-
-                var contentQuestions = record.get('question');
-                var result = JSON.parse(contentQuestions);
-
-                me.push({
-                    title: 'questions',
-                    html: result.questiona + '<br/>' + result.questionb + '<br/>' + result.questionc,
+        function addMarkerPositions(markerRecords) {
+            for (var i = 0; i < markerRecords.length; ++i) {
+                var data = markerRecords[i].getData(); //Get the data from the record
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(data['lat'], data['lng']),
+                    map: map
                 });
 
-            });
-        }
-    }
+                //markerPositions.push(marker);
+                google.maps.event.addListener(marker, 'click', function()
+                {
+                    me.push({
+                        title: 'questions',
+                        //html: result.questiona + '<br/>' + result.questionb + '<br/>' + result.questionc,
+                    });
+                });
 
+            }
+        }
+
+        stationsStore.load({
+            callback: function(markerRecords){
+                addMarkerPositions(markerRecords);
+            }
+        });
+
+
+
+
+    }
 });

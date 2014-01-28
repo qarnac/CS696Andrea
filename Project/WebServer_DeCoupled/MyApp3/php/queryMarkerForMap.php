@@ -99,8 +99,6 @@ if (isset($_GET["id"]) ) {
 	$hello = $_GET["id"];
 	echo "<root>".$hello."</root>";
 	
-	
-	
 }
 
 
