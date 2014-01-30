@@ -26,6 +26,7 @@ function appendResultToXml($result, $markersResult)
 					  <title>".$row['title']."</title><latitude>".$row['start_lat']."</latitude><longitude>".$row['start_lng']."</longitude>
 					  <min_lat>".$row['minlat']."</min_lat><min_lng>".$row['minlng']."</min_lng>
 					  <max_lat>".$row['maxlat']."</max_lat><max_lng>".$row['maxlng']."</max_lng>
+					  <questions>".$row['additionalQuestions']."</questions>
 					  </hunt>";
 				
 	}
