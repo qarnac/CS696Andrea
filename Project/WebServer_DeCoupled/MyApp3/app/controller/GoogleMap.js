@@ -75,10 +75,7 @@ Ext.define('myApp.controller.GoogleMap', {
                     map: map
                 });
 
-                var test = data['additionalAnswers');
-                console.log(test);
 
-                //markerPositions.push(marker);
                 google.maps.event.addListener(marker, 'click', function()
                 {
 
