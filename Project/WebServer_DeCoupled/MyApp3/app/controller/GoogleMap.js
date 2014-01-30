@@ -42,8 +42,7 @@ Ext.define('myApp.controller.GoogleMap', {
         var stationsStore = Ext.getStore('GoogleMapStore');
         var proxy= stationsStore.getProxy();
         proxy.setExtraParam('huntID', record.get('id') );
-        var markerPositions = [];
-        var me = this.getBlog();
+        var currentActivity = this.getBlog();
 
         var minLat = parseFloat(record.get('min_lat'));
         var minLng = parseFloat(record.get('min_lng'));
@@ -67,6 +66,7 @@ Ext.define('myApp.controller.GoogleMap', {
         function addMarkerPositions(markerRecords) {
             for (var i = 0; i < markerRecords.length; ++i) {
                 var data = markerRecords[i].getData(); //Get the data from the record
+
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data['lat'], data['lng']),
                     map: map
@@ -75,7 +75,7 @@ Ext.define('myApp.controller.GoogleMap', {
                 //markerPositions.push(marker);
                 google.maps.event.addListener(marker, 'click', function()
                 {
-                    me.push({
+                    currentActivity.push({
                         title: 'questions',
                         //html: result.questiona + '<br/>' + result.questionb + '<br/>' + result.questionc,
                     });
@@ -89,9 +89,6 @@ Ext.define('myApp.controller.GoogleMap', {
                 addMarkerPositions(markerRecords);
             }
         });
-
-
-
 
     }
 });

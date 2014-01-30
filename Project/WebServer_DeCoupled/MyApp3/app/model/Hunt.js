@@ -14,7 +14,8 @@ Ext.define('myApp.model.Hunt',{
             'min_lat',
             'min_lng',
             'max_lat',
-            'max_lng'
+            'max_lng',
+            'questions'
         ]
     }
 
