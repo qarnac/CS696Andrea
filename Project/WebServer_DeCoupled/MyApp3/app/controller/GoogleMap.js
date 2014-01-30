@@ -48,6 +48,7 @@ Ext.define('myApp.controller.GoogleMap', {
         var minLng = parseFloat(record.get('min_lng'));
         var maxLat = parseFloat(record.get('max_lat'));
         var maxLng = parseFloat(record.get('max_lng'));
+        var questions = record.get('questions');
 
         var centerX = (minLat + maxLat) / 2;
         var centerY = (minLng + maxLng) / 2;
@@ -64,6 +65,8 @@ Ext.define('myApp.controller.GoogleMap', {
         this.setFocus(centerX, centerY, map, bounds);
 
         function addMarkerPositions(markerRecords) {
+            var jsonQuestions = JSON.parse(questions);
+
             for (var i = 0; i < markerRecords.length; ++i) {
                 var data = markerRecords[i].getData(); //Get the data from the record
 
@@ -72,12 +75,18 @@ Ext.define('myApp.controller.GoogleMap', {
                     map: map
                 });
 
+                var test = data['additionalAnswers');
+                console.log(test);
+
                 //markerPositions.push(marker);
                 google.maps.event.addListener(marker, 'click', function()
                 {
+
                     currentActivity.push({
                         title: 'questions',
-                        //html: result.questiona + '<br/>' + result.questionb + '<br/>' + result.questionc,
+                        html: jsonQuestions.questiona + '<br/>' + jsonAnswers.answera + '<br/>' +
+                              jsonQuestions.questionb + '<br/>' + jsonAnswers.answerb + '<br/>' +
+                              jsonQuestions.questionc + '<br/>' + jsonAnswers.answerc + '<br/>'
                     });
                 });
 

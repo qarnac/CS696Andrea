@@ -10,7 +10,8 @@ Ext.define('myApp.model.GoogleMap',{
             'id',
             'lat',
             'lng',
-            'media_id'
+            'media_id',
+            'additionalAnswers'
         ]
     }
 
