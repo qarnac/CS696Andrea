@@ -1,0 +1,44 @@
+package com.assignment.hw1andrea;
+
+import java.util.HashMap;
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class DisplayResultActivity extends Activity {
+	
+	private String andrea = "";
+	private HashMap<String, Integer> meMap;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_display_result);
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    andrea = extras.getString("paragraphString");
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.display_result, menu);
+		return true;
+	}
+	
+	public int calculateA()
+	{
+		return 0;
+	}
+	
+	public void populateHashMap(String paragraphInput)
+	{
+		
+	}
+	}
+	
+	
+
+}

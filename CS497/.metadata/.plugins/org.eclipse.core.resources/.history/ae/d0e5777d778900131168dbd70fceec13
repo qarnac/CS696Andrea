@@ -1,0 +1,26 @@
+package com.assignment.hw1andrea;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class DisplayResultActivity extends Activity {
+	
+	private string andrea;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_display_result);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.display_result, menu);
+		return true;
+	}
+	
+	
+
+}

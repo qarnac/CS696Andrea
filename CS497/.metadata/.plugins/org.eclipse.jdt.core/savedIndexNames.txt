@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+C:\Users\andrea\SkyDrive\CSE\CS497\.metadata\.plugins\org.eclipse.jdt.core
+1110206935.index
+2925632355.index
+2575470991.index

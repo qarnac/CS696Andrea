@@ -1,0 +1,133 @@
+package com.assignment.hw1andrea;
+
+//import android.os.Bundle;
+//import android.app.Activity;
+//import android.view.Menu;
+
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Context;
+import android.util.*;
+import java.util.Random;
+import android.graphics.*;
+import android.graphics.Paint.Style;
+import android.view.*;
+
+
+public class MainActivity extends Activity {
+
+	/*
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }*/
+	
+    @Override public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(new DrawView(this));
+    }
+    
+    public class DrawView extends View {
+        Random rand = new Random();
+
+        public DrawView(Context context) {
+            super(context);
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        }
+
+        @Override public void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            float px, py;
+
+            //create a paint object
+            Paint paint = new Paint();
+            paint.setAntiAlias( true );
+            paint.setColor( Color.WHITE );
+
+            //clear the screen with dark blue
+            canvas.drawColor( Color.rgb(0,0,80) );
+
+            //draw some boxes
+            for (int n=0; n<100; n+=4) {
+                drawBox( canvas, 10+n, 10+n, 220-n, 220-n, paint );
+            }
+
+            //draw a yellow triangle
+            paint.setColor( Color.YELLOW );
+            drawTriangle( canvas, 225,220, 325,20, 425,220, paint );
+
+            //draw small boxes in the path of a circle
+            float radius=100f;
+            float loops=6.0f;
+            for (double angle = 0.0; angle < 2*Math.PI*loops; angle += 0.15){
+                px = (float)(110 + Math.cos(angle) * radius);
+                py = (float)(330 + Math.sin(angle) * radius);
+                radius -= 0.3f;
+                paint.setColor( Color.rgb(rand.nextInt(256),
+                    rand.nextInt(256), rand.nextInt(256)) );
+                canvas.drawRect( px-4, py-4, px+4, py+4, paint );
+            }
+
+            //draw a circle outline
+            paint.setColor( Color.CYAN );
+            paint.setStyle( Style.STROKE );
+            canvas.drawCircle( 325, 325, 100, paint );
+            paint.setStyle( Style.FILL );
+            canvas.drawRoundRect( new RectF(325-70,325-70,325+70,325+70),
+                20, 20, paint );
+
+            //draw a filled circle
+            paint.setColor( Color.GREEN );
+            paint.setStyle( Style.FILL );
+            canvas.drawCircle( 325, 530, 100, paint );
+
+            //draw a filled oval
+            paint.setColor( Color.RED );
+            canvas.drawOval(new RectF(60,450,140,630), paint);
+        }
+
+        public void drawBox( Canvas canvas, float x1, float y1, float x2,
+        float y2, Paint paint ){
+            drawBox( canvas, (int)x1, (int)y1, (int)x2, (int)y2, paint );
+        }
+
+        public void drawBox( Canvas canvas, int x1, int y1, int x2,
+        int y2, Paint paint) {
+            drawBox( canvas, new Point(x1,y1), new Point(x2,y2), paint );
+        }
+
+        public void drawBox( Canvas canvas, Point p1, Point p2,
+        Paint paint ) {
+            canvas.drawLine( p1.x, p1.y, p2.x, p1.y, paint);
+            canvas.drawLine( p2.x, p1.y, p2.x, p2.y+1, paint);
+            canvas.drawLine( p1.x, p1.y, p1.x, p2.y, paint);
+            canvas.drawLine( p1.x, p2.y, p2.x+1, p2.y+1, paint);
+        }
+
+        public void drawTriangle( Canvas canvas, int x1, int y1, int x2,
+        int y2, int x3, int y3, Paint paint ) {
+            drawTriangle(canvas, new Point(x1,y1), new Point(x2,y2),
+                new Point(x3,y3), paint);
+        }
+
+        public void drawTriangle( Canvas canvas, Point p1, Point p2,
+        Point p3, Paint paint ) {
+            canvas.drawLine(p1.x,p1.y,p2.x,p2.y, paint);
+            canvas.drawLine(p2.x,p2.y,p3.x,p3.y, paint);
+            canvas.drawLine(p3.x,p3.y,p1.x,p1.y, paint);
+        }
+    }
+    
+}
