@@ -29,7 +29,6 @@ if(isset($_GET['huntID'])) {
 
 function queryStudActivityTable($con,$huntID)
 {
-
 	$studentTableName = "stud_activity";
 	$sqlStmt = "SELECT * FROM $studentTableName WHERE hunt_id = " . $huntID;
 	
