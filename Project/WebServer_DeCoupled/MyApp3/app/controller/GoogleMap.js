@@ -75,15 +75,36 @@ Ext.define('myApp.controller.GoogleMap', {
                     map: map
                 });
 
+                //look up marker extra information see if it's possible
+
 
                 google.maps.event.addListener(marker, 'click', function()
                 {
+                    var tempLat = this.position.lat();
+                    var tempLng = this.position.lng();
+
+                    var result;
+
+                    for (var i = 0; i < markerRecords.length; ++i) {
+                        var tempMarkers = markerRecords[i].getData(); //Get the data from the record
+
+                        console.log("a " + tempLat);
+                        console.log("b " + tempMarkers['lat']);
+                        if(tempLat == tempMarkers['lat'])
+                        {
+                            result = tempMarkers['additionalAnswers'];
+                            //console.log(result);
+                            break;
+                        }
+                    }
+
+                    var jsonResults  = JSON.parse(result);
 
                     currentActivity.push({
                         title: 'questions',
-                        html: jsonQuestions.questiona + '<br/>' + jsonAnswers.answera + '<br/>' +
-                              jsonQuestions.questionb + '<br/>' + jsonAnswers.answerb + '<br/>' +
-                              jsonQuestions.questionc + '<br/>' + jsonAnswers.answerc + '<br/>'
+                        html: jsonQuestions.questiona + '<br/>' + jsonResults.answera + '<br/><br/>' +
+                              jsonQuestions.questionb + '<br/>' + jsonResults.answerb + '<br/><br/>' +
+                              jsonQuestions.questionc + '<br/>' + jsonResults.answerc + '<br/><br/>'
                     });
                 });
 
