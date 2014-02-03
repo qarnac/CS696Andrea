@@ -72,33 +72,14 @@ Ext.define('myApp.controller.GoogleMap', {
 
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data['lat'], data['lng']),
-                    map: map
+                    map: map,
+                    customInfo : data["additionalAnswers"]
                 });
-
-                //look up marker extra information see if it's possible
 
 
                 google.maps.event.addListener(marker, 'click', function()
                 {
-                    var tempLat = this.position.lat();
-                    var tempLng = this.position.lng();
-
-                    var result;
-
-                    for (var i = 0; i < markerRecords.length; ++i) {
-                        var tempMarkers = markerRecords[i].getData(); //Get the data from the record
-
-                        console.log("a " + tempLat);
-                        console.log("b " + tempMarkers['lat']);
-                        if(tempLat == tempMarkers['lat'])
-                        {
-                            result = tempMarkers['additionalAnswers'];
-                            //console.log(result);
-                            break;
-                        }
-                    }
-
-                    var jsonResults  = JSON.parse(result);
+                    var jsonResults  = JSON.parse(this.customInfo);
 
                     currentActivity.push({
                         title: 'questions',
