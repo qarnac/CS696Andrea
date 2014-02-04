@@ -76,7 +76,6 @@ Ext.define('myApp.controller.GoogleMap', {
                     customInfo : data["additionalAnswers"]
                 });
 
-
                 google.maps.event.addListener(marker, 'click', function()
                 {
                     var jsonResults  = JSON.parse(this.customInfo);

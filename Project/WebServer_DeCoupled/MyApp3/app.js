@@ -29,6 +29,7 @@ Ext.application({
 		'Main',
         'Hunts',
         'Login',
+        'ImageUploadForm'
     ],
 	
 	controllers: [

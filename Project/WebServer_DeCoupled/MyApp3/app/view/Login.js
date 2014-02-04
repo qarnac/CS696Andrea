@@ -1,10 +1,15 @@
 Ext.define('myApp.view.Login', {
 	extend: 'Ext.form.Panel',		// form page
 	xtype: 'loginform',
+    id:'loginForm',
 	
 	//this is like include for libraries
 	requires: [
-		'Ext.form.FieldSet'
+        'Ext.form.Panel',
+        'Ext.form.FieldSet',
+        'Ext.field.Password',
+        'Ext.Img',
+        'Ext.field.Toggle'
 	],
 	
 	config: {

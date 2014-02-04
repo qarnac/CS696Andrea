@@ -17,7 +17,10 @@ Ext.define('myApp.view.Main', {
 			},
 			{
 				xtype: 'loginform'
-			}
+			},
+            {
+                xtype: 'ImageUploadForm'
+            }
 
         ]
 	
