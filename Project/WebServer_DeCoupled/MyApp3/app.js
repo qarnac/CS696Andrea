@@ -10,6 +10,11 @@
     will need to resolve manually.
 */
 
+Ext.Loader.setPath({
+    'Ext': 'touch/src',
+    'Ext.ux': 'src/ux'
+});
+
 Ext.application({
     name: 'myApp',
 
@@ -18,6 +23,7 @@ Ext.application({
 		'Ext.data.reader.Reader',
 		'Ext.data.reader.Xml'
     ],
+
 
 	models: [
 		'Hunt',
@@ -35,7 +41,8 @@ Ext.application({
 	controllers: [
         'Main',
         'Hunts',
-        'GoogleMap'
+        'GoogleMap',
+        'ImageUpload'
 	],
 
 	stores: [

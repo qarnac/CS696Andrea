@@ -5,57 +5,83 @@
 
 Ext.define('myApp.view.ImageUploadForm', {
     extend: 'Ext.navigation.View',
-    xtype: 'ImageUploadForm',
+    xtype: 'imageuploadform',
 
     requires: [
-        'Ext.field.File',
+        'Ext.TitleBar',
+        'Ext.Button',
+        'Ext.ux.Fileup'
     ],
 
     config: {
-        title:'Blog',
+        title:'Picture',
 
         items: [
             {
-                xtype: 'textfield',
-                label: 'Name'
-            },
 
-            {
-                xtype: 'filefield',
-                id: 'form-file',
-                emptyText: 'Select an image',
-                label: 'Photo',
-                name: 'photo-path',
-                buttonText: '',
-                buttonConfig: {
-                    iconCls: 'upload-icon'
-                }
-            }],
+                scrollable: true,
+                styleHtmlContent: true,
 
+                layout: {
+                    type: 'vbox',
+                    align: 'center'
+                },
 
-        buttons: [{
-            text: 'Save',
-            handler: function(){
-               // var form = this.up('form').getForm();
-                //if(form.isValid()){
-                //    form.submit({
-                        //url: 'file-upload.php',
-                        //waitMsg: 'Uploading your photo...',
-                        //success: function(fp, o) {
-                        //    msg('Success', 'Processed file "' + o.result.file + '" on the server');
-                        //}
-                 //   });
-                //}
+                items: [
+                    {
+                        docked: 'top',
+                        xtype: 'titlebar',
+                        title: 'Upload your Image'
+                    },
+
+                    {
+                        html: 'You can upload file to server'
+                    },
+
+                    {
+                        itemId: 'fileLoadBtn',
+                        xtype: 'fileupload',
+                        autoUpload: true,
+                        loadAsDataUrl: true,
+                        hidden: false,
+
+                        states: {
+                            browse: {
+                                text: 'Upload/Take picture'
+                            },
+                            ready: {
+                                text: 'Upload'
+                            },
+
+                            uploading: {
+                                text: 'Loading',
+                                loading: true // this is to trigger loading
+                            }
+                        }
+
+                    },
+                    {
+                        itemId: 'fileBtn',
+                        xtype: 'button',
+                        text: 'Browse',
+                        autoUpload: false,
+                        hidden: false,
+
+                    },
+
+                    {
+                        itemId: 'loadedImage',
+                        xtype: 'img',
+                        width: '80%',
+                        height: '200px',
+                        style: 'margin-top:15px;'
+
+                    },
+
+                ]
+
             }
-        },{
-            text: 'Reset',
-            handler: function() {
-                this.up('form').getForm().reset();
-            }
-        }]
-
-
-
+        ]
     }
 
 
