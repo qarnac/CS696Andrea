@@ -1,5 +1,5 @@
 <?php
-$uploaddir = '../../trash/';//your-path-to-upload
+$uploaddir = '../../images/';//your-path-to-upload
 
 $response = new stdClass();
 

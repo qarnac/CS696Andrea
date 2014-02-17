@@ -186,12 +186,20 @@ Ext.define('Ext.ux.Fileup', {
             cls: Ext.baseCSSPrefix + 'fileup',
             ui: 'filebrowse'
         },
+		
+		load: {
+            text: 'Load',
+            cls: Ext.baseCSSPrefix + 'fileup-load',
+            ui: 'fileload'
+        },
 
         ready: {
             text: 'Upload',
             cls: Ext.baseCSSPrefix + 'fileup-ready',
             ui: 'fileready'
         },
+		
+
 
         uploading: {
             text: 'Uploading',
@@ -291,9 +299,16 @@ Ext.define('Ext.ux.Fileup', {
         var me = this;
         
         switch (me.currentState) {
-            
+		
             // Currently we handle tap event while button in ready state
             // because in all other states button is not accessible
+			case 'load':
+				me.changeState('ready');
+				console.log('lagi di load');
+				var file = me.fileElement.dom.files[0];
+				me.doLoad(file);
+				break;
+			
             case 'ready':                
                 me.changeState('uploading');
                 var file = me.fileElement.dom.files[0];
@@ -301,9 +316,9 @@ Ext.define('Ext.ux.Fileup', {
                 if (!me.getLoadAsDataUrl()) {
                     me.fireEvent('uploadstart', file);
                     me.doUpload(file);                
-                } else {
-                    me.doLoad(file);
-                }
+                }// else {
+                //    me.doLoad(file);
+                //}
                 break;
         }
     },
@@ -313,10 +328,14 @@ Ext.define('Ext.ux.Fileup', {
         var me = this;
         
         if (e.target.files.length > 0) {
-            me.fireAction('ready', [e.target.files[0]], function() {
+            me.changeState('load');
+        } 
+		else if( me.currentState('load')){
+		    me.fireAction('ready', [e.target.files[0]], function() {
                 me.changeState('ready');
             }, me);
-        } else {
+		}
+		else {
             Ext.device.Notification.show({
                 title: 'Error',
                 message: 'File selected but not accessible',
@@ -366,6 +385,11 @@ Ext.define('Ext.ux.Fileup', {
                     me.currentState = 'browse';
                     me.reset();                    
                     break;
+				
+				case 'load':
+					me.currentState = 'load';
+					me.onButtonTap();
+					break;
                     
                 case 'ready':
                     me.currentState = 'ready';
@@ -421,7 +445,7 @@ Ext.define('Ext.ux.Fileup', {
 
         reader.onload = function(e) {
             me.fireEvent('loadsuccess', this.result, this, e);
-            me.changeState('browse');
+            me.changeState('ready');
         };
 
         // Read image file
@@ -458,7 +482,7 @@ Ext.define('Ext.ux.Fileup', {
                         
                         if (response && response.success) {
                             // Success
-                            me.fireEvent('success', response, this, e);
+                            me.fireEvent('success', response, this, e, file);
                         } else if (response && response.message) {
                             // Failure
                             me.fireEvent('failure', response.message, response, this, e);

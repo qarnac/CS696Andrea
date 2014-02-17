@@ -31,15 +31,16 @@ Ext.define('myApp.view.ImageUploadForm', {
                     {
                         docked: 'top',
                         xtype: 'titlebar',
-                        title: 'Upload your Image'
+                        title: 'Camera Upload'
                     },
 
                     {
                         html: 'You can upload file to server'
                     },
 
+
                     {
-                        itemId: 'fileLoadBtn',
+                        //itemId: 'fileLoadBtn',
                         xtype: 'fileupload',
                         autoUpload: true,
                         loadAsDataUrl: true,
@@ -52,7 +53,6 @@ Ext.define('myApp.view.ImageUploadForm', {
                             ready: {
                                 text: 'Upload'
                             },
-
                             uploading: {
                                 text: 'Loading',
                                 loading: true // this is to trigger loading
@@ -60,13 +60,13 @@ Ext.define('myApp.view.ImageUploadForm', {
                         }
 
                     },
+
                     {
                         itemId: 'fileBtn',
-                        xtype: 'button',
+                        xtype: 'fileupload',
                         text: 'Browse',
-                        autoUpload: false,
-                        hidden: false,
-
+                        url: './src/php/getfile.php',
+                        autoUpload: false
                     },
 
                     {

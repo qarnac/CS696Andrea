@@ -16,6 +16,7 @@ Ext.define('myApp.controller.ImageUpload', {
         control: {
             fileBtn: {
                 success: 'onFileUploadSuccess',
+                loadsuccess: 'onFileLoadSuccess',
                 failure: 'onFileUploadFailure'
             },
 
@@ -30,8 +31,9 @@ Ext.define('myApp.controller.ImageUpload', {
         console.log('Image upload controller')
     },
 
-    onFileUploadSuccess: function() {
+    onFileUploadSuccess: function(dataurl,response, e, file) {
         console.log('Success');
+
 
         Ext.device.Notification.show({
             title: 'All right',
@@ -40,8 +42,6 @@ Ext.define('myApp.controller.ImageUpload', {
             callback: Ext.emptyFn
         });
 
-        //this.fileLoadBtn.hidden = false;
-        //this.fileBtn.hidden = true;
 
     },
 
@@ -54,9 +54,6 @@ Ext.define('myApp.controller.ImageUpload', {
             buttons: Ext.MessageBox.OK,
             callback: Ext.emptyFn
         });
-
-        //this.fileLoadBtn.hidden = false;
-        //this.fileBtn.hidden = true;
 
     },
 
@@ -74,9 +71,6 @@ Ext.define('myApp.controller.ImageUpload', {
             buttons: Ext.MessageBox.OK,
             callback: Ext.emptyFn
         });
-
-        //this.fileLoadBtn.hidden = false;
-        //this.fileBtn.hidden = true;
     }
 
 });
