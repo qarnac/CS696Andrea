@@ -38,7 +38,7 @@ Ext.define('myApp.view.ImageUploadForm', {
                         html: 'You can upload file to server'
                     },
 
-
+/*
                     {
                         //itemId: 'fileLoadBtn',
                         xtype: 'fileupload',
@@ -60,6 +60,7 @@ Ext.define('myApp.view.ImageUploadForm', {
                         }
 
                     },
+                    */
 
                     {
                         itemId: 'fileBtn',
