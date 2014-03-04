@@ -1,12 +1,9 @@
 Ext.define('myApp.controller.Login', {
     extend: 'Ext.app.Controller',
+
     config: {
         refs: {
             loginView: 'loginview',
-            //mainMenuView: 'mainmenuview'
-            hunt: 'huntspanel'
-
-
         },
         control: {
             loginView: {
@@ -62,8 +59,6 @@ Ext.define('myApp.controller.Login', {
 
                 var loginResponse = Ext.JSON.decode(response.responseText);
 
-
-
                 if (loginResponse.success === true) {
                     // The server will send a token that can be used throughout the app to confirm that the user is authenticated.
                     me.sessionToken = loginResponse.sessionToken;
@@ -83,10 +78,17 @@ Ext.define('myApp.controller.Login', {
     signInSuccess: function () {
         console.log('Signed in.');
         var loginView = this.getLoginView();
-
         loginView.setMasked(false);
+        //Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
 
-        Ext.Viewport.animateActiveItem(loginView, this.getSlideLeftTransition());
+        Ext.Viewport.push(this.getLoginView());
+        /*
+        loginView.push({
+            title: 'questions',
+            html: 'testing'
+        });
+       */
+
     },
 
     signInFailure: function (message) {
@@ -106,10 +108,12 @@ Ext.define('myApp.controller.Login', {
             params: {
                 sessionToken: me.sessionToken
             },
+
             success: function (response) {
 
                 // TODO: You need to handle this condition.
             },
+
             failure: function (response) {
 
                 // TODO: You need to handle this condition.

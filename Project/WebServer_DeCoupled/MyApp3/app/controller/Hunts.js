@@ -26,7 +26,7 @@ Ext.define('myApp.controller.Hunts', {
     },
 
     showPost: function(list,index,element,record){
-        console.log('Hi Debug');
+
         var me = this.getBlog();
         me.push({
             xtype: 'map',
@@ -38,13 +38,9 @@ Ext.define('myApp.controller.Hunts', {
 
             listeners: {
                 'maprender' : function(comp, map){
-
                     window['myApp'].app.getController('GoogleMap').map_render(comp, map, record);
-
                 }
             }
-
-
         });
     }
 

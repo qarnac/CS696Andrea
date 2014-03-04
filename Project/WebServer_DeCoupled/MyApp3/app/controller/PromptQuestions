@@ -1,0 +1,17 @@
+Ext.define('myApp.controller.PromptQuestions', {
+    extend: 'Ext.app.Controller',
+
+    config: {
+        refs: {
+           //loginView: 'loginview'
+        },
+
+        control: {
+            loginView: {
+                signInCommand: 'onSignInCommand'
+            }
+        }
+    },
+
+
+});

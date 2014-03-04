@@ -6,7 +6,6 @@ Ext.define('myApp.view.Login', {
 
     // http://miamicoder.com/2012/adding-a-login-screen-to-a-sencha-touch-application/
 
-
 	//this is like include for libraries
 	requires: [
         'Ext.form.Panel',
