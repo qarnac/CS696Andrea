@@ -41,8 +41,6 @@ Ext.define('myApp.controller.ImageUpload', {
             buttons: Ext.MessageBox.OK,
             callback: Ext.emptyFn
         });
-
-
     },
 
     onFileUploadFailure: function(message) {

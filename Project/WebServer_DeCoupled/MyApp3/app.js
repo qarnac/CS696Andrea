@@ -41,6 +41,7 @@ Ext.application({
 	controllers: [
         'Main',
         'Hunts',
+        'Login',
         'GoogleMap',
         'ImageUpload'
 	],
