@@ -38,30 +38,6 @@ Ext.define('myApp.view.ImageUploadForm', {
                         html: 'You can upload file to server'
                     },
 
-/*
-                    {
-                        //itemId: 'fileLoadBtn',
-                        xtype: 'fileupload',
-                        autoUpload: true,
-                        loadAsDataUrl: true,
-                        hidden: false,
-
-                        states: {
-                            browse: {
-                                text: 'Upload/Take picture'
-                            },
-                            ready: {
-                                text: 'Upload'
-                            },
-                            uploading: {
-                                text: 'Loading',
-                                loading: true // this is to trigger loading
-                            }
-                        }
-
-                    },
-                    */
-
                     {
                         itemId: 'fileBtn',
                         xtype: 'fileupload',

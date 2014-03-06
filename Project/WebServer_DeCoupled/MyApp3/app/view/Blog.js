@@ -6,7 +6,6 @@ Ext.define('myApp.view.Blog', {
 		title:'Blog',
 		iconCls: 'star',
 
-		
 		items: {
 			xtype: 'list',
 			itemTpl: '{title}',

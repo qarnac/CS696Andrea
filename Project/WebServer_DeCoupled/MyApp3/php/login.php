@@ -47,21 +47,6 @@
 			
 		}
 		
-		/*
-		if($loginUsername == "f"){
-			echo "{success: true}";
-			
-			$_SESSION['loggedin'] = true;
-			$_SESSION['username'] = $user;
-			$_SESSION['password'] = $pass;
-			
-		} else {
-			echo "{success: false, errors: { reason: 'Login failed. Try again.' }}";
-			$_SESSION['loggedin'] = false;
-			
-		}
-		*/
-		
 	}
 	else
 	{

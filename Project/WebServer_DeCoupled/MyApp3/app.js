@@ -24,18 +24,16 @@ Ext.application({
 		'Ext.data.reader.Xml'
     ],
 
-
 	models: [
 		'Hunt',
-        //'GoogleMap'
 	],
 
-	
     views: [
 		'Main',
         'Hunts',
         'Login',
-        'ImageUploadForm'
+		'Blog',
+        'ImageUploadForm',
     ],
 	
 	controllers: [
@@ -48,7 +46,6 @@ Ext.application({
 
 	stores: [
 		'HuntsStore',
-        //'GoogleMapStore'
 	],
 	
 

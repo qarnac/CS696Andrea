@@ -2,7 +2,7 @@ Ext.define('myApp.view.Login', {
 	extend: 'Ext.form.Panel',		// form page
 	xtype: 'loginform',
     id:'loginForm',
-    alias: "widget.loginview",
+    //alias: "widget.loginview",
 
     // http://miamicoder.com/2012/adding-a-login-screen-to-a-sencha-touch-application/
 
@@ -19,7 +19,6 @@ Ext.define('myApp.view.Login', {
 	config: {
 		title: 'Login',
 		iconCls: "settings",
-		//url: 'login.php',
 		
 		items: [
             {
