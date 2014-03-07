@@ -3,7 +3,7 @@ Ext.define('myApp.controller.Login', {
 
     config: {
         refs: {
-            loginView: 'loginview',
+            loginView: 'loginview'
         },
         control: {
             loginView: {
@@ -78,16 +78,18 @@ Ext.define('myApp.controller.Login', {
     signInSuccess: function () {
         console.log('Signed in.');
         var loginView = this.getLoginView();
+       // var test = this.getLoginForm();
         loginView.setMasked(false);
-        //Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
+        Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
 
-        Ext.Viewport.push(this.getLoginView());
+        //Ext.Viewport.push(this.getLoginView());
+
         /*
-        loginView.push({
+        test.push({
             title: 'questions',
             html: 'testing'
         });
-       */
+        */
 
     },
 

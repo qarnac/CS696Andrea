@@ -16,16 +16,45 @@ Ext.define('myApp.view.QuestionsForm', {
 	xtype: 'questionsform',
 
 	config:{
-		title:'Hunt',
-		iconCls: 'home',
+        title:'Questions',
+        iconCls: 'star',
+        scrollable: true,
+        styleHtmlContent:true, //gives better default content
 
-        items:[{
-			xtype: 'list',
-			title: 'Scavenger Hunt',
-			itemTpl: '{title}',
+        items: [{
+            xtype: 'fieldset',
+            title: 'Questions',
+            items: [{
+                xtype: 'textareafield',
+                label: 'What is this question about?',
+                maxRows: 4,
+                name: 'q1',
+                labelWrap : true
+            }, {
+                xtype: 'textareafield',
+                label: 'How does this picture show what you\'ve learned in class?',
+                maxRows: 4,
+                name: 'q2',
+                labelWrap : true
+            }, {
+                xtype: 'textareafield',
+                label: 'What does this picture explain?',
+                maxRows: 4,
+                name: 'q3',
+                labelWrap : true
+            },
+            {
+                xtype: 'textareafield',
+                label: 'What question do you have about this picture?',
+                maxRows: 4,
+                name: 'q4',
+                labelWrap : true
+            },
+            {
 
-            store: 'HuntsStore',
-            control: 'Hunts'
-		}]
+            }]
+        }]
+
+
 	}
 });

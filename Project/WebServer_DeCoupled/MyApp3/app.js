@@ -32,7 +32,8 @@ Ext.application({
 		'Main',
         'Hunts',
         'Login',
-		'Blog',
+		//'Blog',
+        'QuestionsForm',
         'ImageUploadForm',
     ],
 	

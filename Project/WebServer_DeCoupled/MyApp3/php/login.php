@@ -29,7 +29,6 @@
 		{
 			$returnedPassword = $result->fetch_array(MYSQLI_NUM);
 			
-			
 			if ($returnedPassword[6] != $loginPassword)
 			{
 				$errorMessage = 'Login failed - incorrect password';
