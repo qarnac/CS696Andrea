@@ -19,11 +19,12 @@ Ext.define('myApp.view.QuestionsForm', {
         title:'Questions',
         iconCls: 'star',
         scrollable: true,
-        styleHtmlContent:true, //gives better default content
 
         items: [{
             xtype: 'fieldset',
             title: 'Questions',
+            instructions:'Please fill all the questions',
+
             items: [{
                 xtype: 'textareafield',
                 label: 'What is this question about?',
@@ -51,10 +52,14 @@ Ext.define('myApp.view.QuestionsForm', {
                 labelWrap : true
             },
             {
-
+                xtype: 'button',
+                text: 'Submit',
+                ui: 'confirm',
+                handler: function() {
+                    this.up('questionsform').submit();
+                }
             }]
         }]
-
 
 	}
 });

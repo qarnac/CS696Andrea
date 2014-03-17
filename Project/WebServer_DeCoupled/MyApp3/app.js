@@ -35,6 +35,7 @@ Ext.application({
 		//'Blog',
         'QuestionsForm',
         'ImageUploadForm',
+        'StudentView'
     ],
 	
 	controllers: [

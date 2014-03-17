@@ -19,6 +19,9 @@ Ext.define('myApp.view.Main', {
 				//xtype: 'blog'
                 xtype: 'questionsform'
 			},
+            {
+                xtype: 'studentview'
+            },
 			{
 				xtype: 'loginform'
 			},

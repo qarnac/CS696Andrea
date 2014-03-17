@@ -18,7 +18,6 @@ Ext.define('myApp.view.ImageUploadForm', {
 
         items: [
             {
-
                 scrollable: true,
                 styleHtmlContent: true,
 
