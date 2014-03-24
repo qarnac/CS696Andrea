@@ -34,6 +34,8 @@ Ext.define('myApp.controller.ImageUpload', {
     onFileUploadSuccess: function(dataurl,response, e, file) {
         console.log('Success');
 
+        console.log(dataurl);
+        console.log(file);
 
         Ext.device.Notification.show({
             title: 'All right',

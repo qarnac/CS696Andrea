@@ -4,7 +4,8 @@
 
 
 Ext.define('myApp.view.ImageUploadForm', {
-    extend: 'Ext.navigation.View',
+    extend: 'Ext.Panel',
+
     xtype: 'imageuploadform',
 
     requires: [
@@ -14,12 +15,13 @@ Ext.define('myApp.view.ImageUploadForm', {
     ],
 
     config: {
-        title:'Picture',
+        title: 'Picture',
+        iconCls: "star",
 
         items: [
             {
-                scrollable: true,
-                styleHtmlContent: true,
+                //scrollable: true,
+                //styleHtmlContent: true,
 
                 layout: {
                     type: 'vbox',
@@ -28,8 +30,8 @@ Ext.define('myApp.view.ImageUploadForm', {
 
                 items: [
                     {
-                        docked: 'top',
                         xtype: 'titlebar',
+                        docked: 'top',
                         title: 'Camera Upload'
                     },
 
@@ -52,13 +54,36 @@ Ext.define('myApp.view.ImageUploadForm', {
                         height: '200px',
                         style: 'margin-top:15px;'
 
-                    },
-
+                    }
                 ]
 
+
+            },
+
+            /*
+            {
+                html: 'You can upload file to server'
+            },
+
+            {
+                itemId: 'fileBtn',
+                xtype: 'fileupload',
+                text: 'Browse',
+                url: './src/php/getTemporaryImages.php',
+                autoUpload: false
+            },
+
+            {
+                itemId: 'loadedImage',
+                xtype: 'img',
+                width: '80%',
+                height: '200px',
+                style: 'margin-top:15px;'
+
             }
-        ]
-    }
+            */
+
+        ]}
 
 
 });

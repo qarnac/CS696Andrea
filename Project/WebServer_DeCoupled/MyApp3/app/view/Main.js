@@ -15,16 +15,15 @@ Ext.define('myApp.view.Main', {
 			{
 				xtype: 'map'
 			},
-			{
-				//xtype: 'blog'
-                xtype: 'questionsform'
-			},
+			//{
+            //    xtype: 'questionsform'
+			//},
             {
-                xtype: 'studentview'
+                xtype: 'imageuploadform'
             },
-			{
-				xtype: 'loginform'
-			},
+			//{
+			//	xtype: 'loginform'
+			//},
 
         ]
 	
