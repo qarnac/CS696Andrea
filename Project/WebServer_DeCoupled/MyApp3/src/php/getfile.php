@@ -64,6 +64,15 @@ try {
 
         if (is_uploaded_file($_FILES['userfile']['tmp_name']) && 
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+			
+			// src code example found at : http://www.php.net/manual/en/imagick.setcompressionquality.php
+			//we will do compression here
+			$img = new Imagick(); 
+			$img->readImage($src); 
+			$img->setImageCompression(imagick::COMPRESSION_JPEG); 
+			$img->setImageCompressionQuality(80); 
+			$img->stripImage(); 
+			$img->writeImage($uploadfile); 
 
             $response->success = true;
         } else {
