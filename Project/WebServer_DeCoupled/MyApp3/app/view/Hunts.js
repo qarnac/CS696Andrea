@@ -15,7 +15,6 @@ Ext.define('myApp.view.Hunts', {
 		title:'Hunt',
 		iconCls: 'home',
 
-
         items:[{
 			xtype: 'list',
 			title: 'Scavenger Hunt',
