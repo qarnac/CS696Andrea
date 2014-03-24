@@ -1,4 +1,7 @@
 <?php
+
+include_once('./SimpleImage.php');
+
 $uploaddir = '../../images/';//your-path-to-upload
 
 $response = new stdClass();
@@ -65,14 +68,12 @@ try {
         if (is_uploaded_file($_FILES['userfile']['tmp_name']) && 
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 			
-			// src code example found at : http://www.php.net/manual/en/imagick.setcompressionquality.php
 			//we will do compression here
-			$img = new Imagick(); 
-			$img->readImage($src); 
-			$img->setImageCompression(imagick::COMPRESSION_JPEG); 
-			$img->setImageCompressionQuality(80); 
-			$img->stripImage(); 
-			$img->writeImage($uploadfile); 
+			//src code and example found at: http://stackoverflow.com/questions/9839150/image-compression-in-php
+			$image = new SimpleImage();
+			$image->load($uploadfile);
+			$image->resizeToWidth(100);
+			$image->save($uploadfile);
 
             $response->success = true;
         } else {
