@@ -68,12 +68,19 @@ try {
         if (is_uploaded_file($_FILES['userfile']['tmp_name']) && 
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 			
-			//we will do compression here
+			
 			//src code and example found at: http://stackoverflow.com/questions/9839150/image-compression-in-php
+            //function used from https://www.apptha.com/blog/how-to-reduce-image-file-size-while-uploading-using-php-code/
+
 			$image = new SimpleImage();
-			$image->load($uploadfile);
-			$image->resizeToWidth(100);
-			$image->save($uploadfile);
+
+            //do compression (destinationPath, targetPath, quality)
+            $image->compress($uploadfile,$uploadfile, 70);
+
+            //check for GPS location if exist
+            $details = exif_read_data($uploadfile);
+            $sections = explode(',',$details['SectionsFound']);
+			
 
             $response->success = true;
         } else {
