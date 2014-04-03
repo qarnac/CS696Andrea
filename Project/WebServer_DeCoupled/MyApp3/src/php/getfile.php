@@ -1,6 +1,7 @@
 <?php
 
 include_once('./SimpleImage.php');
+include_once('./ImageGPS.php');
 
 $uploaddir = '../../images/';//your-path-to-upload
 
@@ -68,19 +69,20 @@ try {
         if (is_uploaded_file($_FILES['userfile']['tmp_name']) && 
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 			
-			
 			//src code and example found at: http://stackoverflow.com/questions/9839150/image-compression-in-php
             //function used from https://www.apptha.com/blog/how-to-reduce-image-file-size-while-uploading-using-php-code/
 
 			$image = new SimpleImage();
 
-            //do compression (destinationPath, targetPath, quality)
-            $image->compress($uploadfile,$uploadfile, 70);
-
-            //check for GPS location if exist
-            $details = exif_read_data($uploadfile);
-            $sections = explode(',',$details['SectionsFound']);
+			//check for GPS location if exist
+			$test = checkForGPS($uploadfile);
+			if( $test === true)
+				echo 'GPS located';
+			else
+				echo 'GPS NOT THERE';
 			
+            //do compression (destinationPath, targetPath, quality)
+            $image->compress($uploadfile,$uploadfile, 70);			
 
             $response->success = true;
         } else {

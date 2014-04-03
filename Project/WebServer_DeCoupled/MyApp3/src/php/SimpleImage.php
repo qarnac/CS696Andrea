@@ -12,7 +12,6 @@ class SimpleImage {
 	// from 0 being the lowest quality and 100 to be the best quality
 	function compress($source, $destination, $quality=70) {
 
-
 		$imageFileSize = filesize ($source);
 
 		//check if the image is less than 1 mega bytes
@@ -22,7 +21,7 @@ class SimpleImage {
 
 		$info = getimagesize($source);
 
-
+		
 		if ($info['mime'] == 'image/jpeg') 
 			$image = imagecreatefromjpeg($source);
 

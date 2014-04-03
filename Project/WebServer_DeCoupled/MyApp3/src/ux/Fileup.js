@@ -304,7 +304,7 @@ Ext.define('Ext.ux.Fileup', {
             // because in all other states button is not accessible
 			case 'load':
 				me.changeState('ready');
-				console.log('lagi di load');
+				console.log('at load');
 				var file = me.fileElement.dom.files[0];
 				me.doLoad(file);
 				break;
