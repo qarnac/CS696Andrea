@@ -1,7 +1,7 @@
 <?php
 
 include_once('./SimpleImage.php');
-include_once('./ImageGPS.php');
+require('./cyberScavengerAPIAdmin.php');
 
 $uploaddir = '../../images/';//your-path-to-upload
 
@@ -75,11 +75,19 @@ try {
 			$image = new SimpleImage();
 
 			//check for GPS location if exist
-			$test = checkForGPS($uploadfile);
+			$test = $image->checkForGPS($uploadfile);
+			
+			/*
 			if( $test === true)
-				echo 'GPS located';
+				//do something
 			else
-				echo 'GPS NOT THERE';
+				//do something
+			*/
+			
+			//Now DataBase Part
+			//Do insertion then update ID
+			insertImage($con, $uploadfile);
+			
 			
             //do compression (destinationPath, targetPath, quality)
             $image->compress($uploadfile,$uploadfile, 70);			
