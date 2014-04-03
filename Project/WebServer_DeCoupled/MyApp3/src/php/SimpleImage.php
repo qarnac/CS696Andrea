@@ -82,12 +82,6 @@ class SimpleImage {
 	    }
 	    return false;
 	}
-	/*
-		src: http://stackoverflow.com/questions/2526304/php-extract-gps-exif-data
-		description: 
-		- for getting gps positioning of the image
-		- modified original to meet project's need.
-	*/
 
 	//added
 	function checkForGPS($filename)
@@ -101,6 +95,13 @@ class SimpleImage {
 		
 		return true;
 	}
+	
+	/*
+		src: http://stackoverflow.com/questions/2526304/php-extract-gps-exif-data
+		description: 
+		- for getting gps positioning of the image
+		- modified original to meet project's need.
+	*/
 
 	//if assoc is disabled it will return in json format
 	//else return in array

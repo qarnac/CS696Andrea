@@ -35,8 +35,6 @@ function insertImage($con, $imageFilename)
 		//update the update to image name to ID name;
 		$sqlStmt = "UPDATE image SET images='". $con->insert_id .".jpg'". " WHERE id=" . $con->insert_id;
 		
-		echo $sqlStmt;
-		
 		$retval = $con->query($sqlStmt);
 		
 		if(! $retval )

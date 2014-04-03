@@ -12,8 +12,7 @@ if(isset($_GET['huntID'])) {
 
 	$huntID = $_GET['huntID'];
     
-	//if( $distinctIDresult = queryDistinctHuntId($con))
-	//{
+
 		if( $stud_activityResult = queryStudActivityTable($con,$huntID) )
 		{
 			//obselete because we will only see the one which contain the same id
@@ -23,8 +22,7 @@ if(isset($_GET['huntID'])) {
 			
 			writeToXml($markersResult);
 		}
-		
-	//}
+
 }
 
 function queryStudActivityTable($con,$huntID)

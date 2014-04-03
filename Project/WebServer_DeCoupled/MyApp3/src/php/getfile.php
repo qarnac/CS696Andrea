@@ -88,7 +88,7 @@ try {
 			//Do insertion then update ID
 			insertImage($con, $uploadfile);
 			
-			
+	
             //do compression (destinationPath, targetPath, quality)
             $image->compress($uploadfile,$uploadfile, 70);			
 
