@@ -290,7 +290,7 @@ Ext.define('Ext.ux.Fileup', {
             tap: me.onButtonTap
         });
         
-        // Stup initial button state
+        // Setup initial button state
         me.changeState('browse');
     },
     
@@ -304,7 +304,7 @@ Ext.define('Ext.ux.Fileup', {
             // because in all other states button is not accessible
 			case 'load':
 				me.changeState('ready');
-				console.log('at load');
+				console.log('at ready state going to invoke doload()');
 				var file = me.fileElement.dom.files[0];
 				me.doLoad(file);
 				break;
@@ -443,13 +443,88 @@ Ext.define('Ext.ux.Fileup', {
             me.fireEvent('loadfailure', message, this, e);
         };
 
+        var fileType = file.type;
+
+        // src: http://stackoverflow.com/questions/15328191/shrink-image-before-uploading-with-javascript
+        // src: http://stackoverflow.com/questions/961913/image-resize-before-upload
+        // src: https://github.com/qarnac/CyberScavenger/blob/master/js/geocompress.js
+        reader.onloadend = function() {
+            console.log("at reader.onloadend");
+            var image = new Image();
+            image.src = reader.result;
+
+            image.onload = function() {
+                console.log("at image.onload");
+
+                var maxWidth = 450,
+                    maxHeight = 280,
+                    imageWidth = image.width,
+                    imageHeight = image.height;
+
+                if (imageWidth > imageHeight) {
+                    if (imageWidth > maxWidth) {
+                        imageHeight *= maxWidth / imageWidth;
+                        imageWidth = maxWidth;
+                    }
+                }
+                else {
+                    if (imageHeight > maxHeight) {
+                        imageWidth *= maxHeight / imageHeight;
+                        imageHeight = maxHeight;
+                    }
+                }
+
+                var canvas = document.createElement('canvas');
+                canvas.width = imageWidth;
+                canvas.height = imageHeight;
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+
+                // The resized file ready for upload
+                var finalFile = canvas.toDataURL(fileType, 0.8);
+
+                console.log(finalFile);
+
+                var blob = this.dataURItoBlob(finalFile);
+
+                file.readAsDataURL(blob);
+
+
+            }
+        };
+
         reader.onload = function(e) {
+            console.log("reader on load");
             me.fireEvent('loadsuccess', this.result, this, e);
             me.changeState('ready');
         };
 
+
+        console.log("read image file");
         // Read image file
         reader.readAsDataURL(file);
+    },
+
+    dataURItoBlob: function(dataURI) {
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs
+        var byteString = atob(dataURI.split(',')[1]);
+
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+        // write the bytes of the string to an ArrayBuffer
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        // write the ArrayBuffer to a blob, and you're done
+        var bb = new BlobBuilder();
+        bb.append(ab);
+        return bb.getBlob(mimeString);
     },
     
     /**

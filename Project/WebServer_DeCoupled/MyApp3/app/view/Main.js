@@ -15,9 +15,9 @@ Ext.define('myApp.view.Main', {
 			{
 				xtype: 'map'
 			},
-			//{
-            //    xtype: 'questionsform'
-			//},
+			{
+                xtype: 'questionsform'
+			},
             {
                 xtype: 'imageuploadform'
             },
