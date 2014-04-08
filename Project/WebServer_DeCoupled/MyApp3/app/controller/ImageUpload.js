@@ -31,11 +31,11 @@ Ext.define('myApp.controller.ImageUpload', {
         console.log('Image upload controller')
     },
 
-    onFileUploadSuccess: function(dataurl,response, e, file) {
+    onFileUploadSuccess: function(status,response, e, file) {
         console.log('Success');
 
-        console.log(dataurl);
-        console.log(file);
+        console.log(status);
+        console.log(file.result);
 
         Ext.device.Notification.show({
             title: 'All right',
@@ -59,6 +59,7 @@ Ext.define('myApp.controller.ImageUpload', {
 
     onFileLoadSuccess: function(dataurl, e) {
         console.log('File loaded');
+        console.log(dataurl);
         var me = this;
         var image = me.getLoadedImage();
         image.setSrc(dataurl);

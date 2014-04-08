@@ -297,6 +297,7 @@ Ext.define('Ext.ux.Fileup', {
     // @private
     onButtonTap: function() {
         var me = this;
+        var file = null;
         
         switch (me.currentState) {
 		
@@ -305,10 +306,13 @@ Ext.define('Ext.ux.Fileup', {
 			case 'load':
 				me.changeState('ready');
 				console.log('at ready state going to invoke doload()');
-				var file = me.fileElement.dom.files[0];
-				me.doLoad(file);
+				file = me.fileElement.dom.files[0];
+                console.log(file);
+                var file1 = me.compressFile(file);
+                console.log(file1);
+				me.doLoad(file1);
 				break;
-			
+
             case 'ready':                
                 me.changeState('uploading');
                 var file = me.fileElement.dom.files[0];
@@ -410,48 +414,20 @@ Ext.define('Ext.ux.Fileup', {
             // </debug>
         }
     },
-    
-    /**
-     * @private
-     * @method doLoad
-     * Read selected file as dataUrl value.
-     * If you wish to get dataUrl content 
-     * then you should listen for "loadsuccess" event
-     * @param {Object} file Link to loaded file element
-     */
-    doLoad: function(file) {
-        var me = this;                
+
+    // src: http://stackoverflow.com/questions/15328191/shrink-image-before-uploading-with-javascript
+    // src: http://stackoverflow.com/questions/961913/image-resize-before-upload
+    // src: https://github.com/qarnac/CyberScavenger/blob/master/js/geocompress.js
+    compressFile: function (file) {
+        var me = this;
+        var image = new Image();
+        var lol = null;
+
         var reader = new FileReader();
+        reader.readAsDataURL(file);
 
-        reader.onerror = function(e) {
-            var message;
-            switch (e.target.error.code) {
-                case e.target.error.NOT_FOUND_ERR:
-                    message = 'File Not Found';
-                    break;
-
-                case e.target.error.NOT_READABLE_ERR:
-                    message = 'File is not readable';
-                    break;
-
-                case e.target.error.ABORT_ERR:
-                    break;
-
-                default:
-                    message = 'Can not read file';
-            };
-            me.fireEvent('loadfailure', message, this, e);
-        };
-
-        var fileType = file.type;
-
-        // src: http://stackoverflow.com/questions/15328191/shrink-image-before-uploading-with-javascript
-        // src: http://stackoverflow.com/questions/961913/image-resize-before-upload
-        // src: https://github.com/qarnac/CyberScavenger/blob/master/js/geocompress.js
-        reader.onloadend = function() {
-            console.log("at reader.onloadend");
-            var image = new Image();
-            image.src = reader.result;
+        reader.onload = function(e) {
+            image.src = e.target.result;
 
             image.onload = function() {
                 console.log("at image.onload");
@@ -481,25 +457,59 @@ Ext.define('Ext.ux.Fileup', {
                 var ctx = canvas.getContext("2d");
                 ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
 
-                // The resized file ready for upload
-                var finalFile = canvas.toDataURL(fileType, 0.8);
+                // The resize file ready for upload
+                var lol = canvas.toDataURL(file.type, 0.8);
+                var lmao = me.dataURItoBlob(lol);
+                var fd = new FormData(document.forms[0]);
+                fd.append(file.name, lmao);
 
-                console.log(finalFile);
-
-                var blob = this.dataURItoBlob(finalFile);
-
-                file.readAsDataURL(blob);
-
+                console.log(fd);
 
             }
+        }
+
+       return file;
+    },
+
+     /**
+     * @private
+     * @method doLoad
+     * Read selected file as dataUrl value.
+     * If you wish to get dataUrl content 
+     * then you should listen for "loadsuccess" event
+     * @param {Object} file Link to loaded file element
+     */
+    doLoad: function(file) {
+        var me = this;
+        var reader = new FileReader();
+
+        reader.onerror = function(e) {
+            var message;
+            switch (e.target.error.code) {
+                case e.target.error.NOT_FOUND_ERR:
+                    message = 'File Not Found';
+                    break;
+
+                case e.target.error.NOT_READABLE_ERR:
+                    message = 'File is not readable';
+                    break;
+
+                case e.target.error.ABORT_ERR:
+                    break;
+
+                default:
+                    message = 'Can not read file';
+            };
+            me.fireEvent('loadfailure', message, this, e);
         };
 
         reader.onload = function(e) {
             console.log("reader on load");
+            var dataURL = reader.result;
+            //console.log("dataURL" + dataURL);
             me.fireEvent('loadsuccess', this.result, this, e);
             me.changeState('ready');
         };
-
 
         console.log("read image file");
         // Read image file
@@ -507,24 +517,12 @@ Ext.define('Ext.ux.Fileup', {
     },
 
     dataURItoBlob: function(dataURI) {
-        // convert base64 to raw binary data held in a string
-        // doesn't handle URLEncoded DataURIs
-        var byteString = atob(dataURI.split(',')[1]);
-
-        // separate out the mime component
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-        // write the bytes of the string to an ArrayBuffer
-        var ab = new ArrayBuffer(byteString.length);
-        var ia = new Uint8Array(ab);
-        for (var i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
+        var binary = atob(dataURI.split(',')[1]);
+        var array = [];
+        for(var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
         }
-
-        // write the ArrayBuffer to a blob, and you're done
-        var bb = new BlobBuilder();
-        bb.append(ab);
-        return bb.getBlob(mimeString);
+        return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
     },
     
     /**
@@ -534,27 +532,34 @@ Ext.define('Ext.ux.Fileup', {
      * @param {Object} file Link to loaded file element
      */
     doUpload: function(file) {
-        var me = this;        
+        var me = this;
         var http = new XMLHttpRequest();
-        
+
+        var reader = new FileReader();
+
+
+
+
+
+
         if (http.upload && http.upload.addEventListener) {
-            
+
             // Uploading progress handler
             http.upload.onprogress = function(e) {
                 if (e.lengthComputable) {
-                    var percentComplete = (e.loaded / e.total) * 100; 
+                    var percentComplete = (e.loaded / e.total) * 100;
                     me.setBadgeText(percentComplete.toFixed(0) + '%');
                 }
             };
-            
+
             // Response handler
             http.onreadystatechange = function (e) {
                 if (this.readyState === 4) {
-                    
+
                     if(Ext.Array.indexOf(me.getDefaultSuccessCodes(), parseInt(this.status)) !== -1 ) {
-                        
+
                         var response = me.decodeResponse(this);
-                        
+
                         if (response && response.success) {
                             // Success
                             me.fireEvent('success', response, this, e, file);
@@ -565,31 +570,31 @@ Ext.define('Ext.ux.Fileup', {
                             // Failure
                             me.fireEvent('failure', 'Unknown error', response, this, e);
                         }
-                        
+
                     } else {
-                        
+
                         // Failure
                         me.fireEvent('failure', this.status + ' ' + this.statusText, response, this, e);
                     }
-                    
+
                     me.changeState('browse');
                 }
             };
-            
+
             // Error handler
             http.upload.onerror = function(e) {
                 me.fireEvent('failure', this.status + ' ' + this.statusText, {}, this, e);
             };
         }
-        
+
         // Send form with file using XMLHttpRequest POST request
         http.open('POST', me.getUrl());
-        
+
         if (me.getSignRequestEnabled()) {
-            
+
             // Sign the request and then send.
             me.signRequest(http, function(http) {
-    
+
               // Send the form.
               http.send(me.getForm(file));
             });
