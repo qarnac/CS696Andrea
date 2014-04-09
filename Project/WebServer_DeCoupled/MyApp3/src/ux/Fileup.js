@@ -5,6 +5,7 @@
  * @fileOverview File uploading component based on Ext.Button
  *
  * @author Constantine V. Smirnov kostysh(at)gmail.com
+ * @Modified 
  * @date 20130716
  * @version 2.0.1
  * @license GNU GPL v3.0
@@ -211,6 +212,7 @@ Ext.define('Ext.ux.Fileup', {
     
     // Current button state
     currentState: null,
+    blogImage: null,
     
     config: {
         cls: Ext.baseCSSPrefix + 'fileup',
@@ -297,7 +299,6 @@ Ext.define('Ext.ux.Fileup', {
     // @private
     onButtonTap: function() {
         var me = this;
-        var file = null;
         
         switch (me.currentState) {
 		
@@ -307,19 +308,21 @@ Ext.define('Ext.ux.Fileup', {
 				me.changeState('ready');
 				console.log('at ready state going to invoke doload()');
 				file = me.fileElement.dom.files[0];
-                console.log(file);
-                var file1 = me.compressFile(file);
-                console.log(file1);
-				me.doLoad(file1);
+                me.doLoad(file);
+
+                me.compressFile(file);
+
 				break;
 
             case 'ready':                
                 me.changeState('uploading');
-                var file = me.fileElement.dom.files[0];
-                                
+
+                //var file = me.fileElement.dom.files[0];
+                //console.log(file);
+                console.log(me.blogImage);
                 if (!me.getLoadAsDataUrl()) {
-                    me.fireEvent('uploadstart', file);
-                    me.doUpload(file);                
+                    me.fireEvent('uploadstart', me.blogImage);
+                    me.doUpload( me.blogImage);
                 }// else {
                 //    me.doLoad(file);
                 //}
@@ -418,19 +421,23 @@ Ext.define('Ext.ux.Fileup', {
     // src: http://stackoverflow.com/questions/15328191/shrink-image-before-uploading-with-javascript
     // src: http://stackoverflow.com/questions/961913/image-resize-before-upload
     // src: https://github.com/qarnac/CyberScavenger/blob/master/js/geocompress.js
+
     compressFile: function (file) {
+        console.log('in compress');
         var me = this;
         var image = new Image();
-        var lol = null;
+        var x;
+        var ready = false;
+
 
         var reader = new FileReader();
-        reader.readAsDataURL(file);
 
         reader.onload = function(e) {
+            console.log('in reader on load compress()');
             image.src = e.target.result;
 
             image.onload = function() {
-                console.log("at image.onload");
+                console.log("at image onload");
 
                 var maxWidth = 450,
                     maxHeight = 280,
@@ -459,16 +466,23 @@ Ext.define('Ext.ux.Fileup', {
 
                 // The resize file ready for upload
                 var lol = canvas.toDataURL(file.type, 0.8);
-                var lmao = me.dataURItoBlob(lol);
-                var fd = new FormData(document.forms[0]);
-                fd.append(file.name, lmao);
+                lol = me.dataURItoBlob(lol);
+                x = lol;
 
-                console.log(fd);
+                console.log("me.blogImage" + me.blogImage);
+                me.blogImage = lol;
+                console.log("changing");
+                console.log("me.blogImage" + me.blogImage);
+
 
             }
         }
 
-       return file;
+
+        reader.readAsDataURL(file);
+
+
+
     },
 
      /**
@@ -480,6 +494,7 @@ Ext.define('Ext.ux.Fileup', {
      * @param {Object} file Link to loaded file element
      */
     doLoad: function(file) {
+        console.log(file);
         var me = this;
         var reader = new FileReader();
 
@@ -504,7 +519,7 @@ Ext.define('Ext.ux.Fileup', {
         };
 
         reader.onload = function(e) {
-            console.log("reader on load");
+            console.log("reader on load for doLoad");
             var dataURL = reader.result;
             //console.log("dataURL" + dataURL);
             me.fireEvent('loadsuccess', this.result, this, e);
@@ -516,7 +531,10 @@ Ext.define('Ext.ux.Fileup', {
         reader.readAsDataURL(file);
     },
 
+
+    // src: https://gist.github.com/kosso/4246840
     dataURItoBlob: function(dataURI) {
+
         var binary = atob(dataURI.split(',')[1]);
         var array = [];
         for(var i = 0; i < binary.length; i++) {
@@ -536,10 +554,6 @@ Ext.define('Ext.ux.Fileup', {
         var http = new XMLHttpRequest();
 
         var reader = new FileReader();
-
-
-
-
 
 
         if (http.upload && http.upload.addEventListener) {
