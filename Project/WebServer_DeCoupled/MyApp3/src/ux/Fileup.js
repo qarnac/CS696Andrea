@@ -5,7 +5,7 @@
  * @fileOverview File uploading component based on Ext.Button
  *
  * @author Constantine V. Smirnov kostysh(at)gmail.com
- * @Modified 
+ * @Modified
  * @date 20130716
  * @version 2.0.1
  * @license GNU GPL v3.0
@@ -32,8 +32,7 @@
  * 
  * You can configure these states (add custom text and styles).
  * Default configuration below:
- * 
- 
+ *
 
 items: [
 
@@ -256,7 +255,17 @@ Ext.define('Ext.ux.Fileup', {
         /**
          * @cfg {Array} defaultSuccessCodes Http response success codes
          */
-        defaultSuccessCodes: [200, 201]
+        defaultSuccessCodes: [200, 201],
+
+        /**
+         * @cfg {Float} Latitude contain the location or no location
+         */
+        latitude: 0.0,
+
+        /**
+         * @cfg {Float} Longitude contain the location or no location
+         */
+        longitude: 0.0
     },
     
     // @private
@@ -420,7 +429,7 @@ Ext.define('Ext.ux.Fileup', {
 
     // src: http://stackoverflow.com/questions/15328191/shrink-image-before-uploading-with-javascript
     // src: http://stackoverflow.com/questions/961913/image-resize-before-upload
-    // src: https://github.com/qarnac/CyberScavenger/blob/master/js/geocompress.js
+    // src: https://github.com/qarnac/CyberScavenger/blob/master/js/geocompress.js //modified
 
     compressFile: function (file) {
         console.log('in compress');
@@ -428,7 +437,6 @@ Ext.define('Ext.ux.Fileup', {
         var image = new Image();
         var x;
         var ready = false;
-
 
         var reader = new FileReader();
 
@@ -465,25 +473,68 @@ Ext.define('Ext.ux.Fileup', {
                 ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
 
                 // The resize file ready for upload
-                var lol = canvas.toDataURL(file.type, 0.8);
-                lol = me.dataURItoBlob(lol);
-                x = lol;
-
-                console.log("me.blogImage" + me.blogImage);
-                me.blogImage = lol;
-                console.log("changing");
-                console.log("me.blogImage" + me.blogImage);
+                var blob = canvas.toDataURL(file.type, 0.8);
+                blob = me.dataURItoBlob(blob);
 
 
+                me.blogImage = blob;
+
+                me.extractGPS(file);
             }
         }
-
 
         reader.readAsDataURL(file);
 
 
 
     },
+
+    // src: https://github.com/qarnac/CyberHawk-Adventure/blob/master/quest/js/geocompress.js modified
+    extractGPS: function (file){
+        var loc = new Object();
+
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            console.log('gps on load')
+
+            //console.log(e.target.result);
+            var jpeg = new JpegMeta.JpegFile(e.target.result, file.name);
+
+
+            if (jpeg.gps && jpeg.gps.longitude) {
+                console.log(jpeg.gps.latitude.value);
+                console.log(jpeg.gps.longitude.value);
+            }
+            else {
+                //alert("The image you've selected is not geo tagged.\nPlease click on the location where you have taken the picture.\nOnce you have selected the right spot, please click 'Submit'");
+                //instantiateGoogleMap();
+                var geocoder = new google.maps.Geocoder();
+                if(google.loader.ClientLocation) {
+                    loc.lat = google.loader.ClientLocation.latitude;
+                    loc.lng = google.loader.ClientLocation.longitude;
+
+                    var latlng = new google.maps.LatLng(loc.lat, loc.lng);
+                    geocoder.geocode({'latLng': latlng}, function(results, status) {
+                        if(status == google.maps.GeocoderStatus.OK) {
+                            console.log(loc.lat);
+                            console.log(loc.lng);
+                            console.log(results[0]['formatted_address']);
+                            alert(results[0]['formatted_address']);
+                        };
+                    });
+                }
+
+            }
+
+        };
+
+        reader.readAsBinaryString(file);
+
+        console.log('return gps location');
+        return loc;
+    },
+
 
      /**
      * @private
@@ -553,8 +604,8 @@ Ext.define('Ext.ux.Fileup', {
         var me = this;
         var http = new XMLHttpRequest();
 
-        var reader = new FileReader();
-
+        console.log("in doUpload");
+        //console.log(file.name);
 
         if (http.upload && http.upload.addEventListener) {
 
@@ -614,6 +665,7 @@ Ext.define('Ext.ux.Fileup', {
             });
         } else {
             http.send(me.getForm(file));
+            console.log('in sending ')
         }
         
     },
@@ -625,14 +677,20 @@ Ext.define('Ext.ux.Fileup', {
      * @param {Object} file Link to loaded file element
      */
     getForm: function(file) {
-      // Create FormData object
-      var form = new FormData();
+        // Create FormData object
+        var form = new FormData();
 
-      // Add selected file to form
-      form.append(this.getName(), file);
+        console.log('in getForm');
+        console.log(this.getName());
 
-      // Return the form.
-      return form;
+
+        // Add selected file to form
+        form.append(this.getName(), file);
+        form.append('latitude', 2312.2);
+        form.append('longitude', 213213.2);
+
+        // Return the form.
+        return form;
     },
 
     /**

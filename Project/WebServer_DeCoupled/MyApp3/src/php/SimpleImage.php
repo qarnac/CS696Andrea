@@ -83,18 +83,6 @@ class SimpleImage {
 	    return false;
 	}
 
-	//added
-	function checkForGPS($filename)
-	{
-		$result = $this->getGPS($filename, true);
-		
-		if( $result['latitude'] === 0 && $result['longitude'] === 0)
-		{
-			return false;
-		}
-		
-		return true;
-	}
 	
 	/*
 		src: http://stackoverflow.com/questions/2526304/php-extract-gps-exif-data
