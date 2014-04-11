@@ -520,7 +520,7 @@ Ext.define('Ext.ux.Fileup', {
                             console.log(loc.lat);
                             console.log(loc.lng);
                             console.log(results[0]['formatted_address']);
-                            alert(results[0]['formatted_address']);
+                            //alert(results[0]['formatted_address']);
                         };
                     });
                 }
@@ -655,6 +655,9 @@ Ext.define('Ext.ux.Fileup', {
         // Send form with file using XMLHttpRequest POST request
         http.open('POST', me.getUrl());
 
+        console.log('me.getUrl');
+        console.log(me.getUrl());
+
         if (me.getSignRequestEnabled()) {
 
             // Sign the request and then send.
@@ -679,15 +682,13 @@ Ext.define('Ext.ux.Fileup', {
     getForm: function(file) {
         // Create FormData object
         var form = new FormData();
+        //var loc = new Object();
 
-        console.log('in getForm');
-        console.log(this.getName());
-
+        form.append("username", "Groucho");
+        form.append("accountnum", 123456); // number 123456 is immediately converted to string "123456"
 
         // Add selected file to form
         form.append(this.getName(), file);
-        form.append('latitude', 2312.2);
-        form.append('longitude', 213213.2);
 
         // Return the form.
         return form;

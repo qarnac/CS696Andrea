@@ -68,6 +68,10 @@ try {
 		
 		//echo $_FILES['userfile']['name'];
 		
+		//echo 'Hi!';
+		var_dump($_FILES['userfile']);
+		var_dump($_POST["username"]);
+		
 
         if (is_uploaded_file($_FILES['userfile']['tmp_name']) && 
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
