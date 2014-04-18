@@ -15,10 +15,24 @@ Ext.define('myApp.view.QuestionsForm', {
 	
 	xtype: 'questionsform',
 
+
 	config:{
         title:'Questions',
         iconCls: 'star',
         scrollable: true,
+        autoDestroy: false,
+
+        navigationBar: {
+            ui: 'dark',
+            docked: 'top',
+            items: [{
+                xtype: 'button',
+                text: 'Right',
+                align: 'right'
+            }]
+        },
+
+
 
         items: [{
             xtype: 'fieldset',
@@ -56,18 +70,6 @@ Ext.define('myApp.view.QuestionsForm', {
                 pack:'center'
             }, //layout
             ui: 'plain',
-
-            items: [{
-                    xtype: 'button',
-                    text: 'Cancel',
-                    ui: 'decline',
-                    handler: function(){}
-                },{
-                    xtype: 'button',
-                    text: 'Submit',
-                    ui: 'confirm',
-                    handler: function(){}
-            }]
         }]
 	}
 });

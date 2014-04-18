@@ -1,5 +1,5 @@
 Ext.define('myApp.view.Login', {
-	extend: 'Ext.form.Panel',		// form page
+    extend: 'Ext.navigation.View',
 	xtype: 'loginform',
     id:'loginForm',
     alias: "widget.loginview",
@@ -19,8 +19,13 @@ Ext.define('myApp.view.Login', {
 	config: {
 		title: 'Login',
 		iconCls: "settings",
+
+        items: [{
+            fullscreen:true,
+            scroll:false,
+            xtype:'panel',
 		
-		items: [
+		    items: [
             {
                 xtype: 'label',
                 html: 'Login failed. Please enter the correct credentials.',
@@ -62,6 +67,8 @@ Ext.define('myApp.view.Login', {
                 text: 'Log In'
             },
 		],
+
+        }],
 
         listeners: [
             {

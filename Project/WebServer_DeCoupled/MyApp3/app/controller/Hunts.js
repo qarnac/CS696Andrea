@@ -28,6 +28,9 @@ Ext.define('myApp.controller.Hunts', {
     showPost: function(list,index,element,record){
 
         var me = this.getBlog();
+
+        console.log(me);
+
         me.push({
             xtype: 'map',
             title: record.get('title'),

@@ -36,6 +36,7 @@ Ext.define('myApp.controller.Login', {
         var me = this,
             loginView = me.getLoginView();
 
+
         if (username.length === 0 || password.length === 0) {
 
             loginView.showSignInFailedMessage('Please enter your username and password.');
@@ -62,7 +63,7 @@ Ext.define('myApp.controller.Login', {
                 if (loginResponse.success === true) {
                     // The server will send a token that can be used throughout the app to confirm that the user is authenticated.
                     me.sessionToken = loginResponse.sessionToken;
-                    me.signInSuccess();     //Just simulating success.
+                    me.signInSuccess(loginView);     //Just simulating success.
                 } else {
                     me.signInFailure(loginResponse.errors.reason);
                 }
@@ -77,19 +78,19 @@ Ext.define('myApp.controller.Login', {
 
     signInSuccess: function () {
         console.log('Signed in.');
-        var loginView = this.getLoginView();
+
+        var test = this.getLoginView();
+        test.setMasked(false);
+
+        console.log(test);
+        test.push({xtype:'questionsform'});
+
        // var test = this.getLoginForm();
-        loginView.setMasked(false);
-        Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
+        //loginView.setMasked(false);
+        //Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
+
 
         //Ext.Viewport.push(this.getLoginView());
-
-        /*
-        test.push({
-            title: 'questions',
-            html: 'testing'
-        });
-        */
 
     },
 
