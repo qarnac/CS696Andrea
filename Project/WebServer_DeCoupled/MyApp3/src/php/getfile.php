@@ -64,15 +64,11 @@ try {
         $response->message = $errMessage;
 
     } else {    
-        $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+        //$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+		$str = basename($_FILES['userfile']['tmp_name']);
+		$res = strtok($str, "/");
+		$uploadfile = $uploaddir . $res . '.jpeg';
 		
-		//echo $_FILES['userfile']['name'];
-		
-		//echo 'Hi!';
-		var_dump($_FILES['userfile']);
-		var_dump($_POST["username"]);
-		
-
         if (is_uploaded_file($_FILES['userfile']['tmp_name']) && 
             move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 			
@@ -81,25 +77,10 @@ try {
 
 			$image = new SimpleImage();
 			
-			//check for hunt
-
-			//check for GPS location if exist
-			//$test = $image->checkForGPS($uploadfile);
-			
-			/*
-			if( $test === true)
-				//do something
-			else
-				//do something
-			*/
-			
 			//Now DataBase Part
 			//Do insertion then update ID
 			insertImage($con, $uploadfile);
-			
-	
-            //do compression (destinationPath, targetPath, quality)
-            //$image->compress($uploadfile,$uploadfile, 70);			
+		
 
             $response->success = true;
         } else {

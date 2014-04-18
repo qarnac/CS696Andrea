@@ -18,12 +18,13 @@ Ext.define('myApp.view.Main', {
 			{
                 xtype: 'questionsform'
 			},
+            /*
             {
                 xtype: 'imageuploadform'
-            },
-			//{
-			//	xtype: 'loginform'
-			//},
+            },*/
+			{
+				xtype: 'loginform'
+			},
 
         ]
 	
