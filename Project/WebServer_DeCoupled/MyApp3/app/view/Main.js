@@ -15,8 +15,6 @@ Ext.define('myApp.view.Main', {
 			{
 				xtype: 'map'
 			},
-
-
 			{
 				xtype: 'loginform'
 			},

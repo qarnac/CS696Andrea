@@ -33,7 +33,6 @@ Ext.define('myApp.view.QuestionsForm', {
         },
 
 
-
         items: [{
             xtype: 'fieldset',
             title: 'Questions',

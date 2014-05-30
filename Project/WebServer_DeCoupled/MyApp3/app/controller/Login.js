@@ -85,7 +85,7 @@ Ext.define('myApp.controller.Login', {
         console.log(test);
         test.push({xtype:'imageuploadform'});
 
-       // var test = this.getLoginForm();
+        // var test = this.getLoginForm();
         //loginView.setMasked(false);
         //Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
 
