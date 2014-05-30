@@ -4,7 +4,8 @@
 
 
 Ext.define('myApp.view.ImageUploadForm', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.navigation.View',
+    //extend: 'Ext.Panel',
 
     xtype: 'imageuploadform',
 
@@ -15,13 +16,13 @@ Ext.define('myApp.view.ImageUploadForm', {
     ],
 
     config: {
-        title: 'Picture',
+        title: 'Forms',
         iconCls: "star",
 
         items: [
             {
-                //scrollable: true,
-                //styleHtmlContent: true,
+                scrollable: true,
+                styleHtmlContent: true,
 
                 layout: {
                     type: 'vbox',
@@ -29,12 +30,6 @@ Ext.define('myApp.view.ImageUploadForm', {
                 },
 
                 items: [
-                    {
-                        xtype: 'titlebar',
-                        docked: 'top',
-                        title: 'Camera Upload'
-                    },
-
                     {
                         html: 'You can upload file to server'
                     },
@@ -54,8 +49,45 @@ Ext.define('myApp.view.ImageUploadForm', {
                         height: '200px',
                         style: 'margin-top:15px;'
 
+                    },
+                    /*
+                    {
+                        xtype: 'map',
+                        width: '80%',
+                        height: '200px',
+                    },
+                    */
+                    {
+                        xtype: 'fieldset',
+                        //instructions:'Please fill all the questions',
+
+                        items: [{
+                            xtype: 'textareafield',
+                            label: 'What is this question about?',
+                            maxRows: 4,
+                            name: 'q1',
+                            labelWrap : true
+                        }, {
+                            xtype: 'textareafield',
+                            label: 'How does this picture show what you\'ve learned in class?',
+                            maxRows: 4,
+                            name: 'q2',
+                            labelWrap : true
+                        }, {
+                            xtype: 'textareafield',
+                            label: 'What does this picture explain?',
+                            maxRows: 4,
+                            name: 'q3',
+                            labelWrap : true
+                        }, {
+                            xtype: 'textareafield',
+                            label: 'What question do you have about this picture?',
+                            maxRows: 4,
+                            name: 'q4',
+                            labelWrap : true
+                        }]
                     }
-                ]
+                ],
 
 
             },

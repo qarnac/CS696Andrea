@@ -83,7 +83,7 @@ Ext.define('myApp.controller.Login', {
         test.setMasked(false);
 
         console.log(test);
-        test.push({xtype:'questionsform'});
+        test.push({xtype:'imageuploadform'});
 
        // var test = this.getLoginForm();
         //loginView.setMasked(false);
