@@ -1,6 +1,7 @@
 Ext.define('myApp.view.Login', {
     extend: 'Ext.navigation.View',
-	xtype: 'loginform',
+
+    xtype: 'loginform',
     id:'loginForm',
     alias: "widget.loginview",
 
@@ -20,11 +21,31 @@ Ext.define('myApp.view.Login', {
 		title: 'Login',
 		iconCls: "settings",
 
+        navigationBar: {
+            items: [
+                {
+                    xtype: 'button',
+                    id: 'editButton',
+                    text: 'next',
+                    align: 'right',
+                    hidden: true,
+                    hideAnimation: Ext.os.is.Android ? false : {
+                        type: 'fadeOut',
+                        duration: 200
+                    },
+                    showAnimation: Ext.os.is.Android ? false : {
+                        type: 'fadeIn',
+                        duration: 200
+                    }
+                }
+            ]
+        },
+
         items: [{
             fullscreen:true,
             scroll:false,
             xtype:'panel',
-		
+
 		    items: [
             {
                 xtype: 'label',
@@ -57,7 +78,7 @@ Ext.define('myApp.view.Login', {
                         required: true
                     }
 				]
-				
+
 			},
             {
                 xtype: 'button',

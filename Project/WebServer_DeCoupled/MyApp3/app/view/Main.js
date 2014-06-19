@@ -2,10 +2,15 @@ Ext.define('myApp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
-        'Ext.TitleBar',
+
     ],
 	
     config: {
+        defaults: {
+            html: 'placeholder text',
+            styleHtmlContent: true
+        },
+
         tabBarPosition: 'bottom',
 
         items: [
@@ -18,6 +23,7 @@ Ext.define('myApp.view.Main', {
 			{
 				xtype: 'loginform'
 			},
+
 
         ]
 	

@@ -4,7 +4,9 @@
  
 Ext.define('myApp.view.QuestionsForm', {
     extend: 'Ext.Panel',
-	
+
+    xtype: 'questionsform',
+
 	requires: [
 		'Ext.data.proxy.*',
 		'Ext.dataview.List',
@@ -12,30 +14,14 @@ Ext.define('myApp.view.QuestionsForm', {
         'Ext.data.Store',
         'Ext.data.proxy.JsonP',
 	],
-	
-	xtype: 'questionsform',
-
 
 	config:{
-        title:'Questions',
-        iconCls: 'star',
+        title:'Question page 1',
         scrollable: true,
         autoDestroy: false,
 
-        navigationBar: {
-            ui: 'dark',
-            docked: 'top',
-            items: [{
-                xtype: 'button',
-                text: 'Right',
-                align: 'right'
-            }]
-        },
-
-
         items: [{
             xtype: 'fieldset',
-            title: 'Questions',
             //instructions:'Please fill all the questions',
 
             items: [{
@@ -63,7 +49,8 @@ Ext.define('myApp.view.QuestionsForm', {
                 name: 'q4',
                 labelWrap : true
             }]
-        },{
+        },
+            {
             xtype: 'toolbar',
             layout:{
                 pack:'center'

@@ -3,11 +3,20 @@ Ext.define('myApp.controller.Login', {
 
     config: {
         refs: {
-            loginView: 'loginview'
+            loginView: 'loginview',
+            editButton: '#editButton',
+            questionForm: 'questionsform',
+            imageUpload: 'imageuploadform'
         },
         control: {
             loginView: {
-                signInCommand: 'onSignInCommand'
+                signInCommand: 'onSignInCommand',
+                push: 'onMainPush',
+                pop: 'onMainPop'
+            },
+
+            editButton: {
+                tap: 'onContactEdit'
             },
 
             //mainMenuView: {
@@ -16,16 +25,75 @@ Ext.define('myApp.controller.Login', {
         }
     },
 
-    // Session token
+    onMainPush: function(view, item) {
+        console.log(item.xtype);
 
+        var editButton = this.getEditButton();
+
+        if (item.xtype == "questionsform") {
+            this.showEditButton();
+        }
+        else
+        {
+            this.hideEditButton();
+        }
+
+    },
+
+
+    onMainPop: function(view, item) {
+        console.log('at pop');
+        console.log(item.xtype);
+
+        if(item.xtype == "imageuploadform")
+            this.showEditButton();
+        else
+            this.hideEditButton();
+
+    },
+
+
+    onContactEdit: function() {
+        if (!this.questionForm) {
+            this.imageUpload = Ext.create('myApp.view.ImageUploadForm');
+        }
+
+        this.getLoginView().push(this.imageUpload);
+    },
+
+
+
+    showEditButton: function() {
+        var editButton = this.getEditButton();
+
+        if (!editButton.isHidden()) {
+            return;
+        }
+
+        //this.hideSaveButton();
+
+        editButton.show();
+    },
+
+    hideEditButton: function() {
+        var editButton = this.getEditButton();
+
+        if (editButton.isHidden()) {
+            return;
+        }
+
+        editButton.hide();
+    },
+
+    // Session tokenS
     sessionToken: null,
 
     // Transitions
-    getSlideLeftTransition: function () {
+    getSlideLeftTransition: function() {
         return { type: 'slide', direction: 'left' };
     },
 
-    getSlideRightTransition: function () {
+    getSlideRightTransition: function() {
         return { type: 'slide', direction: 'right' };
     },
 
@@ -83,14 +151,8 @@ Ext.define('myApp.controller.Login', {
         test.setMasked(false);
 
         console.log(test);
-        test.push({xtype:'imageuploadform'});
 
-        // var test = this.getLoginForm();
-        //loginView.setMasked(false);
-        //Ext.Viewport.animateActiveItem(this.getLoginView(), this.getSlideLeftTransition());
-
-
-        //Ext.Viewport.push(this.getLoginView());
+        test.push({xtype:'questionsform'});
 
     },
 
