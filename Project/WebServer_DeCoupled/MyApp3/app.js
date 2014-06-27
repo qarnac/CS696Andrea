@@ -26,6 +26,7 @@ Ext.application({
 
 	models: [
 		'Hunt',
+        'QuestionForm'
 	],
 
     views: [
@@ -74,8 +75,12 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('myApp.view.Main'));
+
 		
     },
+
+    apiToken: new QuestionHunt(),
+
 	
     onUpdated: function() {
         Ext.Msg.confirm(

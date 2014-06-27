@@ -184,6 +184,7 @@ Ext.define('Ext.ux.Fileup', {
         browse: {
             text: 'Browse',
             cls: Ext.baseCSSPrefix + 'fileup',
+            iconCls : './touch/resources/themes/images/windows-phone/dark/pictos/photo3.png',
             ui: 'filebrowse'
         },
 

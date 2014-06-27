@@ -184,6 +184,7 @@ Ext.define('Ext.ux.Fileup', {
         browse: {
             text: 'Browse',
             cls: Ext.baseCSSPrefix + 'fileup',
+            iconCls : './touch/resources/themes/images/windows-phone/dark/pictos/photo3.png',
             ui: 'filebrowse'
         },
 		
@@ -199,7 +200,6 @@ Ext.define('Ext.ux.Fileup', {
             ui: 'fileready'
         },
 		
-
 
         uploading: {
             text: 'Uploading',
@@ -475,7 +475,6 @@ Ext.define('Ext.ux.Fileup', {
                 // The resize file ready for upload
                 var blob = canvas.toDataURL(file.type, 0.8);
                 blob = me.dataURItoBlob(blob);
-
 
                 me.blogImage = blob;
 

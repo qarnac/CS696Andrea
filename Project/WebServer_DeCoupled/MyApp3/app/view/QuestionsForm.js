@@ -6,6 +6,7 @@ Ext.define('myApp.view.QuestionsForm', {
     extend: 'Ext.Panel',
 
     xtype: 'questionsform',
+    id : 'questionsform',
 
 	requires: [
 		'Ext.data.proxy.*',
@@ -35,6 +36,7 @@ Ext.define('myApp.view.QuestionsForm', {
                 label: 'How does this picture show what you\'ve learned in class?',
                 maxRows: 4,
                 name: 'q2',
+
                 labelWrap : true
             }, {
                 xtype: 'textareafield',
@@ -55,7 +57,7 @@ Ext.define('myApp.view.QuestionsForm', {
             layout:{
                 pack:'center'
             }, //layout
-            ui: 'plain',
+            ui: 'plain'
         }]
 	}
 });

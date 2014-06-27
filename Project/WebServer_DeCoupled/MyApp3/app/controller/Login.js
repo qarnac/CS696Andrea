@@ -6,6 +6,7 @@ Ext.define('myApp.controller.Login', {
             loginView: 'loginview',
             editButton: '#editButton',
             questionForm: 'questionsform',
+            qForm: '#questionsform',
             imageUpload: 'imageuploadform'
         },
         control: {
@@ -53,10 +54,22 @@ Ext.define('myApp.controller.Login', {
     },
 
 
-    onContactEdit: function() {
+    onContactEdit: function(view) {
         if (!this.questionForm) {
             this.imageUpload = Ext.create('myApp.view.ImageUploadForm');
         }
+
+        var frmItems = this.getQForm().getItems();
+
+        myApp.app.apiToken.question1 =  frmItems.items[0]._items.items[0]._value;
+        myApp.app.apiToken.question2 =  frmItems.items[0]._items.items[1]._value;
+        myApp.app.apiToken.question3 =  frmItems.items[0]._items.items[2]._value;
+        myApp.app.apiToken.question4 =  frmItems.items[0]._items.items[3]._value;
+
+        console.log(myApp.app.apiToken.question1);
+        console.log(myApp.app.apiToken.question2);
+        console.log(myApp.app.apiToken.question3);
+        console.log(myApp.app.apiToken.question4);
 
         this.getLoginView().push(this.imageUpload);
     },
@@ -70,7 +83,6 @@ Ext.define('myApp.controller.Login', {
             return;
         }
 
-        //this.hideSaveButton();
 
         editButton.show();
     },
@@ -147,10 +159,10 @@ Ext.define('myApp.controller.Login', {
     signInSuccess: function () {
         console.log('Signed in.');
 
+        myApp.app.apiToken = new QuestionHunt();
+
         var test = this.getLoginView();
         test.setMasked(false);
-
-        console.log(test);
 
         test.push({xtype:'questionsform'});
 

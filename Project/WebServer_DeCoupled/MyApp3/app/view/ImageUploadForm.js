@@ -26,7 +26,13 @@ Ext.define('myApp.view.ImageUploadForm', {
                 layout: {
                     type: 'vbox',
                     align: 'center'
+
                 },
+
+                defaults: {
+                    margin: 10,
+                    width: 200
+                }, // defaults
 
                 items: [
                     {
@@ -34,9 +40,18 @@ Ext.define('myApp.view.ImageUploadForm', {
                     },
 
                     {
+                        xtype: 'button',
+                        iconMask: true,
+                        icon : './touch/resources/themes/images/windows-phone/dark/pictos/photo3.png',
+                        ui: 'confirm',
+                        text: 'Submit'
+
+                    },
+
+                    {
                         itemId: 'fileBtn',
                         xtype: 'fileupload',
-                        text: 'Browse',
+                        icon : './touch/resources/themes/images/windows-phone/dark/pictos/photo3.png',
                         url: './src/php/getfile.php',
                         autoUpload: false
                     },
@@ -61,6 +76,13 @@ Ext.define('myApp.view.ImageUploadForm', {
                                     position: new google.maps.LatLng(this._geo.getLatitude(), this._geo.getLongitude()),
                                     map: map
                                 });
+
+                                myApp.app.apiToken.latitude = this._geo.getLatitude();
+                                myApp.app.apiToken.longitude = this._geo.getLongitude();
+
+                                console.log(myApp.app.apiToken.latitude);
+                                console.log(myApp.app.apiToken.longitude);
+
                             }
                         }
                     },
