@@ -184,7 +184,6 @@ Ext.define('Ext.ux.Fileup', {
         browse: {
             text: 'Browse',
             cls: Ext.baseCSSPrefix + 'fileup',
-            iconCls : './touch/resources/themes/images/windows-phone/dark/pictos/photo3.png',
             ui: 'filebrowse'
         },
 		
@@ -199,7 +198,6 @@ Ext.define('Ext.ux.Fileup', {
             cls: Ext.baseCSSPrefix + 'fileup-ready',
             ui: 'fileready'
         },
-		
 
         uploading: {
             text: 'Uploading',
@@ -271,7 +269,10 @@ Ext.define('Ext.ux.Fileup', {
     // @private
     applyStates: function(states) {
         var me = this;
-        
+
+        console.log('in apply states');
+        console.log("");
+
         if (states) {
             
             if (Ext.isObject(states)) {
@@ -289,6 +290,7 @@ Ext.define('Ext.ux.Fileup', {
     // @private
     initialize: function() {
         var me = this;
+
         me.callParent();
         
         me.fileElement.dom.onchange = function() {
@@ -300,9 +302,14 @@ Ext.define('Ext.ux.Fileup', {
             buffer: 250,// Avoid multiple tap 
             tap: me.onButtonTap
         });
-        
-        // Setup initial button state
-        me.changeState('browse');
+
+        if(me._itemId == "uploadBtn" )
+        {
+            me.changeState('ready');
+        }
+        else
+            // Setup initial button state
+            me.changeState('browse');
     },
     
     // @private
@@ -478,13 +485,15 @@ Ext.define('Ext.ux.Fileup', {
 
                 me.blogImage = blob;
 
+                myApp.app.apiToken.dataBlob = blob;
+
+                console.log(myApp.app.apiToken.dataBlob);
+
                 me.extractGPS(file);
             }
         }
 
         reader.readAsDataURL(file);
-
-
 
     },
 
@@ -533,7 +542,6 @@ Ext.define('Ext.ux.Fileup', {
         console.log('return gps location');
         return loc;
     },
-
 
      /**
      * @private
@@ -611,8 +619,8 @@ Ext.define('Ext.ux.Fileup', {
             // Uploading progress handler
             http.upload.onprogress = function(e) {
                 if (e.lengthComputable) {
-                    var percentComplete = (e.loaded / e.total) * 100;
-                    me.setBadgeText(percentComplete.toFixed(0) + '%');
+                   // var percentComplete = (e.loaded / e.total) * 100;
+                   // me.setBadgeText(percentComplete.toFixed(0) + '%');
                 }
             };
 
@@ -623,6 +631,9 @@ Ext.define('Ext.ux.Fileup', {
                     if(Ext.Array.indexOf(me.getDefaultSuccessCodes(), parseInt(this.status)) !== -1 ) {
 
                         var response = me.decodeResponse(this);
+
+                        console.log("this");
+                        console.log(this);
 
                         if (response && response.success) {
                             // Success

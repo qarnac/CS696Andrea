@@ -40,11 +40,11 @@ Ext.define('myApp.view.ImageUploadForm', {
                     },
 
                     {
-                        xtype: 'button',
+                        itemId: 'uploadBtn',
+                        xtype: 'fileupload',
                         iconMask: true,
-                        icon : './touch/resources/themes/images/windows-phone/dark/pictos/photo3.png',
                         ui: 'confirm',
-                        text: 'Submit'
+                        text: 'Upload'
 
                     },
 

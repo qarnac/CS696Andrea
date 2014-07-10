@@ -9,7 +9,7 @@ Ext.define('myApp.controller.ImageUpload', {
     config: {
         refs: {
             'fileBtn': 'imageuploadform #fileBtn',
-            'fileLoadBtn': 'imageuploadform #fileLoadBtn',
+            //'fileLoadBtn': 'imageuploadform #fileLoadBtn',
             'loadedImage': 'imageuploadform #loadedImage'
         },
 

@@ -3,7 +3,8 @@ Ext.define('myApp.model.Markers',{
 
     config: {
         fields: [
-            {name: 'markers', mapping:  function (node) {
+            {
+                name: 'markers', mapping:  function (node) {
                 return (node.firstChild ? node.firstChild.nodeValue : null);
             }}
         ],
