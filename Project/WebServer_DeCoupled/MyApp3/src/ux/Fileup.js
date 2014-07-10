@@ -321,27 +321,26 @@ Ext.define('Ext.ux.Fileup', {
             // Currently we handle tap event while button in ready state
             // because in all other states button is not accessible
 			case 'load':
-				me.changeState('ready');
+
 				console.log('at ready state going to invoke doload()');
 				file = me.fileElement.dom.files[0];
                 me.doLoad(file);
-
                 me.compressFile(file);
-
+                console.log(me);
+                me.changeState('browse');
 				break;
 
-            case 'ready':                
+            case 'ready':
+                console.log("on ready");
                 me.changeState('uploading');
 
-                //var file = me.fileElement.dom.files[0];
-                //console.log(file);
                 console.log(me.blogImage);
+
                 if (!me.getLoadAsDataUrl()) {
                     me.fireEvent('uploadstart', me.blogImage);
                     me.doUpload( me.blogImage);
-                }// else {
-                //    me.doLoad(file);
-                //}
+                }
+
                 break;
         }
     },
@@ -355,6 +354,7 @@ Ext.define('Ext.ux.Fileup', {
         } 
 		else if( me.currentState('load')){
 		    me.fireAction('ready', [e.target.files[0]], function() {
+                console.log('on changed to ready state');
                 me.changeState('ready');
             }, me);
 		}
@@ -405,25 +405,30 @@ Ext.define('Ext.ux.Fileup', {
             // State specific tasks
             switch (state) {
                 case 'browse':
+                    console.log('state browse');
                     me.currentState = 'browse';
                     me.reset();                    
                     break;
 				
 				case 'load':
+                    console.log('state load');
 					me.currentState = 'load';
 					me.onButtonTap();
 					break;
                     
                 case 'ready':
+                    console.log('state ready');
                     me.currentState = 'ready';
                     me.fileElement.hide();
                     
                     if (me.getAutoUpload()) {
                         me.onButtonTap();
-                    }                    
+                    }
+
                     break;
                     
                 case 'uploading':
+                    console.log('state uploading');
                     me.currentState = 'uploading';
                     break;
             }
@@ -573,15 +578,15 @@ Ext.define('Ext.ux.Fileup', {
                 default:
                     message = 'Can not read file';
             };
+
             me.fireEvent('loadfailure', message, this, e);
         };
 
         reader.onload = function(e) {
             console.log("reader on load for doLoad");
             var dataURL = reader.result;
-            //console.log("dataURL" + dataURL);
             me.fireEvent('loadsuccess', this.result, this, e);
-            me.changeState('ready');
+            //me.changeState('ready');
         };
 
         console.log("read image file");
@@ -652,7 +657,7 @@ Ext.define('Ext.ux.Fileup', {
                         me.fireEvent('failure', this.status + ' ' + this.statusText, response, this, e);
                     }
 
-                    me.changeState('browse');
+                    me.changeState('ready');
                 }
             };
 
