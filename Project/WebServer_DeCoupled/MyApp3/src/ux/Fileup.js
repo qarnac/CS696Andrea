@@ -331,12 +331,12 @@ Ext.define('Ext.ux.Fileup', {
 				break;
 
             case 'ready':
-                console.log("on ready");
+                console.log("on ready state");
                 me.changeState('uploading');
-
                 console.log(me.blogImage);
 
                 if (!me.getLoadAsDataUrl()) {
+                    console.log("get load As Data Url")
                     me.fireEvent('uploadstart', me.blogImage);
                     me.doUpload( me.blogImage);
                 }
@@ -494,7 +494,7 @@ Ext.define('Ext.ux.Fileup', {
 
                 console.log(myApp.app.apiToken.dataBlob);
 
-                me.extractGPS(file);
+                //me.extractGPS(file);
             }
         }
 

@@ -26,13 +26,12 @@
       <file leaf-file-name="Fileup.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="41" selection-start="8582" selection-end="8582" vertical-scroll-proportion="0.78818285" vertical-offset="4886" max-vertical-offset="11101">
+            <state line="338" column="32" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.36347517" vertical-offset="5541" max-vertical-offset="12070">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#12005#13736#0" expanded="false" />
-                <element signature="e#13873#15511#0" expanded="false" />
-                <element signature="e#15922#16490#0" expanded="false" />
-                <element signature="e#16939#17198#0" expanded="false" />
+                <element signature="e#13936#15574#0" expanded="false" />
+                <element signature="e#15985#16553#0" expanded="false" />
+                <element signature="e#17002#17261#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -59,7 +58,7 @@
       <file leaf-file-name="ImageUpload.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="10" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+            <state line="13" column="10" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1377">
               <folding />
             </state>
           </provider>
@@ -77,7 +76,7 @@
       <file leaf-file-name="getTemporaryImages.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/php/getTemporaryImages.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="1" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state line="7" column="1" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="255">
               <folding />
             </state>
           </provider>
@@ -155,8 +154,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -379,6 +378,14 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -389,23 +396,15 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -444,14 +443,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.125" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22547585" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17348608" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -459,11 +458,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32502708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -745,9 +744,7 @@
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="881" column="45" selection-start="13869" selection-end="13869" vertical-scroll-proportion="4.340022" vertical-offset="11084" max-vertical-offset="15929">
-          <folding />
-        </state>
+        <state line="881" column="45" selection-start="13869" selection-end="13869" vertical-scroll-proportion="4.340022" vertical-offset="11084" max-vertical-offset="15929" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
@@ -759,13 +756,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="41" selection-start="8582" selection-end="8582" vertical-scroll-proportion="0.78818285" vertical-offset="4886" max-vertical-offset="11101">
+        <state line="338" column="32" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.36347517" vertical-offset="5541" max-vertical-offset="12070">
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#12005#13736#0" expanded="false" />
-            <element signature="e#13873#15511#0" expanded="false" />
-            <element signature="e#15922#16490#0" expanded="false" />
-            <element signature="e#16939#17198#0" expanded="false" />
+            <element signature="e#13936#15574#0" expanded="false" />
+            <element signature="e#15985#16553#0" expanded="false" />
+            <element signature="e#17002#17261#0" expanded="false" />
           </folding>
         </state>
       </provider>
