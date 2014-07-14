@@ -333,12 +333,12 @@ Ext.define('Ext.ux.Fileup', {
             case 'ready':
                 console.log("on ready state");
                 me.changeState('uploading');
-                console.log(me.blogImage);
+                console.log(myApp.app.apiToken.dataBlob);
 
                 if (!me.getLoadAsDataUrl()) {
-                    console.log("get load As Data Url")
-                    me.fireEvent('uploadstart', me.blogImage);
-                    me.doUpload( me.blogImage);
+                    console.log("get load As Data Url");
+                    me.fireEvent('uploadstart', myApp.app.apiToken.dataBlob);
+                    me.doUpload( myApp.app.apiToken.dataBlob);
                 }
 
                 break;

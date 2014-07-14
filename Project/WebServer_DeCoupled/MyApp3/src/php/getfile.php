@@ -75,7 +75,7 @@ try {
 			//src code and example found at: http://stackoverflow.com/questions/9839150/image-compression-in-php
             //function used from https://www.apptha.com/blog/how-to-reduce-image-file-size-while-uploading-using-php-code/
 
-			$image = new SimpleImage();
+			//$image = new SimpleImage();
 			
 			//Now DataBase Part
 			//Do insertion then update ID

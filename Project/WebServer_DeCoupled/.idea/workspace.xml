@@ -23,16 +23,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Fileup.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Fileup.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="338" column="32" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.36347517" vertical-offset="5541" max-vertical-offset="12070">
+            <state line="338" column="6" selection-start="8824" selection-end="8824" vertical-scroll-proportion="0.0" vertical-offset="5483" max-vertical-offset="12206">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
-                <element signature="e#13936#15574#0" expanded="false" />
-                <element signature="e#15985#16553#0" expanded="false" />
-                <element signature="e#17002#17261#0" expanded="false" />
+                <element signature="e#13982#15620#0" expanded="false" />
+                <element signature="e#16031#16599#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="questionsSubmit.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/php/questionsSubmit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="4" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queryMarkerForMap.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/php/queryMarkerForMap.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="1268" max-vertical-offset="1819">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -40,25 +57,7 @@
       <file leaf-file-name="cyberScavengerAPIAdmin.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/src/php/cyberScavengerAPIAdmin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="16" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="663">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageUploadForm.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="40" selection-start="1071" selection-end="1078" vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="1921">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageUpload.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="10" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1377">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
               <folding />
             </state>
           </provider>
@@ -67,43 +66,25 @@
       <file leaf-file-name="getfile.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/src/php/getfile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="1072" selection-end="1072" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="1785">
+            <state line="71" column="8" selection-start="2579" selection-end="2579" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1785">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getTemporaryImages.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/php/getTemporaryImages.php">
+      <file leaf-file-name="ImageUpload.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="1" selection-start="127" selection-end="127" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="255">
+            <state line="30" column="33" selection-start="787" selection-end="788" vertical-scroll-proportion="-7.1538463" vertical-offset="324" max-vertical-offset="1377">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/php/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeDisplayHunt.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/php/HomeDisplayHunt.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleImage.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="SimpleImage.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MyApp3/src/php/SimpleImage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="12" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="629">
+            <state line="5" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.09476031" vertical-offset="0" max-vertical-offset="897">
               <folding />
             </state>
           </provider>
@@ -144,18 +125,20 @@
         <option value="$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/model/Markers.js" />
-        <option value="$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/Login.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js" />
         <option value="$PROJECT_DIR$/MyApp3/src/ux/Fileup.js" />
+        <option value="$PROJECT_DIR$/MyApp3/src/php/getfile.php" />
+        <option value="$PROJECT_DIR$/MyApp3/src/php/SimpleImage.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -277,6 +260,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -378,14 +365,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -396,15 +375,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -443,14 +430,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22547585" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1765625" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17348608" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -458,11 +445,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32502708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32502708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -488,11 +475,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/store/HuntsStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="56" selection-start="357" selection-end="407" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="612" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="0" selection-start="767" selection-end="767" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1547" />
@@ -678,52 +660,47 @@
         <state line="11" column="27" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/php/questionsSubmit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="60" selection-end="60" vertical-scroll-proportion="0.09042553" vertical-offset="0" max-vertical-offset="564" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/php/queryMarkerForMap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-2.3012705" vertical-offset="1268" max-vertical-offset="1819" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="25" selection-start="872" selection-end="872" vertical-scroll-proportion="0.07580825" vertical-offset="510" max-vertical-offset="2295" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/src/php/SimpleImage.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="12" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0" vertical-offset="391" max-vertical-offset="629">
+        <state line="881" column="45" selection-start="13869" selection-end="13869" vertical-scroll-proportion="4.340022" vertical-offset="11084" max-vertical-offset="15929" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/php/questionsSubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="4" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/php/HomeDisplayHunt.php">
+    <entry file="file://$PROJECT_DIR$/MyApp3/php/queryMarkerForMap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="1268" max-vertical-offset="1819">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/php/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
+        <state line="14" column="23" selection-start="403" selection-end="403" vertical-scroll-proportion="0.4219858" vertical-offset="0" max-vertical-offset="1088">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/src/php/cyberScavengerAPIAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="564" selection-end="564" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/src/php/getfile.php">
+    <entry file="file://$PROJECT_DIR$/MyApp3/php/cyberScavengerAPI.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1072" selection-end="1072" vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="1785">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
           <folding />
         </state>
       </provider>
@@ -735,34 +712,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/php/HomeDisplayHunt.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="10" selection-start="367" selection-end="367" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="881" column="45" selection-start="13869" selection-end="13869" vertical-scroll-proportion="4.340022" vertical-offset="11084" max-vertical-offset="15929" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="40" selection-start="1071" selection-end="1078" vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="1921">
+        <state line="46" column="41" selection-start="1008" selection-end="1008" vertical-scroll-proportion="0.44786325" vertical-offset="520" max-vertical-offset="1921">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="338" column="32" selection-start="8835" selection-end="8835" vertical-scroll-proportion="0.36347517" vertical-offset="5541" max-vertical-offset="12070">
+        <state line="338" column="6" selection-start="8824" selection-end="8824" vertical-scroll-proportion="0.0" vertical-offset="5483" max-vertical-offset="12206">
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#13936#15574#0" expanded="false" />
-            <element signature="e#15985#16553#0" expanded="false" />
-            <element signature="e#17002#17261#0" expanded="false" />
+            <element signature="e#13982#15620#0" expanded="false" />
+            <element signature="e#16031#16599#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="33" selection-start="787" selection-end="788" vertical-scroll-proportion="-7.1538463" vertical-offset="324" max-vertical-offset="1377">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/src/php/getfile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="8" selection-start="2579" selection-end="2579" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/src/php/SimpleImage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="245" selection-end="245" vertical-scroll-proportion="0.09476031" vertical-offset="0" max-vertical-offset="897">
+          <folding />
         </state>
       </provider>
     </entry>

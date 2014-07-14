@@ -43,8 +43,8 @@ Ext.define('myApp.view.ImageUploadForm', {
                         itemId: 'uploadBtn',
                         xtype: 'fileupload',
                         iconMask: true,
-                        ui: 'confirm',
-                        text: 'Upload'
+                        url: './src/php/getfile.php',
+                        autoUpload: false
 
                     },
 
