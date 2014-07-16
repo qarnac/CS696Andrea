@@ -9,14 +9,20 @@ Ext.define('myApp.controller.ImageUpload', {
     config: {
         refs: {
             'fileBtn': 'imageuploadform #fileBtn',
+            'uploadBtn': 'imageuploadform #uploadBtn',
             //'fileLoadBtn': 'imageuploadform #fileLoadBtn',
             'loadedImage': 'imageuploadform #loadedImage'
         },
 
         control: {
             fileBtn: {
-                success: 'onFileUploadSuccess',
+                //success: 'onFileUploadSuccess',
                 loadsuccess: 'onFileLoadSuccess',
+                //failure: 'onFileUploadFailure'
+            },
+
+            uploadBtn: {
+                success: 'onFileUploadSuccess',
                 failure: 'onFileUploadFailure'
             },
 

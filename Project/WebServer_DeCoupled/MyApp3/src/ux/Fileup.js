@@ -639,6 +639,7 @@ Ext.define('Ext.ux.Fileup', {
 
                         console.log("this");
                         console.log(this);
+                        console.log(me);
 
                         if (response && response.success) {
                             // Success
