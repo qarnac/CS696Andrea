@@ -114,7 +114,8 @@ Ext.define('myApp.controller.Login', {
         console.log('Username: ' + username + '\n' + 'Password: ' + password);
 
         var me = this,
-            loginView = me.getLoginView();
+
+        loginView = me.getLoginView();
 
 
         if (username.length === 0 || password.length === 0) {

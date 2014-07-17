@@ -11,7 +11,8 @@ Ext.define('myApp.controller.ImageUpload', {
             'fileBtn': 'imageuploadform #fileBtn',
             'uploadBtn': 'imageuploadform #uploadBtn',
             //'fileLoadBtn': 'imageuploadform #fileLoadBtn',
-            'loadedImage': 'imageuploadform #loadedImage'
+            'loadedImage': 'imageuploadform #loadedImage',
+            'backButton': 'button[class=x-button-back]'
         },
 
         control: {
@@ -19,6 +20,10 @@ Ext.define('myApp.controller.ImageUpload', {
                 //success: 'onFileUploadSuccess',
                 loadsuccess: 'onFileLoadSuccess',
                 //failure: 'onFileUploadFailure'
+            },
+
+            backButton: {
+                tap: 'backButtonTap',
             },
 
             uploadBtn: {
@@ -47,6 +52,8 @@ Ext.define('myApp.controller.ImageUpload', {
             buttons: Ext.MessageBox.OK,
             callback: Ext.emptyFn
         });
+
+        //history.back();
     },
 
     onFileUploadFailure: function(message) {
@@ -67,6 +74,7 @@ Ext.define('myApp.controller.ImageUpload', {
         var me = this;
         var image = me.getLoadedImage();
         image.setSrc(dataurl);
+
     },
 
     onFileLoadFailure: function(message) {
