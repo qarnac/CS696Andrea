@@ -18,6 +18,7 @@ Ext.define('myApp.view.ImageUploadForm', {
         title:'Question page 2',
         scrollable: true,
         autoDestroy: false,
+        itemId: 'imageuploadform',
 
         items: [
             {

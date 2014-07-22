@@ -8,23 +8,29 @@ Ext.define('myApp.controller.ImageUpload', {
 
     config: {
         refs: {
+            imageUploadView : 'imageuploadform',
             'fileBtn': 'imageuploadform #fileBtn',
             'uploadBtn': 'imageuploadform #uploadBtn',
-            //'fileLoadBtn': 'imageuploadform #fileLoadBtn',
             'loadedImage': 'imageuploadform #loadedImage',
-            'backButton': 'button[class=x-button-back]'
+
         },
 
         control: {
+            loginView: {
+                push: 'onMainPush',
+                pop: 'onMainPop'
+            },
             fileBtn: {
                 //success: 'onFileUploadSuccess',
                 loadsuccess: 'onFileLoadSuccess',
                 //failure: 'onFileUploadFailure'
             },
 
+            /*
             backButton: {
                 tap: 'backButtonTap',
             },
+            */
 
             uploadBtn: {
                 success: 'onFileUploadSuccess',
@@ -53,7 +59,15 @@ Ext.define('myApp.controller.ImageUpload', {
             callback: Ext.emptyFn
         });
 
-        //history.back();
+       console.log(this);
+       console.log(this.getUploadBtn());
+
+        var view = this.getImageUploadView();
+        view.parent.pop();
+
+
+       //console.log(naView);
+       // this.pop();
     },
 
     onFileUploadFailure: function(message) {
