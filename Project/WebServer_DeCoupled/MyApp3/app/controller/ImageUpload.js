@@ -12,7 +12,6 @@ Ext.define('myApp.controller.ImageUpload', {
             'fileBtn': 'imageuploadform #fileBtn',
             'uploadBtn': 'imageuploadform #uploadBtn',
             'loadedImage': 'imageuploadform #loadedImage',
-
         },
 
         control: {
@@ -21,16 +20,9 @@ Ext.define('myApp.controller.ImageUpload', {
                 pop: 'onMainPop'
             },
             fileBtn: {
-                //success: 'onFileUploadSuccess',
                 loadsuccess: 'onFileLoadSuccess',
-                //failure: 'onFileUploadFailure'
             },
 
-            /*
-            backButton: {
-                tap: 'backButtonTap',
-            },
-            */
 
             uploadBtn: {
                 success: 'onFileUploadSuccess',
