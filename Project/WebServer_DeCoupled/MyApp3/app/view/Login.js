@@ -59,7 +59,7 @@ Ext.define('myApp.view.Login', {
 			{
 				xtype: 'fieldset',	//this is to make nice lines on the items
 				title: 'Login Form', //making it look nicer
-				instructions: '(Login for students/teachers)',
+				instructions: '(Login for students)',
 
 				items:[
 					{

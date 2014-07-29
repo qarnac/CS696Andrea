@@ -35,6 +35,7 @@ Ext.application({
         'Login',
         'QuestionsForm',
         'ImageUploadForm',
+        'MultipleQuestion'
     ],
 	
 	controllers: [

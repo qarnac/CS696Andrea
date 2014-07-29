@@ -7,7 +7,8 @@ Ext.define('myApp.controller.Login', {
             editButton: '#editButton',
             questionForm: 'questionsform',
             qForm: '#questionsform',
-            imageUpload: 'imageuploadform'
+            imageUpload: 'imageuploadform',
+            multipleQuestion: 'multiplequestion'
         },
         control: {
             loginView: {
@@ -46,7 +47,7 @@ Ext.define('myApp.controller.Login', {
         console.log('at pop');
         console.log(item.xtype);
 
-        if(item.xtype == "imageuploadform")
+        if(item.xtype == "multiplequestion")
             this.showEditButton();
         else
             this.hideEditButton();
@@ -56,7 +57,7 @@ Ext.define('myApp.controller.Login', {
 
     onContactEdit: function(view) {
         if (!this.questionForm) {
-            this.imageUpload = Ext.create('myApp.view.ImageUploadForm');
+            this.multipleQuestion = Ext.create('myApp.view.MultipleQuestion');
         }
 
         var frmItems = this.getQForm().getItems();
@@ -71,7 +72,7 @@ Ext.define('myApp.controller.Login', {
         console.log(myApp.app.apiToken.question3);
         console.log(myApp.app.apiToken.question4);
 
-        this.getLoginView().push(this.imageUpload);
+        this.getLoginView().push(this.multipleQuestion);
     },
 
 

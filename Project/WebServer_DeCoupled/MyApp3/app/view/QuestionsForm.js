@@ -17,7 +17,7 @@ Ext.define('myApp.view.QuestionsForm', {
     ],
 
     config:{
-        title:'Question page 1',
+        title:'Question page 1/3',
         scrollable: true,
         autoDestroy: false,
 
