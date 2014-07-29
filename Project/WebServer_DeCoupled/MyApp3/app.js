@@ -43,7 +43,8 @@ Ext.application({
         'Hunts',
         'Login',
         'GoogleMap',
-        'ImageUpload'
+        'ImageUpload',
+        'MultipleQuestion'
 	],
 
 	stores: [

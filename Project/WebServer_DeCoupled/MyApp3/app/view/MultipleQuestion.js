@@ -3,10 +3,39 @@ Ext.define('myApp.view.MultipleQuestion', {
 
     xtype: 'multiplequestion',
     id : 'multiplequestion',
+    alias: "widget.multipleview",
+
+    requires: [
+        'Ext.form.Panel',
+        'Ext.form.FieldSet',
+        'Ext.field.Toggle',
+        'Ext.util.DelayedTask',
+        'Ext.field.Radio'
+    ],
 
     config: {
         title:'Question page 2/3',
         iconCls: "settings",
+
+        navigationBar: {
+            items: [
+                {
+                    xtype: 'button',
+                    id: 'editButton',
+                    text: 'next',
+                    align: 'right',
+                    hidden: true,
+                    hideAnimation: Ext.os.is.Android ? false : {
+                        type: 'fadeOut',
+                        duration: 200
+                    },
+                    showAnimation: Ext.os.is.Android ? false : {
+                        type: 'fadeIn',
+                        duration: 200
+                    }
+                }
+            ]
+        },
 
         items: [{
             xtype: 'fieldset',
@@ -34,6 +63,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                     width: '70%',
                     name: 'qa',
                     labelWrap : true,
+                    checked: true
                 },
                 {
                     xtype: 'radiofield',
