@@ -16,6 +16,7 @@ Ext.define('myApp.view.MultipleQuestion', {
     config: {
         title:'Question page 2/3',
         iconCls: "settings",
+        scrollable: true,
 
         navigationBar: {
             items: [
@@ -40,124 +41,85 @@ Ext.define('myApp.view.MultipleQuestion', {
         items: [{
             xtype: 'fieldset',
 
-        items: [
-            {
-                xtype: 'textareafield',
-                label: 'What is this question about?',
-                labelAlign: 'top',
-                maxRows: 4,
-                name: 'questioninput',
-                labelWrap : true
-            },
-
-            {
-                layout: 'hbox',
-                defaults: {
-                    align: 'middle'
+            items: [
+                {
+                    xtype: 'textareafield',
+                    label: 'Multiple choice question text?',
+                    labelAlign: 'top',
+                    maxRows: 4,
+                    name: 'q1',
+                    placeHolder: 'Please put your question here',
+                    labelWrap : true
+                }, {
+                    xtype: 'textfield',
+                    label: 'answer a:',
+                    labelWidth: '30%',
+                    name: 'a',
+                    placeHolder: 'Enter answer a',
+                    labelWrap : true
+                }, {
+                    xtype: 'textfield',
+                    label: 'answer b:',
+                    labelWidth: '30%',
+                    name: 'b',
+                    placeHolder: 'Enter answer b',
+                    labelWrap : true
+                }, {
+                    xtype: 'textfield',
+                    label: 'answer c:',
+                    labelWidth: '30%',
+                    name: 'c',
+                    placeHolder: 'Enter answer c',
+                    labelWrap : true
                 },
-
-                items:[
                 {
                     xtype: 'textfield',
-                    placeHolder: 'Enter answer a',
-                    width: '70%',
-                    name: 'qa',
-                    labelWrap : true,
-                    checked: true
+                    label: 'answer d:',
+                    labelWidth: '30%',
+                    name: 'd',
+                    placeHolder: 'Enter answer d',
+                    labelWrap : true
                 },
                 {
-                    xtype: 'radiofield',
-                    name : 'a',
-                    value: 'green'
-                }]
-            },
-
-            {
-
-                layout: 'hbox',
-                defaults: {
-                    align: 'left'
+                    xtype: 'textfield',
+                    label: 'answer e:',
+                    labelWidth: '30%',
+                    name: 'e',
+                    placeHolder: 'Enter answer e',
+                    labelWrap : true
                 },
-
-                items:[
-                    {
-                        xtype: 'textfield',
-                        placeHolder: 'Enter answer b',
-                        width: '70%',
-                        name: 'qb',
-                        labelWrap : true,
-                    },
-                    {
-                        xtype: 'radiofield',
-                        name : 'b',
-                        value: 'green'
+                {
+                    xtype: 'fieldset',
+                    title: 'Select correct answer',
+                    items: [{
+                        xtype: 'selectfield',
+                        options:[
+                            {
+                                text: 'Answer a is correct',
+                                value: 'a'
+                            },
+                            {
+                                text: 'Answer b is correct',
+                                value: 'b'
+                            },
+                            {
+                                text: 'Answer c is correct',
+                                value: 'c'
+                            },
+                            {
+                                text: 'Answer d is correct',
+                                value: 'd'
+                            },
+                            {
+                                text: 'Answer e is correct',
+                                value: 'e'
+                            }
+                        ]
                     }]
-            },
-
-            {
-                layout: 'hbox',
-                defaults: {
-                    align: 'left'
                 },
-
-                items:[
-                    {
-                        xtype: 'textfield',
-                        placeHolder: 'Enter answer c',
-                        width: '70%',
-                        name: 'qc',
-                        labelWrap : true,
-                    },
-                    {
-                        xtype: 'radiofield',
-                        name : 'c',
-                        value: 'green'
-                    }]
-            },
-
-            {
-                layout: 'hbox',
-                defaults: {
-                    align: 'left'
-                },
-
-                items:[
-                    {
-                        xtype: 'textfield',
-                        placeHolder: 'Enter answer d',
-                        width: '70%',
-                        name: 'qd',
-                        labelWrap : true,
-                    },
-                    {
-                        xtype: 'radiofield',
-                        name : 'd',
-                        value: 'green'
-                    }]
-            },
-
-            {
-                layout: 'hbox',
-                defaults: {
-                    align: 'left'
-                },
-
-                items:[
-                    {
-                        xtype: 'textfield',
-                        placeHolder: 'Enter answer e',
-                        width: '70%',
-                        name: 'qe',
-                        labelWrap : true,
-                    },
-                    {
-                        xtype: 'radiofield',
-                        name : 'e',
-                        value: 'green'
-                    }]
-            },
-        ]
+            ]
 
         }]
+
     }
 });

@@ -55,24 +55,35 @@ Ext.define('myApp.controller.Login', {
     },
 
 
-    onContactEdit: function(view) {
+    onContactEdit: function(button) {
+        console.log("on next button pressed");
+        console.log(this);
+
         if (!this.questionForm) {
             this.multipleQuestion = Ext.create('myApp.view.MultipleQuestion');
+
+            var frmItems = this.getQForm().getItems();
+
+            myApp.app.apiToken.question1 =  frmItems.items[0]._items.items[0]._value;
+            myApp.app.apiToken.question2 =  frmItems.items[0]._items.items[1]._value;
+            myApp.app.apiToken.question3 =  frmItems.items[0]._items.items[2]._value;
+            myApp.app.apiToken.question4 =  frmItems.items[0]._items.items[3]._value;
+
+            console.log(myApp.app.apiToken.question1);
+            console.log(myApp.app.apiToken.question2);
+            console.log(myApp.app.apiToken.question3);
+            console.log(myApp.app.apiToken.question4);
+
+            this.getLoginView().push(this.multipleQuestion);
         }
+        /*
+        else if (this.multipleQuestion)
+        {
+            this.imageUpload = Ext.create('myApp.view.ImageUpload');
 
-        var frmItems = this.getQForm().getItems();
+            this.getLoginView().push(this.imageUpload);
+        }*/
 
-        myApp.app.apiToken.question1 =  frmItems.items[0]._items.items[0]._value;
-        myApp.app.apiToken.question2 =  frmItems.items[0]._items.items[1]._value;
-        myApp.app.apiToken.question3 =  frmItems.items[0]._items.items[2]._value;
-        myApp.app.apiToken.question4 =  frmItems.items[0]._items.items[3]._value;
-
-        console.log(myApp.app.apiToken.question1);
-        console.log(myApp.app.apiToken.question2);
-        console.log(myApp.app.apiToken.question3);
-        console.log(myApp.app.apiToken.question4);
-
-        this.getLoginView().push(this.multipleQuestion);
     },
 
 

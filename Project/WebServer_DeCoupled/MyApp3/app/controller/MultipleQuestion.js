@@ -7,7 +7,7 @@ Ext.define('myApp.controller.MultipleQuestion', {
             multipleView: 'multipleview',
             questionForm: 'questionsform',
             qForm: '#questionsform',
-            imageUpload: 'imageuploadform',
+            imageUpload: 'imageuploadform'
         },
         control: {
             multipleView: {
@@ -57,6 +57,27 @@ Ext.define('myApp.controller.MultipleQuestion', {
         var frmItems = this.getQForm().getItems();
 
         this.getLoginView().push(this.multipleQuestion);
+    },
+
+    showEditButton: function() {
+        var editButton = this.getEditButton();
+
+        if (!editButton.isHidden()) {
+            return;
+        }
+
+
+        editButton.show();
+    },
+
+    hideEditButton: function() {
+        var editButton = this.getEditButton();
+
+        if (editButton.isHidden()) {
+            return;
+        }
+
+        editButton.hide();
     },
 
 
