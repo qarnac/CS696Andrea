@@ -51,9 +51,12 @@ Ext.define('myApp.controller.Login', {
         console.log('at pop');
         console.log(item.xtype);
 
-        myApp.app.apiToken.currentPage = item.xtype;
+        if(item.xtype == "imageuploadform")
+            myApp.app.apiToken.currentPage = "multiplequestion";
+        else if (item.xtype == "multiplequestion")
+            myApp.app.apiToken.currentPage = "questionsform";
 
-        if(item.xtype == "multiplequestion")
+        if(item.xtype == "multiplequestion" || item.xtype == "imageuploadform")
             this.showEditButton();
         else
             this.hideEditButton();
