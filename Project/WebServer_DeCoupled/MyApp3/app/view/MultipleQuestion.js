@@ -18,25 +18,6 @@ Ext.define('myApp.view.MultipleQuestion', {
         iconCls: "settings",
         scrollable: true,
 
-        navigationBar: {
-            items: [
-                {
-                    xtype: 'button',
-                    id: 'editButton',
-                    text: 'next',
-                    align: 'right',
-                    hidden: true,
-                    hideAnimation: Ext.os.is.Android ? false : {
-                        type: 'fadeOut',
-                        duration: 200
-                    },
-                    showAnimation: Ext.os.is.Android ? false : {
-                        type: 'fadeIn',
-                        duration: 200
-                    }
-                }
-            ]
-        },
 
         items: [{
             xtype: 'fieldset',

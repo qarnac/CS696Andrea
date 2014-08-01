@@ -32,7 +32,11 @@ Ext.define('myApp.controller.Login', {
 
         var editButton = this.getEditButton();
 
-        if (item.xtype == "questionsform") {
+        console.log(item.xtype);
+
+        myApp.app.apiToken.currentPage = item.xtype;
+
+        if (item.xtype == "questionsform" || item.xtype == "multiplequestion") {
             this.showEditButton();
         }
         else
@@ -47,6 +51,8 @@ Ext.define('myApp.controller.Login', {
         console.log('at pop');
         console.log(item.xtype);
 
+        myApp.app.apiToken.currentPage = item.xtype;
+
         if(item.xtype == "multiplequestion")
             this.showEditButton();
         else
@@ -58,8 +64,9 @@ Ext.define('myApp.controller.Login', {
     onContactEdit: function(button) {
         console.log("on next button pressed");
         console.log(this);
+        console.log(myApp.app.apiToken.currentPage);
 
-        if (!this.questionForm) {
+        if (myApp.app.apiToken.currentPage == "questionsform") {
             this.multipleQuestion = Ext.create('myApp.view.MultipleQuestion');
 
             var frmItems = this.getQForm().getItems();
@@ -75,7 +82,16 @@ Ext.define('myApp.controller.Login', {
             console.log(myApp.app.apiToken.question4);
 
             this.getLoginView().push(this.multipleQuestion);
+
         }
+        else if (myApp.app.apiToken.currentPage == "multiplequestion")
+        {
+
+            this.imageUpload = Ext.create('myApp.view.ImageUploadForm');
+            this.getLoginView().push(this.imageUpload);
+        }
+
+
         /*
         else if (this.multipleQuestion)
         {
@@ -85,8 +101,6 @@ Ext.define('myApp.controller.Login', {
         }*/
 
     },
-
-
 
     showEditButton: function() {
         var editButton = this.getEditButton();

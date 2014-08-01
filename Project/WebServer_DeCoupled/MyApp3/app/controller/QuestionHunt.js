@@ -1,5 +1,6 @@
 function QuestionHunt()
 {
+    this.currentPage = "";
     this.huntName  = "";
     this.huntX1    = 0.0;
     this.huntX2    = 0.0;
