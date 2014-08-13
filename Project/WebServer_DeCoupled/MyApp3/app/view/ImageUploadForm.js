@@ -98,11 +98,3 @@ Ext.define('myApp.view.ImageUploadForm', {
 
 });
 
-/*
-Ext.ComponentQuery.query('loginform')[0].getNavigationBar().add({
-    xtype:'button',
-    text:'Right',
-    align:'right'
-});
-*/
-

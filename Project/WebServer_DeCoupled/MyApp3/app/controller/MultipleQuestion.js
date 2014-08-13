@@ -28,9 +28,4 @@ Ext.define('myApp.controller.MultipleQuestion', {
 
 
 
-    onContactEdit: function(view) {
-        console.log("IM IN HERE");
-    },
-
-
 });

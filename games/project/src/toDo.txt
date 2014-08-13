@@ -2,7 +2,7 @@
 - increase hardness of the level based on scores & level? 2 levels are enough. (Done)
 - display indication to next level. (background changes)
 - upgrade weapons both enemies and cannons (item drop reset if u take it again). (done)
-- Mothership deployment.
+- Mothership deployment. (Done)
 - make Item missile upgrade and score(money). (DONE)
 
 - think about project.

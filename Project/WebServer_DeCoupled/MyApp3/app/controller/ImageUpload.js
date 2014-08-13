@@ -55,11 +55,10 @@ Ext.define('myApp.controller.ImageUpload', {
        console.log(this.getUploadBtn());
 
         var view = this.getImageUploadView();
-        view.parent.pop();
 
 
-       //console.log(naView);
-       // this.pop();
+        view.parent.pop(2);
+        myApp.app.apiToken.currentPage = "success";
     },
 
     onFileUploadFailure: function(message) {

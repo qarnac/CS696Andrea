@@ -1,3 +1,6 @@
+// Dev: Andrea Tan
+// desc: alien game!!!
+
 function Game()
 {
 	this.aliens = [];

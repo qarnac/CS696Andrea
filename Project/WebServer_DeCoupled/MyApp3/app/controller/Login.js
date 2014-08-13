@@ -8,7 +8,8 @@ Ext.define('myApp.controller.Login', {
             questionForm: 'questionsform',
             qForm: '#questionsform',
             imageUpload: 'imageuploadform',
-            multipleQuestion: 'multiplequestion'
+            multipleQuestion: 'multiplequestion',
+            mQuestions: '#multiplequestion'
         },
         control: {
             loginView: {
@@ -19,11 +20,7 @@ Ext.define('myApp.controller.Login', {
 
             editButton: {
                 tap: 'onContactEdit'
-            },
-
-            //mainMenuView: {
-            //    onSignOffCommand: 'onSignOffCommand'
-            //}
+            }
         }
     },
 
@@ -32,9 +29,28 @@ Ext.define('myApp.controller.Login', {
 
         var editButton = this.getEditButton();
 
-        console.log(item.xtype);
-
         myApp.app.apiToken.currentPage = item.xtype;
+
+        if(item.xtype == "multiplequestion")
+        {
+            console.log("IM HERE");
+            console.log(myApp.app.apiToken.multipleChoice);
+            Ext.ComponentQuery.query('#mq')[0].setValue(myApp.app.apiToken.multipleChoice);
+            Ext.ComponentQuery.query('#qa')[0].setValue(myApp.app.apiToken.answerA);
+            Ext.ComponentQuery.query('#qb')[0].setValue(myApp.app.apiToken.answerB);
+            Ext.ComponentQuery.query('#qc')[0].setValue(myApp.app.apiToken.answerC);
+            Ext.ComponentQuery.query('#qd')[0].setValue(myApp.app.apiToken.answerD);
+            Ext.ComponentQuery.query('#qe')[0].setValue(myApp.app.apiToken.answerE);
+            Ext.ComponentQuery.query('#qSelect')[0].setValue(myApp.app.apiToken.correctAnswer);
+
+        }
+        else if (item.xtype == "questionsform")
+        {
+
+        }
+
+
+
 
         if (item.xtype == "questionsform" || item.xtype == "multiplequestion") {
             this.showEditButton();
@@ -51,15 +67,46 @@ Ext.define('myApp.controller.Login', {
         console.log('at pop');
         console.log(item.xtype);
 
-        if(item.xtype == "imageuploadform")
-            myApp.app.apiToken.currentPage = "multiplequestion";
-        else if (item.xtype == "multiplequestion")
+
+        if(myApp.app.apiToken.currentPage == "success" && item.xtype == "imageuploadform")
             myApp.app.apiToken.currentPage = "questionsform";
 
-        if(item.xtype == "multiplequestion" || item.xtype == "imageuploadform")
-            this.showEditButton();
-        else
+        else if(item.xtype == "imageuploadform")
+        {
+            myApp.app.apiToken.currentPage = "multiplequestion";
+        }
+
+        else if (item.xtype == "multiplequestion")
+        {
+
+            myApp.app.apiToken.multipleChoice = Ext.ComponentQuery.query('#mq')[0]._value;
+            myApp.app.apiToken.answerA = Ext.ComponentQuery.query('#qa')[0]._value;
+            myApp.app.apiToken.answerB = Ext.ComponentQuery.query('#qb')[0]._value;
+            myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
+            myApp.app.apiToken.answerD = Ext.ComponentQuery.query('#qd')[0]._value;
+            myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
+
+            myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value.data.value;
+
+            console.log(myApp.app.apiToken.multipleChoice);
+
+            myApp.app.apiToken.currentPage = "questionsform";
+        }
+
+        console.log(myApp.app.apiToken.currentPage);
+
+        if( item.xtype == "questionsform" && myApp.app.apiToken.currentPage == "questionsform")
+        {
             this.hideEditButton();
+        }
+        else
+        {
+            if( myApp.app.apiToken.currentPage == "questionsform" ||
+                myApp.app.apiToken.currentPage == "multiplequestion")
+                this.showEditButton();
+            else
+                this.hideEditButton();
+        }
 
     },
 
@@ -93,15 +140,6 @@ Ext.define('myApp.controller.Login', {
             this.imageUpload = Ext.create('myApp.view.ImageUploadForm');
             this.getLoginView().push(this.imageUpload);
         }
-
-
-        /*
-        else if (this.multipleQuestion)
-        {
-            this.imageUpload = Ext.create('myApp.view.ImageUpload');
-
-            this.getLoginView().push(this.imageUpload);
-        }*/
 
     },
 

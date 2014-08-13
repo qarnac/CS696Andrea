@@ -10,7 +10,8 @@ Ext.define('myApp.view.MultipleQuestion', {
         'Ext.form.FieldSet',
         'Ext.field.Toggle',
         'Ext.util.DelayedTask',
-        'Ext.field.Radio'
+        'Ext.field.Radio',
+        'Ext.field.Select'
     ],
 
     config: {
@@ -26,6 +27,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                 {
                     xtype: 'textareafield',
                     label: 'Multiple choice question text?',
+                    id: 'mq',
                     labelAlign: 'top',
                     maxRows: 4,
                     name: 'q1',
@@ -34,6 +36,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                 }, {
                     xtype: 'textfield',
                     label: 'answer a:',
+                    id: 'qa',
                     labelWidth: '30%',
                     name: 'a',
                     placeHolder: 'Enter answer a',
@@ -41,6 +44,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                 }, {
                     xtype: 'textfield',
                     label: 'answer b:',
+                    id: 'qb',
                     labelWidth: '30%',
                     name: 'b',
                     placeHolder: 'Enter answer b',
@@ -48,6 +52,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                 }, {
                     xtype: 'textfield',
                     label: 'answer c:',
+                    id: 'qc',
                     labelWidth: '30%',
                     name: 'c',
                     placeHolder: 'Enter answer c',
@@ -56,6 +61,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                 {
                     xtype: 'textfield',
                     label: 'answer d:',
+                    id: 'qd',
                     labelWidth: '30%',
                     name: 'd',
                     placeHolder: 'Enter answer d',
@@ -64,6 +70,7 @@ Ext.define('myApp.view.MultipleQuestion', {
                 {
                     xtype: 'textfield',
                     label: 'answer e:',
+                    id: 'qe',
                     labelWidth: '30%',
                     name: 'e',
                     placeHolder: 'Enter answer e',
@@ -72,7 +79,9 @@ Ext.define('myApp.view.MultipleQuestion', {
                 {
                     xtype: 'fieldset',
                     title: 'Select correct answer',
+
                     items: [{
+                        id: 'qSelect',
                         xtype: 'selectfield',
                         options:[
                             {
