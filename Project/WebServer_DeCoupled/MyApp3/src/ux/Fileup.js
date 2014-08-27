@@ -637,9 +637,6 @@ Ext.define('Ext.ux.Fileup', {
 
                         var response = me.decodeResponse(this);
 
-                        console.log("this");
-                        console.log(this);
-                        console.log(me);
 
                         if (response && response.success) {
                             // Success
@@ -674,15 +671,19 @@ Ext.define('Ext.ux.Fileup', {
         console.log('me.getUrl');
         console.log(me.getUrl());
 
-        if (me.getSignRequestEnabled()) {
-
+        if (me.getSignRequestEnabled())
+        {
             // Sign the request and then send.
-            me.signRequest(http, function(http) {
+            me.signRequest(http, function(http)
+            {
+                // Send the form.
+                http.send(me.getForm(file));
 
-              // Send the form.
-              http.send(me.getForm(file));
             });
-        } else {
+
+        }
+        else
+        {
             http.send(me.getForm(file));
             console.log('in sending ')
         }
@@ -698,13 +699,33 @@ Ext.define('Ext.ux.Fileup', {
     getForm: function(file) {
         // Create FormData object
         var form = new FormData();
-        //var loc = new Object();
+        console.log(myApp.app.apiToken);
 
         form.append("username", "Groucho");
         form.append("accountnum", 123456); // number 123456 is immediately converted to string "123456"
 
         // Add selected file to form
         form.append(this.getName(), file);
+
+        var result = {
+                "partners" : myApp.app.apiToken.partners,
+                "url" : myApp.app.apiToken.url,
+                "question1"  : myApp.app.apiToken.question1,
+                "question2" : myApp.app.apiToken.question2,
+                "question3" : myApp.app.apiToken.question3,
+                "multipleQuestion" : myApp.app.apiToken.multipleChoice,
+                "multipleChoiceAnswerA" : myApp.app.apiToken.answerA,
+                "multipleChoiceAnswerB" : myApp.app.apiToken.answerB,
+                "multipleChoiceAnswerC"  : myApp.app.apiToken.answerC,
+                "multipleChoiceAnswerD" : myApp.app.apiToken.answerD,
+                "multipleChoiceAnswerE" : myApp.app.apiToken.answerE,
+                "multipleChoiceCorrectAnswer" : myApp.app.apiToken.correctAnswer
+
+        }; // End Employees
+
+        result = JSON.stringify(result);
+
+        form.append("info", result);
 
         // Return the form.
         return form;

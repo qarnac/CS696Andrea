@@ -2,19 +2,23 @@ function QuestionHunt()
 {
     this.currentPage = "";
     this.huntName  = "";
-    this.huntX1    = 0.0;
-    this.huntX2    = 0.0;
-    this.huntY1    = 0.0;
-    this.huntY2    = 0.0;
+    this.huntX1    = 0.0; //rectangle stuff
+    this.huntX2    = 0.0; //rectangle stuff
+    this.huntY1    = 0.0; //rectangle stuff
+    this.huntY2    = 0.0; //rectangle stuff
+
+
+    this.partners  = "";
+    this.url       = "";
 
     this.question1 = "";
     this.question2 = "";
     this.question3 = "";
-    this.question4 = "";
 
-    this.dataBlob = null;
-    this.gpsLat = 0.0;
-    this.gpsLng = 0.0;
+
+    this.dataBlob = null; // for picture
+    this.gpsLat = 0.0; // user lat
+    this.gpsLng = 0.0; // user lng
 
     this.multipleChoice = "";
     this.answerA = "";

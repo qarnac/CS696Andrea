@@ -121,15 +121,17 @@ Ext.define('myApp.controller.Login', {
 
             var frmItems = this.getQForm().getItems();
 
-            myApp.app.apiToken.question1 =  frmItems.items[0]._items.items[0]._value;
-            myApp.app.apiToken.question2 =  frmItems.items[0]._items.items[1]._value;
-            myApp.app.apiToken.question3 =  frmItems.items[0]._items.items[2]._value;
-            myApp.app.apiToken.question4 =  frmItems.items[0]._items.items[3]._value;
+            myApp.app.apiToken.partners =  frmItems.items[0]._items.items[0]._value;
+            myApp.app.apiToken.url =  frmItems.items[0]._items.items[1]._value;
+            myApp.app.apiToken.question1 =  frmItems.items[0]._items.items[2]._value;
+            myApp.app.apiToken.question2 =  frmItems.items[0]._items.items[3]._value;
+            myApp.app.apiToken.question2 =  frmItems.items[0]._items.items[4]._value;
 
+            console.log(myApp.app.apiToken.partners);
+            console.log(myApp.app.apiToken.url);
             console.log(myApp.app.apiToken.question1);
             console.log(myApp.app.apiToken.question2);
             console.log(myApp.app.apiToken.question3);
-            console.log(myApp.app.apiToken.question4);
 
             this.getLoginView().push(this.multipleQuestion);
 

@@ -1,6 +1,7 @@
 <?php
 
 include_once('./SimpleImage.php');
+include_once('./UpdateActivity.php');
 require('./cyberScavengerAPIAdmin.php');
 
 $uploaddir = '../../images/';//your-path-to-upload
@@ -63,7 +64,15 @@ try {
         $response->success = false;
         $response->message = $errMessage;
 
-    } else {    
+    } else {  
+	
+		//print_r($_FILES['userfile']);
+		$obj = $_POST['info'];
+		$obj = str_replace('\\',"",$obj);
+		$obj  = json_decode($obj, true);
+		//print($json['countryId']."\n");
+		//print($obj['partners']."\n");
+	
         //$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 		$str = basename($_FILES['userfile']['tmp_name']);
 		$res = strtok($str, "/");
@@ -76,11 +85,11 @@ try {
             //function used from https://www.apptha.com/blog/how-to-reduce-image-file-size-while-uploading-using-php-code/
 
 			//$image = new SimpleImage();
+			updateActivity($con, $obj);
 			
 			//Now DataBase Part
 			//Do insertion then update ID
 			insertImage($con, $uploadfile);
-		
 
             $response->success = true;
         } else {

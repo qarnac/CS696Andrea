@@ -28,30 +28,38 @@ Ext.define('myApp.view.QuestionsForm', {
 
             items: [{
                 xtype: 'textareafield',
-                label: 'What is this question about?',
+                label: 'Who are the partners in this group?',
                 labelAlign: 'top',
                 maxRows: 4,
-                name: 'q1',
+                name: 'partners',
                 labelWrap : true
             }, {
                 xtype: 'textareafield',
-                label: 'How does this picture show what you\'ve learned in class?',
+                label: 'Do you have an interesting link related to this article?',
                 maxRows: 4,
-                name: 'q2',
+                name: 'url',
                 labelAlign: 'top',
                 labelWrap : true
             }, {
                 xtype: 'textareafield',
                 label: 'What does this picture explain?',
                 maxRows: 4,
-                name: 'q3',
+                name: 'q1',
                 labelAlign: 'top',
                 labelWrap : true
             }, {
                 xtype: 'textareafield',
                 label: 'What question do you have about this picture?',
                 maxRows: 4,
-                name: 'q4',
+                name: 'q2',
+                labelAlign: 'top',
+                labelWrap : true
+            },
+            {
+                xtype: 'textareafield',
+                label: 'What do you want people to focus on this picture',
+                maxRows: 4,
+                name: 'q3',
                 labelAlign: 'top',
                 labelWrap : true
             }]

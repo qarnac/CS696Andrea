@@ -11,7 +11,6 @@ require('./cyberScavengerAPIAdmin.php');
 		$sqlStmt = "INSERT INTO image(images) VALUES ('".$imageFilename."')";
 		$id = "";
 		
-
 		if ( $result = $con->query($sqlStmt) )
 		{
 			$last_id = 0;

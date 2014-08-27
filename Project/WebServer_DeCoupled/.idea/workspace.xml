@@ -26,7 +26,7 @@
       <file leaf-file-name="QuestionHunt.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="23" selection-start="366" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1190">
+            <state line="18" column="22" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="MultipleQuestion.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="39" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0" vertical-offset="1037" max-vertical-offset="2040">
+            <state line="61" column="39" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2040">
               <folding />
             </state>
           </provider>
@@ -44,8 +44,19 @@
       <file leaf-file-name="ImageUpload.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="23" selection-start="1009" selection-end="1028" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1700">
+            <state line="66" column="38" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0" vertical-offset="803" max-vertical-offset="1700">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fileup.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="716" column="37" selection-start="20861" selection-end="20861" vertical-scroll-proportion="0.3411371" vertical-offset="11866" max-vertical-offset="13634">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,16 +64,25 @@
       <file leaf-file-name="Login.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="12" selection-start="1843" selection-end="1843" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="4675">
+            <state line="123" column="84" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.0" vertical-offset="1602" max-vertical-offset="4709">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageUploadForm.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ImageUploadForm.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="30" selection-start="980" selection-end="1001" vertical-scroll-proportion="0.37458193" vertical-offset="446" max-vertical-offset="1802">
+            <state line="33" column="31" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1802">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuestionsForm.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="31" selection-start="760" selection-end="768" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1258">
               <folding />
             </state>
           </provider>
@@ -100,22 +120,22 @@
         <option value="$PROJECT_DIR$/MyApp3/app/model/Markers.js" />
         <option value="$PROJECT_DIR$/MyApp3/src/php/getfile.php" />
         <option value="$PROJECT_DIR$/MyApp3/src/php/SimpleImage.php" />
-        <option value="$PROJECT_DIR$/MyApp3/src/ux/Fileup.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/Main.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/Login.js" />
         <option value="$PROJECT_DIR$/MyApp3/app.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/MultipleQuestion.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js" />
-        <option value="$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js" />
-        <option value="$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js" />
+        <option value="$PROJECT_DIR$/MyApp3/src/ux/Fileup.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/Login.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-1928" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -168,7 +188,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,6 +217,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="MyApp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebServer_DeCoupled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebServer_DeCoupled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ux" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebServer_DeCoupled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebServer_DeCoupled" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyApp3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -265,6 +324,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -279,14 +339,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -297,15 +349,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -344,14 +404,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13697916" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13489583" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17348608" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -359,11 +419,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32502708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32502708" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -539,11 +599,6 @@
         <state line="14" column="8" selection-start="252" selection-end="265" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="384" column="13" selection-start="10170" selection-end="10170" vertical-scroll-proportion="0.0" vertical-offset="5304" max-vertical-offset="12104" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="50" selection-start="1352" selection-end="1354" vertical-scroll-proportion="-1.1859931" vertical-offset="1526" max-vertical-offset="2397" />
@@ -604,11 +659,6 @@
         <state line="19" column="14" selection-start="501" selection-end="501" vertical-scroll-proportion="0.36008918" vertical-offset="0" max-vertical-offset="897" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="31" selection-start="381" selection-end="381" vertical-scroll-proportion="0.20847268" vertical-offset="153" max-vertical-offset="1122" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="9" selection-start="171" selection-end="171" vertical-scroll-proportion="0.17056856" vertical-offset="0" max-vertical-offset="897" />
@@ -619,9 +669,16 @@
         <state line="5" column="13" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="23" selection-start="366" selection-end="380" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+        <state line="33" column="31" selection-start="601" selection-end="601" vertical-scroll-proportion="0.0" vertical-offset="395" max-vertical-offset="1802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="38" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0" vertical-offset="803" max-vertical-offset="1700">
           <folding />
         </state>
       </provider>
@@ -633,24 +690,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="31" selection-start="760" selection-end="768" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="22" selection-start="406" selection-end="406" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1258">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="12" selection-start="1843" selection-end="1843" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="4675">
+        <state line="123" column="84" selection-start="4050" selection-end="4050" vertical-scroll-proportion="0.0" vertical-offset="1602" max-vertical-offset="4709">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="23" selection-start="1009" selection-end="1028" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1700">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="30" selection-start="980" selection-end="1001" vertical-scroll-proportion="0.37458193" vertical-offset="446" max-vertical-offset="1802">
-          <folding />
+        <state line="716" column="37" selection-start="20861" selection-end="20861" vertical-scroll-proportion="0.3411371" vertical-offset="11866" max-vertical-offset="13634">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
