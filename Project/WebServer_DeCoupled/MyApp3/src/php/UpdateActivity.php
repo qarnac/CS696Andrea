@@ -1,7 +1,7 @@
 <?php
 require('./cyberScavengerAPIAdmin.php');
 
-	function updateActivity($con, $obj)
+	function updateActivity($con, $obj, $mediaID)
 	{
 
 		$answera = $obj['answera'];
@@ -13,11 +13,20 @@ require('./cyberScavengerAPIAdmin.php');
 		
 		//print $additionalAnswers;
 		
-		$sqlStmt = "UPDATE stud_activity SET additionalAnswers='".$additionalAnswers."'" .
-				   " status=" . '"' . "unverified" . '"' .
-				   ", interesting_url=" . '"' . $obj[''] . '"' .
-				   ", mquestion=". '"' . $obj['multipleQuestion'] . '"' .	   
-		           " WHERE id='22'";
+		$sqlStmt = "UPDATE into stud_activity SET partner_names='".  $obj['partners'] . "'" .
+					", student_id=" . "'" . '22' . "'" .  // student id is harcoded for now
+					", hunt_id=" . "'" . '22' . "'"  .    // hunt id is harcoded for now
+					", media='image.php'" .
+					", media_id='" . $mediaID . "'" .
+					", created='" . date('Y-m-d H:i:s') .
+					", interesting_url=" . "'" .$obj['url'] . "'" .
+					", additionalAnswers=" . "'" .$additionalAnswers . "'" .
+					", status=" . '"' . "unverified" . '"' .
+					", lat='" . $obj['lat'] .
+					", lng='" . $obj['lng']. 
+					", mquestion=". '"' . $obj['multipleQuestion'] . '"' .	
+					", partner_names='" . $obj['partners'] . '"' .				
+					" WHERE id='22'";						// id hardcoded for now
 				   
 		/*
 		mysql_query("UPDATE stud_activity" .
@@ -29,6 +38,8 @@ require('./cyberScavengerAPIAdmin.php');
 			", interesting_url=" . '"' . mysql_escape_string($content->interesting_url) . '"' . // question 1
 			" WHERE  `id` = " . mysql_escape_string($content->id) . ";") or die(mysql_error());
 		*/
+		
+		print $sqlStmt;
 		
 	}
 	

@@ -7,14 +7,12 @@ function QuestionHunt()
     this.huntY1    = 0.0; //rectangle stuff
     this.huntY2    = 0.0; //rectangle stuff
 
-
     this.partners  = "";
     this.url       = "";
 
-    this.question1 = "";
-    this.question2 = "";
-    this.question3 = "";
-
+    this.answerQuestion1 = "";
+    this.answerQuestion2 = "";
+    this.answerQuestion3 = "";
 
     this.dataBlob = null; // for picture
     this.gpsLat = 0.0; // user lat

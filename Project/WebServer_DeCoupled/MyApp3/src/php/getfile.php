@@ -85,11 +85,12 @@ try {
             //function used from https://www.apptha.com/blog/how-to-reduce-image-file-size-while-uploading-using-php-code/
 
 			//$image = new SimpleImage();
-			updateActivity($con, $obj);
 			
 			//Now DataBase Part
 			//Do insertion then update ID
-			insertImage($con, $uploadfile);
+			$mediaID = insertImage($con, $uploadfile);
+			
+			updateActivity($con, $obj, $mediaID);
 
             $response->success = true;
         } else {

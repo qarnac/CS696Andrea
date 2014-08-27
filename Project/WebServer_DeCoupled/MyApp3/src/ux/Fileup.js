@@ -708,11 +708,14 @@ Ext.define('Ext.ux.Fileup', {
         form.append(this.getName(), file);
 
         var result = {
+                'huntID' : myApp.app.apiToken.huntName,
                 "partners" : myApp.app.apiToken.partners,
                 "url" : myApp.app.apiToken.url,
-                "question1"  : myApp.app.apiToken.question1,
-                "question2" : myApp.app.apiToken.question2,
-                "question3" : myApp.app.apiToken.question3,
+                'lat' : myApp.app.apiToken.gpsLat,
+                'lng' : myApp.app.apiToken.gpsLng,
+                "answerQuestion1"  : myApp.app.apiToken.answerQuestion1,
+                "answerQuestion2" : myApp.app.apiToken.answerQuestion2,
+                "answerQuestion3" : myApp.app.apiToken.answerQuestion3,
                 "multipleQuestion" : myApp.app.apiToken.multipleChoice,
                 "multipleChoiceAnswerA" : myApp.app.apiToken.answerA,
                 "multipleChoiceAnswerB" : myApp.app.apiToken.answerB,
