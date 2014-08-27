@@ -4,29 +4,42 @@ require('./cyberScavengerAPIAdmin.php');
 	function updateActivity($con, $obj, $mediaID)
 	{
 
-		$answera = $obj['answera'];
-		$answerb = $obj['answerb'];
-		$answerc = $obj['answerc'];
+		$answera = $obj['answerQuestion1'];
+		$answerb = $obj['answerQuestion2'];
+		$answerc = $obj['answerQuestion3'];
 	
 		$additionalAnswers = array("answera"=>$answera, "answerb"=>$answerb, "answerc"=>$answerc);
 		$additionalAnswers = json_encode($additionalAnswers);
 		
 		//print $additionalAnswers;
 		
-		$sqlStmt = "UPDATE into stud_activity SET partner_names='".  $obj['partners'] . "'" .
+		$sqlStmt = "UPDATE stud_activity SET partner_names='".  $obj['partners'] . "'" .
 					", student_id=" . "'" . '22' . "'" .  // student id is harcoded for now
 					", hunt_id=" . "'" . '22' . "'"  .    // hunt id is harcoded for now
 					", media='image.php'" .
 					", media_id='" . $mediaID . "'" .
-					", created='" . date('Y-m-d H:i:s') .
+					", created='" . date('Y-m-d H:i:s') . "'" .
 					", interesting_url=" . "'" .$obj['url'] . "'" .
 					", additionalAnswers=" . "'" .$additionalAnswers . "'" .
-					", status=" . '"' . "unverified" . '"' .
-					", lat='" . $obj['lat'] .
-					", lng='" . $obj['lng']. 
-					", mquestion=". '"' . $obj['multipleQuestion'] . '"' .	
-					", partner_names='" . $obj['partners'] . '"' .				
+					", status=" . "'" . "unverified" . "'" .
+					", lat='" . $obj['lat'] . "'" .
+					", lng='" . $obj['lng'] . "'" .
+					", mquestion=". "'" . $obj['multipleQuestion'] . "'" .	
+					", partner_names='" . $obj['partners'] . "'" .				
 					" WHERE id='22'";						// id hardcoded for now
+					
+		//print $sqlStmt;
+				   
+		$result = $con->query($sqlStmt);
+
+		
+		if(! $result )
+		{
+			header('Content-Type: application/json; charset=utf-8');
+			//die (json_encode($response);
+			die('Could not update data: ' . mysql_error());
+		}		
+					
 				   
 		/*
 		mysql_query("UPDATE stud_activity" .
@@ -39,7 +52,7 @@ require('./cyberScavengerAPIAdmin.php');
 			" WHERE  `id` = " . mysql_escape_string($content->id) . ";") or die(mysql_error());
 		*/
 		
-		print $sqlStmt;
+
 		
 	}
 	
