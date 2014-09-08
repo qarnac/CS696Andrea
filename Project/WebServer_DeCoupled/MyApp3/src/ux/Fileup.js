@@ -707,6 +707,9 @@ Ext.define('Ext.ux.Fileup', {
         // Add selected file to form
         form.append(this.getName(), file);
 
+        console.log(myApp.app.apiToken.qMultiple);
+        console.log(myApp.app.apiToken);
+
         var result = {
                 'huntID' : myApp.app.apiToken.huntName,
                 "partners" : myApp.app.apiToken.partners,
@@ -716,7 +719,7 @@ Ext.define('Ext.ux.Fileup', {
                 "answerQuestion1"  : myApp.app.apiToken.answerQuestion1,
                 "answerQuestion2" : myApp.app.apiToken.answerQuestion2,
                 "answerQuestion3" : myApp.app.apiToken.answerQuestion3,
-                "multipleQuestion" : myApp.app.apiToken.multipleChoice,
+                "multipleQ" : myApp.app.apiToken.qMultiple,
                 "multipleChoiceAnswerA" : myApp.app.apiToken.answerA,
                 "multipleChoiceAnswerB" : myApp.app.apiToken.answerB,
                 "multipleChoiceAnswerC"  : myApp.app.apiToken.answerC,

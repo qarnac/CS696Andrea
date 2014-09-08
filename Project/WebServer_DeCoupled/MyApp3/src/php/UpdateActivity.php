@@ -24,7 +24,7 @@ require('./cyberScavengerAPIAdmin.php');
 					", status=" . "'" . "unverified" . "'" .
 					", lat='" . $obj['lat'] . "'" .
 					", lng='" . $obj['lng'] . "'" .
-					", mquestion=". "'" . $obj['multipleQuestion'] . "'" .	
+					", mquestion=". "'" . $obj['multipleQ'] . "'" .	
 					", partner_names='" . $obj['partners'] . "'" .				
 					" WHERE id='22'";						// id hardcoded for now
 					

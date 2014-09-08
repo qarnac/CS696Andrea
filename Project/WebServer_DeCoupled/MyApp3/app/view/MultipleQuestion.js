@@ -28,9 +28,9 @@ Ext.define('myApp.view.MultipleQuestion', {
                     xtype: 'textareafield',
                     label: 'Multiple choice question text?',
                     id: 'mq',
-                    labelAlign: 'top',
                     maxRows: 4,
-                    name: 'q1',
+                    labelAlign: 'top',
+                    name: 'mq',
                     placeHolder: 'Please put your question here',
                     labelWrap : true
                 }, {

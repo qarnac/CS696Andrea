@@ -24,12 +24,11 @@ require('./cyberScavengerAPIAdmin.php');
 			{
 				die('Could not update data: ' . mysql_error());
 			}
-
 			
 			rename($imageFilename, "./../../images/".$last_id.".jpeg");
-
+						
+			$id = (string) $last_id;
 		}
-
 		return $id;
 	}
 	

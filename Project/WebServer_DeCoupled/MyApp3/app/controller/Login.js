@@ -33,9 +33,7 @@ Ext.define('myApp.controller.Login', {
 
         if(item.xtype == "multiplequestion")
         {
-            console.log("IM HERE");
-            console.log(myApp.app.apiToken.multipleChoice);
-            Ext.ComponentQuery.query('#mq')[0].setValue(myApp.app.apiToken.multipleChoice);
+            Ext.ComponentQuery.query('#mq')[0].setValue(myApp.app.apiToken.qMultiple);
             Ext.ComponentQuery.query('#qa')[0].setValue(myApp.app.apiToken.answerA);
             Ext.ComponentQuery.query('#qb')[0].setValue(myApp.app.apiToken.answerB);
             Ext.ComponentQuery.query('#qc')[0].setValue(myApp.app.apiToken.answerC);
@@ -43,9 +41,10 @@ Ext.define('myApp.controller.Login', {
             Ext.ComponentQuery.query('#qe')[0].setValue(myApp.app.apiToken.answerE);
             Ext.ComponentQuery.query('#qSelect')[0].setValue(myApp.app.apiToken.correctAnswer);
 
-        }
-        else if (item.xtype == "questionsform")
-        {
+
+            console.log("on push");
+            console.log(myApp.app.apiToken.qMultiple);
+            console.log(myApp.app.apiToken.answerA);
 
         }
 
@@ -78,8 +77,8 @@ Ext.define('myApp.controller.Login', {
 
         else if (item.xtype == "multiplequestion")
         {
-
-            myApp.app.apiToken.multipleChoice = Ext.ComponentQuery.query('#mq')[0]._value;
+            var mulQuestion = Ext.ComponentQuery.query('#mq')[0]._value;
+            myApp.app.apiToken.qMultiple = mulQuestion;
             myApp.app.apiToken.answerA = Ext.ComponentQuery.query('#qa')[0]._value;
             myApp.app.apiToken.answerB = Ext.ComponentQuery.query('#qb')[0]._value;
             myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
@@ -87,8 +86,6 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
 
             myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value.data.value;
-
-            console.log(myApp.app.apiToken.multipleChoice);
 
             myApp.app.apiToken.currentPage = "questionsform";
         }

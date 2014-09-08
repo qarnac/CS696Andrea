@@ -37,7 +37,9 @@ Ext.define('myApp.controller.ImageUpload', {
     },
 
     launch: function() {
-        console.log('Image upload controller')
+        console.log('Image upload controller');
+
+        console.log(myApp.app.apiToken.qMultiple);
     },
 
     onFileUploadSuccess: function(status,response, e, file) {

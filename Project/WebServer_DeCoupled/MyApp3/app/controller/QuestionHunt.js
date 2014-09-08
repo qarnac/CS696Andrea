@@ -2,10 +2,6 @@ function QuestionHunt()
 {
     this.currentPage = "";
     this.huntName  = "";
-    this.huntX1    = 0.0; //rectangle stuff
-    this.huntX2    = 0.0; //rectangle stuff
-    this.huntY1    = 0.0; //rectangle stuff
-    this.huntY2    = 0.0; //rectangle stuff
 
     this.partners  = "";
     this.url       = "";
@@ -14,11 +10,7 @@ function QuestionHunt()
     this.answerQuestion2 = "";
     this.answerQuestion3 = "";
 
-    this.dataBlob = null; // for picture
-    this.gpsLat = 0.0; // user lat
-    this.gpsLng = 0.0; // user lng
-
-    this.multipleChoice = "";
+    this.qMultiple = "";
     this.answerA = "";
     this.answerB = "";
     this.answerC = "";
@@ -26,11 +18,21 @@ function QuestionHunt()
     this.answerE = "";
     this.correctAnswer = "";
 
+    this.dataBlob = null; // for picture
+    this.gpsLat = 0.0; // user lat
+    this.gpsLng = 0.0; // user lng
+
+    this.huntX1    = 0.0; //rectangle stuff
+    this.huntX2    = 0.0; //rectangle stuff
+    this.huntY1    = 0.0; //rectangle stuff
+    this.huntY2    = 0.0; //rectangle stuff
+
 }
 
+/*
 QuestionHunt.prototype.clearAll = function()
 {
-    /*
+
     currentPage = "";
     huntName  = "";
     huntX1    = 0.0;
@@ -54,8 +56,9 @@ QuestionHunt.prototype.clearAll = function()
     answerD = "";
     answerE = "";
     correctAnswer = "";
-    */
+
 }
+*/
 
 
 
