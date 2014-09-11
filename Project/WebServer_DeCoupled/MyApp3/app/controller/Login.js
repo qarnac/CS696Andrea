@@ -47,9 +47,16 @@ Ext.define('myApp.controller.Login', {
             console.log(myApp.app.apiToken.answerA);
 
         }
-
-
-
+        else if(item.xtype == "imageuploadform")
+        {
+            console.log("in image upload form");
+            myApp.app.apiToken.qMultiple = Ext.ComponentQuery.query('#mq')[0]._value;
+            myApp.app.apiToken.answerA = Ext.ComponentQuery.query('#qa')[0]._value;
+            myApp.app.apiToken.answerB = Ext.ComponentQuery.query('#qb')[0]._value;
+            myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
+            myApp.app.apiToken.answerD = Ext.ComponentQuery.query('#qd')[0]._value;
+            myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
+        }
 
         if (item.xtype == "questionsform" || item.xtype == "multiplequestion") {
             this.showEditButton();
@@ -68,7 +75,17 @@ Ext.define('myApp.controller.Login', {
 
 
         if(myApp.app.apiToken.currentPage == "success" && item.xtype == "imageuploadform")
+        {
             myApp.app.apiToken.currentPage = "questionsform";
+
+            console.log("success");
+            console.log(myApp.app.apiToken.partners);
+            console.log(myApp.app.apiToken.url);
+            console.log(myApp.app.apiToken.answerQuestion1);
+            console.log(myApp.app.apiToken.answerQuestion2);
+            console.log(myApp.app.apiToken.answerQuestion3);
+
+        }
 
         else if(item.xtype == "imageuploadform")
         {
@@ -77,13 +94,16 @@ Ext.define('myApp.controller.Login', {
 
         else if (item.xtype == "multiplequestion")
         {
-            var mulQuestion = Ext.ComponentQuery.query('#mq')[0]._value;
-            myApp.app.apiToken.qMultiple = mulQuestion;
+
+            console.log(Ext.ComponentQuery.query('#mq')[0]);
+
+            myApp.app.apiToken.qMultiple = Ext.ComponentQuery.query('#mq')[0]._value;
             myApp.app.apiToken.answerA = Ext.ComponentQuery.query('#qa')[0]._value;
             myApp.app.apiToken.answerB = Ext.ComponentQuery.query('#qb')[0]._value;
             myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
             myApp.app.apiToken.answerD = Ext.ComponentQuery.query('#qd')[0]._value;
             myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
+
 
             myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value.data.value;
 
@@ -205,7 +225,12 @@ Ext.define('myApp.controller.Login', {
 
             success: function (response) {
 
+                console.log(response);
+
+
                 var loginResponse = Ext.JSON.decode(response.responseText);
+
+                console.log(loginResponse);
 
                 if (loginResponse.success === true) {
                     // The server will send a token that can be used throughout the app to confirm that the user is authenticated.

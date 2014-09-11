@@ -53,11 +53,34 @@ Ext.define('myApp.controller.ImageUpload', {
             callback: Ext.emptyFn
         });
 
-       console.log(this);
-       console.log(this.getUploadBtn());
+        console.log(this);
+        console.log(this.getUploadBtn());
 
         var view = this.getImageUploadView();
 
+        myApp.app.apiToken.partners  = "";
+        myApp.app.apiToken.url       = "";
+
+        myApp.app.apiToken.answerQuestion1 = "";
+        myApp.app.apiToken.answerQuestion2 = "";
+        myApp.app.apiToken.answerQuestion3 = "";
+
+        myApp.app.apiToken.qMultiple = "";
+        myApp.app.apiToken.answerA = "";
+        myApp.app.apiToken.answerB = "";
+        myApp.app.apiToken.answerC = "";
+        myApp.app.apiToken.answerD = "";
+        myApp.app.apiToken.answerE = "";
+        myApp.app.apiToken.correctAnswer = "";
+
+        myApp.app.apiToken.dataBlob = null; // for picture
+        myApp.app.apiToken.gpsLat = 0.0; // user lat
+        myApp.app.apiToken.gpsLng = 0.0; // user lng
+
+        myApp.app.apiToken.huntX1    = 0.0; //rectangle stuff
+        myApp.app.apiToken.huntX2    = 0.0; //rectangle stuff
+        myApp.app.apiToken.huntY1    = 0.0; //rectangle stuff
+        myApp.app.apiToken.huntY2    = 0.0; //rectangle stuff
 
         view.parent.pop(2);
         myApp.app.apiToken.currentPage = "success";

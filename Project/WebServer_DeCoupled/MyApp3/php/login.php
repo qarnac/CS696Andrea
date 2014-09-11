@@ -1,9 +1,13 @@
 <?php
 	session_start();
 	require('cyberScavengerAPI.php');
+	require('queryForHuntInformation.php');
+	
 	
 	$loginUsername = $_POST["user"];
 	$loginPassword = $_POST["pwd"];
+	$lat = 0.0;
+	$lng = 0.0;
 	
 	//check if the param from sencha is there if it...
 	if (isset($loginUsername) && isset($loginPassword))
@@ -29,6 +33,19 @@
 		{
 			$returnedPassword = $result->fetch_array(MYSQLI_NUM);
 			
+			/*
+			example of returned arrayPassword
+			    [0] => id
+				[1] => first name
+				[2] => last name
+				[3] => 
+				[4] => 0
+				[5] => username
+				[6] => password
+				[7] => teacher id
+				[8] => parent hunt
+			*/
+			
 			if ($returnedPassword[6] != $loginPassword)
 			{
 				$errorMessage = 'Login failed - incorrect password';
@@ -37,11 +54,20 @@
 			}
 			else
 			{
+				$huntInfo = queryHuntInfo($con, $returnedPassword[0]);
+				
+				//print_r($huntInfo);
+				
+				//var $questions = json_decode($huntInfo[13]));
+				//vardump($questions,true);
+				//print "hunt info test\n";
+				//print_r(questions);
+				
 				$_SESSION['start'] = time(); // taking now logged in time
 				$_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
 				$_SESSION['loggedin'] = true;
 				$_SESSION['huntID'] = true;
-				echo "{success: true}";
+				print ("{success: true, hunt: $returnedPassword[8]}");
 			}
 			
 		}

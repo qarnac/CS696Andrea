@@ -707,9 +707,6 @@ Ext.define('Ext.ux.Fileup', {
         // Add selected file to form
         form.append(this.getName(), file);
 
-        console.log(myApp.app.apiToken.qMultiple);
-        console.log(myApp.app.apiToken);
-
         var result = {
                 'huntID' : myApp.app.apiToken.huntName,
                 "partners" : myApp.app.apiToken.partners,

@@ -29,37 +29,35 @@ function QuestionHunt()
 
 }
 
-/*
-QuestionHunt.prototype.clearAll = function()
+
+QuestionHunt.prototype.clearQuestions = function()
 {
 
-    currentPage = "";
-    huntName  = "";
-    huntX1    = 0.0;
-    huntX2    = 0.0;
-    huntY1    = 0.0;
-    huntY2    = 0.0;
+    this.partners  = "";
+    this.url       = "";
 
-    question1 = "";
-    question2 = "";
-    question3 = "";
-    question4 = "";
+    this.answerQuestion1 = "";
+    this.answerQuestion2 = "";
+    this.answerQuestion3 = "";
 
-    dataBlob = null;
-    gpsLat = 0.0;
-    gpsLng = 0.0;
+    this.qMultiple = "";
+    this.answerA = "";
+    this.answerB = "";
+    this.answerC = "";
+    this.answerD = "";
+    this.answerE = "";
+    this.correctAnswer = "";
 
-    multipleChoiceText = "";
-    answerA = "";
-    answerB = "";
-    answerC = "";
-    answerD = "";
-    answerE = "";
-    correctAnswer = "";
+    this.dataBlob = null; // for picture
+    this.gpsLat = 0.0; // user lat
+    this.gpsLng = 0.0; // user lng
+
+    this.huntX1    = 0.0; //rectangle stuff
+    this.huntX2    = 0.0; //rectangle stuff
+    this.huntY1    = 0.0; //rectangle stuff
+    this.huntY2    = 0.0; //rectangle stuff
 
 }
-*/
-
 
 
 QuestionHunt.prototype.getWithinRegion = function()
