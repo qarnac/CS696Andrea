@@ -3,8 +3,13 @@ function QuestionHunt()
     this.currentPage = "";
     this.huntName  = "";
 
+
     this.partners  = "";
     this.url       = "";
+
+    this.questionA = "";
+    this.questionB = "";
+    this.questionC = "";
 
     this.answerQuestion1 = "";
     this.answerQuestion2 = "";

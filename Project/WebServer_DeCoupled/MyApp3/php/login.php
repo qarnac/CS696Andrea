@@ -51,23 +51,25 @@
 				$errorMessage = 'Login failed - incorrect password';
 				$_SESSION['loggedin'] = false;
 				echo "{success: false, errors: { reason: '$errorMessage' }}";
+				
 			}
 			else
 			{
 				$huntInfo = queryHuntInfo($con, $returnedPassword[0]);
-				
-				//print_r($huntInfo);
-				
-				//var $questions = json_decode($huntInfo[13]));
-				//vardump($questions,true);
-				//print "hunt info test\n";
-				//print_r(questions);
-				
+
 				$_SESSION['start'] = time(); // taking now logged in time
 				$_SESSION['expire'] = $_SESSION['start'] + (60 * 60);
 				$_SESSION['loggedin'] = true;
 				$_SESSION['huntID'] = true;
-				print ("{success: true, hunt: $returnedPassword[8]}");
+				print ("{\"success\": true, \"hunt\": $returnedPassword[8],
+						\"region\": {
+							\"min_lat\": $huntInfo[4],
+							\"max_lat\": $huntInfo[6],
+							\"min_lng\": $huntInfo[5],
+							\"max_lng\": $huntInfo[7],
+						},
+						\"questions\": $huntInfo[13]}");
+
 			}
 			
 		}

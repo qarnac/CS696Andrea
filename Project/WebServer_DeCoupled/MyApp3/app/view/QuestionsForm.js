@@ -42,24 +42,27 @@ Ext.define('myApp.view.QuestionsForm', {
                 labelWrap : true
             }, {
                 xtype: 'textareafield',
-                label: 'What does this picture explain?',
+                label: '',
                 maxRows: 4,
                 name: 'q1',
+                id : 'q1',
                 labelAlign: 'top',
                 labelWrap : true
             }, {
                 xtype: 'textareafield',
-                label: 'What question do you have about this picture?',
+                label: '',
                 maxRows: 4,
                 name: 'q2',
+                id : 'q2',
                 labelAlign: 'top',
                 labelWrap : true
             },
             {
                 xtype: 'textareafield',
-                label: 'What do you want people to focus on this picture',
+                label: '',
                 maxRows: 4,
                 name: 'q3',
+                id : 'q3',
                 labelAlign: 'top',
                 labelWrap : true
             }]

@@ -41,11 +41,6 @@ Ext.define('myApp.controller.Login', {
             Ext.ComponentQuery.query('#qe')[0].setValue(myApp.app.apiToken.answerE);
             Ext.ComponentQuery.query('#qSelect')[0].setValue(myApp.app.apiToken.correctAnswer);
 
-
-            console.log("on push");
-            console.log(myApp.app.apiToken.qMultiple);
-            console.log(myApp.app.apiToken.answerA);
-
         }
         else if(item.xtype == "imageuploadform")
         {
@@ -72,7 +67,6 @@ Ext.define('myApp.controller.Login', {
     onMainPop: function(view, item) {
         console.log('at pop');
         console.log(item.xtype);
-
 
         if(myApp.app.apiToken.currentPage == "success" && item.xtype == "imageuploadform")
         {
@@ -169,7 +163,6 @@ Ext.define('myApp.controller.Login', {
             return;
         }
 
-
         editButton.show();
     },
 
@@ -203,7 +196,6 @@ Ext.define('myApp.controller.Login', {
 
         loginView = me.getLoginView();
 
-
         if (username.length === 0 || password.length === 0) {
 
             loginView.showSignInFailedMessage('Please enter your username and password.');
@@ -227,15 +219,53 @@ Ext.define('myApp.controller.Login', {
 
                 console.log(response);
 
-
                 var loginResponse = Ext.JSON.decode(response.responseText);
 
-                console.log(loginResponse);
+                if (loginResponse.success == true) {
 
-                if (loginResponse.success === true) {
-                    // The server will send a token that can be used throughout the app to confirm that the user is authenticated.
-                    me.sessionToken = loginResponse.sessionToken;
-                    me.signInSuccess(loginView);     //Just simulating success.
+                    var options = {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    };
+
+                    function successLogin(pos) {
+                        var crd = pos.coords;
+
+                        console.log('Your current position is:');
+                        console.log('Latitude : ' + crd.latitude);
+                        console.log('Longitude: ' + crd.longitude);
+                        console.log('Minlat:' + loginResponse.region.min_lat);
+                        console.log('Maxlat:' + loginResponse.region.max_lat);
+                        console.log('Minlng:' + loginResponse.region.min_lng);
+                        console.log('Maxlng:' + loginResponse.region.max_lng);
+                        console.log('More or less ' + crd.accuracy + ' meters.');
+
+                        if((loginResponse.region.min_lat <= crd.latitude && crd.latitude <= loginResponse.region.max_lat) &&
+                           (loginResponse.region.min_lng <= crd.longitude && crd.longitude <= loginResponse.region.max_lng) )
+                        {
+                            // The server will send a token that can be used throughout the app to confirm that the user is authenticated.
+                            me.sessionToken = loginResponse.sessionToken;
+
+                            myApp.app.apiToken = new QuestionHunt();
+
+                            myApp.app.apiToken.questionA  = loginResponse.questions.questiona;
+                            myApp.app.apiToken.questionB  = loginResponse.questions.questionb;
+                            myApp.app.apiToken.questionC  = loginResponse.questions.questionc;
+
+                            me.signInSuccess(loginView);     //Just simulating success.
+                        }
+                        else
+                            me.signInFailure("Failure: Your current location is within hunt region bound");
+
+                    };
+
+                    function error(err) {
+                        me.signInFailure(loginResponse.errors.reason);
+                    };
+
+                    navigator.geolocation.getCurrentPosition(successLogin, error, options);
+
                 } else {
                     me.signInFailure(loginResponse.errors.reason);
                 }
@@ -251,12 +281,14 @@ Ext.define('myApp.controller.Login', {
     signInSuccess: function () {
         console.log('Signed in.');
 
-        myApp.app.apiToken = new QuestionHunt();
-
         var test = this.getLoginView();
         test.setMasked(false);
 
         test.push({xtype:'questionsform'});
+
+        Ext.getCmp('q1').setLabel(myApp.app.apiToken.questionA);
+        Ext.getCmp('q2').setLabel(myApp.app.apiToken.questionB);
+        Ext.getCmp('q3').setLabel(myApp.app.apiToken.questionC);
 
     },
 
