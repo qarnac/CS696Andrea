@@ -31,6 +31,7 @@ Ext.define('myApp.view.QuestionsForm', {
                 label: 'Who are the partners in this group?',
                 labelAlign: 'top',
                 maxRows: 4,
+                id : 'partners',
                 name: 'partners',
                 labelWrap : true
             }, {
@@ -38,6 +39,7 @@ Ext.define('myApp.view.QuestionsForm', {
                 label: 'Do you have an interesting link related to this article?',
                 maxRows: 4,
                 name: 'url',
+                id : 'url',
                 labelAlign: 'top',
                 labelWrap : true
             }, {

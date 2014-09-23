@@ -32,19 +32,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionsForm.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
+      <file leaf-file-name="MultipleQuestion.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="24" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1309">
+            <state line="51" column="20" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.0" vertical-offset="174" max-vertical-offset="2040">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuestionHunt.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js">
+      <file leaf-file-name="QuestionsForm.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="42" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="1326">
+            <state line="41" column="27" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1343">
               <folding />
             </state>
           </provider>
@@ -53,7 +53,7 @@
       <file leaf-file-name="ImageUpload.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="42" selection-start="1620" selection-end="1635" vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="2125">
+            <state line="49" column="31" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
               <folding />
             </state>
           </provider>
@@ -62,12 +62,8 @@
       <file leaf-file-name="Login.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="244" column="115" selection-start="8465" selection-end="8465" vertical-scroll-proportion="0.3972468" vertical-offset="3319" max-vertical-offset="5202">
-              <folding>
-                <element signature="e#86#679#0" expanded="false" />
-                <element signature="e#6262#6322#0" expanded="false" />
-                <element signature="e#6365#6426#0" expanded="false" />
-              </folding>
+            <state line="75" column="0" selection-start="2663" selection-end="2663" vertical-scroll-proportion="0.33333334" vertical-offset="976" max-vertical-offset="5729">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,7 +71,7 @@
       <file leaf-file-name="Hunts.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="53" selection-start="2289" selection-end="2289" vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="2295">
+            <state line="77" column="53" selection-start="2289" selection-end="2289" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="2295">
               <folding />
             </state>
           </provider>
@@ -93,7 +89,7 @@
       <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
+            <state line="17" column="0" selection-start="299" selection-end="299" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="391">
               <folding />
             </state>
           </provider>
@@ -102,7 +98,7 @@
       <file leaf-file-name="ImageUploadForm.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="32" selection-start="2245" selection-end="2273" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="1802">
+            <state line="80" column="32" selection-start="2245" selection-end="2273" vertical-scroll-proportion="0.0" vertical-offset="905" max-vertical-offset="1802">
               <folding />
             </state>
           </provider>
@@ -111,7 +107,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="28" selection-start="1374" selection-end="1374" vertical-scroll-proportion="-6.9615383" vertical-offset="618" max-vertical-offset="1955">
+            <state line="47" column="28" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0" vertical-offset="618" max-vertical-offset="1955">
               <folding />
             </state>
           </provider>
@@ -167,7 +163,7 @@
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -433,14 +429,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.184375" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10885417" sideWeight="0.6710311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17348608" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
@@ -493,7 +489,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -679,9 +675,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="7" selection-start="1991" selection-end="1991" vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="1598">
-          <folding />
-        </state>
+        <state line="83" column="7" selection-start="1991" selection-end="1991" vertical-scroll-proportion="0.0" vertical-offset="581" max-vertical-offset="1598" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
@@ -694,23 +688,9 @@
         <state line="996" column="0" selection-start="15304" selection-end="15324" vertical-scroll-proportion="0.33333334" vertical-offset="16633" max-vertical-offset="64821" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="32" selection-start="2245" selection-end="2273" vertical-scroll-proportion="0.0" vertical-offset="785" max-vertical-offset="1802">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="37" selection-start="644" selection-end="644" vertical-scroll-proportion="-0.11371238" vertical-offset="561" max-vertical-offset="2431" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="47" selection-start="2726" selection-end="2726" vertical-scroll-proportion="1.1705686" vertical-offset="429" max-vertical-offset="2040">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/app.js">
@@ -727,13 +707,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/MultipleQuestion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="14" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="77" column="53" selection-start="2289" selection-end="2289" vertical-scroll-proportion="0.0" vertical-offset="1088" max-vertical-offset="2295">
@@ -743,40 +716,57 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="28" selection-start="1374" selection-end="1374" vertical-scroll-proportion="-6.9615383" vertical-offset="618" max-vertical-offset="1955">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="24" selection-start="1715" selection-end="1715" vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="1309">
+        <state line="47" column="28" selection-start="1374" selection-end="1374" vertical-scroll-proportion="0.0" vertical-offset="618" max-vertical-offset="1955">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/QuestionHunt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="42" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="1326">
+        <state line="30" column="42" selection-start="669" selection-end="669" vertical-scroll-proportion="0.20401338" vertical-offset="327" max-vertical-offset="1326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="32" selection-start="2245" selection-end="2273" vertical-scroll-proportion="0.0" vertical-offset="785" max-vertical-offset="1802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="20" selection-start="1492" selection-end="1492" vertical-scroll-proportion="0.0" vertical-offset="174" max-vertical-offset="2040">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/MultipleQuestion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="14" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="27" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0" vertical-offset="259" max-vertical-offset="1343">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="42" selection-start="1620" selection-end="1635" vertical-scroll-proportion="0.0" vertical-offset="700" max-vertical-offset="2125">
+        <state line="49" column="31" selection-start="1250" selection-end="1250" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="244" column="115" selection-start="8465" selection-end="8465" vertical-scroll-proportion="0.3972468" vertical-offset="3319" max-vertical-offset="5202">
-          <folding>
-            <element signature="e#86#679#0" expanded="false" />
-            <element signature="e#6262#6322#0" expanded="false" />
-            <element signature="e#6365#6426#0" expanded="false" />
-          </folding>
+        <state line="75" column="0" selection-start="2663" selection-end="2663" vertical-scroll-proportion="0.33333334" vertical-offset="976" max-vertical-offset="5729">
+          <folding />
         </state>
       </provider>
     </entry>

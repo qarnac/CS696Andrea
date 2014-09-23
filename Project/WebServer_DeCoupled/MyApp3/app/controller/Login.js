@@ -73,12 +73,19 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.currentPage = "questionsform";
 
             console.log("success");
+
+            Ext.getCmp('partners').setValue("");
+            Ext.getCmp('url').setValue("");
+            Ext.getCmp('q1').setValue("");
+            Ext.getCmp('q2').setValue("");
+            Ext.getCmp('q3').setValue("");
+
+
             console.log(myApp.app.apiToken.partners);
             console.log(myApp.app.apiToken.url);
             console.log(myApp.app.apiToken.answerQuestion1);
             console.log(myApp.app.apiToken.answerQuestion2);
             console.log(myApp.app.apiToken.answerQuestion3);
-
         }
 
         else if(item.xtype == "imageuploadform")
@@ -86,11 +93,8 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.currentPage = "multiplequestion";
         }
 
-        else if (item.xtype == "multiplequestion")
+        else if (item.xtype == "multiplequestion" && myApp.app.apiToken.currentPage != "imageuploadform")
         {
-
-            console.log(Ext.ComponentQuery.query('#mq')[0]);
-
             myApp.app.apiToken.qMultiple = Ext.ComponentQuery.query('#mq')[0]._value;
             myApp.app.apiToken.answerA = Ext.ComponentQuery.query('#qa')[0]._value;
             myApp.app.apiToken.answerB = Ext.ComponentQuery.query('#qb')[0]._value;
@@ -286,9 +290,11 @@ Ext.define('myApp.controller.Login', {
 
         test.push({xtype:'questionsform'});
 
+
         Ext.getCmp('q1').setLabel(myApp.app.apiToken.questionA);
         Ext.getCmp('q2').setLabel(myApp.app.apiToken.questionB);
         Ext.getCmp('q3').setLabel(myApp.app.apiToken.questionC);
+
 
     },
 
