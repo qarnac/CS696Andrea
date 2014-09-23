@@ -4,7 +4,8 @@ Ext.define('myApp.controller.Login', {
     config: {
         refs: {
             loginView: 'loginview',
-            editButton: '#editButton',
+            nextButton: '#nextButton',
+            logoutButton: '#logoutButton',
             questionForm: 'questionsform',
             qForm: '#questionsform',
             imageUpload: 'imageuploadform',
@@ -18,7 +19,7 @@ Ext.define('myApp.controller.Login', {
                 pop: 'onMainPop'
             },
 
-            editButton: {
+            nextButton: {
                 tap: 'onContactEdit'
             }
         }
@@ -27,7 +28,9 @@ Ext.define('myApp.controller.Login', {
     onMainPush: function(view, item) {
         console.log(item.xtype);
 
-        var editButton = this.getEditButton();
+        var nextButton = this.getNextButton();
+
+        this.showLogoutButton();
 
         myApp.app.apiToken.currentPage = item.xtype;
 
@@ -54,11 +57,11 @@ Ext.define('myApp.controller.Login', {
         }
 
         if (item.xtype == "questionsform" || item.xtype == "multiplequestion") {
-            this.showEditButton();
+            this.showNextButton();
         }
         else
         {
-            this.hideEditButton();
+            this.hideNextButton();
         }
 
     },
@@ -112,15 +115,21 @@ Ext.define('myApp.controller.Login', {
 
         if( item.xtype == "questionsform" && myApp.app.apiToken.currentPage == "questionsform")
         {
-            this.hideEditButton();
+            item.xtype = "loginform";
+
+            myApp.app.apiToken.currentPage == "questionsform";
+
+            this.hideLogoutButton();
+            this.hideNextButton();
+
         }
         else
         {
             if( myApp.app.apiToken.currentPage == "questionsform" ||
                 myApp.app.apiToken.currentPage == "multiplequestion")
-                this.showEditButton();
+                this.showNextButton();
             else
-                this.hideEditButton();
+                this.hideNextButton();
         }
 
     },
@@ -160,24 +169,44 @@ Ext.define('myApp.controller.Login', {
 
     },
 
-    showEditButton: function() {
-        var editButton = this.getEditButton();
+    showNextButton: function() {
+        var nextButton = this.getNextButton();
 
-        if (!editButton.isHidden()) {
+        if (!nextButton.isHidden()) {
             return;
         }
 
-        editButton.show();
+        nextButton.show();
     },
 
-    hideEditButton: function() {
-        var editButton = this.getEditButton();
+    hideNextButton: function() {
+        var nextButton = this.getNextButton();
 
-        if (editButton.isHidden()) {
+        if (nextButton.isHidden()) {
             return;
         }
 
-        editButton.hide();
+        nextButton.hide();
+    },
+
+    showLogoutButton: function() {
+        var logoutButton = this.getLogoutButton();
+
+        if (!logoutButton.isHidden()) {
+            return;
+        }
+
+        logoutButton.show();
+    },
+
+    hideLogoutButton: function() {
+        var logoutButton = this.getLogoutButton();
+
+        if (logoutButton.isHidden()) {
+            return;
+        }
+
+        logoutButton.hide();
     },
 
     // Session tokenS
@@ -235,6 +264,8 @@ Ext.define('myApp.controller.Login', {
 
                     function successLogin(pos) {
                         var crd = pos.coords;
+
+
 
                         console.log('Your current position is:');
                         console.log('Latitude : ' + crd.latitude);

@@ -15,7 +15,7 @@ Ext.define('myApp.controller.MultipleQuestion', {
                 pop: 'onMainPop'
             },
 
-            editButton: {
+            nextButton: {
                 tap: 'onContactEdit'
             },
 

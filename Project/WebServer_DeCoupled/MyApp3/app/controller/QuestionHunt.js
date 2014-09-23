@@ -31,13 +31,11 @@ function QuestionHunt()
     this.huntX2    = 0.0; //rectangle stuff
     this.huntY1    = 0.0; //rectangle stuff
     this.huntY2    = 0.0; //rectangle stuff
-
 }
 
 
 QuestionHunt.prototype.clearQuestions = function()
 {
-
     this.partners  = "";
     this.url       = "";
 

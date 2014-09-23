@@ -22,13 +22,33 @@ Ext.define('myApp.view.Login', {
 		iconCls: "settings",
 
         navigationBar: {
+
             items: [
                 {
                     xtype: 'button',
-                    id: 'editButton',
+                    id: 'nextButton',
                     text: 'next',
                     align: 'right',
                     hidden: true,
+                    width: '40%',
+                    hideAnimation: Ext.os.is.Android ? false : {
+                        type: 'fadeOut',
+                        duration: 200
+                    },
+                    showAnimation: Ext.os.is.Android ? false : {
+                        type: 'fadeIn',
+                        duration: 200
+                    }
+                },
+
+                {
+                    xtype: 'button',
+                    id: 'logoutButton',
+                    text: 'logout',
+                    align: 'right',
+                    ui: 'green-round',
+                    hidden: true,
+                    width: '50%',
                     hideAnimation: Ext.os.is.Android ? false : {
                         type: 'fadeOut',
                         duration: 200
@@ -40,6 +60,8 @@ Ext.define('myApp.view.Login', {
                 }
             ]
         },
+
+
 
         items: [{
             fullscreen:true,
