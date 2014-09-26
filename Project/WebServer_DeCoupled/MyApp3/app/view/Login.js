@@ -30,7 +30,7 @@ Ext.define('myApp.view.Login', {
                     text: 'next',
                     align: 'right',
                     hidden: true,
-                    width: '40%',
+                    width: '50',
                     hideAnimation: Ext.os.is.Android ? false : {
                         type: 'fadeOut',
                         duration: 200
@@ -48,7 +48,7 @@ Ext.define('myApp.view.Login', {
                     align: 'right',
                     ui: 'green-round',
                     hidden: true,
-                    width: '50%',
+                    width: '80',
                     hideAnimation: Ext.os.is.Android ? false : {
                         type: 'fadeOut',
                         duration: 200

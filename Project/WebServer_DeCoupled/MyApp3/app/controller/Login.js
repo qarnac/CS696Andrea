@@ -30,8 +30,10 @@ Ext.define('myApp.controller.Login', {
 
         var nextButton = this.getNextButton();
 
-        this.showLogoutButton();
-
+        if(item.xtype == "questionsform")
+        {
+            this.showLogoutButton();
+        }
         myApp.app.apiToken.currentPage = item.xtype;
 
         if(item.xtype == "multiplequestion")
@@ -54,6 +56,8 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
             myApp.app.apiToken.answerD = Ext.ComponentQuery.query('#qd')[0]._value;
             myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
+
+            this.hideNextButton();
         }
 
         if (item.xtype == "questionsform" || item.xtype == "multiplequestion") {
@@ -83,53 +87,51 @@ Ext.define('myApp.controller.Login', {
             Ext.getCmp('q2').setValue("");
             Ext.getCmp('q3').setValue("");
 
-
             console.log(myApp.app.apiToken.partners);
             console.log(myApp.app.apiToken.url);
             console.log(myApp.app.apiToken.answerQuestion1);
             console.log(myApp.app.apiToken.answerQuestion2);
             console.log(myApp.app.apiToken.answerQuestion3);
+            
+            this.showNextButton();
         }
 
         else if(item.xtype == "imageuploadform")
         {
+            this.showNextButton();
             myApp.app.apiToken.currentPage = "multiplequestion";
         }
 
         else if (item.xtype == "multiplequestion" && myApp.app.apiToken.currentPage != "imageuploadform")
         {
             myApp.app.apiToken.qMultiple = Ext.ComponentQuery.query('#mq')[0]._value;
-            myApp.app.apiToken.answerA = Ext.ComponentQuery.query('#qa')[0]._value;
-            myApp.app.apiToken.answerB = Ext.ComponentQuery.query('#qb')[0]._value;
-            myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
-            myApp.app.apiToken.answerD = Ext.ComponentQuery.query('#qd')[0]._value;
-            myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
-
+            myApp.app.apiToken.answerA   = Ext.ComponentQuery.query('#qa')[0]._value;
+            myApp.app.apiToken.answerB   = Ext.ComponentQuery.query('#qb')[0]._value;
+            myApp.app.apiToken.answerC   = Ext.ComponentQuery.query('#qc')[0]._value;
+            myApp.app.apiToken.answerD   = Ext.ComponentQuery.query('#qd')[0]._value;
+            myApp.app.apiToken.answerE   = Ext.ComponentQuery.query('#qe')[0]._value;
 
             myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value.data.value;
 
             myApp.app.apiToken.currentPage = "questionsform";
         }
 
-        console.log(myApp.app.apiToken.currentPage);
 
-        if( item.xtype == "questionsform" && myApp.app.apiToken.currentPage == "questionsform")
+        else if (item.xtype == "questionsform" && myApp.app.apiToken.currentPage == "questionsform")
         {
-            item.xtype = "loginform";
-
-            myApp.app.apiToken.currentPage == "questionsform";
-
-            this.hideLogoutButton();
+            myApp.app.apiToken.currentPage = "loginform";
             this.hideNextButton();
-
+            this.hideLogoutButton();
         }
+
+
+
         else
         {
             if( myApp.app.apiToken.currentPage == "questionsform" ||
                 myApp.app.apiToken.currentPage == "multiplequestion")
                 this.showNextButton();
-            else
-                this.hideNextButton();
+
         }
 
     },
@@ -265,8 +267,6 @@ Ext.define('myApp.controller.Login', {
                     function successLogin(pos) {
                         var crd = pos.coords;
 
-
-
                         console.log('Your current position is:');
                         console.log('Latitude : ' + crd.latitude);
                         console.log('Longitude: ' + crd.longitude);
@@ -275,6 +275,7 @@ Ext.define('myApp.controller.Login', {
                         console.log('Minlng:' + loginResponse.region.min_lng);
                         console.log('Maxlng:' + loginResponse.region.max_lng);
                         console.log('More or less ' + crd.accuracy + ' meters.');
+
 
                         if((loginResponse.region.min_lat <= crd.latitude && crd.latitude <= loginResponse.region.max_lat) &&
                            (loginResponse.region.min_lng <= crd.longitude && crd.longitude <= loginResponse.region.max_lng) )
@@ -291,17 +292,23 @@ Ext.define('myApp.controller.Login', {
                             me.signInSuccess(loginView);     //Just simulating success.
                         }
                         else
-                            me.signInFailure("Failure: Your current location is within hunt region bound");
+                            me.signInFailure("Failure: Your current location is NOT within hunt region");
 
-                    };
+
+
+                    }
 
                     function error(err) {
+                        me.hideLogoutButton();
+                        me.hideNextButton();
                         me.signInFailure(loginResponse.errors.reason);
-                    };
+                    }
 
                     navigator.geolocation.getCurrentPosition(successLogin, error, options);
 
                 } else {
+                    me.hideLogoutButton();
+                    me.hideNextButton();
                     me.signInFailure(loginResponse.errors.reason);
                 }
             },
