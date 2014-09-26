@@ -32,8 +32,19 @@ Ext.define('myApp.controller.Login', {
 
         if(item.xtype == "questionsform")
         {
+            console.log(Ext.getCmp('q2'));
+            console.log(Ext.getCmp('q2').getLabel);
+
+            if(myApp.app.apiToken.questionA ==  "")
+                Ext.getCmp('q1').hide();
+            if(myApp.app.apiToken.questionB ==  "")
+                Ext.getCmp('q2').hide();
+            if(myApp.app.apiToken.questionC == "")
+                Ext.getCmp('q3').hide();
+
             this.showLogoutButton();
         }
+
         myApp.app.apiToken.currentPage = item.xtype;
 
         if(item.xtype == "multiplequestion")
@@ -92,7 +103,7 @@ Ext.define('myApp.controller.Login', {
             console.log(myApp.app.apiToken.answerQuestion1);
             console.log(myApp.app.apiToken.answerQuestion2);
             console.log(myApp.app.apiToken.answerQuestion3);
-            
+
             this.showNextButton();
         }
 
@@ -116,15 +127,12 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.currentPage = "questionsform";
         }
 
-
         else if (item.xtype == "questionsform" && myApp.app.apiToken.currentPage == "questionsform")
         {
             myApp.app.apiToken.currentPage = "loginform";
             this.hideNextButton();
             this.hideLogoutButton();
         }
-
-
 
         else
         {
@@ -160,7 +168,6 @@ Ext.define('myApp.controller.Login', {
             console.log(myApp.app.apiToken.answerQuestion3);
 
             this.getLoginView().push(this.multipleQuestion);
-
         }
         else if (myApp.app.apiToken.currentPage == "multiplequestion")
         {
