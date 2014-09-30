@@ -708,7 +708,7 @@ Ext.define('Ext.ux.Fileup', {
         form.append(this.getName(), file);
 
         var result = {
-                'huntID' : myApp.app.apiToken.huntName,
+                'huntID' : myApp.app.apiToken.huntId,
                 "partners" : myApp.app.apiToken.partners,
                 "url" : myApp.app.apiToken.url,
                 'lat' : myApp.app.apiToken.gpsLat,

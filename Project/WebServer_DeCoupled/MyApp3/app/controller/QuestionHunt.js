@@ -1,8 +1,7 @@
 function QuestionHunt()
 {
     this.currentPage = "";
-    this.huntName  = "";
-
+    this.huntId  = "";
 
     this.partners  = "";
     this.url       = "";

@@ -281,6 +281,7 @@ Ext.define('myApp.controller.Login', {
                         console.log('Maxlat:' + loginResponse.region.max_lat);
                         console.log('Minlng:' + loginResponse.region.min_lng);
                         console.log('Maxlng:' + loginResponse.region.max_lng);
+                        console.log('hunt id :' + loginResponse.hunt);
                         console.log('More or less ' + crd.accuracy + ' meters.');
 
 
@@ -291,7 +292,9 @@ Ext.define('myApp.controller.Login', {
                             me.sessionToken = loginResponse.sessionToken;
 
                             myApp.app.apiToken = new QuestionHunt();
-
+                            myApp.app.apiToken.huntId = loginResponse.hunt;
+                            myApp.app.apiToken.gpsLat = crd.latitude;
+                            myApp.app.apiToken.gpsLng = crd.longitude;
                             myApp.app.apiToken.questionA  = loginResponse.questions.questiona;
                             myApp.app.apiToken.questionB  = loginResponse.questions.questionb;
                             myApp.app.apiToken.questionC  = loginResponse.questions.questionc;

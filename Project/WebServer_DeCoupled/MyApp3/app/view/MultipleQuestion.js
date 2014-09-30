@@ -15,7 +15,7 @@ Ext.define('myApp.view.MultipleQuestion', {
     ],
 
     config: {
-        title:'Question page 2/3',
+        title:'2/3',
         iconCls: "settings",
         scrollable: true,
 

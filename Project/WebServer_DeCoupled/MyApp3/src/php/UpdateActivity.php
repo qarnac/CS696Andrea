@@ -14,8 +14,8 @@ require('./cyberScavengerAPIAdmin.php');
 		//print $additionalAnswers;
 		
 		$sqlStmt = "UPDATE stud_activity SET partner_names='".  $obj['partners'] . "'" .
-					", student_id=" . "'" . '22' . "'" .  // student id is harcoded for now
-					", hunt_id=" . "'" . '22' . "'"  .    // hunt id is harcoded for now
+					", student_id=" . "'" . $obj['huntID'] . "'" .  
+					", hunt_id=" . "'" . $obj['huntID'] . "'"  .    
 					", media='image.php'" .
 					", media_id='" . $mediaID . "'" .
 					", created='" . date('Y-m-d H:i:s') . "'" .
@@ -26,7 +26,7 @@ require('./cyberScavengerAPIAdmin.php');
 					", lng='" . $obj['lng'] . "'" .
 					", mquestion=". "'" . $obj['multipleQ'] . "'" .	
 					", partner_names='" . $obj['partners'] . "'" .				
-					" WHERE id='22'";						// id hardcoded for now
+					" WHERE id=". "'" .$obj['huntID'] . "'";						
 					
 		//print $sqlStmt;
 				   
