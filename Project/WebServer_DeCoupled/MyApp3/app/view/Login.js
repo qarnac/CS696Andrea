@@ -40,12 +40,13 @@ Ext.define('myApp.view.Login', {
                         duration: 200
                     }
                 },
-
                 {
                     xtype: 'button',
                     id: 'logoutButton',
+                    itemId: 'logoutButton',
                     text: 'logout',
                     align: 'right',
+                    margin: '.5',
                     ui: 'green-round',
                     hidden: true,
                     width: '80',
@@ -118,10 +119,22 @@ Ext.define('myApp.view.Login', {
                 fn: 'onLoginButtonTap',
                 event: 'tap',
                 delegate: '#btnLogin'
-            }
+            },
+            {
+                fn: 'onLogoutButtonTap',
+                event: 'tap',
+                delegate: '#logoutButton'
+            },
         ]
 
 	},
+
+    onLogoutButtonTap: function(button, e,eOpts)
+    {
+        var me = this;
+        me.fireEvent('logoutCommand', me);
+    },
+
 
     onLoginButtonTap: function(button, e, eOpts) {
         var me = this,

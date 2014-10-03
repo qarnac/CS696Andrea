@@ -15,6 +15,7 @@ Ext.define('myApp.controller.Login', {
         control: {
             loginView: {
                 signInCommand: 'onSignInCommand',
+                logoutCommand: 'onLogoutCommand',
                 push: 'onMainPush',
                 pop: 'onMainPop'
             },
@@ -81,12 +82,18 @@ Ext.define('myApp.controller.Login', {
 
     },
 
-
     onMainPop: function(view, item) {
         console.log('at pop');
         console.log(item.xtype);
 
-        if(myApp.app.apiToken.currentPage == "success" && item.xtype == "imageuploadform")
+        if(myApp.app.apiToken.currentPage == "logout")
+        {
+            myApp.app.apiToken.currentPage = "loginform";
+            this.hideNextButton();
+            this.hideLogoutButton();
+        }
+
+        else if(myApp.app.apiToken.currentPage == "success" && item.xtype == "imageuploadform")
         {
             myApp.app.apiToken.currentPage = "questionsform";
 
@@ -143,7 +150,6 @@ Ext.define('myApp.controller.Login', {
         }
 
     },
-
 
     onContactEdit: function(button) {
         console.log("on next button pressed");
@@ -228,6 +234,31 @@ Ext.define('myApp.controller.Login', {
 
     getSlideRightTransition: function() {
         return { type: 'slide', direction: 'right' };
+    },
+
+    onLogoutCommand: function(view){
+
+        switch(myApp.app.apiToken.currentPage){
+            case "questionsform":
+                console.log("kicking out from questionsform");
+                view.pop(1);
+                break;
+            case "multiplequestion":
+                console.log("kicking out from multiplequestion");
+                view.pop(2);
+                break;
+            case "imageuploadform":
+                console.log("kicking out from imageuploadform");
+                view.pop(3);
+                break;
+            default:
+                break;
+
+
+        }
+
+        myApp.app.apiToken.currentPage = "logout";
+
     },
 
     onSignInCommand: function (view, username, password) {
