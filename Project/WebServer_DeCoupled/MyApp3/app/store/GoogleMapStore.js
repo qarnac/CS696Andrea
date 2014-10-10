@@ -27,7 +27,7 @@ Ext.define('myApp.store.GoogleMapStore', {
 
         launch: function() {
             console.log('im in google STORE');
-        },
+        }
     }
 
 });

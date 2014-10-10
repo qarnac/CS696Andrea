@@ -40,7 +40,7 @@ Ext.define('myApp.controller.GoogleMap', {
         console.log("map rendered");
 
         var stationsStore = Ext.getStore('GoogleMapStore');
-        var proxy= stationsStore.getProxy();
+        var proxy = stationsStore.getProxy();
         proxy.setExtraParam('huntID', record.get('id') );
         var currentActivity = this.getBlog();
 
@@ -48,6 +48,7 @@ Ext.define('myApp.controller.GoogleMap', {
         var minLng = parseFloat(record.get('min_lng'));
         var maxLat = parseFloat(record.get('max_lat'));
         var maxLng = parseFloat(record.get('max_lng'));
+
         var questions = record.get('questions');
 
         var centerX = (minLat + maxLat) / 2;
@@ -80,12 +81,27 @@ Ext.define('myApp.controller.GoogleMap', {
                 {
                     var jsonResults  = JSON.parse(this.customInfo);
 
-                    currentActivity.push({
-                        title: 'questions',
-                        html: jsonQuestions.questiona + '<br/>' + jsonResults.answera + '<br/><br/>' +
-                              jsonQuestions.questionb + '<br/>' + jsonResults.answerb + '<br/><br/>' +
-                              jsonQuestions.questionc + '<br/>' + jsonResults.answerc + '<br/><br/>'
-                    });
+                    currentActivity.push({xtype:'huntinfopanel'});
+
+                    Ext.getCmp('q1info').setLabel(jsonQuestions.questiona);
+                    Ext.getCmp('q2info').setLabel(jsonQuestions.questionb);
+                    Ext.getCmp('q3info').setLabel(jsonQuestions.questionc);
+
+                    console.log(Ext.getCmp('q1info'));
+                    Ext.ComponentQuery.query('#q1info')[0].setValue(jsonResults.answera);
+                    Ext.ComponentQuery.query('#q2info')[0].setValue(jsonResults.answerb);
+                    Ext.ComponentQuery.query('#q3info')[0].setValue(jsonResults.answerc);
+
+
+                    console.log(data['media_id']);
+
+                    var strNumber = String(data['media_id']);
+
+                    var urlVar = 'http://southsuco.com/MyApp/images/' + strNumber + '.jpeg';
+
+                    console.log(urlVar);
+
+                    Ext.ComponentQuery.query('#imageStuffId')[0].setSrc(urlVar);
                 });
 
             }

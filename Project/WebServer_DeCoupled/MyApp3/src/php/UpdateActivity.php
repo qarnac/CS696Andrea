@@ -26,7 +26,7 @@ require('./cyberScavengerAPIAdmin.php');
 					", lng='" . $obj['lng'] . "'" .
 					", mquestion=". "'" . $obj['multipleQ'] . "'" .	
 					", partner_names='" . $obj['partners'] . "'" .				
-					" WHERE id=". "'" .$obj['huntID'] . "'";						
+					" WHERE student_id=". "'" .$obj['huntID'] . "'";						
 					
 		//print $sqlStmt;
 				   
