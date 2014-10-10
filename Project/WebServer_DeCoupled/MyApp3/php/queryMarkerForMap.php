@@ -61,7 +61,10 @@ function formatResultIntoXMLformat($distinctIDresult, $stud_activityResult)
 			
 			if( $hunt_id == $target_hunt_id)
 			{
-				$xmlResult .= "<marker><lat>".$val['lat']."</lat><lng>".$val['lng']."</lng><media_id>".$val['media_id']."</media_id><additionalAnswers>".$val['additionalAnswers']."</additionalAnswers></marker>";
+				$xmlResult .= "<marker><lat>".$val['lat']."</lat><lng>".$val['lng']."</lng><media_id>".$val['media_id']."</media_id><additionalAnswers>".$val['additionalAnswers']."</additionalAnswers>".
+							   "<partner_names>".$val['partner_names']."</partner_names>"."<interestingurl>".$val['interesting_url']."</interestingurl>"."<interestingurl>".$val['interesting_url']."</interestingurl>"
+							   ."<mquestion>".$val['mquestion']."</mquestion>"
+							   ."</marker>";
 			}
 		}
 		
