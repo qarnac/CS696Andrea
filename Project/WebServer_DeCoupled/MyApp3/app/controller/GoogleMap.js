@@ -87,10 +87,16 @@ Ext.define('myApp.controller.GoogleMap', {
                     Ext.getCmp('q2info').setLabel(jsonQuestions.questionb);
                     Ext.getCmp('q3info').setLabel(jsonQuestions.questionc);
 
-                    console.log(Ext.getCmp('q1info'));
+
+                    console.log(data['partner_names']);
+                    console.log(data['interestingurl']);
+
+                    Ext.ComponentQuery.query('#partnersinfo')[0].setValue(data['partner_names']);
+                    Ext.ComponentQuery.query('#urlinfo')[0].setValue(data['interesting_url']);
                     Ext.ComponentQuery.query('#q1info')[0].setValue(jsonResults.answera);
                     Ext.ComponentQuery.query('#q2info')[0].setValue(jsonResults.answerb);
                     Ext.ComponentQuery.query('#q3info')[0].setValue(jsonResults.answerc);
+                    Ext.ComponentQuery.query('#multiplechoicequestion')[0].setValue(data['multiple_question']);
 
 
                     console.log(data['media_id']);
