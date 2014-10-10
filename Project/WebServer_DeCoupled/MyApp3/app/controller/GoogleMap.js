@@ -97,7 +97,7 @@ Ext.define('myApp.controller.GoogleMap', {
 
                     var strNumber = String(data['media_id']);
 
-                    var urlVar = 'http://southsuco.com/MyApp/images/' + strNumber + '.jpeg';
+                    var urlVar = './images/' + strNumber + '.jpeg';
 
                     console.log(urlVar);
 
