@@ -75,14 +75,18 @@ Ext.define('myApp.controller.GoogleMap', {
                     position: new google.maps.LatLng(data['lat'], data['lng']),
                     map: map,
                     customInfo : data["additionalAnswers"],
-                    mediaId: data['media_id']
+                    mediaId: data['media_id'],
+                    partnerNames: data['partner_names'],
+                    interestingUrl: data['interesting_url'],
+                    multipleQuestions: data['multiple_question'],
+                    jsonMultipleQsAnswers: data['choices']
                 });
 
                 google.maps.event.addListener(marker, 'click', function()
                 {
                     var jsonResults  = JSON.parse(this.customInfo);
                     var mediaID = this.mediaId;
-                    var jsonMultipleQsAnswers  = JSON.parse(data['choices']);
+                    var jsonMultipleQsAnswers  = JSON.parse(this.jsonMultipleQsAnswers);
 
                     currentActivity.push({xtype:'huntinfopanel'});
 
@@ -90,24 +94,18 @@ Ext.define('myApp.controller.GoogleMap', {
                     Ext.getCmp('q2info').setLabel(jsonQuestions.questionb);
                     Ext.getCmp('q3info').setLabel(jsonQuestions.questionc);
 
-
-                    console.log(data['partner_names']);
-                    console.log(data['interestingurl']);
-
-                    Ext.ComponentQuery.query('#partnersinfo')[0].setValue(data['partner_names']);
-                    Ext.ComponentQuery.query('#urlinfo')[0].setValue(data['interesting_url']);
+                    Ext.ComponentQuery.query('#partnersinfo')[0].setValue(this.partnerNames);
+                    Ext.ComponentQuery.query('#urlinfo')[0].setValue(this.interestingUrl);
                     Ext.ComponentQuery.query('#q1info')[0].setValue(jsonResults.answera);
                     Ext.ComponentQuery.query('#q2info')[0].setValue(jsonResults.answerb);
                     Ext.ComponentQuery.query('#q3info')[0].setValue(jsonResults.answerc);
-                    Ext.ComponentQuery.query('#multiplechoicequestion')[0].setValue(data['multiple_question']);
+                    Ext.ComponentQuery.query('#multiplechoicequestion')[0].setValue(this.multipleQuestions);
 
 
                     console.log(jsonMultipleQsAnswers.choices);
                     console.log(jsonMultipleQsAnswers.choices[0].content);
 
                     Ext.getCmp('answera1').setValue(jsonMultipleQsAnswers.choices[0].content);
-                    console.log(Ext.getCmp('answera1'));
-                    
 
                     var strNumber = String(this.mediaId);
 
