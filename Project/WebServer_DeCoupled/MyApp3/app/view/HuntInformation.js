@@ -10,7 +10,6 @@ Ext.define('myApp.view.HuntInformation', {
         scrollable: true,
         autoDestroy: false,
 
-
         items: [
             {
                 styleHtmlContent: true,
@@ -86,37 +85,65 @@ Ext.define('myApp.view.HuntInformation', {
                             },
                             {
                                 xtype: 'fieldset',
-                                //fieldLabel: 'test',
+                                id: 'fieldMq',
 
-                                defaultType: 'radiofield',
+                                defaultType: 'checkboxfield',
                                 defaults: {
                                     flex: '1'
                                 },
+
                                 //layout: 'hbox',
+
                                 items: [{
-                                    name: 'color',
+                                    xtype: 'checkboxfield',
+                                    name : 'color',
+                                    value: 'a',
+                                    checked: false,
                                     label: 'a)',
+                                    labelWidth: '95%',
+                                    labelAlign: 'right',
                                     id: 'answera1'
+
                                 },
                                 {
-                                    name: 'color',
+                                    xtype: 'checkboxfield',
+                                    name : 'color',
+                                    value: 'b',
+                                    checked: false,
                                     label: 'b)',
+                                    labelWidth: '95%',
+                                    labelAlign: 'right',
                                     id: 'answerb2'
 
                                 },
                                 {
-                                    name: 'color',
+                                    xtype: 'checkboxfield',
+                                    name : 'color',
+                                    value: 'c',
+                                    checked: false,
                                     label: 'c)',
+                                    labelWidth: '95%',
+                                    labelAlign: 'right',
                                     id: 'answerc3'
                                 },
                                 {
-                                    name: 'color',
+                                    xtype: 'checkboxfield',
+                                    name : 'color',
+                                    value: 'd',
+                                    checked: false,
                                     label: 'd)',
+                                    labelWidth: '95%',
+                                    labelAlign: 'right',
                                     id: 'answerd4'
                                 },
                                 {
-                                    name: 'color',
+                                    xtype: 'checkboxfield',
+                                    name : 'false',
+                                    value: 'e',
+                                    checked: false,
                                     label: 'e)',
+                                    labelWidth: '95%',
+                                    labelAlign: 'right',
                                     id: 'answere5'
                                 }
                                 ]

@@ -66,7 +66,101 @@ Ext.define('myApp.controller.GoogleMap', {
         this.setFocus(centerX, centerY, map, bounds);
 
         function addMarkerPositions(markerRecords) {
+
             var jsonQuestions = JSON.parse(questions);
+
+            function displayMultipleAnswers(jsonMultipleQsAnswers) {
+
+                if( jsonMultipleQsAnswers.choices[0] === undefined ||  jsonMultipleQsAnswers.choices[0] === "")
+                    Ext.ComponentQuery.query('#answera1')[0].hide();
+                else
+                {
+                    console.log("answer multiple q answer a")
+                    Ext.ComponentQuery.query('#answera1')[0].setLabel('a) ' + jsonMultipleQsAnswers.choices[0].content);
+                }
+
+                if( jsonMultipleQsAnswers.choices[1] === undefined ||  jsonMultipleQsAnswers.choices[1] === "")
+                    Ext.ComponentQuery.query('#answerb2')[0].hide();
+                else{
+                    console.log("answer multiple q answer b")
+                    Ext.ComponentQuery.query('#answerb2')[0].setLabel('b) ' + jsonMultipleQsAnswers.choices[1].content);
+                }
+                if( jsonMultipleQsAnswers.choices[2] === undefined ||  jsonMultipleQsAnswers.choices[2] === "")
+                    Ext.ComponentQuery.query('#answerc3')[0].hide();
+                else{
+                    console.log("answer multiple q answer c")
+                    Ext.ComponentQuery.query('#answerc3')[0].setLabel('c) ' + jsonMultipleQsAnswers.choices[2].content);
+                }
+                if( jsonMultipleQsAnswers.choices[3] === undefined ||  jsonMultipleQsAnswers.choices[3] === "")
+                    Ext.ComponentQuery.query('#answerd4')[0].hide();
+                else{
+                    console.log("answer multiple q answer d")
+                    Ext.ComponentQuery.query('#answerd4')[0].setLabel('d) ' + jsonMultipleQsAnswers.choices[3].content);
+                }
+                if( jsonMultipleQsAnswers.choices[4] === undefined ||  jsonMultipleQsAnswers.choices[4] === "")
+                    Ext.ComponentQuery.query('#answere5')[0].hide();
+                else
+                {
+                    console.log("answer multiple q answer e")
+                    Ext.ComponentQuery.query('#answere5')[0].setLabel('e) ' + jsonMultipleQsAnswers.choices[4].content);
+                }
+
+            }
+
+            function displayQuestionInformations(jsonResults, jsonMultipleQsAnswers) {
+
+                if(this.partnerNames === undefined || this.partnerName === "")
+                    Ext.ComponentQuery.query('#partnersinfo')[0].hide();
+                else
+                    Ext.ComponentQuery.query('#partnersinfo')[0].setValue(this.partnerNames);
+
+                if(this.interestingUrl === undefined || this.interestingUr === "")
+                    Ext.ComponentQuery.query('#urlinfo')[0].hide();
+                else
+                    Ext.ComponentQuery.query('#urlinfo')[0].setValue(this.interestingUrl);
+
+                if(jsonQuestions.questiona === undefined || jsonQuestions.questiona === "")
+                    Ext.ComponentQuery.query('#q1info')[0].hide();
+                else{
+                    console.log("answering question a");
+                    console.log(jsonQuestions.questiona);
+                    Ext.getCmp('q1info').setLabel(jsonQuestions.questiona);
+                    Ext.ComponentQuery.query('#q1info')[0].setValue(jsonResults.answera);
+                }
+
+                if(jsonQuestions.questionb === "" || jsonQuestions.questionb === undefined)
+                    Ext.ComponentQuery.query('#q2info')[0].hide();
+                else
+                {
+                    console.log("answering question b");
+                    console.log(jsonQuestions.questionb);
+                    Ext.getCmp('q2info').setLabel(jsonQuestions.questionb);
+                    Ext.ComponentQuery.query('#q2info')[0].setValue(jsonResults.answerb);
+                }
+
+                if(jsonQuestions.questionc === "" || jsonQuestions.questionc === undefined)
+                    Ext.ComponentQuery.query('#q3info')[0].hide();
+                else
+                {
+                    console.log("answering question c");
+                    console.log(jsonQuestions.questionc);
+                    Ext.getCmp('q3info').setLabel(jsonQuestions.questionc);
+                    Ext.ComponentQuery.query('#q3info')[0].setValue(jsonResults.answerc);
+                }
+
+
+                if(this.multipleQuestions === "" || this.multipleQuestions === undefined)
+                {
+                    Ext.ComponentQuery.query('#multiplechoicequestion')[0].hide();
+                    Ext.ComponentQuery.query('#fieldMq')[0].hide();
+                }
+                else
+                {
+                    console.log("answering multiple question");
+                    Ext.ComponentQuery.query('#multiplechoicequestion')[0].setValue(this.multipleQuestions);
+                }
+                displayMultipleAnswers(jsonMultipleQsAnswers);
+            }
 
             for (var i = 0; i < markerRecords.length; ++i) {
                 var data = markerRecords[i].getData(); //Get the data from the record
@@ -89,24 +183,7 @@ Ext.define('myApp.controller.GoogleMap', {
                     var jsonMultipleQsAnswers  = JSON.parse(this.jsonMultipleQsAnswers);
 
                     currentActivity.push({xtype:'huntinfopanel'});
-
-                    Ext.getCmp('q1info').setLabel(jsonQuestions.questiona);
-                    Ext.getCmp('q2info').setLabel(jsonQuestions.questionb);
-                    Ext.getCmp('q3info').setLabel(jsonQuestions.questionc);
-
-                    Ext.ComponentQuery.query('#partnersinfo')[0].setValue(this.partnerNames);
-                    Ext.ComponentQuery.query('#urlinfo')[0].setValue(this.interestingUrl);
-                    Ext.ComponentQuery.query('#q1info')[0].setValue(jsonResults.answera);
-                    Ext.ComponentQuery.query('#q2info')[0].setValue(jsonResults.answerb);
-                    Ext.ComponentQuery.query('#q3info')[0].setValue(jsonResults.answerc);
-                    Ext.ComponentQuery.query('#multiplechoicequestion')[0].setValue(this.multipleQuestions);
-
-
-                    console.log(jsonMultipleQsAnswers.choices);
-                    console.log(jsonMultipleQsAnswers.choices[0].content);
-
-                    Ext.getCmp('answera1').setValue(jsonMultipleQsAnswers.choices[0].content);
-
+                    displayQuestionInformations.call(this, jsonResults, jsonMultipleQsAnswers);
                     var strNumber = String(this.mediaId);
 
                     var urlVar = './images/' + strNumber + '.jpeg';
