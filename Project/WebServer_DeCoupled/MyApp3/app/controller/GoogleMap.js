@@ -74,12 +74,15 @@ Ext.define('myApp.controller.GoogleMap', {
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(data['lat'], data['lng']),
                     map: map,
-                    customInfo : data["additionalAnswers"]
+                    customInfo : data["additionalAnswers"],
+                    mediaId: data['media_id']
                 });
 
                 google.maps.event.addListener(marker, 'click', function()
                 {
                     var jsonResults  = JSON.parse(this.customInfo);
+                    var mediaID = this.mediaId;
+                    var jsonMultipleQsAnswers  = JSON.parse(data['choices']);
 
                     currentActivity.push({xtype:'huntinfopanel'});
 
@@ -99,13 +102,16 @@ Ext.define('myApp.controller.GoogleMap', {
                     Ext.ComponentQuery.query('#multiplechoicequestion')[0].setValue(data['multiple_question']);
 
 
-                    console.log(data['media_id']);
+                    console.log(jsonMultipleQsAnswers.choices);
+                    console.log(jsonMultipleQsAnswers.choices[0].content);
 
-                    var strNumber = String(data['media_id']);
+                    Ext.getCmp('answera1').setValue(jsonMultipleQsAnswers.choices[0].content);
+                    console.log(Ext.getCmp('answera1'));
+                    
+
+                    var strNumber = String(this.mediaId);
 
                     var urlVar = './images/' + strNumber + '.jpeg';
-
-                    console.log(urlVar);
 
                     Ext.ComponentQuery.query('#imageStuffId')[0].setSrc(urlVar);
                 });

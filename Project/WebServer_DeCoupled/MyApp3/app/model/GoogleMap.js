@@ -14,7 +14,8 @@ Ext.define('myApp.model.GoogleMap',{
             'additionalAnswers',
             'partner_names',
             'interesting_url',
-            'multiple_question'
+            'multiple_question',
+            'choices'
         ]
     }
 

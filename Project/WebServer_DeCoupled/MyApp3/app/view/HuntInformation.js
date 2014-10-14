@@ -95,28 +95,28 @@ Ext.define('myApp.view.HuntInformation', {
                                 //layout: 'hbox',
                                 items: [{
                                     name: 'color',
-                                    label: 'answera1',
+                                    label: 'a)',
                                     id: 'answera1'
                                 },
                                 {
                                     name: 'color',
-                                    label: 'answerb2',
+                                    label: 'b)',
                                     id: 'answerb2'
 
                                 },
                                 {
                                     name: 'color',
-                                    label: 'answerc3',
+                                    label: 'c)',
                                     id: 'answerc3'
                                 },
                                 {
                                     name: 'color',
-                                    label: 'answerd4',
+                                    label: 'd)',
                                     id: 'answerd4'
                                 },
                                 {
                                     name: 'color',
-                                    label: 'answere5',
+                                    label: 'e)',
                                     id: 'answere5'
                                 }
                                 ]
