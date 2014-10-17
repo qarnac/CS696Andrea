@@ -24,7 +24,6 @@ Ext.define('myApp.view.HuntInformation', {
                         id : 'imageStuffId',
                         xtype: 'image',
                         height: '200px',
-                        //style: 'margin-top:15px;'
 
                     },
                     {
@@ -83,66 +82,77 @@ Ext.define('myApp.view.HuntInformation', {
                                 readOnly: true,
                                 labelWrap : true
                             },
+
                             {
                                 xtype: 'fieldset',
                                 id: 'fieldMq',
 
-                                defaultType: 'checkboxfield',
                                 defaults: {
-                                    flex: '1'
+                                    flex: '1',
+
+                                    listeners : {
+                                        element: 'label',
+                                        tap : function(){
+                                            console.log(this);
+                                            Ext.Msg.alert('Correct Answer!');
+                                            if(this._value === "false")
+                                                Ext.Msg.alert('Sorry wrong answer!', 'Please pick another one');
+                                            else
+                                                Ext.Msg.alert('Correct!', "You've got it right!");
+
+                                        }
+                                    }
                                 },
 
-                                //layout: 'hbox',
-
                                 items: [{
-                                    xtype: 'checkboxfield',
+                                    xtype: 'radiofield',
                                     name : 'color',
                                     value: 'a',
                                     checked: false,
                                     label: 'a)',
-                                    labelWidth: '95%',
+                                    labelWidth: '90%',
                                     labelAlign: 'right',
                                     id: 'answera1'
 
                                 },
                                 {
-                                    xtype: 'checkboxfield',
+                                    xtype: 'radiofield',
                                     name : 'color',
                                     value: 'b',
                                     checked: false,
                                     label: 'b)',
-                                    labelWidth: '95%',
+                                    labelWidth: '90%',
                                     labelAlign: 'right',
                                     id: 'answerb2'
 
                                 },
                                 {
-                                    xtype: 'checkboxfield',
+                                    xtype: 'radiofield',
                                     name : 'color',
                                     value: 'c',
                                     checked: false,
                                     label: 'c)',
-                                    labelWidth: '95%',
+                                    labelWidth: '90%',
                                     labelAlign: 'right',
                                     id: 'answerc3'
                                 },
                                 {
-                                    xtype: 'checkboxfield',
+                                    xtype: 'radiofield',
                                     name : 'color',
                                     value: 'd',
                                     checked: false,
                                     label: 'd)',
-                                    labelWidth: '95%',
+                                    labelWidth: '90%',
                                     labelAlign: 'right',
                                     id: 'answerd4'
                                 },
                                 {
-                                    xtype: 'checkboxfield',
+                                    xtype: 'radiofield',
                                     name : 'false',
                                     value: 'e',
                                     checked: false,
                                     label: 'e)',
-                                    labelWidth: '95%',
+                                    labelWidth: '90%',
                                     labelAlign: 'right',
                                     id: 'answere5'
                                 }
@@ -150,12 +160,12 @@ Ext.define('myApp.view.HuntInformation', {
                             }
 
                         ]
-
                     }
                 ]
 
             },
         ]
     },
+
 
 });

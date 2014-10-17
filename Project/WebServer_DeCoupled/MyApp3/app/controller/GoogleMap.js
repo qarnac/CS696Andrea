@@ -77,6 +77,7 @@ Ext.define('myApp.controller.GoogleMap', {
                 {
                     console.log("answer multiple q answer a")
                     Ext.ComponentQuery.query('#answera1')[0].setLabel('a) ' + jsonMultipleQsAnswers.choices[0].content);
+                    Ext.ComponentQuery.query('#answera1')[0].setValue(jsonMultipleQsAnswers.choices[0].ans);
                 }
 
                 if( jsonMultipleQsAnswers.choices[1] === undefined ||  jsonMultipleQsAnswers.choices[1] === "")
@@ -84,18 +85,21 @@ Ext.define('myApp.controller.GoogleMap', {
                 else{
                     console.log("answer multiple q answer b")
                     Ext.ComponentQuery.query('#answerb2')[0].setLabel('b) ' + jsonMultipleQsAnswers.choices[1].content);
+                    Ext.ComponentQuery.query('#answerb2')[0].setValue(jsonMultipleQsAnswers.choices[1].ans);
                 }
                 if( jsonMultipleQsAnswers.choices[2] === undefined ||  jsonMultipleQsAnswers.choices[2] === "")
                     Ext.ComponentQuery.query('#answerc3')[0].hide();
                 else{
                     console.log("answer multiple q answer c")
                     Ext.ComponentQuery.query('#answerc3')[0].setLabel('c) ' + jsonMultipleQsAnswers.choices[2].content);
+                    Ext.ComponentQuery.query('#answerc3')[0].setValue(jsonMultipleQsAnswers.choices[2].ans);
                 }
                 if( jsonMultipleQsAnswers.choices[3] === undefined ||  jsonMultipleQsAnswers.choices[3] === "")
                     Ext.ComponentQuery.query('#answerd4')[0].hide();
                 else{
                     console.log("answer multiple q answer d")
                     Ext.ComponentQuery.query('#answerd4')[0].setLabel('d) ' + jsonMultipleQsAnswers.choices[3].content);
+                    Ext.ComponentQuery.query('#answerd4')[0].setValue(jsonMultipleQsAnswers.choices[3].ans);
                 }
                 if( jsonMultipleQsAnswers.choices[4] === undefined ||  jsonMultipleQsAnswers.choices[4] === "")
                     Ext.ComponentQuery.query('#answere5')[0].hide();
@@ -103,6 +107,7 @@ Ext.define('myApp.controller.GoogleMap', {
                 {
                     console.log("answer multiple q answer e")
                     Ext.ComponentQuery.query('#answere5')[0].setLabel('e) ' + jsonMultipleQsAnswers.choices[4].content);
+                    Ext.ComponentQuery.query('#answere5')[0].setValue(jsonMultipleQsAnswers.choices[4].ans);
                 }
 
             }
