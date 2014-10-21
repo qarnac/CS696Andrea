@@ -619,9 +619,6 @@ Ext.define('Ext.ux.Fileup', {
         console.log("in doUpload");
 
 
-
-        navigator.geolocation.getCurrentPosition(success, error, options);
-
         if (http.upload && http.upload.addEventListener) {
 
             // Uploading progress handler
