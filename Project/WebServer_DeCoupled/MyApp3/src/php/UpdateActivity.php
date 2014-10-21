@@ -22,7 +22,7 @@ require('./cyberScavengerAPIAdmin.php');
 		
 				
 					
-		print $sqlStmt;
+		//print $sqlStmt;
 		
 		
 		$result = $con->query($sqlStmt);
