@@ -110,7 +110,7 @@ Ext.define('myApp.view.HuntInformation', {
                                     value: 'a',
                                     checked: false,
                                     label: 'a)',
-                                    labelWidth: '90%',
+                                    labelWidth: '80%',
                                     labelAlign: 'right',
                                     id: 'answera1'
 
@@ -121,7 +121,7 @@ Ext.define('myApp.view.HuntInformation', {
                                     value: 'b',
                                     checked: false,
                                     label: 'b)',
-                                    labelWidth: '90%',
+                                    labelWidth: '80%',
                                     labelAlign: 'right',
                                     id: 'answerb2'
 
@@ -132,7 +132,7 @@ Ext.define('myApp.view.HuntInformation', {
                                     value: 'c',
                                     checked: false,
                                     label: 'c)',
-                                    labelWidth: '90%',
+                                    labelWidth: '80%',
                                     labelAlign: 'right',
                                     id: 'answerc3'
                                 },
@@ -142,7 +142,7 @@ Ext.define('myApp.view.HuntInformation', {
                                     value: 'd',
                                     checked: false,
                                     label: 'd)',
-                                    labelWidth: '90%',
+                                    labelWidth: '80%',
                                     labelAlign: 'right',
                                     id: 'answerd4'
                                 },
@@ -152,7 +152,7 @@ Ext.define('myApp.view.HuntInformation', {
                                     value: 'e',
                                     checked: false,
                                     label: 'e)',
-                                    labelWidth: '90%',
+                                    labelWidth: '80%',
                                     labelAlign: 'right',
                                     id: 'answere5'
                                 }
