@@ -13,23 +13,18 @@ require('./cyberScavengerAPIAdmin.php');
 		
 		//print $additionalAnswers;
 		
-		$sqlStmt = "UPDATE stud_activity SET partner_names='".  $obj['partners'] . "'" .
-					", student_id=" . "'" . $obj['huntID'] . "'" .  
-					", hunt_id=" . "'" . $obj['huntID'] . "'"  .    
-					", media='image.php'" .
-					", media_id='" . $mediaID . "'" .
-					", created='" . date('Y-m-d H:i:s') . "'" .
-					", interesting_url=" . "'" .$obj['url'] . "'" .
-					", additionalAnswers=" . "'" .$additionalAnswers . "'" .
-					", status=" . "'" . "unverified" . "'" .
-					", lat='" . $obj['lat'] . "'" .
-					", lng='" . $obj['lng'] . "'" .
-					", mquestion=". "'" . $obj['multipleQ'] . "'" .	
-					", partner_names='" . $obj['partners'] . "'" .				
-					" WHERE student_id=". "'" .$obj['huntID'] . "'";						
+		$sqlStmt = "INSERT INTO stud_activity (student_id, hunt_id, media, media_id, created, interesting_url,
+					additionalAnswers, status, lat, lng, mquestion, partner_names, choices)".
+					"VALUES (". $obj['huntID'] . ", " . $obj['huntID'] . ", " . "'image.php'" . ", " . $mediaID . ", '" .
+					date('Y-m-d H:i:s'). "', '" . $obj['url'] . "', '" . $additionalAnswers .  "', " .
+					"'unverified'" . ", " . $obj['lat'] . ", " . $obj['lng'] . ", '" . 
+					$obj['multipleQ'] . "', '" . $obj['partners'] . "', '".  choic($obj)  . "')"; 
+		
+				
 					
-		//print $sqlStmt;
-				   
+		print $sqlStmt;
+		
+		
 		$result = $con->query($sqlStmt);
 
 		
@@ -59,6 +54,9 @@ require('./cyberScavengerAPIAdmin.php');
 	function choic($data)
 	{
 		$choic=array("choices"=>array());
+		
+		print $data['multipleChoiceCorrectAnswer'];
+		
 		if($data['multipleChoiceAnswerA']!="")
 		array_push($choic['choices'],array('choice'=>'a','content'=>$data['multipleChoiceAnswerA'],'ans'=> btos($data['multipleChoiceCorrectAnswer']=='a')));
 		if($data['multipleChoiceAnswerB']!="")

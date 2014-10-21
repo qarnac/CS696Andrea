@@ -707,6 +707,11 @@ Ext.define('Ext.ux.Fileup', {
         // Add selected file to form
         form.append(this.getName(), file);
 
+        console.log("WTF IN HERE");
+        console.log(myApp.app.apiToken.correctAnswer);
+        console.log("WTF IN HERE");
+
+
         var result = {
                 'huntID' : myApp.app.apiToken.huntId,
                 "partners" : myApp.app.apiToken.partners,

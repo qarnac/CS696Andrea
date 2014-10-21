@@ -148,7 +148,7 @@ Ext.define('myApp.view.HuntInformation', {
                                 },
                                 {
                                     xtype: 'radiofield',
-                                    name : 'false',
+                                    name : 'color',
                                     value: 'e',
                                     checked: false,
                                     label: 'e)',

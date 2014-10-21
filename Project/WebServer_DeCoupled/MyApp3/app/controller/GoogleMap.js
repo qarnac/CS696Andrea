@@ -101,6 +101,7 @@ Ext.define('myApp.controller.GoogleMap', {
                     Ext.ComponentQuery.query('#answerd4')[0].setLabel('d) ' + jsonMultipleQsAnswers.choices[3].content);
                     Ext.ComponentQuery.query('#answerd4')[0].setValue(jsonMultipleQsAnswers.choices[3].ans);
                 }
+
                 if( jsonMultipleQsAnswers.choices[4] === undefined ||  jsonMultipleQsAnswers.choices[4] === "")
                     Ext.ComponentQuery.query('#answere5')[0].hide();
                 else

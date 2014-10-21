@@ -68,6 +68,7 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.answerC = Ext.ComponentQuery.query('#qc')[0]._value;
             myApp.app.apiToken.answerD = Ext.ComponentQuery.query('#qd')[0]._value;
             myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
+            myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value._data.value;
 
             this.hideNextButton();
         }
@@ -122,12 +123,12 @@ Ext.define('myApp.controller.Login', {
 
         else if (item.xtype == "multiplequestion" && myApp.app.apiToken.currentPage != "imageuploadform")
         {
-            myApp.app.apiToken.qMultiple = Ext.ComponentQuery.query('#mq')[0]._value;
-            myApp.app.apiToken.answerA   = Ext.ComponentQuery.query('#qa')[0]._value;
-            myApp.app.apiToken.answerB   = Ext.ComponentQuery.query('#qb')[0]._value;
-            myApp.app.apiToken.answerC   = Ext.ComponentQuery.query('#qc')[0]._value;
-            myApp.app.apiToken.answerD   = Ext.ComponentQuery.query('#qd')[0]._value;
-            myApp.app.apiToken.answerE   = Ext.ComponentQuery.query('#qe')[0]._value;
+            myApp.app.apiToken.qMultiple = String(Ext.ComponentQuery.query('#mq')[0]._value);
+            myApp.app.apiToken.answerA   = String(Ext.ComponentQuery.query('#qa')[0]._value);
+            myApp.app.apiToken.answerB   = String(Ext.ComponentQuery.query('#qb')[0]._value);
+            myApp.app.apiToken.answerC   = String(Ext.ComponentQuery.query('#qc')[0]._value);
+            myApp.app.apiToken.answerD   = String(Ext.ComponentQuery.query('#qd')[0]._value);
+            myApp.app.apiToken.answerE   = String(Ext.ComponentQuery.query('#qe')[0]._value);
 
             myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value.data.value;
 
