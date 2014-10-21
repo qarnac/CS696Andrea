@@ -55,8 +55,6 @@ require('./cyberScavengerAPIAdmin.php');
 	{
 		$choic=array("choices"=>array());
 		
-		print $data['multipleChoiceCorrectAnswer'];
-		
 		if($data['multipleChoiceAnswerA']!="")
 		array_push($choic['choices'],array('choice'=>'a','content'=>$data['multipleChoiceAnswerA'],'ans'=> btos($data['multipleChoiceCorrectAnswer']=='a')));
 		if($data['multipleChoiceAnswerB']!="")

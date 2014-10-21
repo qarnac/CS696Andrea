@@ -26,7 +26,7 @@
       <file leaf-file-name="GoogleMap.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="109" column="55" selection-start="4805" selection-end="4813" vertical-scroll-proportion="0.0" vertical-offset="752" max-vertical-offset="3655">
+            <state line="68" column="0" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0" vertical-offset="2639" max-vertical-offset="3655">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="Fileup.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="729" column="80" selection-start="21551" selection-end="21564" vertical-scroll-proportion="0.0" vertical-offset="11601" max-vertical-offset="13770">
+            <state line="620" column="0" selection-start="17609" selection-end="17609" vertical-scroll-proportion="0.0" vertical-offset="10222" max-vertical-offset="13753">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -43,10 +43,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Login.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Login.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="83" selection-start="2544" selection-end="2544" vertical-scroll-proportion="0.522854" vertical-offset="670" max-vertical-offset="7089">
+            <state line="70" column="106" selection-start="2819" selection-end="2819" vertical-scroll-proportion="0.0" vertical-offset="871" max-vertical-offset="7089">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoogleMap.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/model/GoogleMap.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="19" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
               <folding />
             </state>
           </provider>
@@ -74,6 +83,24 @@
         <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/MultipleQuestion.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="0" selection-start="423" selection-end="423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageUpload.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="10" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.7346711" vertical-offset="412" max-vertical-offset="2533">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Hunts.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="50" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2295">
               <folding />
             </state>
           </provider>
@@ -108,7 +135,6 @@
         <option value="$PROJECT_DIR$/MyApp3/app/model/Markers.js" />
         <option value="$PROJECT_DIR$/MyApp3/src/php/getfile.php" />
         <option value="$PROJECT_DIR$/MyApp3/src/php/SimpleImage.php" />
-        <option value="$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/MultipleQuestion.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/QuestionsForm.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js" />
@@ -124,6 +150,7 @@
         <option value="$PROJECT_DIR$/MyApp3/app/view/HuntInformation.js" />
         <option value="$PROJECT_DIR$/MyApp3/src/ux/Fileup.js" />
         <option value="$PROJECT_DIR$/MyApp3/app/controller/Login.js" />
+        <option value="$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js" />
       </list>
     </option>
   </component>
@@ -624,11 +651,6 @@
         <state line="996" column="0" selection-start="15304" selection-end="15324" vertical-scroll-proportion="0.33333334" vertical-offset="16633" max-vertical-offset="64821" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="39" selection-start="912" selection-end="912" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2295" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493" />
@@ -718,21 +740,9 @@
         <state line="5" column="13" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="31" selection-start="3551" selection-end="3551" vertical-scroll-proportion="0.22296543" vertical-offset="2078" max-vertical-offset="3026" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/view/ImageUploadForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="58" column="0" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="701" max-vertical-offset="1802">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="44" selection-start="2584" selection-end="2584" vertical-scroll-proportion="0.0" vertical-offset="1228" max-vertical-offset="2125">
           <folding />
         </state>
       </provider>
@@ -758,9 +768,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2278" selection-end="2278" vertical-scroll-proportion="0.0" vertical-offset="2639" max-vertical-offset="3655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="0" selection-start="4535" selection-end="4535" vertical-scroll-proportion="3.2597547" vertical-offset="0" max-vertical-offset="3026">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="620" column="0" selection-start="17609" selection-end="17609" vertical-scroll-proportion="0.0" vertical-offset="10222" max-vertical-offset="13753">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Hunts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="50" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2295">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="106" selection-start="2819" selection-end="2819" vertical-scroll-proportion="0.0" vertical-offset="871" max-vertical-offset="7089">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp3/app/model/GoogleMap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="21" selection-start="218" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+        <state line="14" column="19" selection-start="281" selection-end="281" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
           <folding />
         </state>
       </provider>
@@ -772,19 +819,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/GoogleMap.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="55" selection-start="4805" selection-end="4813" vertical-scroll-proportion="0.0" vertical-offset="1160" max-vertical-offset="3655">
+        <state line="88" column="42" selection-start="2768" selection-end="2768" vertical-scroll-proportion="0.0" vertical-offset="1041" max-vertical-offset="2040">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/src/ux/Fileup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="729" column="80" selection-start="21551" selection-end="21564" vertical-scroll-proportion="0.0" vertical-offset="11601" max-vertical-offset="13770">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -795,16 +833,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/view/MultipleQuestion.js">
+    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/ImageUpload.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="42" selection-start="2768" selection-end="2768" vertical-scroll-proportion="0.0" vertical-offset="1041" max-vertical-offset="2040">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp3/app/controller/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="83" selection-start="2544" selection-end="2544" vertical-scroll-proportion="0.522854" vertical-offset="670" max-vertical-offset="7089">
+        <state line="63" column="10" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.7346711" vertical-offset="412" max-vertical-offset="2533">
           <folding />
         </state>
       </provider>

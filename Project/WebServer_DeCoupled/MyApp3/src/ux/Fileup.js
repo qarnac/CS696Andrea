@@ -617,7 +617,10 @@ Ext.define('Ext.ux.Fileup', {
         var http = new XMLHttpRequest();
 
         console.log("in doUpload");
-        //console.log(file.name);
+
+
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
 
         if (http.upload && http.upload.addEventListener) {
 
@@ -636,7 +639,6 @@ Ext.define('Ext.ux.Fileup', {
                     if(Ext.Array.indexOf(me.getDefaultSuccessCodes(), parseInt(this.status)) !== -1 ) {
 
                         var response = me.decodeResponse(this);
-
 
                         if (response && response.success) {
                             // Success
@@ -707,10 +709,8 @@ Ext.define('Ext.ux.Fileup', {
         // Add selected file to form
         form.append(this.getName(), file);
 
-        console.log("WTF IN HERE");
-        console.log(myApp.app.apiToken.correctAnswer);
-        console.log("WTF IN HERE");
 
+        console.log(myApp.app.apiToken.correctAnswer);
 
         var result = {
                 'huntID' : myApp.app.apiToken.huntId,
@@ -745,7 +745,6 @@ Ext.define('Ext.ux.Fileup', {
      */
     reset: function() {
         var me = this;
-        
         me.setBadgeText(null);
         me.formElement.dom.reset();
         me.fileElement.show();
