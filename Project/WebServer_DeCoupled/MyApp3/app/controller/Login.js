@@ -70,6 +70,27 @@ Ext.define('myApp.controller.Login', {
             myApp.app.apiToken.answerE = Ext.ComponentQuery.query('#qe')[0]._value;
             myApp.app.apiToken.correctAnswer = Ext.ComponentQuery.query('#qSelect')[0]._value._data.value;
 
+
+            function geo_success(position) {
+                myApp.app.apiToken.gpsLat = position.coords.latitude; // user lat
+                myApp.app.apiToken.gpsLng = position.coords.longitude; // user lng
+            }
+
+            function geo_error() {
+                var view = this.getImageUploadView();
+                alert("Sorry, no position is available. we will log the user out");
+                view.parent.pop(3);
+            }
+
+            var geo_options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
+
+            navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+
+
             this.hideNextButton();
         }
 

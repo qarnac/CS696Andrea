@@ -42,28 +42,6 @@ Ext.define('myApp.controller.ImageUpload', {
         console.log(myApp.app.apiToken.qMultiple);
 
 
-        /*
-        function geo_success(position) {
-            myApp.app.apiToken.gpsLat = position.coords.latitude; // user lat
-            myApp.app.apiToken.gpsLng = position.coords.longitude; // user lng
-        }
-
-        function geo_error() {
-            var view = this.getImageUploadView();
-            alert("Sorry, no position is available. we will log the user out");
-            view.parent.pop(3);
-        }
-
-        var geo_options = {
-            enableHighAccuracy: true,
-            maximumAge        : 30000,
-            timeout           : 27000
-        };
-
-        var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
-        */
-
-
     },
 
     onFileUploadSuccess: function(status,response, e, file) {
