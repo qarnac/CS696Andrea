@@ -11,7 +11,7 @@ Ext.define('myApp.controller.GoogleMap', {
 
     //called when the Application is launched, remove if not needed
     launch: function() {
-        console.log('im in google controller')
+        console.log('im in google controller');
     },
 
     drawRectangle: function (map, minLat, minLng, maxLat, maxLng) {
