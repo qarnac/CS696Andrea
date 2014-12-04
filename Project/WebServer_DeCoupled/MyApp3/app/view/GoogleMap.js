@@ -23,67 +23,43 @@ Ext.define('myApp.view.GoogleMap', {
 			navigationControl: true
 		},
 
-    },
+        listeners: {
+            maprender : function(comp, map) {
 
-    listeners: {
-        maprender : function(comp, map) {
-            var geo = comp.getGeo();
 
-            new google.maps.Marker({
-                map       : this.getMap(),
-                position  : new google.maps.LatLng(geo.getLatitude(), geo.getLongitude()),
-                title     : 'Drag Marker To New Position',
-                animation : google.maps.Animation.DROP,
-                draggable : true
-            });
-        },
+                var geo = Ext.create('Ext.util.Geolocation', {
+                    autoUpdate: false,
+                    listeners: {
+                        locationupdate: function(geo) {
+                            var currentLat = geo.getLatitude();
+                            var currentLng =  geo.getLongitude();
+                            var altitude = geo.getAltitude();
+                            var speed = geo.getSpeed();
+                            var heading= geo.getHeading();
 
-        locationupdate: function(geo) {
-            latitude=Global.currentUserLocations.currentLat;
-            longitude=Global.currentUserLocations.currentLong;
-            if(Global.currentUserPositionMarker)
-            {
-                latlng1=new google.maps.LatLng(latitude, longitude);
-                Global.currentUserPositionMarker.setPosition(latlng1);
+                            new google.maps.Marker({
+                                map       : map,
+                                position  : new google.maps.LatLng(currentLat, currentLng),
+                                title     : 'Drag Marker To New Position'
+                            });
+                        },
+                        locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
+                            if(bTimeout)
+                                Ext.Msg.alert('Timeout occurred',"Could not get current position");
+                            else
+                                alert('Error occurred.');
+                        }
+                    }
+                });
+
+                geo.updateLocation();
+
+
             }
+
         }
 
     }
-
-    /*
-    // remove all markers
-    clearMarkers: function() {
-        for (var i=0; i<this.mapMarkers.length; i++) {
-            this.mapMarkers[i].setMap(null);
-        }
-        this.mapMarkers = new Array();
-    },
-
-    initialize: function() {
-        var gMap = this.getMap();
-
-
-        var geocoder = new google.maps.Geocoder();
-
-        if(google.loader.ClientLocation) {
-             var lat =  google.loader.ClientLocation.latitude;
-             var lng  = google.loader.ClientLocation.longitude;
-
-            // drop map marker
-            var marker = new google.maps.Marker({
-                map: gMap,
-                animation: google.maps.Animation.DROP,
-                position: new google.maps.LatLng (lat,lng),
-                //icon: 'resources/images/jogging.png'
-            });
-
-        }
-
-
-        // remove all markers after 5 seconds
-        Ext.Function.defer(this.clearMarkers,5000,this);
-    }
-    */
 
 
 });

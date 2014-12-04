@@ -73,16 +73,32 @@ Ext.define('myApp.view.ImageUploadForm', {
 
                         listeners: {
                             maprender : function(comp, map){
-                                new google.maps.Marker({
-                                    position: new google.maps.LatLng(this._geo.getLatitude(), this._geo.getLongitude()),
-                                    map: map
+                                var geo = Ext.create('Ext.util.Geolocation', {
+                                    autoUpdate: false,
+                                    listeners: {
+                                        locationupdate: function(geo) {
+                                            var currentLat = geo.getLatitude();
+                                            var currentLng =  geo.getLongitude();
+                                            var altitude = geo.getAltitude();
+                                            var speed = geo.getSpeed();
+                                            var heading= geo.getHeading();
+
+                                            new google.maps.Marker({
+                                                map       : map,
+                                                position  : new google.maps.LatLng(currentLat, currentLng),
+                                                title     : 'Drag Marker To New Position'
+                                            });
+                                        },
+                                        locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
+                                            if(bTimeout)
+                                                Ext.Msg.alert('Timeout occurred',"Could not get current position");
+                                            else
+                                                alert('Error occurred.');
+                                        }
+                                    }
                                 });
 
-                                myApp.app.apiToken.latitude = this._geo.getLatitude();
-                                myApp.app.apiToken.longitude = this._geo.getLongitude();
-
-                                console.log(myApp.app.apiToken.latitude);
-                                console.log(myApp.app.apiToken.longitude);
+                                geo.updateLocation();
 
                             }
                         }
