@@ -84,13 +84,11 @@ Ext.define('myApp.controller.Login', {
 
             var geo_options = {
                 enableHighAccuracy: true,
-                timeout: 5000,
-                maximumAge: 0
+                maximumAge        : 30000,
+                timeout           : 27000
             };
 
             navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
-
-
             this.hideNextButton();
         }
 
@@ -318,11 +316,13 @@ Ext.define('myApp.controller.Login', {
 
                 if (loginResponse.success == true) {
 
-                    var options = {
+
+                    var geo_options = {
                         enableHighAccuracy: true,
-                        timeout: 5000,
-                        maximumAge: 0
+                        maximumAge        : 30000,
+                        timeout           : 27000
                     };
+
 
                     function successLogin(pos) {
                         var crd = pos.coords;
@@ -367,7 +367,7 @@ Ext.define('myApp.controller.Login', {
                         me.signInFailure(loginResponse.errors.reason);
                     }
 
-                    navigator.geolocation.getCurrentPosition(successLogin, error, options);
+                    navigator.geolocation.getCurrentPosition(successLogin, error, geo_options);
 
                 } else {
                     me.hideLogoutButton();

@@ -83,6 +83,9 @@ Ext.define('myApp.view.ImageUploadForm', {
                                             var speed = geo.getSpeed();
                                             var heading= geo.getHeading();
 
+                                            myApp.app.apiToken.gpsLat = currentLat;
+                                            myApp.app.apiToken.gpsLng = currentLng;
+
                                             new google.maps.Marker({
                                                 map       : map,
                                                 position  : new google.maps.LatLng(currentLat, currentLng),
